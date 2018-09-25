@@ -28,7 +28,7 @@
 				<td style="text-align: right;font-size:17px;width:35%;color:black;">
 					<br />
 					欢迎你：谢鹏(人事经理)&nbsp;
-					<input type="button" value="退出系统" class="BUTTON_STYLE1" onclick="parent.location.href='login.html'"/>&nbsp;&nbsp;&nbsp;&nbsp;
+					<input><a href="logout">退出</a></input>
 				</td>
 			</tr>
 		</table>

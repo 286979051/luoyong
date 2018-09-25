@@ -26,6 +26,13 @@
 		<script type="text/javascript"
 			src="javascript/login.js">
 		</script>
+		
+		<script type="text/javascript">
+    	if(top.location != self.location){
+    		top.location = self.location;
+    	}
+  	  	</script>
+		
 	</head>
 	<body>
 		<form id="login1" action="login" method="post">
