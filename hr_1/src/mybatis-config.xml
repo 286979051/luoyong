@@ -7,10 +7,14 @@
 <typeAliases>
 	<!-- 用户表 -->
 	<typeAlias type="com.zd.entity.user" alias="user"/>
+	<!-- 一级机构实体类 -->
+	<typeAlias type="com.zd.entity.Config_file_first_kind" alias="Config_file_first_kind"/>
 </typeAliases>
 
 <mappers>
 	<!-- 用户表 -->
 	<mapper resource="com/zd/mapper/UserMapper.xml"/>
+	<!-- 一级机构mappers -->
+	<mapper resource="com/zd/mapper/Config_file_first_kindMapper.xml"/>
 </mappers>
 </configuration>
