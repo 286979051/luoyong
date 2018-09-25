@@ -24,6 +24,6 @@
 		<property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.xts.dao"></property>
+		<property name="basePackage" value="com.zd.dao"></property>
 	</bean>
 </beans>

@@ -17,7 +17,7 @@
 	<!--配置事物 -->
 	<!-- 把包下的所有service注解都读取到-->
 	<!-- base-package指定包路径 -->
-	<context:component-scan base-package="com.xts.service"/>
+	<context:component-scan base-package="com.zd.service"/>
 	
 	<!-- 1 配置事物管理器 -->
 	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
@@ -32,7 +32,7 @@
 	</tx:advice>
 	<!-- 3 -->
 	<aop:config>
-		<aop:pointcut expression="execution(* com.xts.service.*.*(..))" id="pc"/>
+		<aop:pointcut expression="execution(* com.zd.service.*.*(..))" id="pc"/>
 		<aop:advisor advice-ref="advice" pointcut-ref="pc"/>
 	</aop:config>
 	

@@ -5,10 +5,12 @@
 
 <configuration>
 <typeAliases>
-	<typeAlias type="" alias=""/>
+	<!-- 用户表 -->
+	<typeAlias type="com.zd.entity.user" alias="user"/>
 </typeAliases>
 
 <mappers>
-	<mapper resource=""/>
+	<!-- 用户表 -->
+	<mapper resource="com/zd/mapper/UserMapper.xml"/>
 </mappers>
 </configuration>
