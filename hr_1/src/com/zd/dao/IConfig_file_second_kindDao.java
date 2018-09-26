@@ -11,7 +11,7 @@ public interface IConfig_file_second_kindDao {
 
 	
 	//二级联动
-	@Select("select * from Config_file_second_kind where first_kind_id=#{id}")
+	@Select("select * from Config_file_second_kind where second_kind_id=#{id}")
 	@ResultMap("Config_file_second_kindmapper")
 	public List<Config_file_second_kind> queryById(int id);
 }
