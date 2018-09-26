@@ -111,9 +111,9 @@
 			url:'queryById?id='+firstkindid,
 			type:'get',
 			success:function(data){
-				var secondSel = $("#secondKindId")
+				var secondSel = $("#secondKindId");
 				secondSel.empty();
-				secondSel.append("<option>---请选择---</option>")
+				secondSel.append("<option>---请选择---</option>");
 				for(var i=0;i<data.length;i++){
 					var secondName = data[i];
 					var secondId = secondName.secondkindid;
@@ -125,6 +125,27 @@
 			
 		});
 	}
+	function third(){
+		var secondKindId = $("#secondKindId").val();
+		alert(secondKindId);
+		$.ajax({
+			url:'querySanBySecondId?id='+secondKindId,
+			type:'get',
+			success:function(data){
+				var thirdSel = $("#thirdKindId");
+				thirdSel.empty();
+				thirdSel.append("<option>---请选择---</option>");
+				for(var i=0;i<data.length;i++){
+					var thirdName=data[i];
+					var thirdId=thirdName.thirdkindid;
+					var tName = thirdName.thirdkindname;
+					alert(tName);
+					thirdSel.append("<option value='"+thirdId+"'>"+tName+"</option>");
+					}
+				}
+			
+			});
+		}
 </script>
  	</head>
 	<body>
@@ -155,7 +176,7 @@
 						<select name="emajorRelease.firstKindId" id="firstKindId" onchange="fun()"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 						<c:forEach items="${firstList }" var="first">
-					<option value="${first.ffkid }">${first.firstkindname }</option>
+					<option value="${first.firstkindid }">${first.firstkindname }</option>
 					</c:forEach>
 					 </select>
 					</td>
@@ -163,7 +184,8 @@
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="emajorRelease.secondKindId" id="secondKindId" class="SELECT_STYLE1"> 
+						<select name="emajorRelease.secondKindId" onchange="third()" id="secondKindId" class="SELECT_STYLE1"> 
+						<option value="">--请选择--</option>
 						</select>
 					</td>
 					<td width="11%" class="TD_STYLE1">

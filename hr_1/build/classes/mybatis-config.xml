@@ -11,6 +11,8 @@
 	<typeAlias type="com.zd.entity.Config_file_first_kind" alias="Config_file_first_kind"/>
 	<!-- 二级机构 -->
 	<typeAlias type="com.zd.entity.Config_file_second_kind" alias="Config_file_second_kind"/>
+	<!-- 三级机构 -->
+	<typeAlias type="com.zd.entity.Config_file_third_kind" alias="Config_file_third_kind"/>
 </typeAliases>
 
 <mappers>
@@ -20,5 +22,7 @@
 	<mapper resource="com/zd/mapper/Config_file_first_kindMapper.xml"/>
 	<!-- 二级机构 -->
 	<mapper resource="com/zd/mapper/Config_file_second_kindMapper.xml"/>
+	<!-- 三级机构 -->
+	<mapper resource="com/zd/mapper/Config_file_third_kindMapper.xml"/>
 </mappers>
 </configuration>

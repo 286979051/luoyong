@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IConfig_file_third_kindDao">
+	<resultMap type="Config_file_third_kind" id="Config_file_third_kindmapper">
+		<result column="ftk_id" property="ftkid"/>
+		<result column="first_kind_id" property="firstkindid"/>
+		<result column="first_kind_name" property="firstkindname"/>
+		<result column="second_kind_id" property="secondkindid"/>
+		<result column="second_kind_name" property="secondkindname"/>
+		<result column="third_kind_id" property="thirdkindid"/>
+		<result column="third_kind_name" property="thirdkindname"/>
+		<result column="third_kind_sale_id" property="thirdkindsaleid"/>
+		<result column="third_kind_is_retail" property="thirdkindisretail"/>
+	</resultMap>
+</mapper>
