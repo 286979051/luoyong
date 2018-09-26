@@ -13,6 +13,10 @@
 	<typeAlias type="com.zd.entity.Config_file_second_kind" alias="Config_file_second_kind"/>
 	<!-- 三级机构 -->
 	<typeAlias type="com.zd.entity.Config_file_third_kind" alias="Config_file_third_kind"/>
+	<!-- 职业分类一级联动 -->
+	<typeAlias type="com.zd.entity.Config_major_kind" alias="Config_major_kind"/>
+	<!-- 职业分类二级联动 -->
+	<typeAlias type="com.zd.entity.Config_major" alias="Config_major"/>
 </typeAliases>
 
 <mappers>
@@ -24,5 +28,9 @@
 	<mapper resource="com/zd/mapper/Config_file_second_kindMapper.xml"/>
 	<!-- 三级机构 -->
 	<mapper resource="com/zd/mapper/Config_file_third_kindMapper.xml"/>
+	<!-- 职业分类一级联动 -->
+	<mapper resource="com/zd/mapper/Config_major_kindMapper.xml"/>
+	<!-- 职业分类二级联动 -->
+	<mapper resource="com/zd/mapper/Config_majorMapper.xml"/>
 </mappers>
 </configuration>
