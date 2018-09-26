@@ -127,7 +127,6 @@
 	}
 	function third(){
 		var secondKindId = $("#secondKindId").val();
-		alert(secondKindId);
 		$.ajax({
 			url:'querySanBySecondId?id='+secondKindId,
 			type:'get',
@@ -139,7 +138,6 @@
 					var thirdName=data[i];
 					var thirdId=thirdName.thirdkindid;
 					var tName = thirdName.thirdkindname;
-					alert(tName);
 					thirdSel.append("<option value='"+thirdId+"'>"+tName+"</option>");
 					}
 				}
