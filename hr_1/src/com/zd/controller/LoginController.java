@@ -50,5 +50,7 @@ public class LoginController {
 			path = path.substring(1, path.length());// login
 			return path;
 		}
+		
+		
 	}
 
