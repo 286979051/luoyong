@@ -29,7 +29,7 @@
 	 <script type="text/javascript"
 			src="../../../javascript/select.js">
 		</script>
-	
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
  		<script type="text/javascript">
  			window.onload=check;
 		function tick() {
@@ -104,6 +104,28 @@
 	
 	 
 </script> 
+<script type="text/javascript">
+	function fun(){
+		var firstkindid = $("#firstKindId").val();
+		$.ajax({
+			url:'queryById?id='+firstkindid,
+			type:'get',
+			success:function(data){
+				var secondSel = $("#secondKindId")
+				secondSel.empty();
+				secondSel.append("<option>---请选择---</option>")
+				for(var i=0;i<data.length;i++){
+					var secondName = data[i];
+					var secondId = secondName.secondkindid;
+					var sName=secondName.secondkindname;
+					secondSel.append("<option value='"+secondId+"'>"+sName+"</option>");
+				}
+				
+			}
+			
+		});
+	}
+</script>
  	</head>
 	<body>
 		<form name="humanfileForm" method="post" action="position_change_update.html" >
@@ -130,7 +152,7 @@
 					</td>
 					<td width="14%" class="TD_STYLE2">
 						
-						<select name="emajorRelease.firstKindId" id="firstKindId"  class="SELECT_STYLE1"> 
+						<select name="emajorRelease.firstKindId" id="firstKindId" onchange="fun()"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 						<c:forEach items="${firstList }" var="first">
 					<option value="${first.ffkid }">${first.firstkindname }</option>
@@ -142,7 +164,6 @@
 					</td>
 					<td width="14%" class="TD_STYLE2">
 						<select name="emajorRelease.secondKindId" id="secondKindId" class="SELECT_STYLE1"> 
-						<option value="">--请选择--</option>
 						</select>
 					</td>
 					<td width="11%" class="TD_STYLE1">

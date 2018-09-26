@@ -8,13 +8,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.zd.entity.Config_file_first_kind;
-import com.zd.service.IConfig_file_first_kindmapperService;
+import com.zd.service.IConfig_file_first_kindService;
 
 
 @Controller
 public class Config_file_first_kindController {
 	@Autowired
-	private IConfig_file_first_kindmapperService config_file_first_kindmapperService;
+	private IConfig_file_first_kindService config_file_first_kindmapperService;
 	
 	@RequestMapping("/query")
 	public String query(Map map) {
