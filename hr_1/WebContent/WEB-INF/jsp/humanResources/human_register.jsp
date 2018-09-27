@@ -183,11 +183,6 @@
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanId" class="SELECT_STYLE1" id="majorKind" onchange="major_kind()">
 							<option value="0">---请选择---</option>
-							<c:forEach var="s" items="${arr1 }">
-							<c:if test="${s.attribute_kind == '职位分类' }">
-								<option value="${s.pbc_id }">${s.pbc_id }-${s.attribute_name }</option>
-							</c:if>
-							</c:forEach>
 						</select>
 						<input type="hidden" name="humanFile.humanMajorKindName"/>
 					</td>
@@ -208,9 +203,11 @@
 					<td colspan="2" class="TD_STYLE2">
 						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1" id="majorinName">
 							<option value="0">---请选择---</option>
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+							<c:forEach var="s" items="${arr1 }">
+							<c:if test="${s.attribute_kind == '职称' }">
+								<option value="${s.pbc_id }">${s.pbc_id }-${s.attribute_name }</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

@@ -1,5 +1,9 @@
 package com.zd.entity;
-
+/**
+ * 20.职位发表登记表
+ * @author Administrator
+ *
+ */
 public class Engage_major_release {
 
 	

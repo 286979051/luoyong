@@ -1,5 +1,9 @@
 package com.zd.entity;
-
+/**
+ * 10.÷∞Œª…Ë÷√ 
+ * @author Administrator
+ *
+ */
 public class Config_major {
 
 	
