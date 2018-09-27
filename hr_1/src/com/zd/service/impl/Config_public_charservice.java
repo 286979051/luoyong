@@ -19,4 +19,10 @@ public class Config_public_charservice implements IConfig_public_charservice {
 		return Config_public_char.queryall();
 	}
 
+	
+	//≤È—Ø’–∆∏¿‡–Õ
+	public List<Config_public_char> QueryEngageType() {
+		return Config_public_char.QueryEngageType();
+	}
+
 }

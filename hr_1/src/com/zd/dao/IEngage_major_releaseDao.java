@@ -3,6 +3,7 @@ package com.zd.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -25,4 +26,7 @@ public interface IEngage_major_releaseDao {
 	@Update("update Engage_major_release set human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},major_describe=#{major_describe},engage_required=#{engage_required} where mre_id=#{mre_id}")
 	public void releaseUpd(Engage_major_release Engage_major_release);
 	
+	//职位发表登记删除
+	@Delete("delete from Engage_major_release where mre_id=#{id}")
+	public void releaseDelete(int mid);
 }
