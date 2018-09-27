@@ -17,4 +17,8 @@ public interface IConfig_public_charDao {
 	@ResultMap("queryall")
 	public List<Config_public_char> queryall();
 	
+	//查询招聘类型
+	@Select("SELECT * FROM Config_public_char where attribute_kind='招聘类型'")
+	@ResultMap("queryall")
+	public List<Config_public_char> QueryEngageType();
 }

@@ -222,11 +222,9 @@
 					<td class="TD_STYLE2" colspan="2">
 					<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option> 
-							
-							<option value="校园招聘">校园招聘</option> 
-							
-							<option value="社会招聘">社会招聘</option> 
-							
+							<c:forEach items="${publicList }" var="publicList">
+							<option value="${publicList.pbc_id }">${publicList.attribute_name }</option> 
+							</c:forEach>
 								 </select>
 						 
 					</td>
