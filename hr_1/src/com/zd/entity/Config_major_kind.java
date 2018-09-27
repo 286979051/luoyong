@@ -36,7 +36,5 @@ public class Config_major_kind {
 	}
 	public void setMajor_kind_name(String major_kind_name) {
 		this.major_kind_name = major_kind_name;
-	}
-	
-	
+}
 }

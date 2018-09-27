@@ -8,26 +8,26 @@
     <title>My JSP 'index.jsp' starting page</title>
 	 
 		 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 	 <script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 		</script>
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
  		<script type="text/javascript">
@@ -144,6 +144,28 @@
 			
 			});
 		}
+	
+	function major(){
+		var majorKindId=$("#majorKindId").val();
+		$.ajax({
+			url:'ErMajorQuery?id='+majorKindId,
+			type:'get',
+			success:function(data){
+				var majorSel=$("#majorId")
+				majorSel.empty();
+				majorSel.append("<option >---请选择---</option>")
+				for(var i=0;i<data.length;i++){
+					var majorName=data[i];
+					var majorId=majorName.majorid;
+					var mName=majorName.majorname;
+					majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
+					
+				}
+			}
+			
+		});
+		
+	}
 </script>
  	</head>
 	<body>
@@ -214,17 +236,11 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindId" id="majorKindId" class="SELECT_STYLE1">
-							<option value="">--请选择--</option> 
-							
-							<option value="01">销售</option> 
-							
-							<option value="02">软件开发</option> 
-							
-							<option value="03">人力资源</option> 
-							
-							<option value="04">生产部</option> 
-							
+						<select name="emajorRelease.majorKindId" onchange="major()" id="majorKindId" class="SELECT_STYLE1">
+							<option value="">--请选择--</option>
+							<c:forEach items="${major }" var="major">
+							<option value="${major.majorkindid }">${major.majorkindname }</option>
+							</c:forEach> 
 								 </select>
 					</td>
 					<td class="TD_STYLE1">
@@ -233,7 +249,6 @@
 					<td class="TD_STYLE2">
 						<select name="emajorRelease.majorId" id="majorId" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option>
-							<option value="11">区域经理</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
