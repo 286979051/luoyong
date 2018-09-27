@@ -13,7 +13,7 @@ public interface IConfig_file_second_kindDao {
 
 	
 	//二级联动
-	@Select("select * from Config_file_second_kind where second_kind_id=#{id}")
+	@Select("select * from Config_file_second_kind where first_kind_id=#{id}")
 	@ResultMap("Config_file_second_kindmapper")
 	public List<Config_file_second_kind> queryById(int id);
 	
@@ -30,4 +30,8 @@ public interface IConfig_file_second_kindDao {
 	//添加二级机构
 	@Insert("insert into Config_file_second_kind values(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{second_salary_id},#{second_sale_id})")
 	public void addsecond(Config_file_second_kind secondkind);
+	//二级联动单查
+	@Select("select * from Config_file_second_kind where second_kind_id=#{id}")
+	@ResultMap("Config_file_second_kindmapper")
+	public Config_file_second_kind queryDan(int id);
 }

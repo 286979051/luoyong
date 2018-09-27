@@ -18,4 +18,6 @@ public interface IConfig_file_second_kindService {
 	
 	//添加二级机构
 	public void addsecond(Config_file_second_kind secondkind);
+	//二级联动单查
+	public Config_file_second_kind queryDan(int id);
 }

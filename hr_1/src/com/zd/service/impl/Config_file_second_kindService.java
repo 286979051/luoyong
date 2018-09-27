@@ -34,5 +34,9 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	public void addsecond(Config_file_second_kind secondkind) {
 		config_file_second_kindDao.addsecond(secondkind);
 	}
+	//二级联动单查
+	public Config_file_second_kind queryDan(int id) {
+		return config_file_second_kindDao.queryDan(id);
+	}
 
 }

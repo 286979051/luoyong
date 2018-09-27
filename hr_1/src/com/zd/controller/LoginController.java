@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.zd.entity.user;
 import com.zd.service.IUserService;
 
+/**
+ * 登录的控制权
+ * @author Administrator
+ *
+ */
 @Controller
 public class LoginController {
 	//注入service
@@ -49,5 +54,7 @@ public class LoginController {
 			path = path.substring(1, path.length());// login
 			return path;
 		}
+		
+		
 	}
 
