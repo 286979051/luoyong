@@ -28,7 +28,7 @@
 	 <script type="text/javascript"
 			src="javascript/select.js">
 		</script>
-		
+		<script type="text/javascript" src="js/jquery-1.8.0.min.js" ></script>
 		<script type="text/javascript">
 		function doDelete(id){
 		if(window.confirm("确认删除该项纪录？")){
@@ -37,7 +37,20 @@
 		
 		}
 		</script>
-		
+		<script type="text/javascript">
+		function ajaxdel(mre_id){
+			$.ajax({
+				url:'releaseDelete?mid='+mre_id,
+				type:'get',
+				success:function(data){
+					if(data=="1"){
+					$("#"+mre_id).remove();
+					}
+				}
+			});
+			
+		}
+		</script>
 		</head>
 
 	<body>
@@ -81,7 +94,7 @@
 				</tr>
 				
 					<c:forEach items="${releaseList }" var="releaseList">
-				<tr>
+				<tr id="${releaseList.mre_id}">
 						<td class="TD_STYLE2">
 							${releaseList.major_name }
 						</td>
@@ -103,7 +116,7 @@
 							<a href="releaseQueryById?id=${releaseList.mre_id}">修改</a>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="position_change_update.html">删除</a>
+							<a href="javascript:ajaxdel(${releaseList.mre_id})">删除</a>
 						</td>
 					</tr>
 					</c:forEach>
