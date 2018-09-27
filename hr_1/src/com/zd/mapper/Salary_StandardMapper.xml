@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IStandardDao">
+	<!-- zhangmin的查询映射 -->
+	<resultMap type="com.zd.entity.Salary_standard" id="Salary_standardMapper">
+		<result column="pbc_id" property="pbc_id"/>
+		<result column="attribute_kind" property="attribute_kind"/>
+		<result column="attribute_name" property="attribute_name"/>
+	</resultMap>
+	
+</mapper>
