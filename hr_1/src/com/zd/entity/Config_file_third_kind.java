@@ -1,5 +1,10 @@
 package com.zd.entity;
 
+/**
+ * 4.三级机构设置表
+ * @author Administrator
+ *
+ */
 //三级联动
 public class Config_file_third_kind {
 

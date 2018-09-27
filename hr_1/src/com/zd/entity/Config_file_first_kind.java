@@ -1,6 +1,10 @@
 package com.zd.entity;
 
-
+/**
+ * 2.一级机构设置表
+ * @author Administrator
+ *
+ */
 //一级机构联动
 public class Config_file_first_kind {
 

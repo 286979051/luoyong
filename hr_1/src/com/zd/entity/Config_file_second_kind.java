@@ -1,5 +1,9 @@
 package com.zd.entity;
-
+/**
+ * 3.二级机构设置表
+ * @author Administrator
+ *
+ */
 public class Config_file_second_kind {
 
 	
