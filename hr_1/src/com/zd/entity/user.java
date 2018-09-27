@@ -1,5 +1,9 @@
 package com.zd.entity;
-
+/**
+ *  1.”√ªß±Ì
+ * @author Administrator
+ *
+ */
 public class user {
 	private int userid;
 	private String user_name;

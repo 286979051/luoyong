@@ -38,9 +38,6 @@ public class Config_major_kind {
 		return majorkindname;
 	}
 
-	public void setMajorkindname(String majorkindname) {
-		this.majorkindname = majorkindname;
-	}
 	
 	
 }
