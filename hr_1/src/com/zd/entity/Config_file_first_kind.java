@@ -3,9 +3,6 @@ package com.zd.entity;
 
 //一级机构联动
 public class Config_file_first_kind {
-
-	
-	
 	public Config_file_first_kind() {
 		super();
 	}
@@ -23,7 +20,7 @@ public class Config_file_first_kind {
 	private String firstkindname;
 	private int firstkindsalaryid;
 	private int firstkindsaleid;
-	
+
 	public int getFfkid() {
 		return ffkid;
 	}

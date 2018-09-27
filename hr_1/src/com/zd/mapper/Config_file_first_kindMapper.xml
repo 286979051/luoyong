@@ -9,4 +9,6 @@
 		<result column="first_kind_salary_id" property="firstkindsalaryid"/>
 		<result column="first_kind_sale_id" property="firstkindsaleid"/>
 	</resultMap>
+	
 </mapper>
+

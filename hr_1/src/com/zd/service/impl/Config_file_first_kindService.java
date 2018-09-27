@@ -20,5 +20,27 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 		return config_file_first_kindDao.query();
 	}
 
+	//添加一级机构
+	public void add(Config_file_first_kind firstkind) {
+		config_file_first_kindDao.add(firstkind);
+	}
+
+	//修改之前做查询
+	public Config_file_first_kind selbyffkid(int ffkid) {
+		return config_file_first_kindDao.selbyffkid(ffkid);
+	}
+
+	//修改
+	public void update(Config_file_first_kind firstkind) {
+		config_file_first_kindDao.update(firstkind);
+	}
+
+	//删除
+	public void delete(int ffkid) {
+		config_file_first_kindDao.delete(ffkid);
+	}
+
+	
+
 	
 }
