@@ -44,5 +44,7 @@
 	<mapper resource="com/zd/mapper/Engage_major_releaseMapper.xml"/>
 	<!-- 公共表 -->
 	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
+	<!-- 薪酬标准 -->
+	<mapper resource="com/zd/mapper/Salary_StandardMapper.xml"/>
 </mappers>
 </configuration>

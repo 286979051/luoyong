@@ -17,4 +17,8 @@ public interface IConfig_public_charDao {
 	@ResultMap("queryall")
 	public List<Config_public_char> queryall();
 	
+	//zhangmin的查询薪酬设置中的公共字段
+		@Select("SELECT * FROM config_public_char where attribute_kind = '薪酬设置'")
+		@ResultMap("queryall")
+		public List<Config_public_char> selsalary();
 }
