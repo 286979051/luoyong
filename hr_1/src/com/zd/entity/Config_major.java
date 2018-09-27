@@ -61,5 +61,11 @@ public class Config_major {
 		this.testamount = testamount;
 	}
 
+	@Override
+	public String toString() {
+		return "Config_major [makid=" + makid + ", majorkindid=" + majorkindid + ", majorkindname=" + majorkindname
+				+ ", majorid=" + majorid + ", majorname=" + majorname + ", testamount=" + testamount + "]";
+	}
+
 	
 }

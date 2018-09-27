@@ -18,5 +18,10 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	public List<Config_file_second_kind> queryById(int id) {
 		return config_file_second_kindDao.queryById(id);
 	}
+	
+	//二级联动单查
+	public Config_file_second_kind queryDan(int id) {
+		return config_file_second_kindDao.queryDan(id);
+	}
 
 }

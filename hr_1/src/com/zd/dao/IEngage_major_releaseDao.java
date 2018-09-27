@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -29,4 +30,8 @@ public interface IEngage_major_releaseDao {
 	//职位发表登记删除
 	@Delete("delete from Engage_major_release where mre_id=#{id}")
 	public void releaseDelete(int mid);
+	
+	//职位发表登记添加
+	@Insert("insert into Engage_major_release value(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{major_kind_id},#{major_kind_name},#{major_id},#{major_name},#{human_amount},#{engage_type},null,#{register},null,null,null,#{major_describe},#{engage_required})")                                                          
+	public void releaseInsert(Engage_major_release Engage_major_release);
 }

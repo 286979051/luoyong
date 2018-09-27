@@ -38,6 +38,11 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 		engage_major_releaseDao.releaseDelete(mid);
 	}
 
+	//职位发表登记添加
+	public void releaseInsert(Engage_major_release Engage_major_release) {
+		engage_major_releaseDao.releaseInsert(Engage_major_release);
+	}
+
 	
 
 }

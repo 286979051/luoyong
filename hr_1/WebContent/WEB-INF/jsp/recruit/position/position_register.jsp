@@ -169,7 +169,7 @@
 </script>
  	</head>
 	<body>
-		<form name="humanfileForm" method="post" action="position_change_update.html" >
+		<form name="humanfileForm" method="post" action="releaseInsetr" >
 			<table width="100%">
 				<tr>
 					<td>
@@ -178,7 +178,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="提交" class="BUTTON_STYLE1" 
+						<input type="submit" value="提交" class="BUTTON_STYLE1" 
 						  onclick="mysubmit();">
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
@@ -193,7 +193,7 @@
 					</td>
 					<td width="14%" class="TD_STYLE2">
 						
-						<select name="emajorRelease.firstKindId" id="firstKindId" onchange="fun()"  class="SELECT_STYLE1"> 
+						<select name="first_kind_id" id="firstKindId" onchange="fun()"  class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 						<c:forEach items="${firstList }" var="first">
 					<option value="${first.firstkindid }">${first.firstkindname }</option>
@@ -204,7 +204,7 @@
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="emajorRelease.secondKindId" onchange="third()" id="secondKindId" class="SELECT_STYLE1"> 
+						<select name="second_kind_id" onchange="third()" id="secondKindId" class="SELECT_STYLE1"> 
 						<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -212,7 +212,7 @@
 						III级机构
 					</td>
 					<td class="TD_STYLE2"  >
-						<select name="emajorRelease.thirdKindId" id="thirdKindId" class="SELECT_STYLE1">
+						<select name="third_kind_id" id="thirdKindId" class="SELECT_STYLE1">
 							<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -220,7 +220,7 @@
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1"> 
+					<select name="pbc_id" id="engageType" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option> 
 							<c:forEach items="${publicList }" var="publicList">
 							<option value="${publicList.pbc_id }">${publicList.attribute_name }</option> 
@@ -234,7 +234,7 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindId" onchange="major()" id="majorKindId" class="SELECT_STYLE1">
+						<select name="major_kind_id" onchange="major()" id="majorKindId" class="SELECT_STYLE1">
 							<option value="">--请选择--</option>
 							<c:forEach items="${major }" var="major">
 							<option value="${major.majorkindid }">${major.majorkindname }</option>
@@ -245,7 +245,7 @@
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorId" id="majorId" class="SELECT_STYLE1"> 
+						<select name="major_id" id="majorId" class="SELECT_STYLE1"> 
 							<option value="">--请选择--</option>
 						</select>
 					</td>
@@ -253,13 +253,13 @@
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.humanAmount" id="humanAmount"  class="INPUT_STYLE2">
+						 <input type="text" name="human_amount" id="humanAmount"  class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2">
-							  <input type="text" name="item.str_startTime" readonly
+							  <input type="text" name="deadline" readonly
 							  class="INPUT_STYLE2" id="date_start">
 					</td>
 				</tr>
@@ -268,14 +268,14 @@
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.register" value="admin" class="INPUT_STYLE2">
+						 <input type="text" name="register" value="admin" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						登记时间
 					</td>
 					<td   class="TD_STYLE2">
 					
-							<input type="text" name="emajorRelease.registTime"
+							<input type="text" name="regist_time"
 							  id="nowTime" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
@@ -291,7 +291,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.majorDescribe" rows="4" cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="major_describe" rows="4" cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>
@@ -300,7 +300,7 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.engageRequired" rows="4"  cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="engage_required" rows="4"  cols="80" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>

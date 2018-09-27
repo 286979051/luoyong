@@ -8,4 +8,7 @@ public interface IConfig_file_second_kindService {
 
 	//二级联动
 	public List<Config_file_second_kind> queryById(int id);
+	
+	//二级联动单查
+	public Config_file_second_kind queryDan(int id);
 }

@@ -5,6 +5,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,17 +42,23 @@ public class Human_registerController {
 	// 跳转人员档案登记
 	@RequestMapping("/human_register")
 	public String toPagehr(Map map){
-		//一级单位查询
-		List<com.zd.entity.Config_file_first_kind> query = Config_file_first_kind.query();
-		List<Config_public_char> queryall = Config_public_charservice.queryall();
-		map.put("arr1", queryall);
-		map.put("arr", query);
+		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+		try {
+			//一级单位查询
+			List<com.zd.entity.Config_file_first_kind> query = Config_file_first_kind.query();
+			List<Config_public_char> queryall = Config_public_charservice.queryall();
+			map.put("arr1", queryall);
+			map.put("arr", query);
+		} catch (Exception e) {
+			logger.error("一级单位查询", e);
+		}
 	return "humanResources/human_register";
 	}	
 	//二级联动查询
 	@RequestMapping("/querySecondByFirstId")
 	@ResponseBody
 	public List<Config_file_second_kind> querySecondByFirstId(int id){
+		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		List<Config_file_second_kind> secondList = config_file_second_kindService.queryById(id);
 		return secondList;
 	}
