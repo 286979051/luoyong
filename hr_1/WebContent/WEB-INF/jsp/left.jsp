@@ -24,7 +24,7 @@
 									<ul>
 												<li>
 													<span>
-														<a href="query" target="mainFrame" style="color:black;">职位发布登记</a>
+														<a href="queryCffk" target="mainFrame" style="color:black;">职位发布登记</a>
 													</span>
 												</li>
 												<li>

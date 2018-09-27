@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -130,8 +131,16 @@
 					</td>
 					<td class="TD_STYLE2" colspan="2">
 					 
-				 	<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1">  
-							<option value="" selected>${release.engage_type }</option>  
+				 	<select name="pbc_id" id="engageType" class="SELECT_STYLE1">
+							<c:forEach items="${cpcList }"  var="cpcList">
+								<c:if test="${cpcList.attribute_name==release.engage_type }">
+									<option value="${release.engage_type }" selected>${release.engage_type }</option>
+								</c:if>
+								
+								<c:if test="${cpcList.attribute_name!=release.engage_type }">
+									<option value="${cpcList.pbc_id }" >${cpcList.attribute_name }</option> 
+								</c:if>
+							</c:forEach> 
 					 </select>
 				 	</td>
 				</tr>

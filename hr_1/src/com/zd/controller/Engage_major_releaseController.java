@@ -61,7 +61,9 @@ public class Engage_major_releaseController {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
 			Engage_major_release release = engage_major_releaseService.releaseQueryById(id);
+			List<Config_public_char> cpcList = config_public_charservice.QueryEngageType();
 			map.put("release", release);
+			map.put("cpcList", cpcList);
 		} catch (Exception e) {
 			logger.error("职位发表登记表查询单条", e);
 		}
@@ -70,9 +72,11 @@ public class Engage_major_releaseController {
 	
 	//职位发表登记表修改
 	@RequestMapping("releaseUpd")
-	public String releaseUpd(Engage_major_release Engage_major_release) {
+	public String releaseUpd(Engage_major_release Engage_major_release,int pbc_id) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
+			Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(pbc_id);
+			Engage_major_release.setEngage_type(cpc.getAttribute_name());
 			engage_major_releaseService.releaseUpd(Engage_major_release);
 		} catch (Exception e) {
 			logger.error("职位发表登记表修改", e);

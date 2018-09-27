@@ -24,25 +24,22 @@ public class Config_file_first_kindController {
 	@Autowired
 	private IConfig_file_first_kindService config_file_first_kindmapperService;
 	//罗勇
+	@Autowired
 	private IConfig_file_first_kindService config_file_first_kindService;
 	@Autowired
 	private IConfig_major_kindService config_major_kindService;
 	@Autowired
 	private IConfig_public_charservice config_public_charservice;
 	
-	@RequestMapping("/query")
+	@RequestMapping("/queryCffk")
 	public String query(Map map) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
-		try {
 			List<Config_file_first_kind> firstList = config_file_first_kindService.query();
 			List<Config_major_kind> major = config_major_kindService.majorQuery();
 			List<Config_public_char> publicList = config_public_charservice.QueryEngageType();
 			map.put("major", major);
 			map.put("firstList", firstList);
 			map.put("publicList", publicList);
-		} catch (Exception e) {
-			logger.error("三级联动", e);
-		}
 		return "/recruit/position/position_register";
 	}
 	//张紫行
