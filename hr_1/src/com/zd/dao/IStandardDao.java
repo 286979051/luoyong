@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 /**
  * 薪酬标准的制定过程
  * @author 张敏
@@ -38,5 +39,12 @@ public interface IStandardDao {
 	
 	//进复核查询单条信息--项目信息
 	public List<zm_some> selone_zmsome(String standard_id);
-
+	
+	@Select("SELECT * from Salary_standard_details GROUP BY standard_name")
+	@ResultMap("salaryMapper")
+	public List<Salary_standard_details> selSalaryall();
+	
+	@Select("SELECT * from Salary_standard_details where standard_name = #{id} GROUP BY standard_name")
+	@ResultMap("salaryMapper")
+	public Salary_standard_details selSalaryone(String id);
 }

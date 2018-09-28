@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.entity.zm_some;
 /**
  * 
@@ -32,4 +33,10 @@ public interface IStandardService {
 	
 	//进复核查询单条信息--项目信息
 	public List<zm_some> selone_zmsome(String standard_id);
+	
+	//查询所有
+	public List<Salary_standard_details> selSalaryall();
+	
+	//查询单挑
+	public Salary_standard_details selSalaryone(String id);
 }

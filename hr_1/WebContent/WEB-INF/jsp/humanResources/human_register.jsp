@@ -96,8 +96,6 @@
 			}
 			function pd(){
 				if($("#firstKind").val() != 0){
-					if($("#secondKind").val() != 0){
-						if($("#thirdKind").val() != 0){
 							//职位
 							if($("#majorKind").val() != 0){
 								if($("#majorName").val() != 0){
@@ -121,10 +119,6 @@
 									$.messager.show("消息提示", "请选择你的职位区域", 2000);
 							}else
 								$.messager.show("消息提示", "请选择你的职位分类", 2000);
-						}else
-							$.messager.show("消息提示", "请选择你的所在三级机构", 2000);
-					}else
-						$.messager.show("消息提示", "请选择你的所在二级机构", 2000);
 				}else
 					$.messager.show("消息提示", "请选择你的所在一级机构", 2000);
 			}
@@ -133,6 +127,7 @@
 
 	<body>
 		<form method="post" action="register_choose_picture" id="tijiao">
+		<input type="hidden" name="human_id" value="${currentTimeMillis }">
 			<table width="100%">
 				<tr>
 					<td>
@@ -419,12 +414,10 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_id" class="SELECT_STYLE1">
+						<select name="salary_standard_name" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
-							<c:forEach var="s" items="${arr1 }">
-							<c:if test="${s.attribute_kind == '薪酬设置' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
-							</c:if>
+							<c:forEach var="s" items="${arr3 }">
+								<option value="${s.standard_name }">${s.standard_name }</option>
 							</c:forEach>
 						</select>
 					</td>

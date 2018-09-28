@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.zd.dao.IStandardDao;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.entity.zm_some;
 import com.zd.service.IStandardService;
 /**
@@ -53,6 +54,12 @@ public class StandardService implements IStandardService{
 		return dao.selone_zmsome(standard_id);
 	}
 
-	
+	public List<Salary_standard_details> selSalaryall(){
+		return dao.selSalaryall();
+	}
+
+	public Salary_standard_details selSalaryone(String id) {
+		return dao.selSalaryone(id);
+	}
 }
 

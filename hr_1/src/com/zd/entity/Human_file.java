@@ -7,7 +7,6 @@ import java.sql.Date;
  *
  */
 public class Human_file {
-	
 
 	public Human_file() {
 		super();
@@ -93,7 +92,6 @@ public class Human_file {
 		this.recovery_time = recovery_time;
 		this.human_file_status = human_file_status;
 	}
-
 
 
 	private int  hfd_id;//	integer	主键，自动增长列

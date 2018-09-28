@@ -1,5 +1,7 @@
 package com.zd.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +20,18 @@ import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Human_file;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
 import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
+import com.zd.service.IStandardService;
+/**
+ * 上传和添加控制器
+ * @author Administrator
+ *
+ */
 
 @Controller
 public class Human_filecontroller {
@@ -36,8 +45,10 @@ public class Human_filecontroller {
 	private IConfig_major_kindService config_major_kindService;
 	@Autowired
 	private IConfig_majorService config_majorService;
-	
-	
+	@Autowired
+	private IStandardService standardService;
+	@Autowired
+	private com.zd.service.IHuman_fileservice IHuman_fileservice;
 	@RequestMapping("/register_choose_picture")
 	public String register_choose_picture(Human_file Engage_major_release) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
@@ -47,10 +58,14 @@ public class Human_filecontroller {
 			Engage_major_release.setFirst_kind_name(cffk.getFirstkindname());
 			//二级机构联动单条查询赋值
 			Config_file_second_kind cfsk =  config_file_second_kindService.queryDan(Engage_major_release.getSecond_kind_id());
+			if(cfsk != null) {
 			Engage_major_release.setSecond_kind_name(cfsk.getSecondkindname());
+			}
 			//三级机构联动单条查询赋值
 			Config_file_third_kind cftk = config_file_third_kindService.queryDan(Engage_major_release.getThird_kind_id());
+			if(cftk != null) {
 			Engage_major_release.setThird_kind_name(cftk.getThirdkindname());
+			}
 			//职业分类一级联动单查赋值
 			Config_major_kind cmk =  config_major_kindService.majorQueryDan(Engage_major_release.getHuman_major_kind_id());
 			Engage_major_release.setHuman_major_kind_name(cmk.getMajor_kind_name());
@@ -58,9 +73,15 @@ public class Human_filecontroller {
 			Config_major cmajor = config_majorService.ErMajorQueryDan(Engage_major_release.getHuman_major_id());
 			Engage_major_release.setHunma_major_name(cmajor.getMajorname());
 			
+			
+			Salary_standard_details selSalaryone = standardService.selSalaryone(Engage_major_release.getSalary_standard_name());
+			int standard_id = selSalaryone.getStandard_id();
+			Engage_major_release.setSalary_standard_id(standard_id);
+			
+			IHuman_fileservice.add(Engage_major_release);
 		} catch (Exception e) {
-			logger.error("职位发表登记添加", e);
+			logger.error("人力简历添加", e);
 		}
-		return "redirect:releaseQuery";
+		return "humanResources/register_choose_picture";
 	}
 }

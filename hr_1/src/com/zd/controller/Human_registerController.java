@@ -3,7 +3,6 @@ package com.zd.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,12 +16,14 @@ import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
+import com.zd.entity.Salary_standard_details;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 import com.zd.service.IConfig_file_third_kindService;
 import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
 import com.zd.service.IConfig_public_charservice;
+import com.zd.service.IStandardService;
 /**
  * 人员档案登记的控制
  * @author Administrator
@@ -49,6 +50,9 @@ public class Human_registerController {
 	//职业的二级联动
 	@Autowired
 	private IConfig_majorService Config_majorService;
+	//薪酬
+	@Autowired
+	private IStandardService standardService;
 	
 	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 	// 跳转人员档案登记
@@ -59,7 +63,10 @@ public class Human_registerController {
 			List<com.zd.entity.Config_file_first_kind> query = Config_file_first_kind.query();
 			List<Config_public_char> queryall = Config_public_charservice.queryall();
 			List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
-			
+			List<Salary_standard_details> selallSalary = standardService.selSalaryall();
+			long currentTimeMillis = System.currentTimeMillis();
+			map.put("currentTimeMillis", currentTimeMillis);
+			map.put("arr3", selallSalary);
 			map.put("arr2", majorQuery);
 			map.put("arr1", queryall);
 			map.put("arr", query);

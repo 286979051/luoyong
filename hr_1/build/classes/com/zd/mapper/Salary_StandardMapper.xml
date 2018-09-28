@@ -24,4 +24,13 @@
 	<select id="selallSalary" resultMap="salary_standardMapper" parameterType="java.util.Map">
 		 SELECT * FROM salary_standard WHERE check_status=2 ORDER BY DATE_FORMAT(regist_time,'%y-%m-%d') DESC LIMIT #{start},10 	 	
 	</select>
+	
+	<resultMap type="com.zd.entity.Salary_standard_details" id="salaryMapper">
+			<result column="sdt_id" property="sdt_id"/>
+			<result column="standard_id" property="standard_id"/>
+			<result column="standard_name" property="standard_name"/>
+			<result column="item_id" property="item_id"/>
+			<result column="item_name" property="item_name"/>
+			<result column="salary" property="salary"/>
+	</resultMap>
 </mapper>
