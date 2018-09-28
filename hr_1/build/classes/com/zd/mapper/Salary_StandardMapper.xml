@@ -3,10 +3,25 @@
 <!-- SQL语句映射文件，mapper-映射 -->
 <mapper namespace="com.zd.dao.IStandardDao">
 	<!-- zhangmin的查询映射 -->
-	<resultMap type="com.zd.entity.Salary_standard" id="Salary_standardMapper">
-		<result column="pbc_id" property="pbc_id"/>
-		<result column="attribute_kind" property="attribute_kind"/>
-		<result column="attribute_name" property="attribute_name"/>
+	<resultMap type="com.zd.entity.Salary_standard" id="salary_standardMapper">
+			<result column="ssd_id" property="ssd_id"/>
+			<result column="standard_id" property="standard_id"/>
+			<result column="standard_name" property="standard_name"/>
+			<result column="designer" property="designer"/>
+			<result column="register" property="register"/>
+			<result column="checker" property="checker"/>
+			<result column="changer" property="changer"/>
+			<result column="regist_time" property="regist_time"/>
+			<result column="check_time" property="check_time"/>
+			<result column="change_time" property="change_time"/>
+			<result column="salary_sum" property="salary_sum"/>
+			<result column="check_status" property="check_status"/>
+			<result column="change_status" property="change_status"/>
+			<result column="check_comment" property="check_comment"/>
+			<result column="remark" property="remark"/>
 	</resultMap>
 	
+	<select id="selallSalary" resultMap="salary_standardMapper" parameterType="java.util.Map">
+		 SELECT * FROM salary_standard WHERE check_status=2 LIMIT #{start},10 	 	
+	</select>
 </mapper>

@@ -159,17 +159,17 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_check_list.html" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
+										<a href="selallSalary" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_query_locate.html" target="mainFrame" style="color:black;">薪酬标准查询</a>
+										<a href="salaryCriterion/salarystandard_query_locate" target="mainFrame" style="color:black;">薪酬标准查询</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_change_locate.html" target="mainFrame" style="color:black;">薪酬标准变更</a>
+										<a href="salaryCriterion/salarystandard_change_locate" target="mainFrame" style="color:black;">薪酬标准变更</a>
 									</span>
 								</li>
 					</ul>

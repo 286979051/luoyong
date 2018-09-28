@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import javax.swing.JOptionPane;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +27,14 @@ public class Salary_standardController {
 	@Autowired
 	private IStandardService StandardService;
 	
+	//去网页的Controller
+	@RequestMapping({"salaryCriterion/salarystandard_query_locate","salaryCriterion/salarystandard_change_locate"})
+	public String topage(HttpServletRequest Request) {
+		String path = Request.getServletPath();
+		path = path.substring(1, path.length());
+		return path;
+	}
+	
 	//查询去tosalarystandard_register的内容
 	@RequestMapping("/tosalarystandard_register")
 	public String tosalarystandard_register(Map<String, Object> map) {
@@ -46,6 +54,7 @@ public class Salary_standardController {
 		return "salaryCriterion/salarystandard_register";
 	}
 	
+	//添加一个薪酬标准信息
 	@RequestMapping("/addSalary_standard")
 	public String addSalary_standard(Salary_standard salary_standard,@RequestParam Map xcxmMap) {
 		Logger logger = LoggerFactory.getLogger(Salary_standardController.class);
@@ -74,4 +83,131 @@ public class Salary_standardController {
 		}
 		return "salaryCriterion/salarystandard_register_success";
 	}
+
+	//查询去salarystandard_check_list的内容(首页)
+	@RequestMapping("/selallSalary")
+	public String selallSalary(Map<String,Object> map) {
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			int total = 0; //总页数
+			int start = 1; //当前页
+			int count = StandardService.selallSalary_count();
+			map.put("count", count);
+			if(count%10==0) {
+				total = count/10;
+				map.put("total", total);
+			}else {
+				total = count/10+1;
+				map.put("total", total);
+			}
+			map.put("start", start);
+		List<Salary_standard> salary_standards = StandardService.selallSalary((start-1)*10);
+		map.put("salary_standards", salary_standards);
+		} catch (Exception e) {
+			log.error("跳转首页失败",e);
+		}
+		return "salaryCriterion/salarystandard_check_list";
+	}
+	
+	//尾页薪酬标准信息
+	@RequestMapping("/tolast")
+	public String tolast(Map<String, Object> map) {
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			int total = 0;//总页数
+			int start = 1;//当前页
+			int count = //获取总数
+					StandardService.selallSalary_count();
+			map.put("count", count);
+			if(count%10==0) {
+				total = count/10;
+				map.put("total", total);
+			}else {
+				total = count/10+1;
+				map.put("total", total);
+			}
+			map.put("start", total);
+			List<Salary_standard> salary_standards = StandardService.selallSalary((total-1)*10);
+			map.put("salary_standards", salary_standards);
+		} catch (Exception e) {
+			log.error("跳转尾页失败",e);
+		}
+		return "salaryCriterion/salarystandard_check_list";
+	}
+	
+	//上一页薪酬标准信息
+	@RequestMapping("/toup")
+	public String toup(Map<String, Object> map,int start) {
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			int total = 0;//总页数
+			int count = //获取总数
+					StandardService.selallSalary_count();
+			map.put("count", count);
+			if(count%10==0) {
+				total = count/10;
+				map.put("total", total);
+			}else {
+				total = count/10+1;
+				map.put("total", total);
+			}
+			map.put("start", start-1);
+			List<Salary_standard> salary_standards = StandardService.selallSalary((start-2)*10);
+			map.put("salary_standards", salary_standards);
+		} catch (Exception e) {
+			log.error("跳转上一页失败",e);
+		}
+		return "salaryCriterion/salarystandard_check_list";
+	}
+	
+	//下一页薪酬标准信息
+	@RequestMapping("/todown")
+	public String todown(Map<String, Object> map,int start) {
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			int total = 0;//总页数
+			int count = //获取总数
+					StandardService.selallSalary_count();
+			map.put("count", count);
+			if(count%10==0) {
+				total = count/10;
+				map.put("total", total);
+			}else {
+				total = count/10+1;
+				map.put("total", total);
+			}
+			map.put("start", start+1);
+			List<Salary_standard> salary_standards = StandardService.selallSalary((start)*10);
+			map.put("salary_standards", salary_standards);
+		} catch (Exception e) {
+			log.error("跳转下一页失败",e);
+		}
+		return "salaryCriterion/salarystandard_check_list";
+	}
+	
+	//页面跳转薪酬标准信息
+	@RequestMapping("/tojump")
+	public String tojump(Map<String, Object> map,int pages) {
+			Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+			try {
+				int count = //获取信息总数
+						StandardService.selallSalary_count();
+				map.put("count", count);
+				if(count%10==0) {
+					int total = count/10;
+					map.put("total", total);
+				}else {
+					int  total = count/10+1;
+					map.put("total", total);
+				}
+				map.put("start", pages);
+				List<Salary_standard> salary_standards = StandardService.selallSalary((pages-1)*10);
+				map.put("salary_standards", salary_standards);
+			} catch (Exception e) {
+				log.error("页面跳转失败",e);
+			}
+			return "salaryCriterion/salarystandard_check_list";
+		}	
+	
+
 }

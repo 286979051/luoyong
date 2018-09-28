@@ -1,8 +1,7 @@
 package com.zd.service.impl;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +29,17 @@ public class StandardService implements IStandardService{
 		dao.addzm_some(map);
 		
 	}
+
+	//薪酬标准登记复核分页查询信息总数
+	public int selallSalary_count() {
+		return dao.selallSalary_count();
+	}
+
+	//薪酬标准登记复核分页查询
+	public List<Salary_standard> selallSalary(int start) {
+		return dao.selallSalary(start);
+	}
+
+	
 }
 

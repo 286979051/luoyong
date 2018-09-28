@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="css/table.css" type="text/css" />
 		<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
 		<title>无标题文档</title>
 		<style type="text/css">
@@ -14,7 +15,7 @@
 </style>
 	</head>
 	<body>
-	<form method="post" action="/HR_Fist/salaryCriterion/salaryCriterionAction!initSalaryStandardCheckList.action">
+	<form method="post" action="tojump">
 			<table width="100%">
 				<tr>
 					<td>
@@ -29,7 +30,7 @@
 				<tr>
 					<td>
 						当前等待复核的薪酬标准总数:
-						12
+						${count}
 						例
 					</td>
 				</tr>
@@ -57,272 +58,29 @@
 						复核
 					</td>
 				</tr>
-				
-				
+				<c:forEach var="salary_standards" items="${salary_standards }">
 					<tr class="TD_STYLE2">
 						<td>
-						1353320262202
-							 
+							${salary_standards.standard_id }
 						</td>
 						<td>
-						的萨法大赛
-							 
+							 ${salary_standards.standard_name }
 						</td>
 						<td>
-						打发似的
-							 
+							 ${salary_standards.designer }
 						</td>
 						<td>
-						2012-11-19 18:17:45.0
-							 
+							 ${salary_standards.regist_time }
 						</td>
 						<td>&nbsp;
-						0.0
-							 
+							 ${salary_standards.salary_sum }
 						</td>
 						<td>
 							<a href="salarystandard_check.html">复 核</a>
 						</td>
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320254933
-							 
-						</td>
-						<td>
-						32525
-							 
-						</td>
-						<td>
-						3245234
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:37.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320250877
-							 
-						</td>
-						<td>
-						123123312
-							 
-						</td>
-						<td>
-						12312312
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:32.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320245931
-							 
-						</td>
-						<td>
-						123
-							 
-						</td>
-						<td>
-						123
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:28.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320236618
-							 
-						</td>
-						<td>
-						33
-							 
-						</td>
-						<td>
-						33
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:24.0
-							 
-						</td>
-						<td>&nbsp;
-						198.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320231018
-							 
-						</td>
-						<td>
-						22
-							 
-						</td>
-						<td>
-						22
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:15.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320220956
-							 
-						</td>
-						<td>
-						薪酬标准222222
-							 
-						</td>
-						<td>
-						22
-							 
-						</td>
-						<td>
-						2012-11-19 18:17:06.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320201643
-							 
-						</td>
-						<td>
-						薪酬标准23
-							 
-						</td>
-						<td>
-						yy
-							 
-						</td>
-						<td>
-						2012-11-19 18:16:58.0
-							 
-						</td>
-						<td>&nbsp;
-						6.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320191799
-							 
-						</td>
-						<td>
-						薪酬标准3
-							 
-						</td>
-						<td>
-						项目
-							 
-						</td>
-						<td>
-						2012-11-19 18:16:39.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-						1353320184280
-							 
-						</td>
-						<td>
-						薪酬标准3
-							 
-						</td>
-						<td>
-						杨阳
-							 
-						</td>
-						<td>
-						2012-11-19 18:16:30.0
-							 
-						</td>
-						<td>&nbsp;
-						0.0
-							 
-						</td>
-						<td>
-							<a href="salarystandard_check.html">复 核</a>
-						</td>
-					</tr>
-				
-					   
+				</c:forEach>		
 			</table>
-			 
-				
 <html>
   <head>  
   </head>  
@@ -330,37 +88,38 @@
    <p>
    <div align="center" style="font-size: 18px;color: gray">
 				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">12</font>
+				<font style="color: maroon;font-weight: bold;">${count}</font>
 				例 
 				&nbsp;&nbsp;&nbsp;
 				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
 				条
 				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">1</font>
+				当前第 <font style="color: maroon;font-weight: bold;">${start}</font>
 				 页 
 				&nbsp;&nbsp;&nbsp;共 
-				<font style="color: maroon;font-weight: bold;">2</font>
+				<font style="color: maroon;font-weight: bold;">${total}</font>
 				 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPage(1)">首页</a>
+				<a style="color: navy;font-weight: bold" href="selallSalary">首页</a>
 				
 				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(0)">上一页</a>
+				 href="javascript:doPageup(${start })">上一页</a>
 				 
 				<a style="color: navy;font-weight: bold" 
-				href="javascript:doPage(2)">下一页</a>
+				href="javascript:doPagedown(${start })">下一页</a>
 				
 				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(2)">末页</a>
+				 href="tolast">末页</a>
 				&nbsp;&nbsp;&nbsp;跳到第
-				<input id=page type=text  value="1" class=input1 size=1>
+				<input name="pages" id="page" type=text  value="${start}" class=input1 size=1/>
 				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="1">
+				<input type="image" onclick="dopagebybutton(${total})" src="images/go.bmp" width=18 height=18 border=0/>
+				<input type="hidden" name="page.startPage" id="startpage" value="1"/>
 			</div>
 			<script type="text/javascript">
-function dopagebybutton() {
+function dopagebybutton(totalPage) {
+	var inputPage = document.getElementById("page").value;
 	var reg = /^[0-9]*[1-9][0-9]*$/;
-	if (reg.test(document.getElementById("page").value)) {
+	if (reg.test(document.getElementById("page").value)&&(inputPage<(totalPage+1))&&(inputPage!=0)) {
 		document.getElementById("startpage").value= document.getElementById("page").value;
 	} else {
 		alert("您的输入有误");
@@ -369,10 +128,25 @@ function dopagebybutton() {
 	document.forms[0].submit();
 	
 }
-function doPage(startsize) {
+function doPageup(startsize) {
 	document.getElementById("startpage").value =startsize;
 	document.forms[0].submit();
-	 
+	if(${start!=1}){
+		location.href="toup?start="+${start};
+	}else{
+		alert("已到首页")
+		location.href="selallSalary";
+	}
+}
+function doPagedown(startsize) {
+	document.getElementById("startpage").value =startsize;
+	document.forms[0].submit();
+	if(${start}!=${total}){
+		location.href="todown?start="+${start};
+	}else{
+		alert("已到尾页")
+		location.href="tolast";
+	}
 }
 </script>
    
