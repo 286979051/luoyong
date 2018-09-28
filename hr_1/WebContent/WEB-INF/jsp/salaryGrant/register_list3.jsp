@@ -1,12 +1,15 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
-		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
+		<link rel="stylesheet" href="css/table.css" type="text/css" />
+		<script type="text/javascript" src="javascript/comm/comm.js"></script>
 		<title>无标题文档</title>
 		<STYLE type="text/css">
 		td{text-align: center}
@@ -26,8 +29,8 @@
 				 
 			</table>
 					<br> 
-					薪酬总数:3，
-					总人数:8，基本薪酬总数:141821.0，实发总额:1998.0
+					薪酬总数:${thirdcount }，
+					总人数:${human }，基本薪酬总数:${thirdsum }，实发总额:${thirdShisum }
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -36,19 +39,9 @@
 					<td width="10%" class="TD_STYLE1">
 						<span>序号</span>
 					</td>			
-					
-					
 					<td width="40%"  class="TD_STYLE1">
-						<span>I级机构名称</span>
+						<span>III级机构名称</span>
 					</td>
-					
-					
-					
-					
-					
-							
-					
-						
 					<td width="10%" class="TD_STYLE1">
 						<span>人数</span>
 					</td>
@@ -60,35 +53,48 @@
 					</td>
 				</tr>
 				
-				
-					<tr class="TD_STYLE2">
+				<c:forEach var="item" items="${list }" varStatus="varStatus">
+					 <tr class="TD_STYLE2">
 						<td>
-							1
+							${varStatus.count }
 						</td>
 						
-					
-						
-						
-					<td> &#8544;&#32423;&#32467;&#26500;  </td>
-					
-					
-					
-					
-					
-						
 						<td>
-							5 
+						<c:forEach items="${item }" var="m">
+							<c:if test="${m.key == 'tname' }">
+								${m.value }
+							</c:if>
+						</c:forEach>
 						</td>
+						
 						<td>
-							139823.0 
+						<c:forEach items="${item }" var="m">
+						 <c:if test="${m.key == 'tcount' }">
+							${m.value }
+						 </c:if>
+						</c:forEach>
 						</td>
+						
 						<td>
-							<a href="register_commit.html">登 记</a>
+						<c:forEach items="${item }" var="m">
+						 <c:if test="${m.key == 'tsum' }">
+						  <c:if test="${m.value!=0 }">
+							${m.value }
+						  </c:if> 
+						  <c:if test="${m.value==0 }">
+							0.0
+						  </c:if> 
+						 </c:if>
+						</c:forEach>
+						</td>
+						
+						<td>
+							<a href="tocommit">登 记</a>
 						</td>
 					</tr>
-					
+				</c:forEach>
 				
-					<tr class="TD_STYLE2">
+					<!-- <tr class="TD_STYLE2">
 						<td>
 							2
 						</td>
@@ -139,7 +145,7 @@
 						<td>
 							<a href="register_commit.html">登 记</a>
 						</td>
-					</tr>
+					</tr> -->
 					
 					
 					
