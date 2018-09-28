@@ -21,7 +21,7 @@
 			<result column="remark" property="remark"/>
 	</resultMap>
 	
-	<select id="selallSalary" resultMap="salary_standardMapper" parameterType="java.util.Map">
+	<select id="selallSalary" resultMap="salary_standardMapper" parameterType="int">
 		 SELECT * FROM salary_standard WHERE check_status=2 ORDER BY DATE_FORMAT(regist_time,'%y-%m-%d') DESC LIMIT #{start},10 	 	
 	</select>
 	

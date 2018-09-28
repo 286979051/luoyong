@@ -4,14 +4,26 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css"
+		<link rel="stylesheet" href="css/table.css"
 			type="text/css"></link>
 			 
 	</head>
+	<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+	<script type="text/javascript">
+	function sel(){
+		var na = $(".INPUT_STYLE2").val();
+		location.href="sel?na="+na;
+	}
+	
+	
+	</script>
 	
 	<body>
-		<form action="register_list.html" method="post">
+		<form action="register_list.html" method="post" id="tijiao">
 				<input type="hidden" name="page.startPage" value="0">
+				
 			<table width="100%">
 				<tr>
 					<td>
@@ -20,7 +32,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="确 定"  class="BUTTON_STYLE1">
+						<input type="button" value="确 定"  class="BUTTON_STYLE1" onclick="sel()">
 					</td>
 				</tr>
 			</table>
