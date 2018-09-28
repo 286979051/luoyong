@@ -13,6 +13,8 @@
 	<typeAlias type="com.zd.entity.Config_file_second_kind" alias="Config_file_second_kind"/>
 	<!-- 三级机构 -->
 	<typeAlias type="com.zd.entity.Config_file_third_kind" alias="Config_file_third_kind"/>
+	<!-- 公共表 -->
+	<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 	<!-- 职业分类一级联动 -->
 	<typeAlias type="com.zd.entity.Config_major_kind" alias="Config_major_kind"/>
 	<!-- 职业分类二级联动 -->
@@ -21,6 +23,9 @@
 	<typeAlias type="com.zd.entity.Engage_major_release" alias="Engage_major_release"/>
 	<!-- 公共表 -->
 	<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
+	<!-- 薪资分发 -->
+	<typeAlias type="com.zd.entity.Salary_grant" alias="Salary_grant"/>
+	<typeAlias type="java.util.Map" alias="map"/>
 </typeAliases>
 
 <mappers>
@@ -32,6 +37,8 @@
 	<mapper resource="com/zd/mapper/Config_file_second_kindMapper.xml"/>
 	<!-- 三级机构 -->
 	<mapper resource="com/zd/mapper/Config_file_third_kindMapper.xml"/>
+	<!-- 公共表 -->
+	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
 	<!-- 职业分类一级联动 -->
 	<mapper resource="com/zd/mapper/Config_major_kindMapper.xml"/>
 	<!-- 职业分类二级联动 -->
@@ -40,5 +47,7 @@
 	<mapper resource="com/zd/mapper/Engage_major_releaseMapper.xml"/>
 	<!-- 公共表 -->
 	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
+	<!-- 薪资分发 -->
+	<mapper resource="com/zd/mapper/Salary_grantMapper.xml"/>
 </mappers>
 </configuration>

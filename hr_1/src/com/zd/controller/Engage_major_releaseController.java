@@ -152,7 +152,7 @@ public class Engage_major_releaseController {
 			Engage_major_release.setThird_kind_name(cftk.getThirdkindname());
 			//职业分类一级联动单查赋值
 			Config_major_kind cmk =  config_major_kindService.majorQueryDan(major_kind_id);
-			Engage_major_release.setMajor_kind_name(cmk.getMajorkindname());
+			Engage_major_release.setMajor_kind_name(cmk.getMajor_kind_name());
 			//职业分联动类二级单查赋值
 			Config_major cmajor = config_majorService.ErMajorQueryDan(major_id);
 			Engage_major_release.setMajor_name(cmajor.getMajorname());
