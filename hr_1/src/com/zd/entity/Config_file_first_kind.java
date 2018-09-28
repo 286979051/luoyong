@@ -7,13 +7,10 @@ package com.zd.entity;
  */
 //一级机构联动
 public class Config_file_first_kind {
-
-	
-	
 	public Config_file_first_kind() {
 		super();
 	}
-	public Config_file_first_kind(int ffkid, int firstkindid, String firstkindname, int firstkindsalaryid,
+	public Config_file_first_kind(int ffkid, String firstkindid, String firstkindname, int firstkindsalaryid,
 			int firstkindsaleid) {
 		super();
 		this.ffkid = ffkid;
@@ -23,21 +20,21 @@ public class Config_file_first_kind {
 		this.firstkindsaleid = firstkindsaleid;
 	}
 	private int ffkid;
-	private int firstkindid;
+	private String firstkindid;
 	private String firstkindname;
 	private int firstkindsalaryid;
 	private int firstkindsaleid;
-	
+
 	public int getFfkid() {
 		return ffkid;
 	}
 	public void setFfkid(int ffkid) {
 		this.ffkid = ffkid;
 	}
-	public int getFirstkindid() {
+	public String getFirstkindid() {
 		return firstkindid;
 	}
-	public void setFirstkindid(int firstkindid) {
+	public void setFirstkindid(String firstkindid) {
 		this.firstkindid = firstkindid;
 	}
 	public String getFirstkindname() {

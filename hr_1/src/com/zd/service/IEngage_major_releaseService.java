@@ -19,4 +19,7 @@ public interface IEngage_major_releaseService {
 	
 	//职位发表登记删除
 	public void releaseDelete(int mid);
+	
+	//职位发表登记添加
+	public void releaseInsert(Engage_major_release Engage_major_release);
 }

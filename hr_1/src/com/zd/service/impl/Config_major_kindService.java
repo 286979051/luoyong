@@ -20,4 +20,9 @@ public class Config_major_kindService implements IConfig_major_kindService{
 		return config_major_kindDao.majorQuery();
 	}
 
+	//职业分类一级联动单查
+	public Config_major_kind majorQueryDan(int id) {
+		return config_major_kindDao.majorQueryDan(id);
+	}
+
 }

@@ -1,14 +1,17 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 	</head>
-	
+<script type="text/javascript" src="/javascript/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 		function check(){
 			if (document.getElementById("firstKind.ffkId").value==0){
@@ -27,16 +30,18 @@
 				alert("销售责任人编号不能为空!!!");
 				return false;
 			}
-			document.forms[0].submit();
+			
+			var addsecond = document.getElementById("addsecond");
+			addsecond.submit()
+			
 		}	
 		function change(){
 		var se=document.getElementById("firstKindId");
 		document.getElementById("firstKindName").value=se.options[se.selectedIndex].innerHTML;
-		
-		}	
+		}
 </script>
 	<body>
-		<form action="second_kind_register_success.html" method="post">
+		<form id="addsecond" action="addsecond" method="post">
 					<input type="hidden" id="firstKindName" name="cfsk.firstKindName">
 			<table width="100%">
 				<tr>
@@ -47,7 +52,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1">
+						<input type="button" value="提交" onclick="check()" class="BUTTON_STYLE1">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back();">
 					</td>
@@ -63,15 +68,12 @@
 						I级机构名称
 					</td>
 					<td width="81%" class="TD_STYLE2">
-					<select name="cfsk.firstKindId" id="firstKindId" onchange="change()">
+					
+					<select name="firstkindid" id="firstKindId" onchange="change()">
 						<option>请选择I级机构名称...</option>
-						
-						<option value="1353318953319">Ⅰ级结构</option>
-						
-						<option value="1353318929919">集团</option>
-						
-						<option value="1353318937391">总部</option>
-						
+					<c:forEach var="item" items="${namelist }">
+						<option value="${item.firstkindid }">${item.firstkindname }</option>
+					</c:forEach>
 					</select>
 					</td>
 				</tr>
@@ -80,6 +82,7 @@
 						II级机构编号
 					</td>
 					<td width="81%" class="TD_STYLE2">
+					<input type="hidden" class="INPUT_STYLE1" name="secondkindname" value="${systime }"/>${systime }
 					</td>
 				</tr>
 				<tr>
@@ -87,7 +90,7 @@
 						II级机构名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE1" name="cfsk.secondKindName" value=""/>
+						<input type="text" class="INPUT_STYLE1" name="secondkindname" value=""/>
 					</td>
 				</tr>
 				<tr>
@@ -95,7 +98,7 @@
 						薪酬发放责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="cfsk.secondSalaryId"></textarea>
+						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="secondsalaryid"></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -103,7 +106,7 @@
 						销售责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="cfsk.secondSaleId" ></textarea>
+						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="secondsaleid" ></textarea>
 					</td>
 				</tr>
 			</table>

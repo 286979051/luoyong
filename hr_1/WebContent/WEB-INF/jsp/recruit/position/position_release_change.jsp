@@ -131,11 +131,7 @@
 					<td class="TD_STYLE2" colspan="2">
 					 
 				 	<select name="emajorRelease.engageType" id="engageType" class="SELECT_STYLE1">  
-							 
-							<option value="校园招聘" selected>校园招聘</option>  
-							 
-							<option value="社会招聘" selected>社会招聘</option>  
-							
+							<option value="" selected>${release.engage_type }</option>  
 					 </select>
 				 	</td>
 				</tr>
