@@ -21,4 +21,13 @@ public interface IConfig_public_charDao {
 	@Select("SELECT * FROM config_public_char where attribute_kind = '薪酬设置'")
 	@ResultMap("queryall")
 	public List<Config_public_char> selsalary();
+	//查询招聘类型
+	@Select("SELECT * FROM Config_public_char where attribute_kind='招聘类型'")
+	@ResultMap("queryall")
+	public List<Config_public_char> QueryEngageType();
+	
+	//查询招聘类型单条
+	@Select("SELECT * FROM Config_public_char where pbc_id=#{id}")
+	@ResultMap("queryall")
+	public Config_public_char QueryEngageTypeDan(int id);
 }

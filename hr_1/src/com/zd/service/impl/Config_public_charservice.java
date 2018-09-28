@@ -23,4 +23,17 @@ public class Config_public_charservice implements IConfig_public_charservice {
 	public List<Config_public_char> selsalary() {
 		return Config_public_char.selsalary();
 	}
+
+	
+	//≤È—Ø’–∆∏¿‡–Õ
+	public List<Config_public_char> QueryEngageType() {
+		return Config_public_char.QueryEngageType();
+	}
+
+
+	
+	public com.zd.entity.Config_public_char QueryEngageTypeDan(int id) {
+		return Config_public_char.QueryEngageTypeDan(id);
+	}
+
 }

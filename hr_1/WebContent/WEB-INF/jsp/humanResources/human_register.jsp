@@ -78,12 +78,19 @@
 			
 			function major_kind(){
 				var majorKind = $("#majorKind").val();
-				alert(majorKind);
 				$.ajax({
 					url:'querymajorKindById?id='+majorKind,
 					type:'get',
 					success:function(data){
-						
+						var thirdSel = $("#majorName");
+						thirdSel.empty();
+						thirdSel.append("<option value=0>---请选择---</option>");
+						for(var i=0;i<data.length;i++){
+							var thirdName=data[i];
+							var thirdId=thirdName.majorid;
+							var tName = thirdName.majorname;
+							thirdSel.append("<option value='"+thirdId+"'>"+tName+"</option>");
+							}
 					}
 				});
 			}
@@ -101,7 +108,7 @@
 											if($("#humanEmail").val() != null && $("#humanEmail").val().trim() != ""){
 												//电话
 												if($("#humanTelephone").val() != null && $("#humanTelephone").val().trim() != ""){
-													alert(1);
+													$("#tijiao").submit();
 												}else
 													$.messager.show("消息提示", "请填写你的电话", 2000);
 											}else
@@ -125,7 +132,7 @@
 	</head>
 
 	<body>
-		<form method="post" action="register_choose_picture.html">
+		<form method="post" action="register_choose_picture.html" id="tijiao">
 			<table width="100%">
 				<tr>
 					<td>
@@ -147,7 +154,7 @@
 						I级机构
 					</td>
 					<td width="14%" class="TD_STYLE2" id="frist_kind">
-						<select name="humanFile.firstKindId" class="SELECT_STYLE1" id="firstKind" onchange="second_kind()">
+						<select name="first_kind_id" class="SELECT_STYLE1" id="firstKind" onchange="second_kind()">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr }">
 							<option value="${s.firstkindid }">${s.firstkindname }</option>
@@ -183,10 +190,8 @@
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanId" class="SELECT_STYLE1" id="majorKind" onchange="major_kind()">
 							<option value="0">---请选择---</option>
-							<c:forEach var="s" items="${arr1 }">
-							<c:if test="${s.attribute_kind == '职位分类' }">
-								<option value="${s.pbc_id }">${s.pbc_id }-${s.attribute_name }</option>
-							</c:if>
+							<c:forEach var="s" items="${arr2 }">
+								<option value="${s.major_kind_id }">${s.major_kind_name }</option>
 							</c:forEach>
 						</select>
 						<input type="hidden" name="humanFile.humanMajorKindName"/>
@@ -197,8 +202,6 @@
 					<td class="TD_STYLE2">
 						<select name="humanFile.humanMajorId" class="SELECT_STYLE1" id="majorName">
 							<option value="0">---请选择---</option>
-							<option>区域经理</option>
-							<option>总经理</option>
 						</select>
 						<input type="hidden" name="humanFile.hunmaMajorName"/>
 					</td>
@@ -208,9 +211,11 @@
 					<td colspan="2" class="TD_STYLE2">
 						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1" id="majorinName">
 							<option value="0">---请选择---</option>
-							<option>工程师</option>
-							<option>助理</option>
-							<option>经理</option>
+							<c:forEach var="s" items="${arr1 }">
+							<c:if test="${s.attribute_kind == '职称' }">
+								<option value="${s.pbc_id }">${s.attribute_name }</option>
+							</c:if>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>

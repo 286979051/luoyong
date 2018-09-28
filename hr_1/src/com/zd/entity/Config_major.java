@@ -1,5 +1,9 @@
 package com.zd.entity;
-
+/**
+ * 10.÷∞Œª…Ë÷√ 
+ * @author Administrator
+ *
+ */
 public class Config_major {
 
 	
@@ -59,6 +63,12 @@ public class Config_major {
 	}
 	public void setTestamount(int testamount) {
 		this.testamount = testamount;
+	}
+
+	@Override
+	public String toString() {
+		return "Config_major [makid=" + makid + ", majorkindid=" + majorkindid + ", majorkindname=" + majorkindname
+				+ ", majorid=" + majorid + ", majorname=" + majorname + ", testamount=" + testamount + "]";
 	}
 
 	

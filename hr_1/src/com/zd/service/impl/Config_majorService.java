@@ -14,8 +14,14 @@ public class Config_majorService implements IConfig_majorService {
 	@Autowired
 	private IConfig_majorDao config_majorDao;
 	
+	//职业分类二级联动 
 	public List<Config_major> ErMajorQuery(int id) {
 		return config_majorDao.ErMajorQuery(id);
+	}
+
+	//职业分类二级联动单查
+	public Config_major ErMajorQueryDan(int id) {
+		return config_majorDao.ErMajorQueryDan(id);
 	}
 
 }

@@ -1,11 +1,14 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 	</head>
 	<body>
@@ -20,7 +23,7 @@
 				<tr>
 					<td align="right">
 						<input type="button" value="添加" class="BUTTON_STYLE1"
-							onclick="window.location.href='first_kind_register.html'" />
+							onclick="window.location.href='toadd'" />
 					</td>
 				</tr>
 			</table>
@@ -48,71 +51,28 @@
 					</td>
 				</tr>
 
-				
+				<c:forEach var="item" items="${firstList }">
 				<tr>
 					<td class="TD_STYLE2">
-						1353318953319
+						${item.firstkindid }
 					</td>
 					<td class="TD_STYLE2">
-						Ⅰ级结构
+						${item.firstkindname }
 					</td>
 					<td class="TD_STYLE2">
-						2
+						${item.firstkindsalaryid }
 					</td>
 					<td class="TD_STYLE2">
-						2
+						${item.firstkindsaleid }
 					</td>
 					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
+						<a href="selbyffkid?ffkid=${item.ffkid }">变更</a>
 					</td>
 					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
+						<a href="delete?ffkid=${item.ffkid }">删除</a>
 					</td>
 				</tr>
-				
-				<tr>
-					<td class="TD_STYLE2">
-						1353318929919
-					</td>
-					<td class="TD_STYLE2">
-						集团
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
-					</td>
-				</tr>
-				
-				<tr>
-					<td class="TD_STYLE2">
-						1353318937391
-					</td>
-					<td class="TD_STYLE2">
-						总部
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						2
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_kind_change.html">变更</a>
-					</td>
-					<td class="TD_STYLE2">
-						<a href="first_delete_success.html">删除</a>
-					</td>
-				</tr>
-				
-
+				</c:forEach>
 			</table>
 			<p>
 				 
