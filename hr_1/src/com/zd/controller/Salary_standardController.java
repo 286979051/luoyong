@@ -60,7 +60,8 @@ public class Salary_standardController {
 	public String addSalary_standard(Salary_standard salary_standard,@RequestParam Map xcxmMap) {
 		Logger logger = LoggerFactory.getLogger(Salary_standardController.class);
 		try {
-			StandardService.addstandard(salary_standard);String Standard_id = salary_standard.getStandard_id();
+			StandardService.addstandard(salary_standard);
+			String Standard_id = salary_standard.getStandard_id();
 			Map moneyMap = new HashMap<>();
 			// 获取map中的所有键 1 money_1 2  money_2
 			Set<String> keySet = xcxmMap.keySet();
