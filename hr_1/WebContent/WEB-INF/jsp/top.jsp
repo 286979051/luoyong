@@ -27,8 +27,9 @@
 				</td>
 				<td style="text-align: right;font-size:17px;width:35%;color:black;">
 					<br />
-					欢迎你：谢鹏(人事经理)&nbsp;
-					<input><a href="logout">退出</a></input>
+					欢迎你：${user.user_name }(人事经理)&nbsp;
+					
+					<input type="button" value="退出系统" class="BUTTON_STYLE1" onclick="parent.location.href='logout'"/>&nbsp;&nbsp;&nbsp;&nbsp;
 				</td>
 			</tr>
 		</table>

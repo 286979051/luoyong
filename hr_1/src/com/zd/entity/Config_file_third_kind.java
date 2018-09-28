@@ -13,8 +13,8 @@ public class Config_file_third_kind {
 		super();
 	}
 	
-	public Config_file_third_kind(int ftkid, int firstkindid, String firstkindname, int secondkindid,
-			String secondkindname, int thirdkindid, String thirdkindname, int thirdkindsaleid, int thirdkindisretail) {
+	public Config_file_third_kind(int ftkid, String firstkindid, String firstkindname, String secondkindid,
+			String secondkindname, String thirdkindid, String thirdkindname, int thirdkindsaleid, int thirdkindisretail) {
 		super();
 		this.ftkid = ftkid;
 		this.firstkindid = firstkindid;
@@ -28,11 +28,11 @@ public class Config_file_third_kind {
 	}
 
 	private int ftkid;
-	private int firstkindid;
+	private String firstkindid;
 	private String firstkindname;
-	private int secondkindid;
+	private String secondkindid;
 	private String secondkindname;
-	private int thirdkindid;
+	private String thirdkindid;
 	private String thirdkindname;
 	private int thirdkindsaleid;
 	private int thirdkindisretail;
@@ -43,10 +43,10 @@ public class Config_file_third_kind {
 	public void setFtkid(int ftkid) {
 		this.ftkid = ftkid;
 	}
-	public int getFirstkindid() {
+	public String getFirstkindid() {
 		return firstkindid;
 	}
-	public void setFirstkindid(int firstkindid) {
+	public void setFirstkindid(String firstkindid) {
 		this.firstkindid = firstkindid;
 	}
 	public String getFirstkindname() {
@@ -55,10 +55,10 @@ public class Config_file_third_kind {
 	public void setFirstkindname(String firstkindname) {
 		this.firstkindname = firstkindname;
 	}
-	public int getSecondkindid() {
+	public String getSecondkindid() {
 		return secondkindid;
 	}
-	public void setSecondkindid(int secondkindid) {
+	public void setSecondkindid(String secondkindid) {
 		this.secondkindid = secondkindid;
 	}
 	public String getSecondkindname() {
@@ -67,10 +67,10 @@ public class Config_file_third_kind {
 	public void setSecondkindname(String secondkindname) {
 		this.secondkindname = secondkindname;
 	}
-	public int getThirdkindid() {
+	public String getThirdkindid() {
 		return thirdkindid;
 	}
-	public void setThirdkindid(int thirdkindid) {
+	public void setThirdkindid(String thirdkindid) {
 		this.thirdkindid = thirdkindid;
 	}
 	public String getThirdkindname() {

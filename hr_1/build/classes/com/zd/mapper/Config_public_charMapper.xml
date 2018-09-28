@@ -7,4 +7,8 @@
 		<result column="attribute_kind" property="attribute_kind"/>
 		<result column="attribute_name" property="attribute_name"/>
 	</resultMap>
+	
+	<select id="selzm_some" parameterType="int" resultMap="queryall">
+		SELECT * FROM config_public_char WHERE pbc_id = #{pbc_id}
+	</select>
 </mapper>

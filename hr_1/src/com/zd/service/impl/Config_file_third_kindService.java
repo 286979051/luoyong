@@ -15,8 +15,12 @@ public class Config_file_third_kindService implements IConfig_file_third_kindSer
 	@Autowired
 	private IConfig_file_third_kindDao config_file_third_kindDao;
 	//三级联动
-	public List<Config_file_third_kind> queryById(int id) {
+	public List<Config_file_third_kind> queryById(String id) {
 		return config_file_third_kindDao.queryById(id);
+	}
+	//三级联动单查
+	public Config_file_third_kind queryDan(String id) {
+		return config_file_third_kindDao.queryDan(id);
 	}
 
 	

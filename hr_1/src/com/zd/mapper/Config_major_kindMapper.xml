@@ -3,8 +3,8 @@
 <!-- SQL语句映射文件，mapper-映射 -->
 <mapper namespace="com.zd.dao.IConfig_major_kindDao">
 	<resultMap type="Config_major_kind" id="Config_major_kindmapper">
-		<result column="mfk_id" property="mfkid"/>
-		<result column="major_kind_id" property="majorkindid"/>
-		<result column="major_kind_name" property="majorkindname"/>
+		<result column="mfk_id" property="mfk_id"/>
+		<result column="major_kind_id" property="major_kind_id"/>
+		<result column="major_kind_name" property="major_kind_name"/>
 	</resultMap>
 </mapper>

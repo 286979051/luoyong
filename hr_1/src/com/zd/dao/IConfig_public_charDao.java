@@ -17,4 +17,21 @@ public interface IConfig_public_charDao {
 	@ResultMap("queryall")
 	public List<Config_public_char> queryall();
 	
+	//zhangmin的查询薪酬设置中的公共字段
+	@Select("SELECT * FROM config_public_char where attribute_kind = '薪酬设置'")
+	@ResultMap("queryall")
+	public List<Config_public_char> selsalary();
+	
+	//zhangmin的查询薪酬设置中的公共字段(一对一)
+	public List<Config_public_char> selzm_some(int pbc_id);
+	
+	//查询招聘类型
+	@Select("SELECT * FROM Config_public_char where attribute_kind='招聘类型'")
+	@ResultMap("queryall")
+	public List<Config_public_char> QueryEngageType();
+	
+	//查询招聘类型单条
+	@Select("SELECT * FROM Config_public_char where pbc_id=#{id}")
+	@ResultMap("queryall")
+	public Config_public_char QueryEngageTypeDan(int id);
 }

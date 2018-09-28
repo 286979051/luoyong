@@ -30,17 +30,17 @@ public interface ISalary_grantService {
 	
 	
 	//查基本薪酬总数(一级)
-	public double selFMoney();
+	public String selFMoney();
 	//查基本薪酬总数(二级)
-	public double selSMoney();
+	public String selSMoney();
 	//查基本薪酬总数(三级)
-	public double selTMoney();
+	public String selTMoney();
 	
 	
 	//查实发总额(一级)
-	public double selFShiMoney();
+	public String selFShiMoney();
 	//查实发总额(二级)
-	public double selSShiMoney();
+	public String selSShiMoney();
 	//查实发总额(三级)
-	public double selTShiMoney();
+	public String selTShiMoney();
 }

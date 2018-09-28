@@ -53,29 +53,29 @@ public class Salary_grantService implements ISalary_grantService {
 	
 	
 	//查基本薪酬总数(一级)
-	public double selFMoney() {
+	public String selFMoney() {
 		return salary_grantDao.selFMoney();
 	}
 	//查基本薪酬总数(二级)
-	public double selSMoney() {
+	public String selSMoney() {
 		return salary_grantDao.selSMoney();
 	}
 	//查基本薪酬总数(三级)
-	public double selTMoney() {
+	public String selTMoney() {
 		return salary_grantDao.selTMoney();
 	}
 	
 	
 	//查实发总额(一级)
-	public double selFShiMoney() {
+	public String selFShiMoney() {
 		return salary_grantDao.selFShiMoney();
 	}
 	//查实发总额(二级)
-	public double selSShiMoney() {
+	public String selSShiMoney() {
 		return salary_grantDao.selSShiMoney();
 	}
 	//查实发总额(三级)
-	public double selTShiMoney() {
+	public String selTShiMoney() {
 		return salary_grantDao.selTShiMoney();
 	}
 }

@@ -14,6 +14,7 @@ public class Config_majorController {
 
 	@Autowired
 	private IConfig_majorService config_majorService;
+	
 	@RequestMapping("ErMajorQuery")
 	@ResponseBody
 	public List<Config_major> ErMajorQuery(int id){

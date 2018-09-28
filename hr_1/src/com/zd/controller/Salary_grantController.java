@@ -36,11 +36,11 @@ public class Salary_grantController {
 			map.put("human", human);
 			
 			//查基本薪酬总数(一级)
-			double firstsum = salary_grantService.selFMoney();
+			String firstsum = salary_grantService.selFMoney();
 			map.put("firstsum", firstsum);
 			
 			//查实发总额(一级)
-			double firstShisum = salary_grantService.selFShiMoney();
+			String firstShisum = salary_grantService.selFShiMoney();
 			map.put("firstShisum", firstShisum);
 			
 			//查一级机构名字，总金额，人数
@@ -58,11 +58,11 @@ public class Salary_grantController {
 			map.put("human", human);
 			
 			//查基本薪酬总数(二级)
-			double secondsum = salary_grantService.selSMoney();
+			String secondsum = salary_grantService.selSMoney();
 			map.put("secondsum", secondsum);
 			
 			//查实发总额(二级)
-			double secondShisum = salary_grantService.selSShiMoney();
+			String secondShisum = salary_grantService.selSShiMoney();
 			map.put("secondShisum", secondShisum);
 			
 			//查二级机构名字，总金额，人数
@@ -80,11 +80,11 @@ public class Salary_grantController {
 			map.put("human", human);
 			
 			//查基本薪酬总数(三级)
-			double thirdsum = salary_grantService.selTMoney();
+			String thirdsum = salary_grantService.selTMoney();
 			map.put("thirdsum", thirdsum);
 			
 			//查实发总额(三级)
-			double thirdShisum = salary_grantService.selTShiMoney();
+			String thirdShisum = salary_grantService.selTShiMoney();
 			map.put("thirdShisum", thirdShisum);
 			
 			//查三级机构名字，总金额，人数

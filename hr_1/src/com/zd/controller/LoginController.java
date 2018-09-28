@@ -48,7 +48,6 @@ public class LoginController {
 	
 	// 定义方法跳到jsp页面
 		@RequestMapping({"/left","/main","/top"})
-		// login  test.jsp==>test
 		public String toPage(HttpServletRequest req){
 			// 获取请求地址
 			String path = req.getServletPath();// /login

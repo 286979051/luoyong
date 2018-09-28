@@ -18,5 +18,27 @@ public class Config_public_charservice implements IConfig_public_charservice {
 	public List<Config_public_char> queryall() {
 		return Config_public_char.queryall();
 	}
+	
+	//zhangmin的查询薪酬公共字段
+	public List<Config_public_char> selsalary() {
+		return Config_public_char.selsalary();
+	}
+
+	
+	//查询招聘类型
+	public List<Config_public_char> QueryEngageType() {
+		return Config_public_char.QueryEngageType();
+	}
+
+
+	
+	public com.zd.entity.Config_public_char QueryEngageTypeDan(int id) {
+		return Config_public_char.QueryEngageTypeDan(id);
+	}
+
+	//zhangmin的查询薪酬公共字段（一对一）
+	public List<com.zd.entity.Config_public_char> selzm_some(int pbc_id) {
+		return Config_public_char.selzm_some(pbc_id);
+	}
 
 }

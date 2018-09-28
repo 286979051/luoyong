@@ -49,5 +49,9 @@
 	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
 	<!-- 薪资分发 -->
 	<mapper resource="com/zd/mapper/Salary_grantMapper.xml"/>
+	<!-- 薪酬标准 -->
+	<mapper resource="com/zd/mapper/Salary_StandardMapper.xml"/>
+	<!-- zm_some表的映射 -->
+	<mapper resource="com/zd/mapper/zm_someMapper.xml"/>
 </mappers>
 </configuration>

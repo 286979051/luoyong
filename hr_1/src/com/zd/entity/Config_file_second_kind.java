@@ -11,7 +11,7 @@ public class Config_file_second_kind {
 	public Config_file_second_kind() {
 		super();
 	}
-	public Config_file_second_kind(int fskid, int firstkindid, String firstkindname, int secondkindid,
+	public Config_file_second_kind(int fskid, String firstkindid, String firstkindname, String secondkindid,
 			String secondkindname, int secondsalaryid, int secondsaleid) {
 		super();
 		this.fskid = fskid;
@@ -23,9 +23,9 @@ public class Config_file_second_kind {
 		this.secondsaleid = secondsaleid;
 	}
 	private int fskid;
-	private int firstkindid;
+	private String firstkindid;
 	private String firstkindname;
-	private int secondkindid;
+	private String secondkindid;
 	private String secondkindname;
 	private int secondsalaryid;
 	private int secondsaleid;
@@ -35,10 +35,10 @@ public class Config_file_second_kind {
 	public void setFskid(int fskid) {
 		this.fskid = fskid;
 	}
-	public int getFirstkindid() {
+	public String getFirstkindid() {
 		return firstkindid;
 	}
-	public void setFirstkindid(int firstkindid) {
+	public void setFirstkindid(String firstkindid) {
 		this.firstkindid = firstkindid;
 	}
 	public String getFirstkindname() {
@@ -47,10 +47,10 @@ public class Config_file_second_kind {
 	public void setFirstkindname(String firstkindname) {
 		this.firstkindname = firstkindname;
 	}
-	public int getSecondkindid() {
+	public String getSecondkindid() {
 		return secondkindid;
 	}
-	public void setSecondkindid(int secondkindid) {
+	public void setSecondkindid(String secondkindid) {
 		this.secondkindid = secondkindid;
 	}
 	public String getSecondkindname() {

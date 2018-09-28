@@ -47,22 +47,22 @@ public interface ISalary_grantDao {
 	
 	//查基本薪酬总数(一级)
 	@Select("SELECT SUM(salary_sum) FROM human_file WHERE first_kind_name!=''")
-	public double selFMoney();
+	public String selFMoney();
 	//查基本薪酬总数(二级)
 	@Select("SELECT SUM(salary_sum) FROM human_file WHERE second_kind_name!=''")
-	public double selSMoney();
+	public String selSMoney();
 	//查基本薪酬总数(三级)
 	@Select("SELECT SUM(salary_sum) FROM human_file WHERE third_kind_name!=''")
-	public double selTMoney();
+	public String selTMoney();
 	
 	
 	//查实发总额(一级)
 	@Select("SELECT SUM(paid_salary_sum) FROM human_file WHERE first_kind_name!=''")
-	public double selFShiMoney();
+	public String selFShiMoney();
 	//查实发总额(二级)
 	@Select("SELECT SUM(paid_salary_sum) FROM human_file WHERE second_kind_name!=''")
-	public double selSShiMoney();
+	public String selSShiMoney();
 	//查实发总额(三级)
 	@Select("SELECT SUM(paid_salary_sum) FROM human_file WHERE third_kind_name!=''")
-	public double selTShiMoney();
+	public String selTShiMoney();
 }
