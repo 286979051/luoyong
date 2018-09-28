@@ -55,6 +55,18 @@ public class Engage_major_releaseController {
 		return "/recruit/position/position_change_update";
 	}
 	
+	//职位发表登记表查询
+		@RequestMapping("releaseQuery1")
+		public String releaseQuery1(Map map) {
+			Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+			try {
+				List<Engage_major_release> releaseList = engage_major_releaseService.releaseQuery();
+				map.put("releaseList", releaseList);
+			} catch (Exception e) {
+				logger.error("职位发表登记表查询", e);
+			}
+			return "/recruit/position/position_release_search";
+		}
 	//职位发表登记表查询单条
 	@RequestMapping("releaseQueryById")
 	public String releaseQueryById(int id , Map map) {
@@ -98,7 +110,7 @@ public class Engage_major_releaseController {
 	}
 	//职位发表登记添加
 	@RequestMapping("releaseInsetr")
-	public String releaseInsetr(Engage_major_release Engage_major_release,int first_kind_id,int second_kind_id,int third_kind_id,int major_kind_id,int major_id,int pbc_id) {
+	public String releaseInsetr(Engage_major_release Engage_major_release,String first_kind_id,String second_kind_id,String third_kind_id,int major_kind_id,int major_id,int pbc_id) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
 			//一级机构联动单条查询赋值

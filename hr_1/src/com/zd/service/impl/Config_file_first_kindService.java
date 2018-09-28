@@ -42,7 +42,7 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 
 	
 	//一级机构联动单条查询
-	public Config_file_first_kind queryDan(int first_kind_id) {
+	public Config_file_first_kind queryDan(String first_kind_id) {
 		return config_file_first_kindDao.queryDan(first_kind_id);
 	}
 

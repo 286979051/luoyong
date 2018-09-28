@@ -34,7 +34,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_release_search.html" target="mainFrame" style="color:black;">职位发布查询</a>
+														<a href="releaseQuery1" target="mainFrame" style="color:black;">职位发布查询</a>
 													</span>
 												</li>
 									</ul>

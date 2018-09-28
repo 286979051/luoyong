@@ -57,7 +57,7 @@ public class Human_registerController {
 	//二级联动查询
 	@RequestMapping("/querySecondByFirstId")
 	@ResponseBody
-	public List<Config_file_second_kind> querySecondByFirstId(int id){
+	public List<Config_file_second_kind> querySecondByFirstId(String id){
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		List<Config_file_second_kind> secondList = config_file_second_kindService.queryById(id);
 		return secondList;
@@ -65,7 +65,7 @@ public class Human_registerController {
 	//三级联动查询
 	@RequestMapping("/querythirdBySecondId")
 	@ResponseBody
-	public List<Config_file_third_kind> querythirdBySecondId(int id){
+	public List<Config_file_third_kind> querythirdBySecondId(String id){
 		List<Config_file_third_kind> thirdList =  config_file_third_kindService.queryById(id);
 		return thirdList;
 	}

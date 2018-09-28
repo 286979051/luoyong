@@ -172,7 +172,7 @@
 					</td>
 					<td   class="TD_STYLE2"> 
 						<input type="text" name="deadline" 
-							  class="INPUT_STYLE2"  onclick="aa('emajorRelease.deadline')" value="${release.deadline }">
+							  class="INPUT_STYLE2"  onclick="aa('deadline')" value="${release.deadline }">
 						   </td>
 				</tr>
 				<tr>
