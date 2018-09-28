@@ -8,7 +8,7 @@ import com.zd.entity.Config_file_second_kind;
 public interface IConfig_file_second_kindService {
 
 	//二级联动
-	public List<Config_file_second_kind> queryById(int id);
+	public List<Config_file_second_kind> queryById(String id);
 	
 	//查询所有二级机构
 	public List<Config_file_second_kind> selall();
@@ -19,5 +19,5 @@ public interface IConfig_file_second_kindService {
 	//添加二级机构
 	public void addsecond(Config_file_second_kind secondkind);
 	//二级联动单查
-	public Config_file_second_kind queryDan(int id);
+	public Config_file_second_kind queryDan(String id);
 }

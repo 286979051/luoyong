@@ -15,7 +15,7 @@ public interface IConfig_file_second_kindDao {
 	//二级联动
 	@Select("select * from Config_file_second_kind where first_kind_id=#{id}")
 	@ResultMap("Config_file_second_kindmapper")
-	public List<Config_file_second_kind> queryById(int id);
+	public List<Config_file_second_kind> queryById(String id);
 	
 	//查询所有二级机构
 	@Select("select * from Config_file_second_kind")
@@ -33,5 +33,5 @@ public interface IConfig_file_second_kindDao {
 	//二级联动单查
 	@Select("select * from Config_file_second_kind where second_kind_id=#{id}")
 	@ResultMap("Config_file_second_kindmapper")
-	public Config_file_second_kind queryDan(int id);
+	public Config_file_second_kind queryDan(String id);
 }

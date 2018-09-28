@@ -100,6 +100,7 @@
  	  }   
   
 		  	document.humanfileForm.submit();
+		  	return true;
 	}
 	
 	 
