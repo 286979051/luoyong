@@ -1,25 +1,27 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
 			href="../../css/table.css" type="text/css" />
 		<title>无标题文档</title>
+		
 		<style type="text/css">
-<!--
 .style3 {
 	color: #0000CC
 }
--->
+
 </style>
 	</head>
 
 	<body>
-		<form method="post" action="/HR_Fist/salaryCriterion/salaryCriterionAction!salarystandardChangeListByPage">
+		<form method="post" action="/HR_Fist/salaryCriterion/salaryCriterionAction!querysalarystandardByPage">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记变更</font>
+						<font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记查询</font>
 					</td>
 				</tr>
 				<tr>
@@ -53,15 +55,12 @@
 					<td class="TD_STYLE1" width="15%">
 						薪酬总额
 					</td>
-					<td class="TD_STYLE1" width="4%">
-						变更
-					</td>
 				</tr>
 				
-					
+				
 					<tr class="TD_STYLE2">
-						<td> 
-						1353320112255 
+						<td>
+							<a href="salarystandard_query.html">1353320112255</a>
 						</td>
 						<td>
 						董事长
@@ -77,14 +76,11 @@
 						<td>&nbsp;
 							135827.0			 
 						</td>
-					<td>
-						<a href="salarystandard_change.html">变 更</a>
-					</td>
 					</tr>
 				
 					<tr class="TD_STYLE2">
-						<td> 
-						1353320082662 
+						<td>
+							<a href="salarystandard_query.html">1353320082662</a>
 						</td>
 						<td>
 						经理级别
@@ -100,14 +96,11 @@
 						<td>&nbsp;
 							1332.0			 
 						</td>
-					<td>
-						<a href="salarystandard_change.html">变 更</a>
-					</td>
 					</tr>
 				
 					<tr class="TD_STYLE2">
-						<td> 
-						1353320063473 
+						<td>
+							<a href="salarystandard_query.html">1353320063473</a>
 						</td>
 						<td>
 						普通员工
@@ -123,12 +116,9 @@
 						<td>&nbsp;
 							666.0			 
 						</td>
-					<td>
-						<a href="salarystandard_change.html">变 更</a>
-					</td>
 					</tr>
 				
-				 
+				  
 			</table>
 			
 			 
@@ -189,7 +179,7 @@ function doPage(startsize) {
   </body>
 </html>
  
-			 	
+			 		
 		</form>
 	</body>
 </html>

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 <head>
@@ -7,15 +9,10 @@
 </head>
 <body>
 <table width="100%" >
-
   <tr>
-
     <td colspan="2"> 
-
     <font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记变更 </font></td>
-
   </tr>
-	
     <td width="49%"> 提交成功，需要复核！</td>
     <td width="51%" align="right">
 			<input type="button" 
@@ -23,16 +20,7 @@
 			onclick="javascript:window.location='salarystandard_change_list.html';" 
 			value="返回" />
 		</td>
-		
-		
-   
-
   </table>
-
-
-
 </form>
-
 </body>
-
 </html>
