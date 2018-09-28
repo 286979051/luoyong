@@ -13,6 +13,7 @@ import com.zd.entity.Salary_standard;
  * @author 张敏
  *
  */
+import com.zd.entity.zm_some;
 public interface IStandardDao {
 
 	//添加薪酬的基本信息
@@ -28,5 +29,14 @@ public interface IStandardDao {
 	
 	//薪酬标准登记复核分页查询信息总数
 	@Select("SELECT COUNT(*) FROM salary_standard")
-	public int selallSalary_count();		
+	public int selallSalary_count();	
+	
+	//进复核查询单条信息--基本信息
+	@Select("SELECT * FROM salary_standard WHERE  ssd_id = #{ssd_id}")
+	@ResultMap("salary_standardMapper")
+	public Salary_standard selone_Salary_standard(int ssd_id);
+	
+	//进复核查询单条信息--项目信息
+	public List<zm_some> selone_zmsome(String standard_id);
+
 }

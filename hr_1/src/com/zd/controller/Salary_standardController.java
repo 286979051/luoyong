@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Salary_standard;
+import com.zd.entity.zm_some;
 import com.zd.service.IConfig_public_charservice;
 import com.zd.service.IStandardService;
 
@@ -209,5 +210,21 @@ public class Salary_standardController {
 			return "salaryCriterion/salarystandard_check_list";
 		}	
 	
-
+	//进复核查询单条信息
+	@RequestMapping("/selone_Salary_standard")
+	public String selone_Salary_standard(int ssd_id,Map<String, Object> map,String standard_id) {
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			//查询基本信息
+			Salary_standard salary_standard = 
+					StandardService.selone_Salary_standard(ssd_id);
+			map.put("salary_standard", salary_standard);
+			//进复核查询单条信息--项目信息
+			List<zm_some> zm_somelist =  StandardService.selone_zmsome(standard_id);
+			map.put("zm_somelist", zm_somelist);
+		} catch (Exception e) {
+			log.error("页面跳转失败",e);
+		}
+		return "salaryCriterion/salarystandard_check";
+	}
 }

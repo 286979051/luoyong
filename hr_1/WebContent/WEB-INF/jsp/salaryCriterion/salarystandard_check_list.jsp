@@ -76,7 +76,7 @@
 							 ${salary_standards.salary_sum }
 						</td>
 						<td>
-							<a href="salarystandard_check.html">复 核</a>
+							<a href="selone_Salary_standard?ssd_id=${salary_standards.ssd_id }&standard_id=${salary_standards.standard_id }">复 核</a>
 						</td>
 					</tr>
 				</c:forEach>		
