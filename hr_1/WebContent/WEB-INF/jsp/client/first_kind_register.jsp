@@ -27,7 +27,7 @@ function checkname(){
 		return;
 	}
 	var addForm = document.getElementById("js_add");
-	addForm.sumbit();
+	addForm.submit();
 }	
 </script>
 	</head>
@@ -57,15 +57,16 @@ function checkname(){
 					<td width="19%" class="TD_STYLE1">
 						I级机构编号
 					</td>
-					<td><input name="firstkindid" value="${systime }" type="hidden"/>${systime }</td>
-					<td width="81%" class="TD_STYLE2"></td>
+					<td width="81%" class="TD_STYLE2">
+					<input name="firstkindid" value="${systime }" type="hidden"/>${systime }
+					</td>
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
 						I级机构名称
 					</td>
 					<td class="TD_STYLE2">
-						<input id="firstkindname" type="text" name="firstkindname" 
+						<input id="firstkindname" type="text" name="firstkindname" value=""
 							class="INPUT_STYLE1">
 					</td>
 				</tr>
