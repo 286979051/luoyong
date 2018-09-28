@@ -4,7 +4,7 @@ package com.zd.dao;
  * @author Administrator
  *
  */
-public interface IRegister_choose_pictureDao {
+public interface IHuman_fileDao {
 
 	
 }

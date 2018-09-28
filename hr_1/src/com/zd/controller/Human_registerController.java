@@ -50,15 +50,16 @@ public class Human_registerController {
 	@Autowired
 	private IConfig_majorService Config_majorService;
 	
+	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 	// 跳转人员档案登记
 	@RequestMapping("/human_register")
 	public String toPagehr(Map map){
-		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
 			//一级单位查询
 			List<com.zd.entity.Config_file_first_kind> query = Config_file_first_kind.query();
 			List<Config_public_char> queryall = Config_public_charservice.queryall();
 			List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
+			
 			map.put("arr2", majorQuery);
 			map.put("arr1", queryall);
 			map.put("arr", query);

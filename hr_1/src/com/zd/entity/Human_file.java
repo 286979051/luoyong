@@ -8,19 +8,22 @@ import java.sql.Date;
  */
 public class Human_file {
 	
+
 	public Human_file() {
 		super();
 	}
+	
 
-	public Human_file(int hfd_id, int human_id, int first_kind_id, String first_kind_name, int second_kind_id,
-			String second_kind_name, int third_kind_id, String third_kind_name, String human_name, String human_address,
-			int human_postcode, String human_pro_designation, int human_major_kind_id, String human_major_kind_name,
-			int human_major_id, String hunma_major_name, String human_telephone, String human_mobilephone,
-			String human_bank, String human_account, int human_qq, String human_email, String human_hobby,
-			String human_speciality, char human_sex, String human_religion, String human_party,
+
+	public Human_file(int hfd_id, String human_id, String first_kind_id, String first_kind_name, String second_kind_id,
+			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
+			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
+			String human_major_kind_name, int human_major_id, String hunma_major_name, String human_telephone,
+			String human_mobilephone, String human_bank, String human_account, String human_qq, String human_email,
+			String human_hobby, String human_speciality, char human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, Date human_birthday, String human_birthplace, int human_age,
-			String human_educated_degree, double human_educated_years, String human_educated_major,
-			int human_society_security_id, String human_id_card, String remark, int salary_standard_id,
+			String human_educated_degree, int human_educated_years, String human_educated_major,
+			String human_society_security_id, String human_id_card, String remark, int salary_standard_id,
 			String salary_standard_name, double salary_sum, double demand_salaray_sum, double paid_salary_sum,
 			int major_change_amount, int bonus_amount, int training_amount, int file_chang_amount,
 			String human_histroy_records, String human_family_membership, String human_picture, String attachment_name,
@@ -91,13 +94,15 @@ public class Human_file {
 		this.human_file_status = human_file_status;
 	}
 
+
+
 	private int  hfd_id;//	integer	主键，自动增长列
-	private int human_id;//	integer	档案编号
-	private int first_kind_id;//integer	一级机构编号（外健：Config_file_first_kind 表中的：first_kind_id）
+	private String human_id;//	integer	档案编号
+	private String first_kind_id;//integer	一级机构编号（外健：Config_file_first_kind 表中的：first_kind_id）
 	private String first_kind_name;//	string	一级机构名称
-	private int second_kind_id;//	integer	二级机构编号(外健：Config_file_second_kind表中的second_kind_id)
+	private String second_kind_id;//	integer	二级机构编号(外健：Config_file_second_kind表中的second_kind_id)
 	private String second_kind_name;//	string	二级机构名称
-	private int third_kind_id	;//integer	三级机构编号(外健：Config_file_third_kind表中的third_kind_id)
+	private String third_kind_id	;//integer	三级机构编号(外健：Config_file_third_kind表中的third_kind_id)
 	private String third_kind_name	;//string	三级机构名称
 	private String human_name	;//String	姓名
 	private String human_address;//	string	地址
@@ -111,7 +116,7 @@ public class Human_file {
 	private String human_mobilephone;//	string	手机号码 
 	private String human_bank;//	string	开户银行 
 	private String human_account;//	string	银行帐号
-	private int human_qq	;//integer	QQ号码 
+	private String human_qq	;//integer	QQ号码 
 	private String human_email;//	string	电子邮件
 	private String human_hobby;//	string	爱好
 	private String human_speciality	;//string	特长
@@ -124,9 +129,9 @@ public class Human_file {
 	private String human_birthplace	;//string	出生地
 	private int human_age	;//integer	年龄 
 	private String human_educated_degree;//	string	学历 
-	private double human_educated_years	;//double	教育年限
+	private int human_educated_years	;//double	教育年限
 	private String human_educated_major;//	string	学历专业
-	private int human_society_security_id;//	integer	社会保障号
+	private String human_society_security_id;//	integer	社会保障号
 	private String human_id_card;//	string	身份证号
 	private String remark;//	string	备注
 	private int salary_standard_id;//	integer	薪酬标准编号(外健：salary_standard_details表中standard_id)
@@ -153,6 +158,7 @@ public class Human_file {
 	private Date delete_time;//	date	档案删除时间
 	private Date recovery_time;//	date	档案恢复时间
 	private int human_file_status;//	integer	档案状态(1：待复核 2：正常 3：已删除)
+	
 	public int getHfd_id() {
 		return hfd_id;
 	}
@@ -161,21 +167,6 @@ public class Human_file {
 		this.hfd_id = hfd_id;
 	}
 
-	public int getHuman_id() {
-		return human_id;
-	}
-
-	public void setHuman_id(int human_id) {
-		this.human_id = human_id;
-	}
-
-	public int getFirst_kind_id() {
-		return first_kind_id;
-	}
-
-	public void setFirst_kind_id(int first_kind_id) {
-		this.first_kind_id = first_kind_id;
-	}
 
 	public String getFirst_kind_name() {
 		return first_kind_name;
@@ -185,12 +176,37 @@ public class Human_file {
 		this.first_kind_name = first_kind_name;
 	}
 
-	public int getSecond_kind_id() {
+
+	public String getHuman_id() {
+		return human_id;
+	}
+
+	public void setHuman_id(String human_id) {
+		this.human_id = human_id;
+	}
+
+	public String getFirst_kind_id() {
+		return first_kind_id;
+	}
+
+	public void setFirst_kind_id(String first_kind_id) {
+		this.first_kind_id = first_kind_id;
+	}
+
+	public String getSecond_kind_id() {
 		return second_kind_id;
 	}
 
-	public void setSecond_kind_id(int second_kind_id) {
+	public void setSecond_kind_id(String second_kind_id) {
 		this.second_kind_id = second_kind_id;
+	}
+
+	public String getThird_kind_id() {
+		return third_kind_id;
+	}
+
+	public void setThird_kind_id(String third_kind_id) {
+		this.third_kind_id = third_kind_id;
 	}
 
 	public String getSecond_kind_name() {
@@ -201,13 +217,6 @@ public class Human_file {
 		this.second_kind_name = second_kind_name;
 	}
 
-	public int getThird_kind_id() {
-		return third_kind_id;
-	}
-
-	public void setThird_kind_id(int third_kind_id) {
-		this.third_kind_id = third_kind_id;
-	}
 
 	public String getThird_kind_name() {
 		return third_kind_name;
@@ -313,13 +322,6 @@ public class Human_file {
 		this.human_account = human_account;
 	}
 
-	public int getHuman_qq() {
-		return human_qq;
-	}
-
-	public void setHuman_qq(int human_qq) {
-		this.human_qq = human_qq;
-	}
 
 	public String getHuman_email() {
 		return human_email;
@@ -397,6 +399,30 @@ public class Human_file {
 		return human_birthplace;
 	}
 
+	public String getHuman_qq() {
+		return human_qq;
+	}
+
+	public void setHuman_qq(String human_qq) {
+		this.human_qq = human_qq;
+	}
+
+	public int getHuman_educated_years() {
+		return human_educated_years;
+	}
+
+	public void setHuman_educated_years(int human_educated_years) {
+		this.human_educated_years = human_educated_years;
+	}
+
+	public String getHuman_society_security_id() {
+		return human_society_security_id;
+	}
+
+	public void setHuman_society_security_id(String human_society_security_id) {
+		this.human_society_security_id = human_society_security_id;
+	}
+
 	public void setHuman_birthplace(String human_birthplace) {
 		this.human_birthplace = human_birthplace;
 	}
@@ -417,13 +443,6 @@ public class Human_file {
 		this.human_educated_degree = human_educated_degree;
 	}
 
-	public double getHuman_educated_years() {
-		return human_educated_years;
-	}
-
-	public void setHuman_educated_years(double human_educated_years) {
-		this.human_educated_years = human_educated_years;
-	}
 
 	public String getHuman_educated_major() {
 		return human_educated_major;
@@ -433,13 +452,6 @@ public class Human_file {
 		this.human_educated_major = human_educated_major;
 	}
 
-	public int getHuman_society_security_id() {
-		return human_society_security_id;
-	}
-
-	public void setHuman_society_security_id(int human_society_security_id) {
-		this.human_society_security_id = human_society_security_id;
-	}
 
 	public String getHuman_id_card() {
 		return human_id_card;
