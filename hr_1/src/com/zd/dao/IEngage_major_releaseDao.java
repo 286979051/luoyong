@@ -27,6 +27,10 @@ public interface IEngage_major_releaseDao {
 	@Update("update Engage_major_release set engage_type=#{engage_type},human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},major_describe=#{major_describe},engage_required=#{engage_required} where mre_id=#{mre_id}")
 	public void releaseUpd(Engage_major_release Engage_major_release);
 	
+	//职位发表登记表申请修改
+	@Update("update Engage_major_release set first_kind_id=#{first_kind_id},first_kind_name=#{first_kind_name},second_kind_id=#{second_kind_id},second_kind_name=#{second_kind_name},third_kind_id=#{third_kind_id},third_kind_name=#{third_kind_name},major_kind_id=#{major_kind_id},major_kind_name=#{major_kind_name},major_id=#{major_id},major_name=#{major_name},engage_type=#{engage_type},engage_type=#{engage_type},human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},major_describe=#{major_describe},engage_required=#{engage_required} where mre_id=#{mre_id}")
+	public void releaseUpdShenQ(Engage_major_release Engage_major_release);
+	
 	//职位发表登记删除
 	@Delete("delete from Engage_major_release where mre_id=#{id}")
 	public void releaseDelete(int mid);

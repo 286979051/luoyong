@@ -26,9 +26,7 @@
 		<script type="text/javascript"
 			src="javascript/locate.js">
 		</script>
-	 <script type="text/javascript"
-			src="javascript/select.js">
-		</script>
+	
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
  		<script type="text/javascript">
  			window.onload=check;
@@ -76,27 +74,27 @@
 				
  	    if(document.getElementById("firstKindId").value==""){
  	       alert("请选择一级机构");
- 	       return ;
+ 	       return false;
  	       }
  	  if(document.getElementById("engageType").value==""){
  	       alert("请选择招聘类型");
- 	       return ;
+ 	       return false;
  	       } 
  	  if(document.getElementById("majorKindId").value==""){
  	       alert("请选择职位分类");
- 	       return ;
+ 	       return false;
  	       }    
  	   if(document.getElementById("majorId").value==""){
  	       alert("请选择职位名称");
- 	       return ;
+ 	       return false;
  	       }    
  	  if(document.getElementById("humanAmount").value==""){
  	   alert("请填写招聘人数");
- 	       return ; 
+ 	       return false; 
  	  }    
  	  if(document.getElementById("date_start").value==""){
  	   alert("请选择截止日期");
- 	       return ; 
+ 	       return false; 
  	  }   
   
 		  	document.humanfileForm.submit();
@@ -179,8 +177,8 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1" 
-						  onclick="mysubmit();">
+						<input type="submit"  value="提交"  class="BUTTON_STYLE1" 
+						  onclick=" return mysubmit()">
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
@@ -260,7 +258,7 @@
 						截止日期
 					</td>
 					<td   class="TD_STYLE2">
-							  <input type="text" name="deadline" readonly
+							  <input type="text" name="deadline" 
 							  class="INPUT_STYLE2" id="date_start">
 					</td>
 				</tr>
