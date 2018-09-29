@@ -26,7 +26,9 @@
 		<script type="text/javascript"
 			src="javascript/locate.js">
 		</script>
-	
+		<script type="text/javascript"
+			src="javascript/comm/time.js">
+			</script>
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
  		<script type="text/javascript">
  			window.onload=check;
@@ -155,8 +157,8 @@
 				majorSel.append("<option >---请选择---</option>")
 				for(var i=0;i<data.length;i++){
 					var majorName=data[i];
-					var majorId=majorName.major_id;
-					var mName=majorName.major_name;
+					var majorId=majorName.majorid;
+					var mName=majorName.majorname;
 					majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
 					
 				}
@@ -259,7 +261,7 @@
 					</td>
 					<td   class="TD_STYLE2">
 							  <input type="text" name="deadline" 
-							  class="INPUT_STYLE2" id="date_start">
+							  class="INPUT_STYLE2" onclick="aa('deadline')" id="date_start">
 					</td>
 				</tr>
 				<tr>
@@ -267,7 +269,7 @@
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="register" value="admin" class="INPUT_STYLE2">
+						 <input type="text" name="register" value="${user.user_name }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						登记时间

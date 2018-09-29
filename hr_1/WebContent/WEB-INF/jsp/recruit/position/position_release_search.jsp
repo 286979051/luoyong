@@ -85,7 +85,12 @@
 						${releaseList.deadline }   
 						</td>
 						<td class="TD_STYLE2">
+						<c:if test="${releaseList.state==1 }">
 							<a href="releaseQueryByIdSQ?id=${releaseList.mre_id }">申请该职位</a>
+						</c:if>
+						<c:if test="${releaseList.state==2 }">
+							<a href="#">已成功申请</a>
+						</c:if>
 						</td>
 						 
 					</tr>

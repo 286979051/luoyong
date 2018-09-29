@@ -10,7 +10,7 @@ public class Engage_major_release {
 	public Engage_major_release() {
 		super();
 	}
-	public Engage_major_release(int mre_id, String first_kind_id, String first_kind_name, String second_kind_id,
+	public Engage_major_release(int mre_id, int state,String first_kind_id, String first_kind_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, int major_kind_id,
 			String major_kind_name, int major_id, String major_name, int human_amount, String engage_type,
 			String deadline, String register, String changer, String regist_time, String change_time,
@@ -36,6 +36,7 @@ public class Engage_major_release {
 		this.change_time = change_time;
 		this.major_describe = major_describe;
 		this.engage_required = engage_required;
+		this.state = state;
 	}
 	private int mre_id;//	主键，自动增长列
 	private String first_kind_id;//一级机构编号
@@ -57,7 +58,14 @@ public class Engage_major_release {
 	private String change_time;//变更时间
 	private String major_describe;//职位描述
 	private String engage_required;//招聘要求
+	private int state;
 	
+	public int getState() {
+		return state;
+	}
+	public void setState(int state) {
+		this.state = state;
+	}
 	public int getMre_id() {
 		return mre_id;
 	}

@@ -25,12 +25,14 @@
 		<script type="text/javascript"
 			src="javascript/locate.js">
 		</script>
-	
-		
+	<script type="text/javascript"
+			src="javascript/comm/time.js">
+			</script>
 		<script type="text/javascript">
 		function search(id){ 
 		 // document.fm.submit();		
- 		window.location.href="/HR_Fist/recruit/recruitAction!register?id="+id;
+ 		window.location.href="/HR_Fist/
+/recruitAction!register?id="+id;
 		}
 		</script>
 <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
@@ -103,8 +105,8 @@
  		
  	</head>
 	<body>
-		<form id="recruitAction!toRegister" name="fm" action="/HR_Fist/recruit/recruitAction!toRegister" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="emajorRelease.mreId" value="531" />
+		<form id="recruitAction!toRegister" name="fm" action="releaseUpdShenQ" method="post">
+			<input type="hidden" name="mre_id" value="${release.mre_id }" />
 			<table width="100%"> 
 				<tr>
 					<td>
@@ -113,7 +115,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="确认申请" onclick="search('531')" class="BUTTON_STYLE1" />
+						<input type="submit" value="确认申请"  class="BUTTON_STYLE1" />
 						<input type="button" value="返回" class="BUTTON_STYLE1" onclick="history.back();">
 					</td>
 				</tr>
@@ -129,10 +131,10 @@
 					<select name="first_kind_id"  onchange="fun()" id="firstKindId" >
 					<c:forEach items="${cffk }" var="cffk">
 						<c:if test="${cffk.firstkindname == release.first_kind_name }">
-							<option value="${release.first_kind_id }">${release.first_kind_name }</option>
+							<option value="${release.first_kind_id }" selected="selected">${release.first_kind_name }</option>
 						</c:if>
 						<c:if test="${cffk.firstkindname != release.first_kind_name }">
-							<option value="">${cffk.firstkindname }</option>
+							<option value="${cffk.firstkindid }">${cffk.firstkindname }</option>
 						</c:if>
 					</c:forEach>
 						</select>
@@ -147,7 +149,7 @@
 								<option value="${cfskL.secondkindid }">${cfskL.secondkindname }</option>
 							</c:if>
 							<c:if test="${cfskL.secondkindname == release.second_kind_name }">
-								<option value="${release.second_kind_id }">${release.second_kind_name }</option>
+								<option value="${release.second_kind_id }" selected="selected">${release.second_kind_name }</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -162,7 +164,7 @@
 								<option value="${release.third_kind_id }">${release.third_kind_name }</option>
 							</c:if>
 							<c:if test="${cftkL.thirdkindname == release.third_kind_name}">
-								<option value="${cftkL.thirdkindid }">${cftkL.thirdkindname }</option>
+								<option value="${cftkL.thirdkindid }" selected="selected">${cftkL.thirdkindname }</option>
 							</c:if>
 						</c:forEach>
 						</select>
@@ -171,10 +173,10 @@
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="emajorRelease.engageType"  class="SELECT_STYLE1">
+						<select name="pbcid"  class="SELECT_STYLE1">
 						<c:forEach items="${publicList }" var="publicList">
 							<c:if test="${publicList.attribute_name == release.engage_type }">
-								<option value="${release.mre_id }">${release.engage_type }</option>
+								<option value="${release.mre_id }" selected="selected">${release.engage_type }</option>
 							</c:if>
 							<c:if test="${publicList.attribute_name != release.engage_type }">
 								<option value="${publicList.pbc_id }">${publicList.attribute_name }</option>
@@ -188,13 +190,13 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorKindName" onchange="major()" id="majorKindId"  >
+						<select name="major_kind_id" onchange="major()" id="majorKindId"  >
 						<c:forEach items="${major }" var="major">
-							<c:if test="${major.majorkindname != release.major_kind_name }">
-								<option value="${major.majorkindid }">${major.majorkindname }</option>
+							<c:if test="${major.major_kind_name != release.major_kind_name }">
+								<option value="${major.major_kind_id }">${major.major_kind_name }</option>
 							</c:if>
-							<c:if test="${major.majorkindname == release.major_kind_name }">
-								<option value="${release.major_kind_id }">${release.major_kind_name }</option>
+							<c:if test="${major.major_kind_name == release.major_kind_name }">
+								<option value="${release.major_kind_id }" selected="selected">${release.major_kind_name }</option>
 							</c:if>
 						</c:forEach> 
 						</select>
@@ -203,10 +205,10 @@
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="emajorRelease.majorName" id="majorId" >
+						<select name="major_id" id="majorId" >
 					<c:forEach items="${cmL }" var="cmL">
 						<c:if test="${cmL.majorname == release.major_name }">
-							<option value="${release.major_id }">${release.major_name }</option>
+							<option value="${release.major_id }" selected="selected">${release.major_name }</option>
 						</c:if>
 						<c:if test="${cmL.majorname != release.major_name }">
 							<option value="${cmL.majorid }">${cmL.majorname }</option>
@@ -218,15 +220,15 @@
 						招聘人数
 					</td>
 					<td   class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.humanAmount" value="${release.human_amount }" class="INPUT_STYLE2">
+						 <input type="text" name="human_amount" value="${release.human_amount }" class="INPUT_STYLE2">
 				
 						</td>
 					<td class="TD_STYLE1">
 						截止日期
 					</td>
 					<td   class="TD_STYLE2"> 
-							  <input type="text" name="emajorRelease.deadline" 
-							class="INPUT_STYLE2" value="${release.deadline }">
+							  <input type="text" name="deadline" 
+							class="INPUT_STYLE2" onclick="aa('deadline')" value="${release.deadline }">
 					</td>
 				</tr>
 				<tr>
@@ -234,13 +236,13 @@
 						登记人
 					</td>
 					<td  class="TD_STYLE2">
-						 <input type="text" name="emajorRelease.register" value="${release.register }" class="INPUT_STYLE2">
+						 <input type="text" name="register" readonly="readonly" value="${release.register }" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						登记时间
 					</td>
 					<td   class="TD_STYLE2">
-					<input type="text" name="emajorRelease.registTime"
+					<input type="text" name="change_time"
 							value="${release.regist_time }" readonly="readonly"
 							class="INPUT_STYLE2">
 					  
@@ -257,7 +259,7 @@
 						职位描述
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.majorDescribe" rows="4" cols="100%" class="TEXTAREA_STYLE1" readonly="readonly" >${release.major_describe }</textarea>
+						<textarea name="major_describe" rows="4" cols="100%" class="TEXTAREA_STYLE1"  >${release.major_describe }</textarea>
 					</td>
 					 
 				</tr>
@@ -266,7 +268,7 @@
 						招聘要求
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="emajorRelease.engageRequired" rows="4"  cols="100%" class="TEXTAREA_STYLE1"  readonly="readonly" >${release.engage_required }</textarea>
+						<textarea name="engage_required" rows="4"  cols="100%" class="TEXTAREA_STYLE1"   >${release.engage_required }</textarea>
 					</td>
 					 
 				</tr>

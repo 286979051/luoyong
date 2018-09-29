@@ -42,6 +42,60 @@ public class Engage_major_releaseController {
 	@Autowired
 	private IConfig_majorService config_majorService;
 	
+	//职位发表登记表申请修改
+	@RequestMapping("releaseUpdShenQ")
+	private String releaseUpdShenQ(Engage_major_release engage_major_release) {
+		//一级机构联动单条查询赋值
+		Config_file_first_kind cffk = config_file_first_kindService.queryDan(engage_major_release.getFirst_kind_id());
+		engage_major_release.setFirst_kind_name(cffk.getFirstkindname());
+		//二级机构联动单条查询赋值
+		Config_file_second_kind cfsk =  config_file_second_kindService.queryDan(engage_major_release.getSecond_kind_id());
+		engage_major_release.setSecond_kind_name(cfsk.getSecondkindname());
+		//三级机构联动单条查询赋值
+		Config_file_third_kind cftk = config_file_third_kindService.queryDan(engage_major_release.getThird_kind_id());
+		engage_major_release.setThird_kind_name(cftk.getThirdkindname());
+		//职业分类一级联动单查赋值
+		Config_major_kind cmk =  config_major_kindService.majorQueryDan(engage_major_release.getMajor_kind_id());
+		engage_major_release.setMajor_kind_name(cmk.getMajor_kind_name());
+		//职业分联动类二级单查赋值
+		Config_major cmajor = config_majorService.ErMajorQueryDan(engage_major_release.getMajor_id());
+		engage_major_release.setMajor_name(cmajor.getMajorname());
+		//查询招聘类型单查赋值
+		Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(engage_major_release.getMre_id());
+		engage_major_release.setEngage_type(cpc.getAttribute_name());
+		engage_major_releaseService.releaseUpdShenQ(engage_major_release);
+		
+		return "redirect:releaseUpdShenQ";
+	}
+	
+	//职位发表登记表查询申请单条
+	@RequestMapping("releaseQueryByIdSQ")
+	public String releaseQueryByIdSQ(int id,Map map) {
+		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+		try {
+			Engage_major_release release = engage_major_releaseService.releaseQueryById(id);
+			List<Config_public_char> cpcList = config_public_charservice.QueryEngageType();
+			List<Config_file_first_kind> cffk = config_file_first_kindService.query();
+			List<Config_major_kind> major = config_major_kindService.majorQuery();
+			List<Config_public_char> publicList = config_public_charservice.QueryEngageType();
+					
+			List<Config_file_second_kind> cfskL = config_file_second_kindService.queryById(release.getFirst_kind_id());
+			List<Config_file_third_kind> cftkL = config_file_third_kindService.queryById(release.getSecond_kind_id());
+			List<Config_major> cmL = config_majorService.ErMajorQuery(release.getMajor_kind_id());
+			map.put("cmL", cmL);
+			map.put("cftkL", cftkL);
+			map.put("cfskL", cfskL);
+			map.put("release", release);
+			map.put("cpcList", cpcList);
+			map.put("cffk", cffk);
+			map.put("major", major);
+			map.put("publicList", publicList);
+		} catch (Exception e) {
+			logger.error("职位发表登记表查询单条", e);
+		}
+		return "/recruit/position/position_release_details";
+	}
+		
 	//职位发表登记表查询
 	@RequestMapping("releaseQuery")
 	public String releaseQuery(Map map) {
@@ -82,42 +136,14 @@ public class Engage_major_releaseController {
 		return "/recruit/position/position_release_change";
 	}
 	
-	//职位发表登记表查询申请单条
-		@RequestMapping("releaseQueryByIdSQ")
-		public String releaseQueryByIdSQ(int id,Map map) {
-			Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
-			try {
-				Engage_major_release release = engage_major_releaseService.releaseQueryById(id);
-				List<Config_public_char> cpcList = config_public_charservice.QueryEngageType();
-				List<Config_file_first_kind> cffk = config_file_first_kindService.query();
-				List<Config_major_kind> major = config_major_kindService.majorQuery();
-				List<Config_public_char> publicList = config_public_charservice.QueryEngageType();
-				
-				List<Config_file_second_kind> cfskL = config_file_second_kindService.queryById(release.getFirst_kind_id());
-				List<Config_file_third_kind> cftkL = config_file_third_kindService.queryById(release.getSecond_kind_id());
-				List<Config_major> cmL = config_majorService.ErMajorQuery(release.getMajor_kind_id());
-				map.put("cmL", cmL);
-				map.put("cftkL", cftkL);
-				map.put("cfskL", cfskL);
-				map.put("release", release);
-				map.put("cpcList", cpcList);
-				map.put("cffk", cffk);
-				map.put("major", major);
-				map.put("publicList", publicList);
-			} catch (Exception e) {
-				logger.error("职位发表登记表查询单条", e);
-			}
-			return "/recruit/position/position_release_details";
-		}
-	
 	//职位发表登记表修改
 	@RequestMapping("releaseUpd")
-	public String releaseUpd(Engage_major_release Engage_major_release,int pbc_id) {
+	public String releaseUpd(Engage_major_release engage_major_release) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
-			Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(pbc_id);
-			Engage_major_release.setEngage_type(cpc.getAttribute_name());
-			engage_major_releaseService.releaseUpd(Engage_major_release);
+			Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(engage_major_release.getMre_id());
+			engage_major_release.setEngage_type(cpc.getAttribute_name());
+			engage_major_releaseService.releaseUpd(engage_major_release);
 		} catch (Exception e) {
 			logger.error("职位发表登记表修改", e);
 		}
@@ -159,6 +185,7 @@ public class Engage_major_releaseController {
 			//查询招聘类型单查赋值
 			Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(pbc_id);
 			Engage_major_release.setEngage_type(cpc.getAttribute_name());
+			
 			engage_major_releaseService.releaseInsert(Engage_major_release);
 		} catch (Exception e) {
 			logger.error("职位发表登记添加", e);
@@ -166,11 +193,5 @@ public class Engage_major_releaseController {
 		return "redirect:releaseQuery";
 	}
 	
-	//职位发表登记表申请修改
-	@RequestMapping("releaseUpdShenQ")
-	private String releaseUpdShenQ(Engage_major_release Engage_major_release) {
-		
-		engage_major_releaseService.releaseUpdShenQ(Engage_major_release);
-		return "";
-	}
+	
 }
