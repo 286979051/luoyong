@@ -155,8 +155,8 @@
 				majorSel.append("<option >---请选择---</option>")
 				for(var i=0;i<data.length;i++){
 					var majorName=data[i];
-					var majorId=majorName.majorid;
-					var mName=majorName.majorname;
+					var majorId=majorName.major_id;
+					var mName=majorName.major_name;
 					majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
 					
 				}
@@ -236,7 +236,7 @@
 						<select name="major_kind_id" onchange="major()" id="majorKindId" class="SELECT_STYLE1">
 							<option value="">--请选择--</option>
 							<c:forEach items="${major }" var="major">
-							<option value="${major.majorkindid }">${major.majorkindname }</option>
+							<option value="${major.major_kind_id }">${major.major_kind_name }</option>
 							</c:forEach> 
 								 </select>
 					</td>
