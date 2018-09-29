@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
+import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
 
 @Controller
@@ -21,6 +22,8 @@ public class Config_file_second_kindController {
 	
 	@Autowired
 	private IConfig_file_second_kindService config_file_second_kindService;
+	@Autowired
+	private IConfig_file_first_kindService icffkservice;
 	//二级联动
 	@RequestMapping("queryById")
 	@ResponseBody
@@ -58,13 +61,60 @@ public class Config_file_second_kindController {
 	
 	//添加二级机构
 	@RequestMapping("addsecond")
-	public String addsecond(Config_file_second_kind secondkind){
+	public String addsecond(Config_file_second_kind secondkind,String firstkindid){
 		try {
+			Config_file_first_kind first=icffkservice.selbybhid(firstkindid);
+			secondkind.setFirstkindname(first.getFirstkindname());
 			config_file_second_kindService.addsecond(secondkind);
 		} catch (Exception e) {
 			logger.error("失败",e);
 		}
 		return"/client/second_kind_register_success";
+	}
+	
+	//修改二级机构之前做查询
+	@RequestMapping("updatesecond")
+	public String updatesecond(int fskid,Map map) {
+		try {
+			Config_file_second_kind secondkind = config_file_second_kindService.selbyfskid(fskid);
+			map.put("secondkind", secondkind);
+		} catch (Exception e) {
+			logger.error("失败",e);
+		}
+		return"/client/second_kind_change";
+	}
+	
+	//修改二级机构
+	@RequestMapping("updatesecondkind")
+	public String updatesecondkind(Config_file_second_kind secondkind) {
+		try {
+			config_file_second_kindService.updatesecondkind(secondkind);
+		} catch (Exception e) {
+			logger.error("失败",e);
+		}
+		return"/client/second_kind_change_success";
+	}
+	
+	//删除二级机构
+	@RequestMapping("deletesecond")
+	@ResponseBody
+	public String deletesecond(String secondkindid) {
+		try {
+			//删除二级机构
+			config_file_second_kindService.deletesecond(secondkindid);
+			//删除二级机构的同时删除三级机构
+			config_file_second_kindService.delete2(secondkindid);
+		} catch (Exception e) {
+			logger.error("失败",e);
+		}
+		//return"/client/second_delete_success"
+		return"1";
+	}
+	
+	//删除成功跳转页面
+	@RequestMapping("todeletesuccess")
+	public String todeletesuccess() {
+		return"/client/second_delete_success";
 	}
 	
 }

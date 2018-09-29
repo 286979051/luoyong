@@ -13,4 +13,24 @@
 		<result column="third_kind_sale_id" property="thirdkindsaleid"/>
 		<result column="third_kind_is_retail" property="thirdkindisretail"/>
 	</resultMap>
+	
+	<!-- 二级机构映射 -->
+	<resultMap type="Config_file_first_kind" id="Config_file_first_kindmapper">
+		<result column="ffk_id" property="ffkid"/>
+		<result column="first_kind_id" property="firstkindid"/>
+		<result column="first_kind_name" property="firstkindname"/>
+		<result column="first_kind_salary_id" property="firstkindsalaryid"/>
+		<result column="first_kind_sale_id" property="firstkindsaleid"/>
+	</resultMap>
+	
+	<!-- 二级机构映射 -->
+	<resultMap type="Config_file_second_kind" id="Config_file_second_kindmapper">
+		<result column="fsk_id" property="fskid"/>
+		<result column="first_kind_id" property="firstkindid"/>
+		<result column="first_kind_name" property="firstkindname"/>
+		<result column="second_kind_id" property="secondkindid"/>
+		<result column="second_kind_name" property="secondkindname"/>
+		<result column="second_salary_id" property="secondsalaryid"/>
+		<result column="second_sale_id" property="secondsaleid"/>
+	</resultMap>
 </mapper>

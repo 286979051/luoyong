@@ -34,9 +34,35 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	public void addsecond(Config_file_second_kind secondkind) {
 		config_file_second_kindDao.addsecond(secondkind);
 	}
+	
 	//二级联动单查
 	public Config_file_second_kind queryDan(int id) {
 		return config_file_second_kindDao.queryDan(id);
+	}
+
+	//修改二级机构前做查询
+	public Config_file_second_kind selbyfskid(int fskid) {
+		return config_file_second_kindDao.selbyfskid(fskid);
+	}
+
+	//修改二级机构
+	public void updatesecondkind(Config_file_second_kind secondkind) {
+		config_file_second_kindDao.updatesecondkind(secondkind);
+	}
+
+	//删除二级机构
+	public void deletesecond(String secondkindid) {
+		config_file_second_kindDao.deletesecond(secondkindid);
+	}
+
+	//查询二级机构，单条查询，用于三级添加
+	public Config_file_second_kind selbysecondkindid(String secondkindid) {
+		return config_file_second_kindDao.selbysecondkindid(secondkindid);
+	}
+
+	//删除二级机构的同时删除三级机构
+	public void delete2(String secondkindid) {
+		config_file_second_kindDao.delete2(secondkindid);
 	}
 
 }

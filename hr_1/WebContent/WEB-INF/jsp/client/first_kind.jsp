@@ -11,6 +11,28 @@
 			src="javascript/comm/comm.js">
 		</script>
 	</head>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript">
+function ajaxdelete(firstkindid){
+	 if(confirm("删除一级机构会删除相关所有，是否删除？"))
+     {
+		 $.ajax({
+				url:'delete?firstkindid='+firstkindid,
+				type:'get',
+				success:function(data){
+					if(data=="1"){
+						$("#"+firstkindid).remove();
+					}
+				}
+		});
+		 window.location.href("successdelete");
+     }
+     else 
+     {
+    	 window.location.href("selallfirstkind");
+     }
+}
+</script>	
 	<body>
 		<form method="post" action="../customiz/customizAction!findFirstKind">
 			<table width="100%">
@@ -52,7 +74,7 @@
 				</tr>
 
 				<c:forEach var="item" items="${firstList }">
-				<tr>
+				<tr id="${item.firstkindid }">
 					<td class="TD_STYLE2">
 						${item.firstkindid }
 					</td>
@@ -69,7 +91,7 @@
 						<a href="selbyffkid?ffkid=${item.ffkid }">变更</a>
 					</td>
 					<td class="TD_STYLE2">
-						<a href="delete?ffkid=${item.ffkid }">删除</a>
+						<a href="javascript:ajaxdelete(${item.firstkindid })">删除</a>
 					</td>
 				</tr>
 				</c:forEach>

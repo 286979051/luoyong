@@ -1,35 +1,36 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css"
+		<link rel="stylesheet" href="css/table.css"
 			type="text/css"></link>
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 	</head>
 	
 <script type="text/javascript">
 	//控件判断不能为空
 	function check(){
-		if (document.getElementById("secondKind.secondSalaryId").value==""){
+		if (document.getElementById("secondsalaryid").value==""){
 			alert("薪酬发放责任人编号不能为空!!!");
 			return false;
 		}
-		if(document.getElementById("secondKind.secondSaleId").value==""){
+		if(document.getElementById("secondsaleid").value==""){
 			alert("销售责任人编号不能为空!!!");
 			return false;
 		}
-		document.forms[0].submit();
+		var update = document.getElementById("update");
+		update.submit();
 	}		
 </script>
 
 	<body>
 
-		<form action="second_kind_change_success.html" method="post">
-			
+		<form id="update" action="updatesecondkind" method="post">
 			<table width="100%">
 				<tr>
 					<td>
@@ -39,9 +40,9 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="提交" class="BUTTON_STYLE1">
+						<input type="button" onclick="check()" value="提交" class="BUTTON_STYLE1">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="history.back();">
+							onclick="history.back()">
 					</td>
 				</tr>
 			</table>
@@ -49,13 +50,13 @@
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
-				<input type="hidden" name="cfsk.fskId" value=761 class="INPUT_STYLE1" />
+				<input type="hidden" name="fskid" value="${secondkind.fskid }" class="INPUT_STYLE1" />
 				<tr>
 					<td width="19%" class="TD_STYLE1">
 						I级机构名称
 					</td>
 					<td width="81%" class="TD_STYLE2">
-						<input type="text" name="cfsk.firstKindName" readonly="readonly" class="INPUT_STYLE1" value="集团">
+						<input type="text"  name="cfsk.firstKindName" readonly="readonly" class="INPUT_STYLE1" value="${secondkind.firstkindname }">
 					</td>
 				</tr>
 				<tr>
@@ -63,7 +64,7 @@
 						II级机构编号
 					</td>
 					<td width="81%" class="TD_STYLE2">
-						<input type="text" name="cfsk.secondKindId" readonly="readonly" class="INPUT_STYLE1" value="1353814997520">
+						<input type="text" name="cfsk.secondKindId" readonly="readonly" class="INPUT_STYLE1" value="${secondkind.secondkindid }">
 					</td>
 				</tr>
 				<tr>
@@ -71,7 +72,7 @@
 						II级机构名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="cfsk.secondKindName" readonly="readonly" class="INPUT_STYLE1" value="二集团">
+						<input type="text" name="cfsk.secondKindName" readonly="readonly" class="INPUT_STYLE1" value="${secondkind.secondkindname }">
 					</td>
 				</tr>
 				<tr>
@@ -79,7 +80,7 @@
 						薪酬发放责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-					<textarea rows="4" cols="120" name="cfsk.secondSalaryId" class="TEXTAREA_STYLE1">1</textarea>
+					<textarea id="secondsalaryid" rows="4" cols="120" name="secondsalaryid" class="TEXTAREA_STYLE1">${secondkind.secondsalaryid}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -87,7 +88,7 @@
 						销售责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-					<textarea rows="4" cols="120" name="cfsk.secondSaleId" class="TEXTAREA_STYLE1">2</textarea>
+					<textarea id="secondsaleid" rows="4" cols="120" name="secondsaleid" class="TEXTAREA_STYLE1">${secondkind.secondsaleid}</textarea>
 					</td>
 				</tr>
 			</table>

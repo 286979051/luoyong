@@ -12,18 +12,28 @@
 		</script>
 	</head>
 
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
-	
-		function submission(){
-			document.forms[0].submit();
-		}
-		
-		function page(currentPage){
-			document.getElementById("pid").value=currentPage;
-			document.forms[0].submit();
-		}
-</script>
-
+function ajaxdelete(secondkindid){
+	 if(confirm("删除二级机构会删除相关所有，是否删除？"))
+     {
+		 $.ajax({
+				url:'deletesecond?secondkindid='+secondkindid,
+				type:'get',
+				success:function(data){
+					if(data=="1"){
+						$("#"+secondkindid).remove();
+					}
+				}
+		});
+		 window.location.href("todeletesuccess");
+     }
+     else 
+     {
+    	 window.location.href("selallsecondkind");
+     }
+}
+</script>	
 
 	<body>
 	<form action="../customiz/customizAction!findSecondKind" method="post">
@@ -69,7 +79,7 @@
 				</tr>
 					
 				<c:forEach var="item" items="${secondkindlist }">
-					<tr>
+					<tr id="${item.secondkindid }">
 						<td class="TD_STYLE2">${item.firstkindname }
 						</td>
 						<td class="TD_STYLE2">${item.secondkindid }
@@ -81,10 +91,10 @@
 						<td class="TD_STYLE2">${item.secondsaleid }
 						</td>
 						<td class="TD_STYLE2">
-							<a href="second_kind_change.html">变更</a>
+							<a href="updatesecond?fskid=${item.fskid }">变更</a>
 						</td>
 						<td class="TD_STYLE2">
-							<a href="second_delete_success.html">删除</a>
+							<a href="javascript:ajaxdelete(${item.secondkindid })">删除</a>
 						</td>
 					</tr>
 				</c:forEach>

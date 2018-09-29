@@ -40,7 +40,7 @@
 						I级机构编号
 					</td>
 					<td width="81%" class="TD_STYLE2">
-						<input type="text"  value="${firstkind.firstkindid }......(此项不可更改)"
+						<input type="text"  value="${firstkind.firstkindid }"
 							readonly="readonly" class="INPUT_STYLE1">
 					</td>
 				</tr>
@@ -49,7 +49,7 @@
 						I级机构名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text"  value="${firstkind.firstkindname }......(此项不可更改)"
+						<input type="text"  value="${firstkind.firstkindname }"
 							readonly="readonly" class="INPUT_STYLE1">
 					</td>
 				</tr>

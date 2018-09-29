@@ -10,25 +10,48 @@
 			src="javascript/comm/comm.js">
 		</script>
 		
-<script type="text/javascript" src="/javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
 function checkname(){
-	
-	if(document.getElementById("firstkindname").value==''){
-		alert("I级机构名称不能为空");
-		return;
-	}
-	if(document.getElementById("firstkindsalaryid").value==''){
-		alert("薪酬发放责任人编号不能为空");
-		return;
-	}
-	if(document.getElementById("firstkindsaleid").value==''){
-		alert("销售责任人编号不能为空");
-		return;
-	}
-	var addForm = document.getElementById("js_add");
-	addForm.submit();
-}	
+		var firstkindname = $("#firstkindname").val();	
+		var firstkindsalaryid = $("#firstkindsalaryid").val();	
+		var firstkindsaleid = $("#firstkindsaleid").val();	
+		
+		//判断一级机构名称是否为空
+		if(document.getElementById("firstkindname").value==''){
+			$("#errorSpan").html("<font color='red'>请输入一级机构名称</font>");
+			return;
+		}
+		
+		//判断薪酬发放责任人编号是否为空且只能输入数字
+		if(document.getElementById("firstkindsalaryid").value==''){
+			$("#errorSpan2").html("<font color='red'>请输入薪酬发放责任人编号</font>");
+			return;
+		}else{
+			var reg = /^\d{1,6}$/;
+			var b = reg.test(firstkindsalaryid);
+			if(!b){
+				$("#errorSpan2").html("<font color='red'>请填写数字编号并且少于六位</font>");
+				return;
+				}
+		}
+		
+		//判断销售责任人编号是否为空且只能输入数字
+		if(document.getElementById("firstkindsaleid").value==''){
+			$("#errorSpan3").html("<font color='red'>请输入销售责任人编号</font>");
+			return;
+			}else{
+				var reg = /^\d{1,6}$/;
+				var b = reg.test(firstkindsaleid);
+				if(!b){
+				$("#errorSpan3").html("<font color='red'>请填写数字编号并且少于六位</font>");
+				return;
+			}	
+		}	
+		
+		$("#js_add").submit();
+		
+}
 </script>
 	</head>
 	<body>
@@ -49,7 +72,7 @@ function checkname(){
 					</td>
 				</tr>
 			</table>
-
+		
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -67,7 +90,7 @@ function checkname(){
 					</td>
 					<td class="TD_STYLE2">
 						<input id="firstkindname" type="text" name="firstkindname" value=""
-							class="INPUT_STYLE1">
+							class="INPUT_STYLE1"><span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -76,7 +99,7 @@ function checkname(){
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="firstkindsalaryid" name="firstkindsalaryid" rows="4"
-							class="TEXTAREA_STYLE1"></textarea>
+							class="TEXTAREA_STYLE1"></textarea><span id="errorSpan2"></span>
 					</td>
 				</tr>
 				<tr>
@@ -85,7 +108,7 @@ function checkname(){
 					</td>
 					<td class="TD_STYLE2">
 						<textarea id="firstkindsaleid" name="firstkindsaleid" rows="4"
-							class="TEXTAREA_STYLE1"></textarea>
+							class="TEXTAREA_STYLE1"></textarea><span id="errorSpan3"></span>
 					</td>
 				</tr>
 			</table>
