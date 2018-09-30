@@ -14,12 +14,44 @@ public class Human_file {
 	
 
 
+	@Override
+	public String toString() {
+		return "Human_file [hfd_id=" + hfd_id + ", human_id=" + human_id + ", first_kind_id=" + first_kind_id
+				+ ", first_kind_name=" + first_kind_name + ", second_kind_id=" + second_kind_id + ", second_kind_name="
+				+ second_kind_name + ", third_kind_id=" + third_kind_id + ", third_kind_name=" + third_kind_name
+				+ ", human_name=" + human_name + ", human_address=" + human_address + ", human_postcode="
+				+ human_postcode + ", human_pro_designation=" + human_pro_designation + ", human_major_kind_id="
+				+ human_major_kind_id + ", human_major_kind_name=" + human_major_kind_name + ", human_major_id="
+				+ human_major_id + ", hunma_major_name=" + hunma_major_name + ", human_telephone=" + human_telephone
+				+ ", human_mobilephone=" + human_mobilephone + ", human_bank=" + human_bank + ", human_account="
+				+ human_account + ", human_qq=" + human_qq + ", human_email=" + human_email + ", human_hobby="
+				+ human_hobby + ", human_speciality=" + human_speciality + ", human_sex=" + human_sex
+				+ ", human_religion=" + human_religion + ", human_party=" + human_party + ", human_nationality="
+				+ human_nationality + ", human_race=" + human_race + ", human_birthday=" + human_birthday
+				+ ", human_birthplace=" + human_birthplace + ", human_age=" + human_age + ", human_educated_degree="
+				+ human_educated_degree + ", human_educated_years=" + human_educated_years + ", human_educated_major="
+				+ human_educated_major + ", human_society_security_id=" + human_society_security_id + ", human_id_card="
+				+ human_id_card + ", remark=" + remark + ", salary_standard_id=" + salary_standard_id
+				+ ", salary_standard_name=" + salary_standard_name + ", salary_sum=" + salary_sum
+				+ ", demand_salaray_sum=" + demand_salaray_sum + ", paid_salary_sum=" + paid_salary_sum
+				+ ", major_change_amount=" + major_change_amount + ", bonus_amount=" + bonus_amount
+				+ ", training_amount=" + training_amount + ", file_chang_amount=" + file_chang_amount
+				+ ", human_histroy_records=" + human_histroy_records + ", human_family_membership="
+				+ human_family_membership + ", human_picture=" + human_picture + ", attachment_name=" + attachment_name
+				+ ", check_status=" + check_status + ", register=" + register + ", checker=" + checker + ", changer="
+				+ changer + ", regist_time=" + regist_time + ", check_time=" + check_time + ", change_time="
+				+ change_time + ", lastly_change_time=" + lastly_change_time + ", delete_time=" + delete_time
+				+ ", recovery_time=" + recovery_time + ", human_file_status=" + human_file_status + "]";
+	}
+
+
+
 	public Human_file(int hfd_id, String human_id, String first_kind_id, String first_kind_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
 			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
 			String human_major_kind_name, int human_major_id, String hunma_major_name, String human_telephone,
 			String human_mobilephone, String human_bank, String human_account, String human_qq, String human_email,
-			String human_hobby, String human_speciality, char human_sex, String human_religion, String human_party,
+			String human_hobby, String human_speciality, String human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, Date human_birthday, String human_birthplace, int human_age,
 			String human_educated_degree, int human_educated_years, String human_educated_major,
 			String human_society_security_id, String human_id_card, String remark, int salary_standard_id,
@@ -118,7 +150,7 @@ public class Human_file {
 	private String human_email;//	string	电子邮件
 	private String human_hobby;//	string	爱好
 	private String human_speciality	;//string	特长
-	private char human_sex	;//char	性别 
+	private String human_sex	;//char	性别 
 	private String human_religion;//	string	宗教信仰
 	private String human_party	;//string	政治面貌
 	private String human_nationality;//	string	国籍
@@ -345,11 +377,11 @@ public class Human_file {
 		this.human_speciality = human_speciality;
 	}
 
-	public char getHuman_sex() {
+	public String getHuman_sex() {
 		return human_sex;
 	}
 
-	public void setHuman_sex(char human_sex) {
+	public void setHuman_sex(String human_sex) {
 		this.human_sex = human_sex;
 	}
 

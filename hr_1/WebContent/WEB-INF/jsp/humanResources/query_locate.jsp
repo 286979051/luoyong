@@ -1,25 +1,30 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css" />
+			href="css/table.css" type="text/css" />
 		<link rel="stylesheet"
-			href="../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../javascript/locate.js">
+			src="javascript/locate.js">
+		</script>
+		<script type="text/javascript">
 		</script>
 	</head>
 
@@ -50,14 +55,12 @@
 					<td width="84%" class="TD_STYLE2">
 						<select name="humanFile.firstKindId" size="5" id="firstKind"
 							class="SELECT_STYLE2">
-							<option value="" selected="selected">全部</option>
-							
-								<option value="1353318953319">Ⅰ级结构</option>
-							
-								<option value="1353318929919">集团</option>
-							
-								<option value="1353318937391">总部</option>
-							
+							<option value="" selected="selected">
+								全部
+							</option>
+							<c:forEach items="${arr }" var="s">
+								<option value="${s.firstkindid }">${s.firstkindname }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -71,27 +74,6 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
-								<option value="1353318983380">Ⅱ级结构2</option>
-							
-								<option value="1353318986625">Ⅱ级结构3</option>
-							
-								<option value="1353318990197">Ⅱ级结构4</option>
-							
-								<option value="1353318995252">Ⅱ级结构5</option>
-							
-								<option value="1353319004705">软件公司</option>
-							
-								<option value="1353319016546">科技公司</option>
-							
-								<option value="1353319033409">北京分校区</option>
-							
-								<option value="1353319038682">湖南分校区</option>
-							
-								<option value="1353319043830">湖北分校区</option>
-							
-								<option value="1353318979558">Ⅱ级结构1</option>
-							
 						</select>
 					</td>
 				</tr>
@@ -104,27 +86,6 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
-								<option value="1353319130551">外包公司</option>
-							
-								<option value="1353319150238">软件股份有限公司</option>
-							
-								<option value="1353319177944">中关村分校区1</option>
-							
-								<option value="1353319185073">中关村分校区2</option>
-							
-								<option value="1353319193840">中关村分校区3</option>
-							
-								<option value="1353319216320">长沙分校区1</option>
-							
-								<option value="1353319228535">长沙分校区2</option>
-							
-								<option value="1353319236725">长沙分校区3</option>
-							
-								<option value="1353319077370">Ⅲ级结构111</option>
-							
-								<option value="1353319096948">Ⅲ级结构222</option>
-							
 						</select>
 					</td>
 				</tr>
@@ -138,15 +99,9 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
-								<option value="01">销售</option>
-							
-								<option value="02">软件开发</option>
-							
-								<option value="03">人力资源</option>
-							
-								<option value="04">生产部</option>
-							
+							<c:forEach var="s" items="${arr1 }">
+								<option value="${s.major_kind_id }">${s.major_kind_name }</option>
+							</c:forEach>
 						</select>
 					</td>
 				</tr>
@@ -159,22 +114,6 @@
 							<option value="" selected="selected">
 								全部
 							</option>
-							
-								<option value="01">区域经理</option>
-							
-								<option value="02">总经理</option>
-							
-								<option value="01">项目经理</option>
-							
-								<option value="02">程序员</option>
-							
-								<option value="01">人事经理</option>
-							
-								<option value="02">专员</option>
-							
-								<option value="01">主任</option>
-							
-								<option value="02">技术工人</option>
 							
 						</select>
 					</td>

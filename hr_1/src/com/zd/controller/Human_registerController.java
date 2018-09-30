@@ -16,6 +16,7 @@ import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_major;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Config_public_char;
+import com.zd.entity.Human_file;
 import com.zd.entity.Salary_standard_details;
 import com.zd.service.IConfig_file_first_kindService;
 import com.zd.service.IConfig_file_second_kindService;
@@ -23,6 +24,7 @@ import com.zd.service.IConfig_file_third_kindService;
 import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
 import com.zd.service.IConfig_public_charservice;
+import com.zd.service.IHuman_fileservice;
 import com.zd.service.IStandardService;
 /**
  * 人员档案登记的控制
@@ -53,6 +55,8 @@ public class Human_registerController {
 	//薪酬
 	@Autowired
 	private IStandardService standardService;
+	@Autowired
+	private IHuman_fileservice Human_fileservice;
 	
 	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 	// 跳转人员档案登记
@@ -96,5 +100,22 @@ public class Human_registerController {
 	public List<Config_major> querymajorKindById(int id){
 		 List<Config_major> erMajorQuery = Config_majorService.ErMajorQuery(id);
 		return erMajorQuery;
+	}
+	
+	@RequestMapping("/register_choose")
+	public String register_choose(Human_file human_file,Map map) {
+		Human_fileservice.human_chack_update(human_file);
+		map.put("human_id", human_file.getHuman_id());
+		return "humanResources/register_choose_picture";
+	}
+	
+	@RequestMapping("/query_locate")
+	public String query_locate(Map map) {
+		//一级单位查询
+		List<com.zd.entity.Config_file_first_kind> query = Config_file_first_kind.query();
+		List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
+		map.put("arr", query);
+		map.put("arr1", majorQuery);
+		return "humanResources/query_locate";
 	}
 }

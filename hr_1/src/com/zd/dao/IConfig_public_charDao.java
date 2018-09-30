@@ -2,6 +2,7 @@ package com.zd.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
 
@@ -34,4 +35,5 @@ public interface IConfig_public_charDao {
 	@Select("SELECT * FROM Config_public_char where pbc_id=#{id}")
 	@ResultMap("queryall")
 	public Config_public_char QueryEngageTypeDan(int id);
+	
 }
