@@ -61,5 +61,7 @@
 	<mapper resource="com/zd/mapper/Config_shangMapper.xml"/>
 	<!-- zm_some表的映射 -->
 	<mapper resource="com/zd/mapper/Human_fileMapper.xml"/>
+	<!-- 发送电子邮件 -->
+	<mapper resource="com/zd/mapper/e_mail.xml"/>
 </mappers>
 </configuration>

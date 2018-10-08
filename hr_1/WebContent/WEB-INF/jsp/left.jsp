@@ -273,12 +273,12 @@
 								</li>
 								<li state="closed">
 									<span>
-										其他设置
+										电子邮件模板设置
 									</span>
 									<ul>
 												<li>
 													<span>
-														<a href="client/primary_key.html" target="mainFrame" style="color:black;">关键字查询设置</a>
+														<a href="selalle_mail" target="mainFrame" style="color:black;">电子邮件模板内容设置</a>
 													</span>
 												</li>
 									</ul>
