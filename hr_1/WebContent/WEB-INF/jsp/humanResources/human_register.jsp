@@ -439,7 +439,7 @@
 						登记人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.register" value="谢鹏"
+						<input type="text" name="register" value="谢鹏"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -448,7 +448,7 @@
 						建档时间
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.registTime" id="create_time" readonly="readonly"
+						<input type="text" name="regist_time" id="create_time" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">

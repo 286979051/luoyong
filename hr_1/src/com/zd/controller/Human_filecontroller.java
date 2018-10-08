@@ -1,6 +1,8 @@
 package com.zd.controller;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
  *
  */
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.zd.entity.Config_file_first_kind;
@@ -35,6 +38,7 @@ import com.zd.service.IConfig_majorService;
 import com.zd.service.IConfig_major_kindService;
 import com.zd.service.IConfig_public_charservice;
 import com.zd.service.IConfig_sahngService;
+import com.zd.service.IHuman_fileservice;
 import com.zd.service.IStandardService;
 /**
  * 上传和添加控制器
@@ -63,6 +67,12 @@ public class Human_filecontroller {
 	//查询所有的公共字段
 	@Autowired
 	private IConfig_public_charservice Config_public_charservice;
+	//查询分类
+	@Autowired
+	private IConfig_major_kindService Config_major_kindService;
+	//人员表的service
+	@Autowired
+	private IHuman_fileservice Human_fileservice;	
 	
 	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 	
@@ -92,6 +102,8 @@ public class Human_filecontroller {
 			
 			Salary_standard_details selSalaryone = standardService.selSalaryone(Engage_major_release.getSalary_standard_name());
 			int standard_id = selSalaryone.getStandard_id();
+			String standard_name = selSalaryone.getStandard_name();
+			Engage_major_release.setSalary_standard_name(standard_name);
 			Engage_major_release.setSalary_standard_id(standard_id);
 			
 			IHuman_fileservice.add(Engage_major_release);
@@ -118,7 +130,6 @@ public class Human_filecontroller {
 		System.currentTimeMillis();// 2.jpg 时间.
 		// 创建要上传到的文件对象
 		File file = new File(fpath);
-		System.out.println(fpath);
 			// 做上传
 			file1.transferTo(file);
 			shang.setAttribute_kind(fname);
@@ -137,6 +148,8 @@ public class Human_filecontroller {
 		map.put("arr", human_fileselall);
 		return "humanResources/check_list";
 	}
+	
+	//人力资源档案复核
 	@RequestMapping("/human_check")
 	public String human_check(String human_id,Map map) {
 		List<Human_file> human_fileselall = IHuman_fileservice.Humanfileselall();
@@ -148,4 +161,79 @@ public class Human_filecontroller {
 		map.put("arr", human_fileselall);
 		return "humanResources/human_check";
 	}
+	//人力资源档案变更
+	@RequestMapping("/change_locate")
+	public String change_locate(Map map) {
+		try {
+			List<com.zd.entity.Config_file_first_kind> query = config_file_first_kindService.query();
+			List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
+			map.put("arr", query);
+			map.put("arr1", majorQuery);
+			} catch (Exception e) {
+				logger.error("跳转查询页面", e);
+			}
+		return "humanResources/change_locate";
+	}
+	//条件查询
+	@RequestMapping("/change_list")
+	public String change_list(@RequestParam Map map,Map reqestmap) {
+			try {
+			String startDate = (String) map.get("utilBean.startDate");
+			String endDate = (String) map.get("utilBean.endDate");
+			
+			SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd");
+			Date startDate1 = aDate.parse(startDate);
+			Date endDate1 = aDate.parse(endDate);
+			map.put("startDate", startDate1);
+			map.put("endDate", endDate1);
+			List<Human_file> query_list = Human_fileservice.query_list(map);
+			reqestmap.put("arr", query_list);
+			} catch (Exception e) {
+				logger.error("条件查询", e);
+			}
+			return "humanResources/change_list";
+		}
+	//人力资源档案删除
+	@RequestMapping("/delete_locate")
+	public String delete_locate(Map map) {
+		try {
+			List<com.zd.entity.Config_file_first_kind> query = config_file_first_kindService.query();
+			List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
+			map.put("arr", query);
+			map.put("arr1", majorQuery);
+			} catch (Exception e) {
+				logger.error("跳转查询页面", e);
+			}
+		return "humanResources/delete_locate";
+	}
+	
+	//删除条件查询
+	@RequestMapping("/delete_list")
+	public String dlete_list(@RequestParam Map map,Map reqestmap) {
+		try {
+			String startDate = (String) map.get("utilBean.startDate");
+			String endDate = (String) map.get("utilBean.endDate");
+			
+			SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd");
+			Date startDate1 = aDate.parse(startDate);
+			Date endDate1 = aDate.parse(endDate);
+			map.put("startDate", startDate1);
+			map.put("endDate", endDate1);
+			List<Human_file> query_list = Human_fileservice.delete_list(map);
+			reqestmap.put("arr", query_list);
+		} catch (Exception e) {
+			logger.error("条件查询", e);
+		}
+			return "humanResources/delete_list";
+		}
+	//保存删除
+	@RequestMapping("/humanfiledo")
+	public String humanfiledo(String human_id) {
+		try {
+			IHuman_fileservice.delete_update(human_id);
+		} catch (Exception e) {
+			logger.error("条件查询", e);
+		}
+			return "redirect:delete_locate";
+		}	
 }

@@ -122,7 +122,7 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/change_locate.html" target="mainFrame" style="color:black;">人力资源档案变更</a>
+											<a href="change_locate" target="mainFrame" style="color:black;">人力资源档案变更</a>
 									</span>
 								</li>
 								<li state="closed">
@@ -132,7 +132,7 @@
 									<ul>
 												<li>
 													<span>
-															<a href="humanResources/delete_locate.html" target="mainFrame" style="color:black;">人力资源档案删除</a>
+															<a href="delete_locate" target="mainFrame" style="color:black;">人力资源档案删除</a>
 													</span>
 												</li>
 												<li>

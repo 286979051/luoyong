@@ -88,7 +88,7 @@
 	</head>
 
 	<body>
-		<form method="post" action="query_list">
+		<form method="post" action="change_list">
 			<table width="100%">
 				<tr>
 					<td>

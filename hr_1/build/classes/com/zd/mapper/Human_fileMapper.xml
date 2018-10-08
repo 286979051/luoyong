@@ -66,4 +66,16 @@
 		<result property="recovery_time" column="recovery_time"/>
 		<result property="human_file_status" column="human_file_status"/>
 	</resultMap>
+	
+	<select id="query_list" parameterType="java.util.Map" resultMap="Humanfil">
+		select * from Human_file where first_kind_id=#{first_kind_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id}
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+	</select>
+	<select id="delete_list" parameterType="java.util.Map" resultMap="Humanfil">
+		select * from Human_file where first_kind_id=#{first_kind_id} and second_kind_id = #{second_kind_id} AND third_kind_id = #{third_kind_id} and human_major_kind_id = #{human_major_kind_id} and human_major_id = #{human_major_id}
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{startDate},'%Y-%m-%d') ]]>
+		<![CDATA[and DATE_FORMAT(regist_time,'%Y-%m-%d')>=DATE_FORMAT(#{endDate},'%Y-%m-%d') ]]>
+		and check_status = 1 and human_file_status = 2
+	</select>
 </mapper>

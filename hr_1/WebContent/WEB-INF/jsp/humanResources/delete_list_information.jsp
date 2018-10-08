@@ -1,30 +1,32 @@
-﻿
-
-<!DOCTYPE html public "-//w3c//dtd html 4.01 transitional//en"
-"http://www.w3.org/tr/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script language="javascript"
-			src="../../javascript/winopen/winopenm.js">
+			src="javascript/winopen/winopenm.js">
 		</script>
 	</head>
 	<body>
 
-		<form name="humanfileForm" method="post" action="/hr/humanfile.do">
+		<form name="humanfileForm" method="post" action="humanfiledo">
+		<input type="hidden" name="human_id" value="${arr.human_id }">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案查看 </font>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案删除 </font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
+						<input type="submit" value="删除" class="BUTTON_STYLE1"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
@@ -38,10 +40,10 @@
 						档案编号
 					</td>
 					<td colspan="6" class="TD_STYLE2">
-						bt201211190620460969
+						${arr.human_id }
 					</td>
 					<td rowspan="6" width="13%" style="text-align: center;">
-						<img src="../../images/regular.jpg"  style="width:120px;height:150px;"/>
+						<img src="upload/${arr.human_picture }"  style="width:120px;height:150px;"/>
 					</td>
 				</tr>
 				<tr>
@@ -49,19 +51,19 @@
 						I级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						总部
+						${arr.first_kind_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						湖南分校区
+						${arr.second_kind_name }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2" width="2%">
-						长沙分校区1
+						${arr.third_kind_name }
 					</td>
 				</tr>
 				<tr>
@@ -69,19 +71,19 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						销售
+						${arr.human_major_kind_name }
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						区域经理
+					${arr.hunma_major_name }
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						工程师
+						${arr.human_pro_designation }
 					</td>
 				</tr>
 				<tr>
@@ -89,19 +91,19 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						詹瑛
+						${arr.human_name }
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						男
+						${arr.human_sex }
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${arr.human_email }
 					</td>
 				</tr>
 				<tr>
@@ -109,19 +111,19 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						0731-1234567
+						${arr.human_telephone }
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_qq }
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${arr.human_mobilephone }
 					</td>
 				</tr>
 				<tr>
@@ -129,13 +131,13 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						
+						${arr.human_address }
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						
+						${arr.human_postcode }
 					</td>
 				</tr>
 				<tr>
@@ -143,25 +145,25 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						新西兰
+						${arr.human_nationality }
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_birthplace }
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						
+						${arr.human_birthday }
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2">
-						汉族
+						${arr.human_race }
 					</td>
 				</tr>
 				<tr>
@@ -169,25 +171,25 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						佛教
+						${arr.human_religion }
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						群众
+						${arr.human_party }
 					</td>
 					<td class="TD_STYLE1">
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						123456789123456789
+						${arr.human_id_card }
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_society_security_id }
 					</td>
 				</tr>
 				<tr>
@@ -195,25 +197,25 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_age }
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						本科
+						${arr.human_educated_degree }
 					</td>
 					<td class="TD_STYLE1">
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						16
+						${arr.human_educated_years }
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						生物工程
+						${arr.human_educated_major }
 					</td>
 				</tr>
 				<tr>
@@ -221,19 +223,19 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						1332.0
+						${arr.salary_standard_name }
 					</td>
 					<td class="TD_STYLE1">
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_bank }
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
-						
+						${arr.human_account }
 					</td>
 					<td class="TD_STYLE1">
 						复核人
@@ -247,19 +249,19 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						2012-11-19 18:48:40.0
+						${arr.check_time }
 					</td>
 					<td class="TD_STYLE1">
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						数据库
+						${arr.human_speciality }
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						篮球
+						${arr.human_hobby }
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;
@@ -282,7 +284,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="item.humanHistroyRecords" rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+							class="TEXTAREA_STYLE1" readonly="readonly">${arr.human_histroy_records}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -291,7 +293,7 @@
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="item.humanFamilyMembership" rows="4"
-							class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+							class="TEXTAREA_STYLE1" readonly="readonly">${arr.human_family_membership}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -299,7 +301,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="item.remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly"></textarea>
+						<textarea name="item.remark" rows="4" class="TEXTAREA_STYLE1" readonly="readonly">${arr.remark}</textarea>
 					</td>
 				</tr>
 			</table>

@@ -88,19 +88,18 @@
 	</head>
 
 	<body>
-		<form method="post" action="query_list">
+		<form method="post" action="delete_list">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案查询 </font>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案删除 </font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right"> 
 						<input type="submit" value="查询" class="BUTTON_STYLE1"/>
 						<input type="button" value="搜索" class="BUTTON_STYLE1"
-							onclick="location.href='query_keywords.html'">
-						<input type="hidden" name="result" value="toQueryList"/>
+							onclick="location.href='delete_keywords.html'">
 					</td>
 				</tr>
 			</table>

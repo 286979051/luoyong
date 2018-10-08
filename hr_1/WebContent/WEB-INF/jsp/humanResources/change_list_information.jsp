@@ -34,22 +34,22 @@
 	</head>
 	<body>
 
-		<form action="register_choose" method="post" enctype="multipart/form-data">
+		<form action="registerchoose" method="post" enctype="multipart/form-data">
 			<table width="100%">
 				<tr>
 					<td>
-						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案复核 </font>
+						<font color="black">您正在做的业务是：人力资源--人力资源档案管理--人力资源档案变更 </font>
 					</td>
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="submit" value="复核通过" class="BUTTON_STYLE1"/>
+						<input type="submit" value="确认变更" class="BUTTON_STYLE1"/>
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
 				</tr>
 			</table>
-			<c:forEach items="${arr }" var="s">
+			<c:forEach items="${arr}" var="s">
 			<c:if test="${s.human_id == human_id }">
 			<input type="hidden" name="human_id" value="${s.human_id }">
 			<table width="100%" border="1" cellpadding=3 cellspacing=1
@@ -431,5 +431,5 @@
 			</c:if>
 			</c:forEach>
 		</form>
-	</body>
+</body>
 </html>
