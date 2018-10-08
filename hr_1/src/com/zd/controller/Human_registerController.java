@@ -97,7 +97,7 @@ public class Human_registerController {
 	//职业的二级联动
 	@RequestMapping("/querymajorKindById")
 	@ResponseBody
-	public List<Config_major> querymajorKindById(int id){
+	public List<Config_major> querymajorKindById(String id){
 		 List<Config_major> erMajorQuery = Config_majorService.ErMajorQuery(id);
 		return erMajorQuery;
 	}

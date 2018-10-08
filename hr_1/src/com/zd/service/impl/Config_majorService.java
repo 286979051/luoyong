@@ -16,12 +16,12 @@ public class Config_majorService implements IConfig_majorService {
 	private IConfig_majorDao config_majorDao;
 	
 	//职业分类二级联动 
-	public List<Config_major> ErMajorQuery(int id) {
+	public List<Config_major> ErMajorQuery(String id) {
 		return config_majorDao.ErMajorQuery(id);
 	}
 
 	//职业分类二级联动单查
-	public Config_major ErMajorQueryDan(int id) {
+	public Config_major ErMajorQueryDan(String id) {
 		return config_majorDao.ErMajorQueryDan(id);
 	}
 
@@ -43,6 +43,12 @@ public class Config_majorService implements IConfig_majorService {
 	//张紫行，根据职位分类id查询职位名称
 		public Config_major_kind majorkindname(String majorkindid) {
 			return config_majorDao.majorkindname(majorkindid);
+		}
+
+		@Override
+		public Config_major ErMajorQueryDan(int id) {
+			// TODO Auto-generated method stub
+			return null;
 		}
 
 }

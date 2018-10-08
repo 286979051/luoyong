@@ -8,7 +8,7 @@ import com.zd.entity.Config_major_kind;
 public interface IConfig_majorService {
 
 	//职业分类二级联动 
-	public List<Config_major> ErMajorQuery(int id);
+	public List<Config_major> ErMajorQuery(String id);
 	
 	//职业分类二级联动单查
 	public Config_major ErMajorQueryDan(int id);
@@ -24,4 +24,5 @@ public interface IConfig_majorService {
 	
 	//张紫行，根据职位分类id查询职位名称
 	public Config_major_kind majorkindname(String majorkindid);
+	public Config_major ErMajorQueryDan(String id);
 }

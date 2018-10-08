@@ -34,4 +34,5 @@ public interface IConfig_major_kindDao {
 	@Insert("insert into Config_major_kind values(null,#{major_kind_id},#{major_kind_name})")
 	public void addmajorkind(Config_major_kind majorkind);
 	
+	public Config_major_kind majorQueryDan(String id);
 }

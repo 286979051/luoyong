@@ -18,4 +18,5 @@ public interface IConfig_major_kindService {
 	//张紫行，添加职业分类
 	public void addmajorkind(Config_major_kind majorkind);
 	
+	public Config_major_kind majorQueryDan(String id);
 }

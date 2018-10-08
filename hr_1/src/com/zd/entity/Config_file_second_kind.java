@@ -71,5 +71,10 @@ public class Config_file_second_kind {
 	public void setSecondsaleid(int secondsaleid) {
 		this.secondsaleid = secondsaleid;
 	}
-	
+	@Override
+	public String toString() {
+		return "Config_file_second_kind [fskid=" + fskid + ", firstkindid=" + firstkindid + ", firstkindname="
+				+ firstkindname + ", secondkindid=" + secondkindid + ", secondkindname=" + secondkindname
+				+ ", secondsalaryid=" + secondsalaryid + ", secondsaleid=" + secondsaleid + "]";
+	}
 }

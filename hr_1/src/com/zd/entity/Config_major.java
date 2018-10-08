@@ -11,8 +11,9 @@ public class Config_major {
 		super();
 	}
 	
-	public Config_major(int makid, String majorkindid, String majorkindname, String majorid, String majorname
-			) {
+
+	public Config_major(int makid, String majorkindid, String majorkindname, String majorid, String majorname,
+			int testamount) {
 		super();
 		this.makid = makid;
 		this.majorkindid = majorkindid;

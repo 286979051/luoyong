@@ -15,7 +15,7 @@ public interface IConfig_majorDao {
 	//职业分类二级联动 
 	@Select("select * from Config_major where major_kind_id=#{id}")
 	@ResultMap("Config_majormapper")
-	public List<Config_major> ErMajorQuery(int id);
+	public List<Config_major> ErMajorQuery(String id);
 	
 	//职业分类二级联动单查
 	@Select("select * from Config_major where major_id=#{id}")
@@ -39,4 +39,5 @@ public interface IConfig_majorDao {
 	@Select("select * from Config_major_kind where major_kind_id=#{major_kind_id}")
 	@ResultMap("Config_major_kindmapper")
 	public Config_major_kind majorkindname(String majorkindid);
+	public Config_major ErMajorQueryDan(String id);
 }
