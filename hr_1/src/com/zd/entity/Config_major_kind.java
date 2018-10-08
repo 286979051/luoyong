@@ -1,43 +1,40 @@
 package com.zd.entity;
 
+/**
+ * 9.：职位分类设置
+ * @author Administrator
+ *
+ */
 public class Config_major_kind {
-
+	private int mfk_id;// INT PRIMARY KEY AUTO_INCREMENT,
+	private String major_kind_id;// INT,
+	private String major_kind_name;// VARCHAR(60)
 	
 	public Config_major_kind() {
 		super();
 	}
-	
-	public Config_major_kind(int mfkid, int majorkindid, String majorkindname) {
+	public Config_major_kind(int mfk_id, String major_kind_id, String major_kind_name) {
 		super();
-		this.mfkid = mfkid;
-		this.majorkindid = majorkindid;
-		this.majorkindname = majorkindname;
+		this.mfk_id = mfk_id;
+		this.major_kind_id = major_kind_id;
+		this.major_kind_name = major_kind_name;
 	}
-
-	private int mfkid;
-	private int majorkindid;
-	private String majorkindname;
-	
-	public int getMfkid() {
-		return mfkid;
+	public int getMfk_id() {
+		return mfk_id;
 	}
-
-	public void setMfkid(int mfkid) {
-		this.mfkid = mfkid;
+	public void setMfk_id(int mfk_id) {
+		this.mfk_id = mfk_id;
 	}
-
-	public int getMajorkindid() {
-		return majorkindid;
+	public String getMajor_kind_id() {
+		return major_kind_id;
 	}
-
-	public void setMajorkindid(int majorkindid) {
-		this.majorkindid = majorkindid;
+	public void setMajor_kind_id(String major_kind_id) {
+		this.major_kind_id = major_kind_id;
 	}
-
-	public String getMajorkindname() {
-		return majorkindname;
+	public String getMajor_kind_name() {
+		return major_kind_name;
 	}
-
-	
-	
+	public void setMajor_kind_name(String major_kind_name) {
+		this.major_kind_name = major_kind_name;
+}
 }

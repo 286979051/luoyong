@@ -16,7 +16,7 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	@Autowired
 	private IConfig_file_second_kindDao config_file_second_kindDao;
 	//二级联动
-	public List<Config_file_second_kind> queryById(int id) {
+	public List<Config_file_second_kind> queryById(String id) {
 		return config_file_second_kindDao.queryById(id);
 	}
 	
@@ -36,7 +36,7 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	}
 	
 	//二级联动单查
-	public Config_file_second_kind queryDan(int id) {
+	public Config_file_second_kind queryDan(String id) {
 		return config_file_second_kindDao.queryDan(id);
 	}
 
@@ -63,6 +63,12 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 	//删除二级机构的同时删除三级机构
 	public void delete2(String secondkindid) {
 		config_file_second_kindDao.delete2(secondkindid);
+	}
+
+	@Override
+	public Config_file_second_kind queryDan(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

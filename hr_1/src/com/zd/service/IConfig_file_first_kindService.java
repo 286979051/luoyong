@@ -24,4 +24,5 @@ public interface IConfig_file_first_kindService {
 	public Config_file_first_kind queryDan(int first_kind_id);
 	//添加时查询一级机构名字
 	public Config_file_first_kind selbybhid(String firstkindid);
+	public Config_file_first_kind queryDan(String first_kind_id);
 }

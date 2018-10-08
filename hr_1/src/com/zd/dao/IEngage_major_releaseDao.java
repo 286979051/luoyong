@@ -24,7 +24,7 @@ public interface IEngage_major_releaseDao {
 	public Engage_major_release releaseQueryById(int id);
 	
 	//职位发表登记表修改
-	@Update("update Engage_major_release set human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},major_describe=#{major_describe},engage_required=#{engage_required} where mre_id=#{mre_id}")
+	@Update("update Engage_major_release set engage_type=#{engage_type},human_amount=#{human_amount},deadline=#{deadline},changer=#{changer},major_describe=#{major_describe},engage_required=#{engage_required} where mre_id=#{mre_id}")
 	public void releaseUpd(Engage_major_release Engage_major_release);
 	
 	//职位发表登记删除

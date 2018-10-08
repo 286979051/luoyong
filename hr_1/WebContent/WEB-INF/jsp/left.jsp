@@ -24,7 +24,7 @@
 									<ul>
 												<li>
 													<span>
-														<a href="query" target="mainFrame" style="color:black;">职位发布登记</a>
+														<a href="queryCffk" target="mainFrame" style="color:black;">职位发布登记</a>
 													</span>
 												</li>
 												<li>
@@ -34,7 +34,7 @@
 												</li>
 												<li>
 													<span>
-														<a href="recruit/position/position_release_search.html" target="mainFrame" style="color:black;">职位发布查询</a>
+														<a href="releaseQuery1" target="mainFrame" style="color:black;">职位发布查询</a>
 													</span>
 												</li>
 									</ul>
@@ -112,12 +112,12 @@
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/check_list.html" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
+											<a href="check_list" target="mainFrame" style="color:black;">人力资源档案登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-											<a href="humanResources/query_locate.html" target="mainFrame" style="color:black;">人力资源档案查询</a>
+											<a href="query_locate" target="mainFrame" style="color:black;">人力资源档案查询</a>
 									</span>
 								</li>
 								<li>
@@ -154,22 +154,22 @@
 					<ul>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_register.html" target="mainFrame" style="color:black;">薪酬标准登记</a>
+										<a href="tosalarystandard_register" target="mainFrame" style="color:black;">薪酬标准登记</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_check_list.html" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
+										<a href="selallSalary" target="mainFrame" style="color:black;">薪酬标准登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_query_locate.html" target="mainFrame" style="color:black;">薪酬标准查询</a>
+										<a href="salaryCriterion/salarystandard_query_locate" target="mainFrame" style="color:black;">薪酬标准查询</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryCriterion/salarystandard_change_locate.html" target="mainFrame" style="color:black;">薪酬标准变更</a>
+										<a href="salaryCriterion/salarystandard_change_locate" target="mainFrame" style="color:black;">薪酬标准变更</a>
 									</span>
 								</li>
 					</ul>
@@ -179,7 +179,7 @@
 					<ul>
 								<li>
 									<span>
-										<a href="salaryGrant/register_locate.html" target="mainFrame" style="color:black;">薪酬发放登记</a>
+										<a href="toloctae" target="mainFrame" style="color:black;">薪酬发放登记</a>
 									</span>
 								</li>
 								<li>
@@ -239,17 +239,17 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/profession_design.html" target="mainFrame" style="color:black;">职称设置</a>
+														<a href="selprofessiondesign" target="mainFrame" style="color:black;">职称设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/major_kind.html" target="mainFrame" style="color:black;">职位分类设置</a>
+														<a href="majorkindlist" target="mainFrame" style="color:black;">职位分类设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/major.html" target="mainFrame" style="color:black;">职位设置</a>
+														<a href="selallConfig_major" target="mainFrame" style="color:black;">职位设置</a>
 													</span>
 												</li>
 												<li>

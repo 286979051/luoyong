@@ -33,7 +33,7 @@ public class Config_file_third_kindController {
 	
 	@RequestMapping("querySanBySecondId")
 	@ResponseBody
-	public List<Config_file_third_kind> queryByid(int id){
+	public List<Config_file_third_kind> queryByid(String id){
 		List<Config_file_third_kind> thirdList =  config_file_third_kindService.queryById(id);
 		return thirdList;
 	}

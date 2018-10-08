@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.IStandardDao">
+	<!-- zhangmin的查询映射 -->
+	<resultMap type="com.zd.entity.zm_some" id="zm_some2Mapper">
+			<result column="standard_id" property="standard_id"/>
+			<result column="pbc_id" property="pbc_id"/>
+			<result column="money" property="money"/>
+			<!-- 查询薪酬项目  多 -->
+			<collection property="pchar"
+						select="com.zd.dao.IConfig_public_charDao.selzm_some"
+						column="pbc_id"></collection>
+	</resultMap>
+	
+	<select id="selone_zmsome" parameterType="java.lang.String" resultMap="zm_some2Mapper">
+		SELECT * FROM zm_some WHERE standard_id = #{standard_id} ORDER BY pbc_id
+	</select>
+</mapper>

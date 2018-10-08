@@ -27,7 +27,7 @@ public class Config_file_second_kindController {
 	//二级联动
 	@RequestMapping("queryById")
 	@ResponseBody
-	public List<Config_file_second_kind> queryById(int id){
+	public List<Config_file_second_kind> queryById(String id){
 		List<Config_file_second_kind> secondList = config_file_second_kindService.queryById(id);
 		return secondList;
 	}

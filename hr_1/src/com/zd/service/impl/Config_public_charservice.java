@@ -18,6 +18,11 @@ public class Config_public_charservice implements IConfig_public_charservice {
 	public List<Config_public_char> queryall() {
 		return Config_public_char.queryall();
 	}
+	
+	//zhangmin的查询薪酬公共字段
+	public List<Config_public_char> selsalary() {
+		return Config_public_char.selsalary();
+	}
 
 	
 	//查询招聘类型
@@ -31,4 +36,20 @@ public class Config_public_charservice implements IConfig_public_charservice {
 		return Config_public_char.QueryEngageTypeDan(id);
 	}
 
+	//zhangmin的查询薪酬公共字段（一对一）
+	public List<com.zd.entity.Config_public_char> selzm_some(int pbc_id) {
+		return Config_public_char.selzm_some(pbc_id);
+	}
+
+	//张紫行,查询所有职称
+	public List<Config_public_char> selprofessiondesign(){
+		return Config_public_char.selprofessiondesign();
+	}
+
+	//张紫行,删除职称
+	public void deleteprofession(int pbc_id) {
+		Config_public_char.deleteprofession(pbc_id);
+	}
+
+	
 }
