@@ -41,4 +41,8 @@ public class Config_public_charservice implements IConfig_public_charservice {
 		return Config_public_char.selzm_some(pbc_id);
 	}
 
+	//对复核信息进行查询添加_zm
+	public com.zd.entity.Config_public_char selfuhe(int pbc_id) {
+		return Config_public_char.selfuhe(pbc_id);
+	}
 }

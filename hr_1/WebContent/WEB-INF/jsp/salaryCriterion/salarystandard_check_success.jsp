@@ -3,8 +3,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="../../css/table.css" type="text/css">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="css/table.css" type="text/css"/>
 <script type="text/javascript" src="../../javascript/comm/comm.js"></script>
 </head>
 <body>
@@ -20,7 +20,7 @@
     <td width="51%" align="right">
 			<input type="button" 
 			class="BUTTON_STYLE1" 
-			onclick="javascript:window.location='salarystandard_check_list.html';" 
+			onclick="javascript:window.location='selallSalary';" 
 			value="返回" />
 		</td>
 		

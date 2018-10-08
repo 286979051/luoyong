@@ -14,6 +14,6 @@
 	</resultMap>
 	
 	<select id="selone_zmsome" parameterType="java.lang.String" resultMap="zm_some2Mapper">
-		SELECT * FROM zm_some WHERE standard_id = #{standard_id} ORDER BY pbc_id
+		SELECT a.*,b.attribute_name FROM zm_some a,config_public_char b WHERE a.pbc_id = b.pbc_id AND standard_id = #{standard_id}
 	</select>
 </mapper>

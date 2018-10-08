@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.IStandardDao;
+import com.zd.dao.Salary_standard_details;
 import com.zd.entity.Salary_standard;
 import com.zd.entity.zm_some;
 import com.zd.service.IStandardService;
@@ -53,6 +54,21 @@ public class StandardService implements IStandardService{
 		return dao.selone_zmsome(standard_id);
 	}
 
+	//对复核信息进行修改
+	public void updfuhe(Salary_standard salary_standard) {
+		dao.updfuhe(salary_standard);
+	}
 	
+	//对复核信息进行修改_2
+	public void updfuhe2(Map map) {
+		dao.updfuhe2(map);
+	}
+
+	//对复核信息进行添加
+	public void addfuhe(Map map) {
+		dao.addfuhe(map);
+		
+	}
+
 }
 

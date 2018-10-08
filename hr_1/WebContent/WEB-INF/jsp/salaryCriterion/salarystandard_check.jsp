@@ -12,7 +12,7 @@
 
 	<body>
 		 
-		<form method="post" action="salarystandard_check_success.html" > 
+		<form method="post" action="updfuhe" > 
 		
 		<input type="hidden" name="standard.ssdId" value="1259">
 		
@@ -25,7 +25,7 @@
 				<tr>
 					<td>
 						<div align="right">
-							<input type="button" value="复核通过" class="BUTTON_STYLE1" onclick="check();"/>
+							<input type="button" value="复核通过" class="BUTTON_STYLE1" onclick="check();" />
 							<input type="button" value="返回" onclick="history.back();" class="BUTTON_STYLE1"/>
 						</div>
 					</td>
@@ -40,19 +40,19 @@
 						薪酬编号
 					</td>
 					<td width="15%" class="TD_STYLE2">
-					<input type="text" name="standard.standardId" readonly="readonly" value="${salary_standard.standard_id }"/>
+					<input type="text" name="standard_id" readonly="readonly" value="${salary_standard.standard_id }"/>
 					</td>
 					<td width="12%" class="TD_STYLE1">
 						薪酬标准名称
 					</td>
 					<td width="11%" class="TD_STYLE2">
-						<input type="text" name="standard.standardName" id="standardName" value="${salary_standard.standard_name }"   class="INPUT_STYLE2">
+						<input type="text" name="standard_name" id="standardName" value="${salary_standard.standard_name }"   class="INPUT_STYLE2">
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						薪酬总额
 					</td>
 					<td width="17%" class="TD_STYLE2">
-					<input type="text" name="standard.salarySum" value="${salary_standard.salary_sum }" id="sumSalary" class="INPUT_STYLE2">
+					<input type="text" name="salary_sum" value="${salary_standard.salary_sum }" id="sumSalary" readonly="readonly" class="INPUT_STYLE2"/>
 					 	</td>
 					<td width="12%" class="TD_STYLE1">
 						&nbsp;
@@ -66,20 +66,20 @@
 						制定人
 					</td>
 					<td class="TD_STYLE2">
-					<input type="text" name="standard.designer" id="designer"  value="${salary_standard.designer }" class="INPUT_STYLE2">
+					<input type="text" name="designer" id="designer"  value="${salary_standard.designer }" class="INPUT_STYLE2"/>
 						 
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-					<input type="text" name="standard.checker" value="${user.user_name }" class="INPUT_STYLE2">
+					<input type="text" name="checker" value="${user.user_name }" class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-					<input type="text" name="standard.checkTime" id="Tdate" class="INPUT_STYLE2">
+					<input type="text" name="check_time" id="Tdate" readonly="readonly" class="INPUT_STYLE2" />
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;
@@ -93,7 +93,7 @@
 						复核意见 
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-					<textarea name="standard.checkComment" rows="4" class="INPUT_STYLE2"></textarea>
+					<textarea name="check_comment" rows="4" class="INPUT_STYLE2"></textarea>
 					 
 					</td>
 				</tr>
@@ -108,12 +108,13 @@
 						金额
 					</td>
 				</tr>
-				<c:forEach var="zm" items="${zm_somelist}">
+				<c:forEach var="zm" items="${zm_somelist}" varStatus="q">
 				<tr class="TD_STYLE2">
 					<td align="center">
+					<input type="hidden" name="${zm.pbc_id}" value="${zm.pbc_id}"/>
 						<input type="hidden" name="details[0].sdtId" value="1260" />
 						<input type="hidden" name="details[0].itemId" value="63" />
-						 ${zm.pbc_id}
+						 ${q.count}
 					</td>
 					<td colspan="3">
 					<input type="hidden" name="details[0].standardId" value="1353320184280" />
@@ -122,13 +123,12 @@
 					${zm.pchar.attribute_name }
 					</td>
 					<td>
-					<input type="text" id="salary1" value="${zm.money }" name="details[0].salary" 
-						onkeyup="countMoney('6','salary1')" class="INPUT_STYLE2">
-			
+					<input type="text" id="salary${q.count}" value="${zm.money }" name="x_${zm.pbc_id}" 
+						onkeyup="countMoney('${zm_somelist_size}','salary${q.count}')" class="INPUT_STYLE2"/>
 					</td>
 					<td colspan="3">
 						&nbsp;
-					</td>
+					</td>	
 				</tr>
 			 	</c:forEach>
 			</table>

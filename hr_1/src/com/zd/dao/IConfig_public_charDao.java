@@ -34,4 +34,9 @@ public interface IConfig_public_charDao {
 	@Select("SELECT * FROM Config_public_char where pbc_id=#{id}")
 	@ResultMap("queryall")
 	public Config_public_char QueryEngageTypeDan(int id);
+	
+	//对复核信息进行查询添加_zm
+	@Select("SELECT attribute_name FROM config_public_char WHERE  pbc_id = #{pbc_id}")
+	@ResultMap("queryall")
+	public Config_public_char selfuhe(int pbc_id);
 }

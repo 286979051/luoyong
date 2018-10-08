@@ -104,10 +104,10 @@
 					</td>
 				</tr>
 				<tbody>
-					<c:forEach var="charlist" items="${charlist }">
+					<c:forEach var="charlist" items="${charlist }" varStatus="q">
 						<tr class="TD_STYLE2">
 							<td align="center">
-								${charlist.pbc_id}
+								${q.count}
 								<input type="hidden" name="${charlist.pbc_id}" value="${charlist.pbc_id}"/>
 							</td>
 							<td colspan="3">
@@ -115,8 +115,8 @@
 								<input type="hidden" id="details${charlist.pbc_id}" name="details[0].itemName" value="${charlist.attribute_name}"/>
 							</td>
 							<td>
-								<input type="text" name="money_${charlist.pbc_id}" id="salary${charlist.pbc_id}" value="0.00" name="details[0].salary" 
-								onkeyup="countMoney('${charlist.pbc_id}','salary${charlist.pbc_id}')" class="INPUT_STYLE2"/>
+								<input type="text" name="money_${charlist.pbc_id}" id="salary${q.count}" value="0.00"
+								onkeyup="countMoney('${charlist_size}','salary${q.count}')" class="INPUT_STYLE2"/>
 							</td>
 							<td colspan="3">
 								&nbsp;

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Salary_standard;
 /**
@@ -28,7 +29,7 @@ public interface IStandardDao {
 	public List<Salary_standard> selallSalary(int start);
 	
 	//薪酬标准登记复核分页查询信息总数
-	@Select("SELECT COUNT(*) FROM salary_standard")
+	@Select("SELECT COUNT(*) FROM salary_standard WHERE check_status = 2")
 	public int selallSalary_count();	
 	
 	//进复核查询单条信息--基本信息
@@ -39,4 +40,16 @@ public interface IStandardDao {
 	//进复核查询单条信息--项目信息
 	public List<zm_some> selone_zmsome(String standard_id);
 
+	//对复核信息进行修改_1
+	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},checker=#{checker},check_time=#{check_time},salary_sum=#{salary_sum},check_status=1,check_comment=#{check_comment} WHERE standard_id=#{standard_id};")
+	public void updfuhe(Salary_standard salary_standard);
+	
+	//对复核信息进行修改_2
+	@Update("UPDATE zm_some  SET money = #{money} WHERE standard_id=#{standard_id} AND pbc_id = #{pbc_id}")
+	public void updfuhe2(Map map);
+	
+	//对复核信息进行添加
+	@Insert("INSERT INTO salary_standard_details VALUES(NULL,#{standard_id},#{standard_name},#{item_id},#{item_name},#{salary})")
+	public void addfuhe(Map map);
+	
 }

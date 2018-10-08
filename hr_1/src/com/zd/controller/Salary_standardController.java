@@ -19,7 +19,12 @@ import com.zd.entity.Salary_standard;
 import com.zd.entity.zm_some;
 import com.zd.service.IConfig_public_charservice;
 import com.zd.service.IStandardService;
-
+/**
+ * 
+ * @author 张敏
+ * Salary_standardController
+ *
+ */
 @Controller
 public class Salary_standardController {
 
@@ -48,6 +53,7 @@ public class Salary_standardController {
 			//将页面需要的数据通过map发送过去
 			map.put("timeid", timeid);
 			map.put("charlist", charlist);
+			map.put("charlist_size", charlist.size());
 		} catch (Exception e) {
 			log.error("跳转tosalarystandard_register.jsp失败",e);
 		}
@@ -223,9 +229,47 @@ public class Salary_standardController {
 			//进复核查询单条信息--项目信息
 			List<zm_some> zm_somelist =  StandardService.selone_zmsome(standard_id);
 			map.put("zm_somelist", zm_somelist);
+			map.put("zm_somelist_size", zm_somelist.size());
 		} catch (Exception e) {
 			log.error("页面跳转失败",e);
 		}
 		return "salaryCriterion/salarystandard_check";
 	}
+	
+	@RequestMapping("/updfuhe")
+	public String updfuhe(Salary_standard salary_standard,@RequestParam Map map) {
+		//修改基本信息
+		StandardService.updfuhe(salary_standard);
+		//获取修改和添加的map
+		Map<String, Object> updmap = new HashMap<>();
+		Map<String, Object> addmap = new HashMap<>();
+		//获取编号
+		String standard_id = salary_standard.getStandard_id();
+		String standard_name = salary_standard.getStandard_name();
+		//获取id 和 钱数
+		Set<String> keyset = map.keySet();
+		for (String key : keyset) {
+			if(key.startsWith("x_")) {
+				int pbc_id = Integer.parseInt(key.split("_")[1]);
+				double money = Double.parseDouble((String)map.get(key));
+				updmap.put("pbc_id", pbc_id);
+				updmap.put("money", money);
+				updmap.put("standard_id", standard_id);
+				//实现修改项目钱数
+				StandardService.updfuhe2(updmap);
+				//获取添加项目需要的信息
+				Config_public_char attribute = Config_public_charService.selfuhe(pbc_id);
+				String attribute_name = attribute.getAttribute_name();
+				addmap.put("item_id", pbc_id);
+				addmap.put("item_name", attribute_name);
+				addmap.put("salary", money);
+				addmap.put("standard_id", standard_id);
+				addmap.put("standard_name", standard_name);
+				//实现添加功能
+				StandardService.addfuhe(addmap);
+			}
+		}
+		return "salaryCriterion/salarystandard_check_success";
+	}
+	
 }
