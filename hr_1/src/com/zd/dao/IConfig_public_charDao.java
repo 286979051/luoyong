@@ -44,5 +44,24 @@ public interface IConfig_public_charDao {
 	//张紫行，删除职称
 	@Delete("delete from Config_public_char where pbc_id=#{pbc_id}")
 	public void deleteprofession(int pbc_id);
-
+	//张紫行，查询所有公共属性
+	@Select("select * from Config_public_char")
+	@ResultMap("queryall")
+	public List<Config_public_char> selallpublicchar();
+	//张紫行，删除公共属性
+	@Delete("delete from Config_public_char where pbc_id=#{pbc_id}")
+	public void deletepublicchar(int pbc_id);
+	//张紫行，添加公共属性
+	@Insert("insert into Config_public_char values(null,#{attribute_kind},#{attribute_name})")
+	public void addConfigpublicchar(Config_public_char publicchar);
+	//张紫行，查询所有的薪酬设置
+	@Select("select * from Config_public_char where attribute_kind='薪酬设置'")
+	@ResultMap("queryall")
+	public List<Config_public_char> salaryitemlist();
+	//张紫行，删除薪酬设置
+	@Delete("delete from Config_public_char where pbc_id=#{pbc_id}")
+	public void deletesalaryitem(int pbc_id);
+	//张紫行，添加薪酬设置
+	@Insert("insert into Config_public_char values(null,'薪酬设置',#{attribute_name})")
+	public void addsalaryitem(Config_public_char publicchar);
 }

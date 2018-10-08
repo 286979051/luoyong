@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sun.org.apache.regexp.internal.recompile;
 import com.zd.dao.IConfig_public_charDao;
 import com.zd.entity.Config_public_char;
 import com.zd.service.IConfig_public_charservice;
@@ -51,5 +52,35 @@ public class Config_public_charservice implements IConfig_public_charservice {
 		Config_public_char.deleteprofession(pbc_id);
 	}
 
+	//张紫行，查询所有公共属性
+	public List<com.zd.entity.Config_public_char> selallpublicchar() {
+		return Config_public_char.selallpublicchar();
+	}
+
+	//张紫行，删除公共属性
+	public void deletepublicchar(int pbc_id) {
+		Config_public_char.deletepublicchar(pbc_id);
+	}
+
+	//张紫行，添加公共属性种类
+	public void addConfigpublicchar(Config_public_char publicchar) {
+		Config_public_char.addConfigpublicchar(publicchar);
+	}
+
+	//张紫行，查询所有的薪酬设置
+	public List<com.zd.entity.Config_public_char> salaryitemlist() {
+		return Config_public_char.salaryitemlist();
+	}
+
+	//张紫行，删除薪酬设置
+	public void deletesalaryitem(int pbc_id) {
+		Config_public_char.deletesalaryitem(pbc_id);
+	}
+
+	//张紫行，添加薪酬设置
+	public void addsalaryitem(com.zd.entity.Config_public_char publicchar) {
+		Config_public_char.addsalaryitem(publicchar);
+	}
+	
 	
 }
