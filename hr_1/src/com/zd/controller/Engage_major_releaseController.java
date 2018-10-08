@@ -36,11 +36,11 @@ public class Engage_major_releaseController {
 	@Autowired
 	private IConfig_major_kindService config_major_kindService;
 	@Autowired
+	private IConfig_majorService config_majorService;
+	@Autowired
 	private IConfig_public_charservice config_public_charservice;
 	@Autowired
 	private IEngage_major_releaseService engage_major_releaseService;
-	@Autowired
-	private IConfig_majorService config_majorService;
 	
 	//职位发表登记表申请修改
 	@RequestMapping("releaseUpdShenQ")
@@ -60,12 +60,10 @@ public class Engage_major_releaseController {
 		//职业分联动类二级单查赋值
 		Config_major cmajor = config_majorService.ErMajorQueryDan(engage_major_release.getMajor_id());
 		engage_major_release.setMajor_name(cmajor.getMajorname());
-		//查询招聘类型单查赋值
-		Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(engage_major_release.getMre_id());
-		engage_major_release.setEngage_type(cpc.getAttribute_name());
+		
 		engage_major_releaseService.releaseUpdShenQ(engage_major_release);
 		
-		return "redirect:releaseUpdShenQ";
+		return "redirect:releaseQuery1";
 	}
 	
 	//职位发表登记表查询申请单条
@@ -164,7 +162,7 @@ public class Engage_major_releaseController {
 	}
 	//职位发表登记添加
 	@RequestMapping("releaseInsetr")
-	public String releaseInsetr(Engage_major_release Engage_major_release,String first_kind_id,String second_kind_id,String third_kind_id,int major_kind_id,int major_id,int pbc_id) {
+	public String releaseInsetr(Engage_major_release Engage_major_release,String first_kind_id,String second_kind_id,String third_kind_id,String major_kind_id,String major_id,int pbc_id) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
 			//一级机构联动单条查询赋值

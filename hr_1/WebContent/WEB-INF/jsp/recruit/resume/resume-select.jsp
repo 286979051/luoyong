@@ -1,29 +1,31 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'resume-select.jsp' starting page</title>
 		<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 		</script>
 		<script type="text/javascript">
 function toCheck(id)
@@ -32,8 +34,30 @@ function toCheck(id)
 	document.forms[0].submit();
 }
 </script>
-	 
-
+	 <script type="text/javascript">
+ 		function major(){
+ 			var majorKindId=$("#majorKindId").val();
+ 			$.ajax({
+ 				url:'ErMajorQuery?id='+majorKindId,
+ 				type:'get',
+ 				success:function(data){
+ 					var majorSel=$("#majorId")
+ 					majorSel.empty();
+ 					majorSel.append("<option >---请选择---</option>")
+ 					for(var i=0;i<data.length;i++){
+ 						var majorName=data[i];
+ 						var majorId=majorName.majorid;
+ 						var mName=majorName.majorname;
+ 						majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
+ 						
+ 					}
+ 				}
+ 				
+ 			});
+ 			
+ 		}
+ 	</script>
+ 	</head>
 	<body>
 		<form name="humanfileForm" method="post" action="/hr/humanfile.do">
 			<table width="100%">
@@ -58,10 +82,7 @@ function toCheck(id)
 					<td class="TD_STYLE2">
 
 						<select name="engageResume.humanMajorKindId">
-							<option
-								value="02">
-								&#36719;&#20214;&#24320;&#21457;
-							</option>
+							<option value="${er.human_major_kind_id }" selected>${er.human_major_kind_name }</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -70,8 +91,8 @@ function toCheck(id)
 					<td class="TD_STYLE2" width="20%">
 						<select name="engageResume.majorId">
 							<option
-								value="">
-								&#31243;&#24207;&#21592;
+								value="${er.human_major_id }">
+								${er.human_major_name }
 							</option>
 						</select>
 					</td>
@@ -80,10 +101,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2" colspan="2">
 						<select name="engageResume.engageType" class="SELECT_STYLE1">
-							<option
-								value="&#26657;&#22253;&#25307;&#32856;">
-								&#26657;&#22253;&#25307;&#32856;
-							</option>
+							<option value="${er.engage_type} " selected>${er.engage_type } </option>
 						</select>
 					</td>
 					<td rowspan="6">
@@ -96,7 +114,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text"
-							value="&#24352;&#39122;"
+							value="${er.human_name }"
 							name="engageResume.humanName" class="INPUT_STYLE2" readonly="readonly"/>
 					</td>
 					<td class="TD_STYLE1">
@@ -105,8 +123,8 @@ function toCheck(id)
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanName" class="SELECT_STYLE1">
 							<option
-								value="&#30007;">
-								&#30007;
+								value="${er.human_sex }">
+								${er.human_sex }
 							</option>
 						</select>
 					</td>
@@ -115,7 +133,7 @@ function toCheck(id)
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="engageResume.humanEmail"
-							value="123@.com"
+							value="${er.human_email }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 				</tr>
@@ -125,7 +143,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanTelephone"
-							value="84802802"
+							value="${er.human_telephone }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
@@ -133,7 +151,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanHomephone"
-							value="123@.com"
+							value="${er.human_homephone }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
@@ -141,7 +159,7 @@ function toCheck(id)
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="engageResume.humanMobilephone"
-							value="123@.com"
+							value="${er.human_mobilephone }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 				</tr>
@@ -151,7 +169,7 @@ function toCheck(id)
 					</td>
 					<td colspan="3" class="TD_STYLE2">
 						<input type="text" name="engageResume.humanAddress"
-							value="&#28246;&#21335;&#38271;&#27801;"
+							value="${er.human_address }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 
@@ -160,7 +178,7 @@ function toCheck(id)
 					</td>
 					<td colspan="2" class="TD_STYLE2">
 						<input type="text" name="engageResume.humanPostcode"
-							value="410000"
+							value="${er.human_postcode }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 				</tr>
@@ -171,10 +189,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanNationality" class="SELECT_STYLE1">
-							<option
-								value="&#20013;&#22269;">
-								&#20013;&#22269;
-							</option>
+							<option value="${er.human_nationality }" selected>${er.human_nationality }</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -182,7 +197,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanBirthplace"
-							value=""
+							value="${er.human_birthplace }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
@@ -190,7 +205,7 @@ function toCheck(id)
 					</td>
 					<td width="13%" colspan="2" class="TD_STYLE2">
 						<input type="text" name="engageResume.humanBirthday"
-							value="92-2-2 12:00:00.000"
+							value="${er.human_birthday }"
 							class="INPUT_STYLE2" id="date_start" readonly="readonly">
 					</td>
 
@@ -201,10 +216,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2" width="14%">
 						<select name="engageResume.humanRace" class="SELECT_STYLE1">
-							<option
-								value="&#27721;&#26063;">
-								&#27721;&#26063;
-							</option>
+							<option value="${er.human_race } " selected>${er.human_race } </option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -212,10 +224,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanReligion" class="SELECT_STYLE1">
-							<option
-								value="&#26080;">
-								&#26080;
-							</option>
+							<option value="${er.human_religion} " selected>${er.human_religion } </option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -223,10 +232,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2" colspan="2">
 						<select name="engageResume.humanParty" class="SELECT_STYLE1">
-							<option
-								value="">
-								
-							</option>
+							<option value="${er.human_party} " selected>${er.human_party } </option>
 						</select>
 					</td>
 
@@ -238,7 +244,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanIdcard"
-							value="430121199202022323"
+							value="${er.human_idcard }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
@@ -246,7 +252,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanAge"
-							value="20"
+							value="${er.human_age }"
 							class="INPUT_STYLE2" readonly="readonly">
 					</td>
 					<td class="TD_STYLE1">
@@ -254,7 +260,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.humanCollege"
-							value="&#38271;&#27801;&#29702;&#24037;"
+							value="${er.human_college }"
 							class="INPUT_STYLE2" readonly="readonly"/>
 					</td>
 
@@ -264,10 +270,7 @@ function toCheck(id)
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanEducatedDegree"
 							class="SELECT_STYLE1">
-							<option
-								value="&#22823;&#19987;">
-								&#22823;&#19987;
-							</option>
+							<option value="${er.human_educated_degree} " selected>${er.human_educated_degree } </option>
 						</select>
 					</td>
 
@@ -279,10 +282,7 @@ function toCheck(id)
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanEducatedYears"
 							class="SELECT_STYLE1">
-							<option
-								value="12">
-								12
-							</option>
+							<option value="${er.human_educated_years} " selected>${er.human_educated_years } </option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -291,10 +291,7 @@ function toCheck(id)
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanEducatedMajor"
 							class="SELECT_STYLE1">
-							<option
-								value="&#35745;&#31639;&#26426;">
-								&#35745;&#31639;&#26426;
-							</option>
+							<option value="${er.human_educated_major} " selected>${er.human_educated_major } </option>>
 						</select>
 					</td>
 
@@ -303,14 +300,14 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.demandSalaryStandard"
-							value="6000.0"
+							value="${er.demand_salary_standard }"
 							class="INPUT_STYLE2" readonly="readonly" />
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
 					<td class="TD_STYLE2">
-						12-11-25 13:50:30.000
+						${er.regist_time }
 					</td>
 
 				</tr>
@@ -321,10 +318,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanSpecility" class="SELECT_STYLE1">
-							<option
-								value="java">
-								java
-							</option>
+							<option value="${er.human_specility} " selected>${er.human_specility } </option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -332,10 +326,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<select name="engageResume.humanHobby" class="SELECT_STYLE1">
-							<option
-								value="&#31726;&#29699;">
-								&#31726;&#29699;
-							</option>
+							<option value="${er.human_hobby} " selected>${er.human_hobby } </option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
@@ -343,7 +334,7 @@ function toCheck(id)
 					</td>
 					<td class="TD_STYLE2">
 						<input type="text" name="engageResume.passChecker"
-							value="zhangsan, zhangsan"
+							value="${er.pass_checker }"
 							class="INPUT_STYLE2" readonly="readonly"/>
 
 					</td>
@@ -351,7 +342,7 @@ function toCheck(id)
 						推荐时间
 					</td>
 					<td class="TD_STYLE2">
-						12-11-25 13:51:18.000
+						${er.pass_check_time }
 					</td>
 				</tr>
 				<tr>
@@ -360,7 +351,7 @@ function toCheck(id)
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="engageResume.humanHistoryRecords" rows="4" readonly="readonly"
-							class="TEXTAREA_STYLE1"> &#20010;&#20154;&#23653;&#21382;
+							class="TEXTAREA_STYLE1"> ${er.human_history_records }
 						
 						</textarea>
 					</td>
@@ -372,7 +363,7 @@ function toCheck(id)
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="engageResume.remark" rows="4" readonly="readonly"
-							class="TEXTAREA_STYLE1"> &#22791;&#27880;
+							class="TEXTAREA_STYLE1"> ${er.remark }
 						
 						</textarea>
 					</td>
@@ -383,12 +374,11 @@ function toCheck(id)
 					</td>
 					<td colspan="7" class="TD_STYLE2">
 						<textarea name="engageResume.recomandation" rows="4" readonly="readonly"
-							class="TEXTAREA_STYLE1"> &#25512;&#33616;						
+							class="TEXTAREA_STYLE1"> ${er.recomandation }						
 						</textarea>
 					</td>
 				</tr>
 			</table>
 		</form>
-	</body>
+</body>
 </html>
-

@@ -1,33 +1,33 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>My JSP 'resume-choose.jsp' starting page</title>
 
 		 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
-		</script>
-		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/locate.js">
 		</script>
 	   <script type="text/javascript"
-			src="../../../javascript/comm/time.js">
+			src="javascript/comm/time.js">
 			</script>
 		<script type="text/javascript">
 	function search() {
@@ -38,10 +38,34 @@
 		document.resumeChooseForm.submit();
 	}
 </script>
+<script type="text/javascript">
+ 		function major(){
+ 			var majorKindId=$("#majorKindId").val();
+ 			$.ajax({
+ 				url:'ErMajorQuery?id='+majorKindId,
+ 				type:'get',
+ 				success:function(data){
+ 					var majorSel=$("#majorId")
+ 					majorSel.empty();
+ 					majorSel.append("<option >---请选择---</option>")
+ 					for(var i=0;i<data.length;i++){
+ 						var majorName=data[i];
+ 						var majorId=majorName.majorid;
+ 						var mName=majorName.majorname;
+ 						majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
+ 						
+ 					}
+ 				}
+ 				
+ 			});
+ 			
+ 		}
+ 		
+ 		</script>
 	</head>
 
 	<body>
-		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="/HR_Fist/recruit/recruitAction!findEngageResume?a=list" method="post">
+		<form id="recruitAction!findEngageResume?a=list" name="resumeChooseForm" action="Engage_resume_MoHu" method="post">
 			<input type="hidden" name="engageResume.humanMajorKindName"
 				id="majorKindName" />
 			<input type="hidden" name="engageResume.humanMajorName"
@@ -72,21 +96,17 @@
 						请选择职位分类
 					</td>
 					<td class="TD_STYLE2" width="30%">
-					<select name="engageResume.humanMajorKindId" multiple="multiple" style="width: 290;height: 100"
-							 id="majorKindId"  class="SELECT_STYLE2"> 
+					<select name="majorKindId" onchange="major()" id="majorKindId" multiple="multiple" style="width: 290;height: 100"
+							   class="SELECT_STYLE2"> 
 						<option value="0">--请选择--</option>
 					
-					<option value="01">销售</option>
-					
-					<option value="02">软件开发</option>
-					
-					<option value="03">人力资源</option>
-					
-					<option value="04">生产部</option>
+					<c:forEach items="${major }" var="major">
+						<option value="${major.major_kind_id }">${major.major_kind_name }</option>
+						</c:forEach>
 					
 					 </select>
-						<select name="engageResume.humanMajorId"  multiple="multiple"  style="width: 290;height: 100"
-							 id="majorId" size="5"
+						<select name="majorId" id="majorId"  multiple="multiple"  style="width: 290;height: 100"
+							  size="5"
 							class="SELECT_STYLE2">
 							<option>
 								--请选择--
@@ -101,7 +121,7 @@
 						请输入关键字
 					</td>
 					<td width="84%">
-						<input type="text" name="utilBean.primarKey" value=""
+						<input type="text" name="primarKey" 
 							class="INPUT_STYLE2" />
 					</td>
 				</tr>
@@ -111,22 +131,17 @@
 						请输入登记时间
 					</td>
 					<td width="84%" class="TD_STYLE2">
-					<input type="hidden" name="utilBean.datePropertyName" value="registTime"/>
+					<input type="hidden" name="mindate" />
 						 
 						<input type="text" name="utilBean.startDate"   onclick="aa('utilBean.startDate')" 
 							style="width: 14%" class="INPUT_STYLE2">
 						至
-						<input type="text" name="utilBean.endDate" 
+						<input type="text" name="maxdate" 
 							style="width: 14%" class="INPUT_STYLE2" onclick="aa('utilBean.endDate')">
 						（YYYY-MM-DD）
 					</td>
 				</tr>
 			</table>
 		</form>
-
-
-
-
-	</body>
-	
+</body>
 </html>

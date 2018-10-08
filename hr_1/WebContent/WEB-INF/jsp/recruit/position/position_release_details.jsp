@@ -173,13 +173,13 @@
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="pbcid"  class="SELECT_STYLE1">
+						<select name="engage_type"  class="SELECT_STYLE1">
 						<c:forEach items="${publicList }" var="publicList">
 							<c:if test="${publicList.attribute_name == release.engage_type }">
-								<option value="${release.mre_id }" selected="selected">${release.engage_type }</option>
+								<option value="${release.engage_type }" selected="selected">${release.engage_type }</option>
 							</c:if>
 							<c:if test="${publicList.attribute_name != release.engage_type }">
-								<option value="${publicList.pbc_id }">${publicList.attribute_name }</option>
+								<option value="${publicList.attribute_name  }">${publicList.attribute_name }</option>
 							</c:if> 
 						</c:forEach>
 						</select>

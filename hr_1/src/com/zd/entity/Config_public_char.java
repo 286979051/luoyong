@@ -39,6 +39,11 @@ public class Config_public_char {
 	public void setAttribute_name(String attribute_name) {
 		this.attribute_name = attribute_name;
 	}
+	@Override
+	public String toString() {
+		return "Config_public_char [pbc_id=" + pbc_id + ", attribute_kind=" + attribute_kind + ", attribute_name="
+				+ attribute_name + "]";
+	}
 	
 	
 }

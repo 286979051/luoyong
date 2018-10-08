@@ -1,39 +1,41 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'interview-register.jsp' starting page</title>
 	 	<link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 	
 </script>
 			<script type="text/javascript"
-			src="../../../javascript/comm/time.js">
+			src="javascript/comm/time.js">
 			</script>
 
  		 
@@ -48,7 +50,7 @@
 	</head>
 
 	<body >
-		<form id="recruitAction!toList" name="interviewForm" action="/HR_Fist/recruit/recruitAction!toList" method="post">
+		<form id="recruitAction!toList" name="interviewForm" action="Engage_interview_insert" method="post">
 		<input type="hidden" name="operate" value="doAdopt">
 	<!--	<input type="hidden" name="engageInterview.checkStatus" value=""/>
 		<input type="hidden" name="engageInterview.checkComment" value=""/>
@@ -57,6 +59,8 @@
 		<input type="hidden" name="engageInterview.result" value="完成"/>
 		<input type="hidden" name="engageInterview.resumeId" value="542"/>
 	    <input type="hidden" name="engageResume.resId" value="542"/>
+	    <input type="hidden" name="resume_id" value="${er.res_id }"/>
+	    <input type="hidden" name="res_id" value="${er.res_id }"/>
 		<input type="hidden" name="engageInterview.interviewStatus" value="true"/>
 			<table width="100%">
 				<tr>
@@ -67,7 +71,7 @@
 				</tr>
 				<tr>
 					<td align="right">
-						<input type="button" value="面试登记" class="BUTTON_STYLE1"
+						<input type="submit" value="面试登记" class="BUTTON_STYLE1"
 							onclick="search();">
 						<input type="button" value="返回" class="BUTTON_STYLE1" 
 							onclick="history.back();">
@@ -83,21 +87,21 @@
 						职位分类
 					</td>
 					<td width="10%" class="TD_STYLE2">
-					<input type="hidden" name="engageInterview.humanMajorKindId" value="02"/>
-					<input type="text" name="engageInterview.humanMajorKindName" value="&#36719;&#20214;&#24320;&#21457;" readonly="readonly" class="INPUT_STYLE2">
+					<input type="hidden" name="human_major_kind_id" value="${er.human_major_kind_id }"/>
+					<input type="text" name="human_major_kind_name" value="${er.human_major_kind_name }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						职位名称
 					</td>
 					<td width="15%" class="TD_STYLE2">
-						<input type="hidden" name="engageInterview.humanMajorId" value=""/>
-						<input type="text" name="engageInterview.humanMajorName" value="&#31243;&#24207;&#21592;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="hidden" name="human_major_id" value="${er.human_major_id }"/>
+						<input type="text" name="human_major_name" value="${er.human_major_name }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td width="20%" class="TD_STYLE2" colspan="2">
-						<input type="text" name="engageResume.engageType" value="&#26657;&#22253;&#25307;&#32856;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="engage_type" value="${er.engage_type }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					
 					<td width="10%" rowspan="6" align="center">
@@ -111,20 +115,20 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageInterview.humanName" value="&#24352;&#39122;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_name" value="${er.human_name }" readonly="readonly" class="INPUT_STYLE2">
 						
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanSex" value="&#30007;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_sex" value="${er.human_sex }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEmail" value="123@.com"  readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_email" value="${er.human_email }"  readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -133,19 +137,19 @@
 						电话号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanTelephone" value="84802802" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_telephone" value="${er.human_telephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanHomephone" value="84802888" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_homephone" value="${er.human_homephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanMobilephone" value="13523322345" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_mobilephone" value="${er.human_mobilephone }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -154,13 +158,13 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAddress" value="&#28246;&#21335;&#38271;&#27801;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_address" value="${er.human_address }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanPostcode" value="410000" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_postcode" value="${er.human_postcode }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 
@@ -169,19 +173,19 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanNationality" value="&#20013;&#22269;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_nationality" value="${er.human_nationality }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanBirthplace" value=""  readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_birthplace" value="${er.human_birthplace }"  readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td class="TD_STYLE2" colspan="2"> 
-						<input type="text" name="engageResume.humanBirthday" value="1992-02-02 12:00:00" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_birthday" value="${er.human_birthday }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				
@@ -190,19 +194,19 @@
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-						<input type="text" name="engageResume.humanRace" value="&#27721;&#26063;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_race" value="${er.human_race }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanReligion" value="&#26080;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_religion" value="${er.human_religion }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<input type="text" name="engageResume.humanParty" value="" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_party" value="${er.human_party }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -211,25 +215,25 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanIdcard" value="430121199202022323" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_idcard" value="${er.human_idcard }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAge" value="20" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_age" value="${er.human_age }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						毕业学校
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanCollege" value="&#38271;&#27801;&#29702;&#24037;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_college" value="${er.human_college }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1" width="10%">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEducatedDegree" value="&#22823;&#19987;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_educated_degree" value="${er.human_educated_degree }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -237,25 +241,25 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEducatedYears"  value="12" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_educated_years"  value="${er.human_educated_years }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEducatedMajor" value="&#35745;&#31639;&#26426;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_educated_major" value="${er.human_educated_major }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						薪酬要求
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.demandSalaryStandard" value="6000.0" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="demand_salary_standard" value="${er.demand_salary_standard }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="engageResume.registTime" value="2012-11-25 01:50:30" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="regist_time" value="${er.regist_time }" readonly="readonly" class="INPUT_STYLE2">
 					
 					</td>
 				</tr>
@@ -264,25 +268,25 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanSpecility" value="java" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_specility" value="${er.human_specility }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanHobby" value="&#31726;&#29699;" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="human_hobby" value="${er.human_hobby }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1"><span style="font-size: 10.5pt; font-family: 宋体;"></span> 
 						推荐人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageInterview.checker" value="zhangsan, zhangsan" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="pass_checker" value="${er.pass_checker }" readonly="readonly" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1"><span style="font-size: 10.5pt; font-family: 宋体;"></span> 
 						推荐时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="engageInterview.checkTime" value="2012-11-25 01:51:18" readonly="readonly" class="INPUT_STYLE2">
+						<input type="text" name="pass_check_time" value="${er.pass_check_time }" readonly="readonly" class="INPUT_STYLE2">
 						 
 					</td>
 				</tr>
@@ -291,8 +295,8 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.humanHistoryRecords" rows="4"  
-						class="TEXTAREA_STYLE1" readonly="readonly"> &#20010;&#20154;&#23653;&#21382;
+						<textarea name="human_history_records" rows="4"  
+						class="TEXTAREA_STYLE1" readonly="readonly"> ${er.human_history_records }
 						</textarea>
 					</td>
 				</tr>
@@ -301,7 +305,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.remark" rows="4"   class="TEXTAREA_STYLE1"  readonly="readonly"> &#22791;&#27880;
+						<textarea name="remark" rows="4"   class="TEXTAREA_STYLE1"  readonly="readonly"> ${er.remark }
 						</textarea>
 					</td>
 				</tr>
@@ -311,7 +315,7 @@
 						推荐意见
 					</td>
 					<td class="TD_STYLE2" colspan="7">
-						<textarea name="engageResume.recomandation" rows="4"   class="TEXTAREA_STYLE1" readonly="readonly">&#25512;&#33616;						</textarea>
+						<textarea name=recomandation rows="4"   class="TEXTAREA_STYLE1" readonly="readonly">${er.recomandation }						</textarea>
 					</td>
 				</tr>
 				
@@ -321,37 +325,37 @@
 						面试次数
 					</td>
 					<td class="TD_STYLE2">
-					<input type="hidden" value="1" name="engageInterview.interviewAmount"/>
+					<input type="hidden" value="1" name="Engage_interview"/>
 						<input type="text"   value="第1次面试" class="INPUT_STYLE2" readonly="readonly"/>
 					</td>
 					<td class="TD_STYLE1">
 						形象评价
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageInterview.imageDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="image_degree" class="SELECT_STYLE1">
+							<option value="80">A</option>
+							<option value="60">B</option>
+							<option value="50">C</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						口才评价
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageInterview.nativeLanguageDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="native_language_degree" class="SELECT_STYLE1">
+							<option value="85">A</option>
+							<option value="65">B</option>
+							<option value="50">C</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						外语口语能力
 					</td>
 					<td class="TD_STYLE1">
-						<select name="engageInterview.foreignLanguageDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="foreign_language_degree" class="SELECT_STYLE1">
+							<option value="85">A</option>
+							<option value="65">B</option>
+							<option value="50">C</option>
 						</select>
 					</td>
 				</tr>
@@ -360,37 +364,41 @@
 						应变能力
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageInterview.responseSpeedDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="response_speed_degree" class="SELECT_STYLE1">
+							<option value="85">A</option>
+							<option value="65">B</option>
+							<option value="50">C</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						EQ
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageInterview.eqDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="EQ_degree" class="SELECT_STYLE1">
+							<option value="90">90</option>
+							<option value="80">80</option>
+							<option value="70">70</option>
+							<option value="60">60</option>
+							<option value="50">50</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						IQ
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageInterview.iqDegree" class="SELECT_STYLE1">
-							<option value="A">A</option>
-							<option value="B">B</option>
-							<option value="C">C</option>
+						<select name="IQ_degree" class="SELECT_STYLE1">
+							<option value="90">90</option>
+							<option value="80">80</option>
+							<option value="70">70</option>
+							<option value="60">60</option>
+							<option value="50">50</option>
 						</select>
 					</td>
 					<td class="TD_STYLE1">
 						综合素质
 					</td>
 					<td class="TD_STYLE1">
-						<select name="engageInterview.multiQualityDegree" class="SELECT_STYLE1">
+						<select name="multi_quality_degree" class="SELECT_STYLE1">
 							<option value="A">A</option>
 							<option value="B">B</option>
 							<option value="C">C</option>
@@ -402,13 +410,13 @@
 						面试人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageInterview.register" value="zhangsan" class="INPUT_STYLE2"/>
+						<input type="text" name="register" value="zhangsan" class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						面试时间
 					</td>
 					<td class="TD_STYLE2"> 
-						<input type="text" name="engageInterview.registeTime"  onclick="aa('engageInterview.registeTime')"
+						<input type="text" name="registe_time"  onclick="aa('engageInterview.registeTime')"
 							  class="INPUT_STYLE2"  id="date" >
 						 
 						
@@ -432,16 +440,11 @@
 					</td>
 					<td class="TD_STYLE2" colspan="7">
 						<textarea
-							name="engageInterview.interviewComment" class="TEXTAREA_STYLE1"
+							name="interview_comment" class="TEXTAREA_STYLE1"
 							rows="4"></textarea>
 					</td>
 				</tr>
 			</table>
 		</form>
-
-
-
-
-	</body>
- 
+</body>
 </html>

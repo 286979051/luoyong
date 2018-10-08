@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -22,9 +23,6 @@
 		</script>
 		<script type="text/javascript"
 			src="javascript/locate.js">
-		</script>
-		<script type="text/javascript"
-			src="javascript/select.js">
 		</script>
 			<script type="text/javascript">
  			window.onload=check;
@@ -124,11 +122,36 @@
  		document.fm.submit();
  		}
  		</script>
+ 		<script type="text/javascript">
+ 		function major(){
+ 			var majorKindId=$("#majorKindId").val();
+ 			$.ajax({
+ 				url:'ErMajorQuery?id='+majorKindId,
+ 				type:'get',
+ 				success:function(data){
+ 					var majorSel=$("#majorId")
+ 					majorSel.empty();
+ 					majorSel.append("<option >---请选择---</option>")
+ 					for(var i=0;i<data.length;i++){
+ 						var majorName=data[i];
+ 						var majorId=majorName.majorid;
+ 						var mName=majorName.majorname;
+ 						majorSel.append("<option value='"+majorId+"'>"+mName+"</option>")
+ 						
+ 					}
+ 				}
+ 				
+ 			});
+ 			
+ 		}
+ 		
+ 		</script>
 	</head>
 	<body>
-	<form id="recruitAction!saveEngageResume" name="fm" action="/HR_Fist/recruit/recruitAction!saveEngageResume" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="engageResume.passCheckcomment" value="不通过"/>
-			<input type="hidden" name="engageResume.passPasscomment" value="不通过"/>
+	<form id="recruitAction!saveEngageResume" name="fm" action="Engage_resume_Insert" method="post" >
+			<input type="hidden" name="pass_checkComment" value="不通过"/>
+			<input type="hidden" name="pass_passComment" value="不通过"/>
+			<input type="hidden" name="register" value="${user.user_true_name }"/>
 	 		<input type="hidden" name="engageResume.checkStatus" value="false"/>
 			<table width="100%">
 				<tr>
@@ -154,8 +177,11 @@
 					</td>
 					<td class="TD_STYLE2">  
 						 <input type="hidden" value="01" id="humanMajorKindId" name="engageResume.humanMajorKindId" />
-					<select name="engageResume.humanMajorKindName" class="SELECT_STYLE1">
-						<option value="销售">销售</option>
+					<select name="human_major_kind_id" onchange="major()" id="majorKindId" class="SELECT_STYLE1">
+						<option value="">---请选择---</option>
+						<c:forEach items="${major }" var="major">
+						<option value="${major.major_kind_id }">${major.major_kind_name }</option>
+						</c:forEach>
 					</select>		
 					</td>
 					<td class="TD_STYLE1">
@@ -164,16 +190,19 @@
 					<td class="TD_STYLE2" width="20%"> 
 				  
 					 <input type="hidden" value="02" name="engageResume.humanMajorId" />
-					<select name="engageResume.humanMajorName" class="SELECT_STYLE1">
-						<option value="总经理">总经理</option>
+					<select name="human_major_id" id="majorId" class="SELECT_STYLE1">
+						<option value="">---请选择---</option>
 					</select>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						招聘类型
 					</td>
 					<td class="TD_STYLE2" colspan="2"> 
-					<select name="engageResume.engageType" class="SELECT_STYLE1">
-						<option value="社会招聘">社会招聘</option>
+					<select name="engage_type" class="SELECT_STYLE1">
+							<option value="">--请选择--</option> 
+							<c:forEach items="${publicList }" var="publicList">
+							<option value="${publicList.attribute_name }">${publicList.attribute_name }</option> 
+							</c:forEach>
 					</select>
 					</td>
 					<td rowspan="6" >
@@ -185,20 +214,20 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text"  name="engageResume.humanName" id="name" class="INPUT_STYLE2"/>
+						 <input type="text"  name="human_name" id="name" class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<select name="engageResume.humanSex"  class="SELECT_STYLE1"><option value="男">男</option>
+						<select name="human_sex"  class="SELECT_STYLE1"><option value="男">男</option>
 							<option value="女">女</option></select>
 					</td>
 					<td class="TD_STYLE1">
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanEmail" id="email" class="INPUT_STYLE2">
+						<input type="text" name="human_email" id="email" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -206,19 +235,19 @@
 					电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanTelephone"  id="phone" class="INPUT_STYLE2">
+						<input type="text" name="human_telephone"  id="phone" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						家庭电话
 					</td>
 					<td class="TD_STYLE2">
-					 <input type="text" name="engageResume.humanHomephone" id="humanHomephone" class="INPUT_STYLE2">
+					 <input type="text" name="human_homephone" id="humanHomephone" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanMobilephone" id="humanMobilephone" class="INPUT_STYLE2">
+						<input type="text" name="human_mobilephone" id="humanMobilephone" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				<tr>
@@ -226,14 +255,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAddress" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_address" value="" class="INPUT_STYLE2">
 					</td>
 					 
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanPostcode" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_postcode" value="" class="INPUT_STYLE2">
 					</td>
 				</tr>
 				 
@@ -242,12 +271,11 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-					 <select name="engageResume.humanNationality"   class="SELECT_STYLE1">
+					 <select name="human_nationality"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="中国">中国</option> 
-							
-							<option value="美国">美国</option> 
+							<c:forEach items="${GuoJi }" var="GuoJi">
+							<option value="${GuoJi.attribute_name }">${GuoJi.attribute_name }</option> 
+							</c:forEach>
 							
 					 </select> 
 					</td>
@@ -255,13 +283,13 @@
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanBirthplace" value="" class="INPUT_STYLE2">
+						<input type="text" name="human_birthplace" value="" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" colspan="2" class="TD_STYLE2">
-						<input type="text" name="engageResume.humanBirthday" id="birthday" class="INPUT_STYLE2"  >
+						<input type="text" name="human_birthday" id="birthday" class="INPUT_STYLE2"  >
 					</td>
 					
 				</tr>
@@ -270,12 +298,11 @@
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-				 	 <select name="engageResume.humanRace"   class="SELECT_STYLE1">
+				 	 <select name="human_race"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="汉族">汉族</option> 
-							
-							<option value="回族">回族</option> 
+							<c:forEach items="${MinZu }" var="MinZu">
+							<option value="${MinZu.attribute_name }">${MinZu.attribute_name }</option> 
+							</c:forEach> 
 							
 					 </select>  
 					</td>
@@ -283,24 +310,21 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanReligion"   class="SELECT_STYLE1"> 
-							
-							<option value="无">无</option> 
-							
-							<option value="佛教">佛教</option> 
-							
+					   <select name="human_religion"  class="SELECT_STYLE1"> 
+							<c:forEach items="${ZongJiao }" var="ZongJiao">
+							<option value="${ZongJiao.attribute_name }">${ZongJiao.attribute_name }</option> 
+							</c:forEach> 
 					 </select>  
 					</td>
 					<td class="TD_STYLE1">
 						政治面貌
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-					   <select name="engageResume.humanParty"   class="SELECT_STYLE1">
+					   <select name="human_party"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="党员">党员</option> 
-							
-							<option value="群众">群众</option> 
+							<c:forEach items="${MianMao }" var="MianMao">
+							<option value="${MianMao.attribute_name }">${MianMao.attribute_name }</option> 
+							</c:forEach>
 							
 					 </select>  	  
 					</td>
@@ -312,31 +336,32 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanIdcard" value="" id="card" class="INPUT_STYLE2">
+						<input type="text" name="human_idcard" value="" id="card" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.humanAge" id="humanAge" class="INPUT_STYLE2">
+						<input type="text" name="human_age" id="humanAge" class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						毕业院校
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="engageResume.humanCollege" class="INPUT_STYLE2"/>
+						 <input type="text" name="human_college" class="INPUT_STYLE2"/>
 					</td>
 					
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-					  <select name="engageResume.humanEducatedDegree"   class="SELECT_STYLE1">
+					  <select name="human_educated_degree"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="本科">本科</option> 
-							
-							<option value="大专">大专</option> 
+							<c:forEach items="${all }" var="all">
+							<c:if test="${all.attribute_kind == '学历' }">
+							<option value="${all.attribute_name }">${all.attribute_name }</option> 
+							</c:if>
+							</c:forEach>
 							
 					 </select> 
 					</td>
@@ -347,25 +372,27 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanEducatedYears"   class="SELECT_STYLE1">
+					   <select name="human_educated_years"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="12">12</option> 
-							
-							<option value="16">16</option> 
+							<c:forEach items="${all }" var="all">
+							<c:if test="${all.attribute_kind =='教育年限' }">
+							<option value="${all.attribute_name }">${all.attribute_name }</option> 
+							</c:if>
+							</c:forEach>
 							
 					 </select> 
 					</td>
 					<td class="TD_STYLE1">
-						学历专业
+						专业
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanEducatedMajor"   class="SELECT_STYLE1">
+					   <select name="human_educated_major"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="生物工程">生物工程</option> 
-							
-							<option value="计算机">计算机</option> 
+							<c:forEach items="${all }" var="all">
+							<c:if test="${all.attribute_kind =='学历专业' }">
+							<option value="${all.attribute_name }">${all.attribute_name }</option> 
+							</c:if>
+							</c:forEach>
 							
 					 </select>  
 					</td>
@@ -374,14 +401,14 @@
 						薪酬要求
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="engageResume.demandSalaryStandard" id="demandSalaryStandard" class="INPUT_STYLE2" />
+						<input type="text" name="demand_salary_standard" id="demandSalaryStandard" class="INPUT_STYLE2" />
 					</td>
 					<td class="TD_STYLE1">
 						注册时间
 					</td>
 					<td class="TD_STYLE2">
-						 <input type="text" name="engageResume.registTime"
-							  id="nowTime" readonly="readonly"
+						 <input type="text" 
+							  id="nowTime" name="regist_time" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
 					
@@ -392,12 +419,13 @@
 						特长
 					</td>
 					<td class="TD_STYLE2">
-					   <select name="engageResume.humanSpecility"   class="SELECT_STYLE1">
+					   <select name="human_specility"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="数据库">数据库</option> 
-							
-							<option value="java">java</option> 
+							<c:forEach items="${all }" var="all">
+							<c:if test="${all.attribute_kind =='特长' }">
+							<option value="${all.attribute_name }">${all.attribute_name }</option> 
+							</c:if>
+							</c:forEach>
 							
 					 </select> 
 						 
@@ -406,12 +434,13 @@
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-				     <select name="engageResume.humanHobby"   class="SELECT_STYLE1">
+				     <select name="human_hobby"   class="SELECT_STYLE1">
 							<option value="">--请选择--</option> 
-							
-							<option value="篮球">篮球</option> 
-							
-							<option value="舞蹈">舞蹈</option> 
+							<c:forEach items="${all}"  var="all">
+								<c:if test="${all.attribute_kind =='爱好' }">
+									<option value="${all.attribute_name }">${all.attribute_name }</option> 
+								</c:if>
+							</c:forEach>
 							
 					 </select> 
 						  
@@ -434,7 +463,7 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.humanHistoryRecords" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="human_history_records" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 				 
@@ -443,7 +472,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="engageResume.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 			</table>

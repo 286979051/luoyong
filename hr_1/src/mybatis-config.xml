@@ -25,6 +25,10 @@
 	<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 	<!-- 薪资分发 -->
 	<typeAlias type="com.zd.entity.Salary_grant" alias="Salary_grant"/>
+	<!-- 简历登记 -->
+	<typeAlias type="com.zd.entity.Engage_resume" alias="Engage_resume"/>
+	<!-- 面试登记 -->
+	<typeAlias type="com.zd.entity.Engage_interview" alias="Engage_interview"/>
 	<typeAlias type="java.util.Map" alias="map"/>
 </typeAliases>
 
@@ -49,5 +53,9 @@
 	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
 	<!-- 薪资分发 -->
 	<mapper resource="com/zd/mapper/Salary_grantMapper.xml"/>
+	<!-- 简历登记 -->
+	<mapper resource="com/zd/mapper/Engage_resumeMapper.xml"/>
+	<!-- 面试登记 -->
+	<mapper resource="com/zd/mapper/Engage_interviewMapper.xml"/>
 </mappers>
 </configuration>

@@ -11,7 +11,7 @@ public class Config_major {
 		super();
 	}
 	
-	public Config_major(int makid, int majorkindid, String majorkindname, int majorid, String majorname,
+	public Config_major(int makid, String majorkindid, String majorkindname, String majorid, String majorname,
 			int testamount) {
 		super();
 		this.makid = makid;
@@ -23,9 +23,9 @@ public class Config_major {
 	}
 
 	private int makid;
-	private int majorkindid;
+	private String majorkindid;
 	private String majorkindname;
-	private int majorid;
+	private String majorid;
 	private String majorname;
 	private int testamount;
 	public int getMakid() {
@@ -34,10 +34,10 @@ public class Config_major {
 	public void setMakid(int makid) {
 		this.makid = makid;
 	}
-	public int getMajorkindid() {
+	public String getMajorkindid() {
 		return majorkindid;
 	}
-	public void setMajorkindid(int majorkindid) {
+	public void setMajorkindid(String majorkindid) {
 		this.majorkindid = majorkindid;
 	}
 	public String getMajorkindname() {
@@ -46,10 +46,10 @@ public class Config_major {
 	public void setMajorkindname(String majorkindname) {
 		this.majorkindname = majorkindname;
 	}
-	public int getMajorid() {
+	public String getMajorid() {
 		return majorid;
 	}
-	public void setMajorid(int majorid) {
+	public void setMajorid(String majorid) {
 		this.majorid = majorid;
 	}
 	public String getMajorname() {

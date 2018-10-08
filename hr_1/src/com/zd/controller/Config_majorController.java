@@ -16,7 +16,7 @@ public class Config_majorController {
 	private IConfig_majorService config_majorService;
 	@RequestMapping("ErMajorQuery")
 	@ResponseBody
-	public List<Config_major> ErMajorQuery(int id){
+	public List<Config_major> ErMajorQuery(String id){
 		List<Config_major> majorlist = config_majorService.ErMajorQuery(id);
 		return majorlist;
 	}

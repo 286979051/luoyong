@@ -17,5 +17,5 @@ public interface IConfig_major_kindDao {
 	//职业分类一级联动单查
 	@Select("select * from Config_major_kind where major_kind_id=#{id}")
 	@ResultMap("Config_major_kindmapper")
-	public Config_major_kind majorQueryDan(int id);
+	public Config_major_kind majorQueryDan(String id);
 }

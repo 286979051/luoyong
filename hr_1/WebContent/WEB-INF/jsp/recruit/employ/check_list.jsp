@@ -1,49 +1,59 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<head>
+<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  	  <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+    <title>My JSP 'filter_result.jsp' starting page</title>
+   	  <link rel="stylesheet"
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css"
+			href="css/cwcalendar.css"
 			type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 	
 </script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 	
 </script> 
 	 
-     </head>
+	 	<script type="text/javascript">
+			function toEdit(id)
+			{
+				document.forms[0].action = document.forms[0].action + "?operate=toEdit&id="+id;
+				document.forms[0].submit();
+			}
+		</script>
+	</head>
 
 	<body>
-	<form action="/HR_Fist/recruit/recruitAction!toRegisterList" name="fm">
+	<form action="/HR_Fist/recruit/recruitAction!toCheckList" name="fm">
 	<input type="hidden" name="utilBean.currPage" id="page"/>
 		<table width="100%">
 			<tr>
 				<td>
-					<font color="black">您正在做的业务是：人力资源--招聘管理--录用管理--录用申请  </font>
+					<font color="black">您正在做的业务是：人力资源--招聘管理--录用管理--录用审批</font>
 				</td>
 			</tr>
-			
 		</table>
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
@@ -71,44 +81,44 @@
 						学历专业
 					</td>
 					<td class="TD_STYLE1">
-						申请
+						审批
 					</td>
 				</tr>
 				
-				 
+				
+					 <c:forEach items="${eil }" var="eil">
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
-							张飒
+							${eil.human_name }
 						</td>
 						<td class="TD_STYLE2">
-							男
+							${eil.engage_resume.human_sex }
 						</td>
 						<td class="TD_STYLE2">
-							20
+							${eil.engage_resume.human_age }
 						</td>
 						<td class="TD_STYLE2">
-							软件开发
+							${eil.human_major_kind_name }
 						</td>
 						<td class="TD_STYLE2">
-							程序员
+							${eil.human_major_name }
 						</td>
 						<td class="TD_STYLE2">
-							长沙理工
+							${eil.engage_resume.human_college }
 						</td>
 						<td class="TD_STYLE2">
-							计算机
+							${eil.engage_resume.human_educated_major }
 						</td>
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!toEmployRegister?id=542">申请</a>
+							<a href="check_list_queryDan?id=${eil.ein_id }">审批</a>
 						</td>
 					</tr>
+					</c:forEach>
 					
-				
-					 
 			</table>
 				<p>&nbsp;&nbsp;总数：1 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
@@ -136,6 +146,5 @@
 	     document.fm.submit();
 	 	}
 		</script>
-	</body>
+</body>
 </html>
-

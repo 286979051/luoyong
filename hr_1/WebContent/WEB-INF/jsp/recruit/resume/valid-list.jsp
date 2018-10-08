@@ -1,29 +1,32 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
+ <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>My JSP 'valid-list.jsp' starting page</title>
 		 <link rel="stylesheet"
-			href="../../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<link rel="stylesheet"
-			href="../../../css/cwcalendar.css" type="text/css">
+			href="css/cwcalendar.css" type="text/css">
 		<script type="text/javascript"
-			src="../../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/comm/list.js">
+			src="javascript/comm/list.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/calendar-ch.js">
+			src="javascript/calendar-ch.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/jquery-1.7.2.js">
+			src="javascript/jquery-1.7.2.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/locate.js">
+			src="javascript/locate.js">
 		</script>
 		<script type="text/javascript"
-			src="../../../javascript/select.js">
+			src="javascript/select.js">
 		</script>
      </head>
 
@@ -74,97 +77,51 @@
 				</tr>
 				
 				
+					<c:forEach items="${EnList }" var="EnList">
 					<tr>
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=542">
-								542</a>
+<a href="Engage_resume_SXXX?id=${EnList.res_id }">${EnList.res_id }</a>
 						</td>
 						<td class="TD_STYLE2">
-							&#24352;&#39122;
+							${EnList.human_name }
 						</td>
 						<td class="TD_STYLE2">
-							&#30007;
+							${EnList.human_sex }
 						</td>
 						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
+						${EnList.human_major_kind_name }
 						</td>
 						<td class="TD_STYLE2">
-						&#31243;&#24207;&#21592;
+						${EnList.human_major_name }
 						</td>
 						<td class="TD_STYLE2">
-						84802802
+						${EnList.human_telephone }
 						</td>
+						<c:if test="${EnList.check_status==1 }">
 						<td class="TD_STYLE2">
-							
-							通过
+							 待复核
 						</td>
+						</c:if>
+						<c:if test="${EnList.check_status==2 }">
+						<td class="TD_STYLE2">
+							 已复核
+						</td>
+						</c:if>
+						<c:if test="${EnList.interview_status==1 }">
 						<td class="TD_STYLE2">
 							 待面试 
 						</td>
-					</tr>
-					
-					<tr>
+						</c:if>
+						<c:if test="${EnList.interview_status!=1 }">
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=532">
-								532</a>
+							 已面试 
 						</td>
-						<td class="TD_STYLE2">
-							&#24352;&#19977;
-						</td>
-						<td class="TD_STYLE2">
-							&#30007;
-						</td>
-						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
-						</td>
-						<td class="TD_STYLE2">
-						&#39033;&#30446;&#32463;&#29702;
-						</td>
-						<td class="TD_STYLE2">
-						18493728493
-						</td>
-						<td class="TD_STYLE2">
-							
-							通过
-						</td>
-						<td class="TD_STYLE2">
-							 待面试 
-						</td>
-					</tr>
-					
-					<tr>
-						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!findValidResumeById?a=select&id=533">
-								533</a>
-						</td>
-						<td class="TD_STYLE2">
-							&#26446;&#22235;
-						</td>
-						<td class="TD_STYLE2">
-							&#22899;
-						</td>
-						<td class="TD_STYLE2">
-						&#36719;&#20214;&#24320;&#21457;
-						</td>
-						<td class="TD_STYLE2">
-						&#31243;&#24207;&#21592;
-						</td>
-						<td class="TD_STYLE2">
-						13782749375
-						</td>
-						<td class="TD_STYLE2">
-							
-							通过
-						</td>
-						<td class="TD_STYLE2">
-							 待面试 
-						</td>
-					</tr>
-					
+						</c:if>
+				</c:forEach>
 			</table>
 			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  
 			<a href="javascript:up('0','1')" >上一页</a> &nbsp;&nbsp;&nbsp;
-			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="../../../images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
+			<a href="javascript:down('2','1')" >下一页</a> &nbsp;&nbsp;&nbsp;跳到第 <input name=page type=text class=input1 id="currPage" size=1> 页&nbsp;&nbsp;<input type=image src="images/go.bmp" onclick="tj('1')" width=18 height=18 border=0>
 		</form>
 		<script type="text/javascript">
 		function up(currPage,row){  
@@ -192,5 +149,5 @@
 	     document.fm.submit();
 	 	}
 		</script>
-	</body>
+</body>
 </html>
