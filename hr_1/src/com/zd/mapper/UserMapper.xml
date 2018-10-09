@@ -7,5 +7,6 @@
 		<result column="user_name" property="user_name"/>
 		<result column="user_true_name" property="user_true_name"/>
 		<result column="user_password" property="user_password"/>
+		<result column="user_phoneNumber" property="user_phoneNumber"/>
 	</resultMap>
 </mapper>
