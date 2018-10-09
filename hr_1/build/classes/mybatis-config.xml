@@ -25,7 +25,7 @@
 	<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
 	<!-- 薪资分发 -->
 	<typeAlias type="com.zd.entity.Salary_grant" alias="Salary_grant"/>
-	<typeAlias type="java.util.Map" alias="map"/>
+	
 </typeAliases>
 
 <mappers>

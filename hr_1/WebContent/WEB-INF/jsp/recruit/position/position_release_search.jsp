@@ -85,7 +85,7 @@
 						${releaseList.deadline }   
 						</td>
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!searchPositionById?emajorRelease.mreId=530">申请该职位</a>
+							<a href="releaseQueryByIdSQ?id=${releaseList.mre_id }">申请该职位</a>
 						</td>
 						 
 					</tr>

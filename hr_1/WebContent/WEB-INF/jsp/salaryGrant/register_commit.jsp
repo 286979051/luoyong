@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -33,33 +34,29 @@
 				</tr>
 				<tr>
 					<td colspan="2"  style="text-align: left">
-					薪酬单编号：HS1353753198460
-					<input type="hidden" name="salaryGrant.salaryGrantId" value="HS1353753198460">
+					薪酬单编号：${times }
+					<input type="hidden" name="salaryGrant.salaryGrantId" value="${times }">
 					</td>					
 				</tr>
 				<tr>
 					<td colspan="2"  style="text-align: left">
 					机构：
 					
-							 	Ⅰ级结构  
+							 	Ⅰ级机构  
 					
-					
-					
-					
-				
 					</td>					
 				</tr>
 				<tr>
 					<td style="text-align: left">
-					本机构总人数:5
-					<input type="hidden" name="salaryGrant.humanAmount" value="5">
+					本机构总人数:${FBCount }
+					<input type="hidden" name="salaryGrant.humanAmount" value="${FBCount }" id="sizeInp">
 					，基本薪酬总数:139823.0<input type="hidden" name="salaryGrant.salaryStandardSum" value="139823.0"/>
 					，实发总额:<span id="salarySum_sum">139823.0</span>
 					<input type="hidden" id="salaryPaidSum" name="salaryGrant.salaryPaidSum" value="139823.0"/>
 					
 					</td>
 					<td   style="text-align: right;">
-						登记人:<input type="text" name="salaryGrant.register" value="better_admin" size="8" readonly="readonly">
+						登记人:<input type="text" name="salaryGrant.register" value="${user.user_name }" size="8" readonly="readonly">
 						登记时间：<span id="Tdate"></span>
 						<input type="hidden" name="salaryGrant.registTime" id="Tdate2" >
 					</td>
@@ -80,31 +77,11 @@
 					<td class="TD_STYLE1">
 						<span>姓名</span>
 					</td>
-					
+						<c:forEach var="item" items="${arr }">
 						<td class="TD_STYLE1">
-							出差补助
+							${item.attribute_name }
 						</td>		
-						
-						<td class="TD_STYLE1">
-							交通补贴
-						</td>		
-						
-						<td class="TD_STYLE1">
-							住房补贴
-						</td>		
-						
-						<td class="TD_STYLE1">
-							基本工资
-						</td>		
-						
-						<td class="TD_STYLE1">
-							年终奖
-						</td>		
-						
-						<td class="TD_STYLE1">
-							误餐补助
-						</td>		
-										
+						</c:forEach>				
 					<td class="TD_STYLE1" width="7%">
 						奖励金额
 					</td>
@@ -117,303 +94,46 @@
 					<td class="TD_STYLE1" width="7%">
 						实发金额
 					</td>
-				</tr>				
-				
-					<input type="hidden" name="grantDetails[0].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum1" name="grantDetails[0].salaryStandardSum" value="135827.0"/>
+				</tr>
+								
+					<c:forEach var="human" items="${list1 }" varStatus="varStatus">
+					<input type="hidden" name="grantDetails[${varStatus.index }].salaryGrantId" value="HS1353753198460">
+				 	<input type="hidden" id="salaryStandardSum${varStatus.count }" name="grantDetails[${varStatus.index }].salaryStandardSum" value="135827.0"/>
 					<tr class="TD_STYLE2">
+						<td>
+							${varStatus.count }
+						</td>
+						<td>
+							${human.human_id }
+								<input type="hidden" name="grantDetails[${varStatus.index }].humanId"  value="${human.human_id }"/>							
+						</td>
+						<td>
+							${human.human_name }	
+							<input type="hidden" name="grantDetails[${varStatus.index }].humanName"  value="${human.human_name }"/>
+						</td>
+						<c:forEach items="${human.ssdlist }" var="xinchou">
+							<c:if test="${xinchou.standard_id == human.salary_standard_id }">
+								<td> 
+								${xinchou.salary }
+								</td>
+							</c:if>
+						</c:forEach>							
+						<td>
+							<input type="text" name="grantDetails[${varStatus.index }].bounsSum" id="bounsSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')"  class="INPUT_STYLE2" />
+						</td>
+						<td>
+							<input type="text" name="grantDetails[${varStatus.index }].saleSum" id="saleSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2"/>
+						</td>
+						<td>
+							<input type="text" name="grantDetails[${varStatus.index }].deductSum" id="deductSum${varStatus.count }" onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2"/>
+						</td>
+						<td>
+							<input type="text" name="grantDetails[${varStatus.index }].salaryPaidSum" readonly="readonly"  id="salaryPaidSum${varStatus.count }" value="${human.salary_sum }"  class="INPUT_STYLE2"/>
+						</td>
+						
+					</tr>
+					</c:forEach>	
 					
-						<td>
-							1
-						</td>
-						<td>
-							bt201211190644250035
-								<input type="hidden" name="grantDetails[0].humanId"  value="bt201211190644250035"/>							
-						</td>
-						<td>
-							&#26472;&#24130;	
-							<input type="hidden" name="grantDetails[0].humanName"  value="&#26472;&#24130;"/>
-						</td>
-							 
-							 
-											
-						<td> 							
-							123.0
-						</td>
-											
-						<td> 							
-							12312.0
-						</td>
-											
-						<td> 							
-							123123.0
-						</td>
-											
-						<td> 							
-							123.0
-						</td>
-											
-						<td> 							
-							123.0
-						</td>
-											
-						<td> 							
-							23.0
-						</td>
-						 		
-						
-										
-						<td>
-							<input type="text" name="grantDetails[0].bounsSum" id="bounsSum1"  onkeyup="onKeyPress('1')"  class="INPUT_STYLE2" />
-						</td>
-						<td>
-							<input type="text" name="grantDetails[0].saleSum" id="saleSum1"  onkeyup="onKeyPress('1')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[0].deductSum" id="deductSum1" onkeyup="onKeyPress('1')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[0].salaryPaidSum" readonly="readonly"  id="salaryPaidSum1" value="135827.0"  class="INPUT_STYLE2"/>
-						</td>
-						
-					</tr>	
-					
-					<input type="hidden" name="grantDetails[1].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum2" name="grantDetails[1].salaryStandardSum" value="1332.0"/>
-					<tr class="TD_STYLE2">
-					
-						<td>
-							2
-						</td>
-						<td>
-							bt201211190619440428
-								<input type="hidden" name="grantDetails[1].humanId"  value="bt201211190619440428"/>							
-						</td>
-						<td>
-							&#26472;&#38451;	
-							<input type="hidden" name="grantDetails[1].humanName"  value="&#26472;&#38451;"/>
-						</td>
-							 
-							 
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-						 		
-						
-										
-						<td>
-							<input type="text" name="grantDetails[1].bounsSum" id="bounsSum2"  onkeyup="onKeyPress('2')"  class="INPUT_STYLE2" />
-						</td>
-						<td>
-							<input type="text" name="grantDetails[1].saleSum" id="saleSum2"  onkeyup="onKeyPress('2')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[1].deductSum" id="deductSum2" onkeyup="onKeyPress('2')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[1].salaryPaidSum" readonly="readonly"  id="salaryPaidSum2" value="1332.0"  class="INPUT_STYLE2"/>
-						</td>
-						
-					</tr>	
-					
-					<input type="hidden" name="grantDetails[2].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum3" name="grantDetails[2].salaryStandardSum" value="1332.0"/>
-					<tr class="TD_STYLE2">
-					
-						<td>
-							3
-						</td>
-						<td>
-							bt201211190644390870
-								<input type="hidden" name="grantDetails[2].humanId"  value="bt201211190644390870"/>							
-						</td>
-						<td>
-							&#21608;&#23567;&#22362;	
-							<input type="hidden" name="grantDetails[2].humanName"  value="&#21608;&#23567;&#22362;"/>
-						</td>
-							 
-							 
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-											
-						<td> 							
-							222.0
-						</td>
-						 		
-						
-										
-						<td>
-							<input type="text" name="grantDetails[2].bounsSum" id="bounsSum3"  onkeyup="onKeyPress('3')"  class="INPUT_STYLE2" />
-						</td>
-						<td>
-							<input type="text" name="grantDetails[2].saleSum" id="saleSum3"  onkeyup="onKeyPress('3')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[2].deductSum" id="deductSum3" onkeyup="onKeyPress('3')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[2].salaryPaidSum" readonly="readonly"  id="salaryPaidSum3" value="1332.0"  class="INPUT_STYLE2"/>
-						</td>
-						
-					</tr>	
-					
-					<input type="hidden" name="grantDetails[3].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum4" name="grantDetails[3].salaryStandardSum" value="666.0"/>
-					<tr class="TD_STYLE2">
-					
-						<td>
-							4
-						</td>
-						<td>
-							bt201211190644520428
-								<input type="hidden" name="grantDetails[3].humanId"  value="bt201211190644520428"/>							
-						</td>
-						<td>
-							&#21608;&#65311;	
-							<input type="hidden" name="grantDetails[3].humanName"  value="&#21608;&#65311;"/>
-						</td>
-							 
-							 
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-						 		
-						
-										
-						<td>
-							<input type="text" name="grantDetails[3].bounsSum" id="bounsSum4"  onkeyup="onKeyPress('4')"  class="INPUT_STYLE2" />
-						</td>
-						<td>
-							<input type="text" name="grantDetails[3].saleSum" id="saleSum4"  onkeyup="onKeyPress('4')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[3].deductSum" id="deductSum4" onkeyup="onKeyPress('4')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[3].salaryPaidSum" readonly="readonly"  id="salaryPaidSum4" value="666.0"  class="INPUT_STYLE2"/>
-						</td>
-						
-					</tr>	
-					
-					<input type="hidden" name="grantDetails[4].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum5" name="grantDetails[4].salaryStandardSum" value="666.0"/>
-					<tr class="TD_STYLE2">
-					
-						<td>
-							5
-						</td>
-						<td>
-							bt201211190644030990
-								<input type="hidden" name="grantDetails[4].humanId"  value="bt201211190644030990"/>							
-						</td>
-						<td>
-							&#21016;&#24698;&#23041;	
-							<input type="hidden" name="grantDetails[4].humanName"  value="&#21016;&#24698;&#23041;"/>
-						</td>
-							 
-							 
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-											
-						<td> 							
-							111.0
-						</td>
-						 		
-						
-										
-						<td>
-							<input type="text" name="grantDetails[4].bounsSum" id="bounsSum5"  onkeyup="onKeyPress('5')"  class="INPUT_STYLE2" />
-						</td>
-						<td>
-							<input type="text" name="grantDetails[4].saleSum" id="saleSum5"  onkeyup="onKeyPress('5')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[4].deductSum" id="deductSum5" onkeyup="onKeyPress('5')" class="INPUT_STYLE2"/>
-						</td>
-						<td>
-							<input type="text" name="grantDetails[4].salaryPaidSum" readonly="readonly"  id="salaryPaidSum5" value="666.0"  class="INPUT_STYLE2"/>
-						</td>
-						
-					</tr>	
-					 
 			</table>			
 				
 		</form>
@@ -421,7 +141,7 @@
 		 
 		function onKeyPress(i){
 		
-		var size=5;
+		var size=document.getElementById("sizeInp").value;
 		var bounsSum=document.getElementById("bounsSum"+i);
 		var saleSum =document.getElementById("saleSum"+i);
 		var deductSum=document.getElementById("deductSum"+i);

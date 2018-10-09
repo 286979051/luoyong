@@ -89,7 +89,11 @@
 						</td>
 						
 						<td>
-							<a href="tocommit">登 记</a>
+							<a href="javascript:huoquname('<c:forEach items="${item }" var="m">
+																<c:if test="${m.key == 'sname' }">
+																	${m.value }
+																</c:if>
+															</c:forEach>')">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -98,6 +102,17 @@
 			 
 				&nbsp;
 			</p>
+			
+			<form action="querySHuman" method="post" id="form1">
+				<input type="hidden" name="sname" id="snId" />
+			</form>
+			
+			<script type="text/javascript">
+				function huoquname(sname){
+					document.getElementById("snId").value = sname;
+					$("#form1").submit();
+				}
+			</script>
 		 
 	</body>
 </html>

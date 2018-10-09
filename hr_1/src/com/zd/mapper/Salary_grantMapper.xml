@@ -22,8 +22,14 @@
 		<result column="check_status" property="check_status"/>
 	</resultMap>
 	
-	<!-- 薪资发放查一级机构映射 -->
+	<!-- 薪资发放查机构映射 -->
 	<resultMap type="map" id="mapMapper"></resultMap>
+	
+	<resultMap type="com.zd.entity.Human_file" id="humanMapper">
+	</resultMap>
+	
+	<!-- 薪酬标准单详细信息 -->
+	<resultMap type="com.zd.entity.Salary_standard_details" id="salary_standard_detailsMapper"></resultMap>
 	
 	
 </mapper>

@@ -22,4 +22,7 @@ public interface IEngage_major_releaseService {
 	
 	//职位发表登记添加
 	public void releaseInsert(Engage_major_release Engage_major_release);
+	
+	//职位发表登记表申请修改
+	public void releaseUpdShenQ(Engage_major_release Engage_major_release);
 }

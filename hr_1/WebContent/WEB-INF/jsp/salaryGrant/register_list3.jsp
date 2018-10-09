@@ -89,71 +89,31 @@
 						</td>
 						
 						<td>
-							<a href="tocommit">登 记</a>
+							<a href="javascript:huoquname('<c:forEach items="${item }" var="m">
+																<c:if test="${m.key == 'tname' }">
+																	${m.value }
+																</c:if>
+															</c:forEach>')">登 记</a>
 						</td>
 					</tr>
 				</c:forEach>
 				
-					<!-- <tr class="TD_STYLE2">
-						<td>
-							2
-						</td>
-						
-					
-						
-						
-					<td> &#38598;&#22242;  </td>
-					
-					
-					
-					
-					
-						
-						<td>
-							1 
-						</td>
-						<td>
-							666.0 
-						</td>
-						<td>
-							<a href="register_commit.html">登 记</a>
-						</td>
-					</tr>
-					
-				
-					<tr class="TD_STYLE2">
-						<td>
-							3
-						</td>
-						
-					
-						
-						
-					<td> &#24635;&#37096;  </td>
-					
-					
-					
-					
-					
-						
-						<td>
-							2 
-						</td>
-						<td>
-							1332.0 
-						</td>
-						<td>
-							<a href="register_commit.html">登 记</a>
-						</td>
-					</tr> -->
-					
-					
-					
 				</table>
 			<p>
 			 
 				&nbsp;
 			</p>
+			
+			<form action="queryTHuman" method="post" id="form1">
+				<input type="hidden" name="tname" id="tnId" />
+			</form>
+			
+			<script type="text/javascript">
+				function huoquname(tname){
+					document.getElementById("tnId").value = tname;
+					$("#form1").submit();
+				}
+			</script>
 		 
 	</body>
 </html>
