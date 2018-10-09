@@ -9,6 +9,7 @@ public class user {
 	private String user_name;
 	private String user_true_name;
 	private String user_password;
+	private int user_phoneNumber;
 	
 	public int getUserid() {
 		return userid;
@@ -34,20 +35,24 @@ public class user {
 	public void setUser_password(String user_password) {
 		this.user_password = user_password;
 	}
-	public user(int userid, String user_name, String user_true_name, String user_password) {
+	
+	public user(int userid, String user_name, String user_true_name, String user_password, int user_phoneNumber) {
 		super();
 		this.userid = userid;
 		this.user_name = user_name;
 		this.user_true_name = user_true_name;
 		this.user_password = user_password;
+		this.user_phoneNumber = user_phoneNumber;
 	}
 	public user() {
 		super();
 	}
-	@Override
-	public String toString() {
-		return "user [userid=" + userid + ", user_name=" + user_name + ", user_true_name=" + user_true_name
-				+ ", user_password=" + user_password + "]";
+	
+	public int getUser_phoneNumber() {
+		return user_phoneNumber;
+	}
+	public void setUser_phoneNumber(int user_phoneNumber) {
+		this.user_phoneNumber = user_phoneNumber;
 	}
 	
 	
