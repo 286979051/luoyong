@@ -20,7 +20,7 @@ public interface IConfig_majorDao {
 	//职业分类二级联动单查
 	@Select("select * from Config_major where major_id=#{id}")
 	@ResultMap("Config_majormapper")
-	public Config_major ErMajorQueryDan(int id);
+	public Config_major ErMajorQueryDan(String id);
 	
 	//张紫行，查询所有职位
 	@Select("select * from Config_major")
@@ -39,5 +39,4 @@ public interface IConfig_majorDao {
 	@Select("select * from Config_major_kind where major_kind_id=#{major_kind_id}")
 	@ResultMap("Config_major_kindmapper")
 	public Config_major_kind majorkindname(String majorkindid);
-	public Config_major ErMajorQueryDan(String id);
 }

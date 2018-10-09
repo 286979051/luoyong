@@ -35,8 +35,7 @@ public interface IConfig_file_second_kindDao {
 	//二级联动单查
 	@Select("select * from Config_file_second_kind where second_kind_id=#{id}")
 	@ResultMap("Config_file_second_kindmapper")
-
-	public Config_file_second_kind queryDan(int id);
+	public Config_file_second_kind queryDan(String id);
 	
 	//修改二级机构前做查询
 	@Select("select * from Config_file_second_kind where fsk_id=#{fskid}")
@@ -59,6 +58,6 @@ public interface IConfig_file_second_kindDao {
 	@Select("select * from Config_file_second_kind where second_kind_id=#{secondkindid}")
 	@ResultMap("Config_file_second_kindmapper")
 	public  Config_file_second_kind selbysecondkindid(String secondkindid);
-
-	public Config_file_second_kind queryDan(String id);
+	
+	
 }

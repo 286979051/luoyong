@@ -21,7 +21,7 @@ public interface IConfig_file_third_kindDao {
 	//三级联动单查
 	@Select("select * from Config_file_third_kind where third_kind_id=#{id}")
 	@ResultMap("Config_file_third_kindmapper")
-	public Config_file_third_kind queryDan(int id);
+	public Config_file_third_kind queryDan(String id);
 	
 	//查询所有三级机构
 	@Select("select * from Config_file_third_kind")
@@ -48,5 +48,5 @@ public interface IConfig_file_third_kindDao {
 	//删除三级机构
 	@Delete("delete from Config_file_third_kind where ftk_id=#{ftkid}")
 	public void deletethird(int ftkid);
-	public Config_file_third_kind queryDan(String id);
+	
 }

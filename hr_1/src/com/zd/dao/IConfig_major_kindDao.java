@@ -19,7 +19,7 @@ public interface IConfig_major_kindDao {
 	//职业分类一级联动单查
 	@Select("select * from Config_major_kind where major_kind_id=#{id}")
 	@ResultMap("Config_major_kindmapper")
-	public Config_major_kind majorQueryDan(int id);
+	public Config_major_kind majorQueryDan(String id);
 	
 	//张紫行，查询所有职业分类
 	@Select("select * from Config_major_kind")
@@ -34,5 +34,4 @@ public interface IConfig_major_kindDao {
 	@Insert("insert into Config_major_kind values(null,#{major_kind_id},#{major_kind_name})")
 	public void addmajorkind(Config_major_kind majorkind);
 	
-	public Config_major_kind majorQueryDan(String id);
 }

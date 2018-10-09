@@ -65,10 +65,6 @@ public class Config_file_second_kindService implements IConfig_file_second_kindS
 		config_file_second_kindDao.delete2(secondkindid);
 	}
 
-	@Override
-	public Config_file_second_kind queryDan(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 }

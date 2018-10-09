@@ -165,6 +165,8 @@ public class Engage_major_releaseController {
 	public String releaseInsetr(Engage_major_release Engage_major_release,String first_kind_id,String second_kind_id,String third_kind_id,String major_kind_id,String major_id,int pbc_id) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
+			
+			System.out.println(second_kind_id);
 			//一级机构联动单条查询赋值
 			Config_file_first_kind cffk = config_file_first_kindService.queryDan(first_kind_id);
 			Engage_major_release.setFirst_kind_name(cffk.getFirstkindname());

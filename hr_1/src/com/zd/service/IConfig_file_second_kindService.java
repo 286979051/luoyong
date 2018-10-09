@@ -20,7 +20,7 @@ public interface IConfig_file_second_kindService {
 	public void addsecond(Config_file_second_kind secondkind);
 	
 	//二级联动单查
-	public Config_file_second_kind queryDan(int id);
+	public Config_file_second_kind queryDan(String id);
 	
 	//修改二级机构前做查询
 	public Config_file_second_kind selbyfskid(int fskid);
@@ -37,5 +37,5 @@ public interface IConfig_file_second_kindService {
 	//单条查询二级机构
 	public  Config_file_second_kind selbysecondkindid(String secondkindid);
 	
-	public Config_file_second_kind queryDan(String id);
+
 }

@@ -180,7 +180,7 @@
 				<tr>
 					<td align="right">
 						<input type="submit"  value="提交"  class="BUTTON_STYLE1" 
-						  onclick=" return mysubmit()">
+						  >
 						<input type="reset" value="清除" class="BUTTON_STYLE1">
 					</td>
 				</tr>
