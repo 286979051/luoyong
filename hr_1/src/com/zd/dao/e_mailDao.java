@@ -20,4 +20,12 @@ public interface e_mailDao {
 	//添加电子邮件模板
 	@Insert("insert into e_mail values(null,#{e_title},#{e_content},#{e_type})")
 	public void adde_mail(e_mail email);
+	
+	@Select("select * from e_mail where e_id=#{id}")
+	@ResultMap("e_mailmapper")
+	public List<e_mail> e_mailQueryDan(int id);
+	
+	@Select("select * from e_mail where e_id=#{id}")
+	@ResultMap("e_mailmapper")
+	public e_mail e_mailQuery(int id);
 }

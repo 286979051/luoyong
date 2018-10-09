@@ -76,6 +76,9 @@
 					<td class="TD_STYLE1">
 						查询
 					</td>
+					<td class="TD_STYLE1">
+						E-mail
+					</td>
 				</tr>
 				
 				 <c:forEach items="${eil }" var="eil">
@@ -103,6 +106,9 @@
 						</td>
 						<td class="TD_STYLE2">
 							<a href="details_queryDan?id=${eil.ein_id }">查询</a>
+						</td>
+						<td class="TD_STYLE2">
+							<a href="E_mailQuery?id=${eil.engage_resume.res_id }">${eil.engage_resume.human_email }</a>
 						</td>
 					</tr>
 					</c:forEach>

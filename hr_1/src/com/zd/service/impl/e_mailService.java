@@ -27,4 +27,11 @@ public class e_mailService implements Ie_mailService{
 		e_mailDao.adde_mail(email);	
 	}
 
+	public List<e_mail> e_mailQueryDan(int id){
+		return e_mailDao.e_mailQueryDan(id);
+	}
+	
+	public e_mail e_mailQuery(int id) {
+		return e_mailDao.e_mailQuery(id);
+	}
 }

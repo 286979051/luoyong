@@ -39,4 +39,6 @@ public interface IEngage_interviewDao {
 	
 	@Update("update Engage_resume set interview_status=3 where res_id=#{res_id}")
 	public void interview_update(Engage_resume engage_resume);
+	
+	
 }

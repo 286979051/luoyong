@@ -74,6 +74,9 @@
 					<td width="10%" class="TD_STYLE1">
 						面试状态
 					</td>
+					<td width="10%" class="TD_STYLE1">
+						E-mail
+					</td>
 				</tr>
 				
 				
@@ -117,6 +120,9 @@
 							 已面试 
 						</td>
 						</c:if>
+						<td class="TD_STYLE2">
+							<a href="E_mailQueryMa?id=${EnList.res_id }">${EnList.human_email }</a>
+						</td>
 				</c:forEach>
 			</table>
 			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  

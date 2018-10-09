@@ -3,7 +3,14 @@ package com.zd.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,21 +18,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.zd.entity.Config_major_kind;
 import com.zd.entity.Engage_interview;
 import com.zd.entity.Engage_resume;
+import com.zd.entity.e_mail;
+import com.zd.entity.mail;
 import com.zd.service.IConfig_major_kindService;
 import com.zd.service.IEngage_interviewService;
 import com.zd.service.IEngage_resumeService;
+import com.zd.service.Ie_mailService;
 import com.zd.service.impl.Config_major_kindService;
 
 @Controller
 public class Engage_interviewController {
 
 	@Autowired
+	private JavaMailSender mailSender;
+	@Autowired
 	private IEngage_interviewService engage_interviewService;
 	@Autowired
 	private IConfig_major_kindService config_major_kindService;
 	@Autowired
 	private IEngage_resumeService  engage_resumeService;
-	
+	@Autowired
+	private Ie_mailService e_mailService;
 	//有效简历列表登记
 	@RequestMapping("Engage_interview_insert")
 	private String Engage_interview_insert(Engage_interview engage_interview,Engage_resume engage_resume) {
@@ -44,9 +57,17 @@ public class Engage_interviewController {
 	
 	//面试结果列表
 	@RequestMapping("Engage_interview_selresume")
-	private String Engage_interview_selresume(@RequestParam Map map,Map map1) {
-		List<Engage_interview> eil = engage_interviewService.selresume(map);
-		map1.put("eil", eil);
+	private String Engage_interview_selresume(@RequestParam Map map,Map map1,HttpSession session) {
+		if(map==null||map.size()<1) {
+			Map map2=(Map) session.getAttribute("map");
+			List<Engage_interview> eil = engage_interviewService.selresume(map2);
+			map1.put("eil", eil);
+		}else {
+			session.removeAttribute("map");
+			List<Engage_interview> eil = engage_interviewService.selresume(map);
+			session.setAttribute("map",map);
+			map1.put("eil", eil);
+		}
 		return "/recruit/interview/sift-list";
 	}
 	
@@ -64,7 +85,39 @@ public class Engage_interviewController {
 	@RequestMapping("Engage_interview_upd")
 	private String Engage_interview_upd(Engage_interview engage_interview) {
 		engage_interviewService.Engage_interview_upd(engage_interview);
-		return "redirect:Engage_interview_Er";
+		return "redirect:Engage_interview_selresume";
+	}
+	
+	//查询E-mail邮件模板显示
+	@RequestMapping("E_mailQuery")
+	private String E_mailQuery(Map map,int id){
+		List<e_mail> eList = e_mailService.selalle_mail();
+		Engage_resume er =  engage_resumeService.Engage_resume_FUHE(id);
+		map.put("er", er);
+		map.put("eList", eList);
+		return "/recruit/resume/E_mail";
+	}
+	
+	//发送电子邮件
+	@RequestMapping("sendEmail")
+	public String sendEmail(mail mai,int emailTitle) throws Exception {
+			e_mail email = e_mailService.e_mailQuery(emailTitle);
+			// 1、通过发送者创建电子邮件对象-MimeMessage
+			MimeMessage mm = mailSender.createMimeMessage();
+			// 2、创建发送电子邮件的帮助者对象-MimeMessageHelper
+			MimeMessageHelper helper = new MimeMessageHelper(mm, "UTF-8");
+			// 3、设置发送电子邮件的相关信息
+			// 3-1 指定发件人
+			helper.setFrom(mai.getSenderEmail());
+			// 3-2 指定收件人
+			helper.setTo(mai.getHuman_email());
+			// 3-3 指定邮件主题
+			helper.setSubject(email.getE_title());
+			// 3-4 指定邮件内容,上了true表示支持html
+			helper.setText(mai.getEidaa(), true);
+			// 4、通过邮件发送者发送电子邮件
+			mailSender.send(mm);
+			return "redirect:Engage_interview_selresume"; 
 	}
 	
 	//录用申请查询
@@ -133,5 +186,37 @@ public class Engage_interviewController {
 		map.put("ei", ei);
 		map.put("er", er);
 		return "/recruit/employ/details";
+	}
+	
+	//查询E-mail邮件模板显示
+	@RequestMapping("E_mailQueryMa")
+	private String E_mailQueryMa(Map map,int id){
+		List<e_mail> eList = e_mailService.selalle_mail();
+		Engage_resume er =  engage_resumeService.Engage_resume_FUHE(id);
+		map.put("er", er);
+		map.put("eList", eList);
+		return "/recruit/employ/E_mail";
+	}
+	
+	//发送电子邮件
+	@RequestMapping("sendEmailMa")
+	public String sendEmailMa(mail mai,int emailTitle) throws Exception {
+				e_mail email = e_mailService.e_mailQuery(emailTitle);
+				// 1、通过发送者创建电子邮件对象-MimeMessage
+				MimeMessage mm = mailSender.createMimeMessage();
+				// 2、创建发送电子邮件的帮助者对象-MimeMessageHelper
+				MimeMessageHelper helper = new MimeMessageHelper(mm, "UTF-8");
+				// 3、设置发送电子邮件的相关信息
+				// 3-1 指定发件人
+				helper.setFrom(mai.getSenderEmail());
+				// 3-2 指定收件人
+				helper.setTo(mai.getHuman_email());
+				// 3-3 指定邮件主题
+				helper.setSubject(email.getE_title());
+				// 3-4 指定邮件内容,上了true表示支持html
+				helper.setText(mai.getEidaa(), true);
+				// 4、通过邮件发送者发送电子邮件
+				mailSender.send(mm);
+				return "redirect:list_query"; 
 	}
 }

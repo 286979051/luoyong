@@ -109,9 +109,16 @@
 						<td class="TD_STYLE2">
 							${eil.engage_resume.human_educated_major }
 						</td>
+						<c:if test="${eil.engage_resume.pass_passComment == null }">
 						<td class="TD_STYLE2">
 							<a href="check_list_queryDan?id=${eil.ein_id }">审批</a>
 						</td>
+						</c:if>
+						<c:if test="${eil.engage_resume.pass_passComment != null }">
+						<td class="TD_STYLE2">
+							<a href="#">已审批</a>
+						</td>
+						</c:if>
 					</tr>
 					</c:forEach>
 					

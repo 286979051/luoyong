@@ -68,4 +68,11 @@ public class e_mailController {
 		return"redirect:selalle_mail";
 	}
 	
+	@RequestMapping("e_mailQueryDan")
+	@ResponseBody
+	private List<e_mail> e_mailQueryDan(int id){
+		List<e_mail> eList = e_mailService.e_mailQueryDan(id);
+		return eList;
+	}
+	
 }

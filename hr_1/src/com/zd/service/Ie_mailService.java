@@ -13,4 +13,9 @@ public interface Ie_mailService {
 	
 	//添加电子邮件模板
 	public void adde_mail(e_mail email);
+	
+	//查询单条
+	public List<e_mail> e_mailQueryDan(int id);
+	
+	public e_mail e_mailQuery(int id);
 }
