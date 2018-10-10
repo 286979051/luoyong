@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Service;
 
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 import com.zd.entity.zm_some;
 /**
  * 
@@ -57,4 +58,8 @@ public interface IStandardService {
 	
 	//对变更信息进行修改_1
 	public void updbiangeng(Salary_standard salary_standard);
+	//查询所有
+	public List<Salary_standard_details> selSalaryall();
+	//查询单挑
+	public Salary_standard_details selSalaryone(String id);
 }

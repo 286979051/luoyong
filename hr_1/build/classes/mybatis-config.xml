@@ -23,6 +23,13 @@
 	<typeAlias type="com.zd.entity.Engage_major_release" alias="Engage_major_release"/>
 	<!-- 公共表 -->
 	<typeAlias type="com.zd.entity.Config_public_char" alias="Config_public_char"/>
+	<!-- 薪资分发 -->
+	<typeAlias type="com.zd.entity.Salary_grant" alias="Salary_grant"/>
+	<typeAlias type="java.util.Map" alias="map"/>
+	<!-- 上传与下载 -->
+	<typeAlias type="com.zd.entity.Config_shang" alias="Config_shang"/>
+	<!-- 文件映射  -->
+	<typeAlias type="com.zd.entity.Human_file" alias="Humanfile"/>
 </typeAliases>
 
 <mappers>
@@ -44,9 +51,15 @@
 	<mapper resource="com/zd/mapper/Engage_major_releaseMapper.xml"/>
 	<!-- 公共表 -->
 	<mapper resource="com/zd/mapper/Config_public_charMapper.xml"/>
+	<!-- 薪资分发 -->
+	<mapper resource="com/zd/mapper/Salary_grantMapper.xml"/>
 	<!-- 薪酬标准 -->
 	<mapper resource="com/zd/mapper/Salary_StandardMapper.xml"/>
 	<!-- zm_some表的映射 -->
 	<mapper resource="com/zd/mapper/zm_someMapper.xml"/>
+	<!-- zm_some表的映射 -->
+	<mapper resource="com/zd/mapper/Config_shangMapper.xml"/>
+	<!-- zm_some表的映射 -->
+	<mapper resource="com/zd/mapper/Human_fileMapper.xml"/>
 </mappers>
 </configuration>

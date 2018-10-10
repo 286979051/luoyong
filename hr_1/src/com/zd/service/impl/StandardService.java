@@ -3,14 +3,10 @@ package com.zd.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.IStandardDao;
-import com.zd.dao.Salary_standard_details;
 import com.zd.entity.Salary_standard;
 import com.zd.entity.zm_some;
 import com.zd.service.IStandardService;
@@ -97,5 +93,12 @@ public class StandardService implements IStandardService{
 	}
 
 	
+	public List<com.zd.entity.Salary_standard_details> selSalaryall(){
+		return dao.selSalaryall();
+	}
+
+	public com.zd.entity.Salary_standard_details selSalaryone(String id) {
+		return dao.selSalaryone(id);
+	}
 }
 

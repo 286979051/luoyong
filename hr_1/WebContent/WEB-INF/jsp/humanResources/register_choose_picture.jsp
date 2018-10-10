@@ -11,7 +11,8 @@
 		</script>
 	</head>
 	<body>
-		<form method="post" action="success.html" enctype="multipart/form-data">
+		<form method="post" action="upload" enctype="multipart/form-data">
+		<input type="hidden" name="pbc_id" value="${pd }">
 			<table width="100%">
 				<tr>
 					<td colspan="2">
@@ -21,11 +22,10 @@
 				<tr>
 					<td width="59%">
 						提交成功，如有照片，请选择上传照片(.jpg、.gif文件)
-						<input type="file" class="FILE_STYLE1" name="picFile"
+						<input type="file" class="FILE_STYLE1" name="file1"
 							width="100%"/>
 					</td>
 					<td width="41%" align="right">
-						<input type="button" value="上传附件" class="BUTTON_STYLE1" onclick="location.href='register_choose_attachment.html'"/>
 						<input type="submit" value="完成" class="BUTTON_STYLE1"/>
 					</td>
 				</tr>

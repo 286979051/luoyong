@@ -29,4 +29,9 @@
 	<!-- 用来解决静态资源问题 -->
 	<mvc:default-servlet-handler/>
 	<mvc:annotation-driven></mvc:annotation-driven>
+	
+	<!-- 配置springmvc做文件上传的解析器 -->
+	<!-- 用来将上传文件中的数据保存在MultipartFile对象中 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"></bean>
+	
 </beans>

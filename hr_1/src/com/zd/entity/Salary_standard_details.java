@@ -18,6 +18,7 @@ public class Salary_standard_details {
 	public void setSdt_id(int sdt_id) {
 		this.sdt_id = sdt_id;
 	}
+	
 	public String getStandard_id() {
 		return standard_id;
 	}

@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Salary_standard;
+import com.zd.entity.Salary_standard_details;
 /**
  * 薪酬标准的制定过程
  * @author 张敏
@@ -69,4 +70,12 @@ public interface IStandardDao {
 	//对变更信息进行修改_1
 	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},changer=#{changer},change_time=#{change_time},salary_sum=#{salary_sum},remark=#{remark} WHERE standard_id=#{standard_id};")
 	public void updbiangeng(Salary_standard salary_standard);
+	
+	@Select("SELECT * from Salary_standard_details GROUP BY standard_name")
+	@ResultMap("salaryMapper")
+	public List<Salary_standard_details> selSalaryall();
+	
+	@Select("SELECT * from Salary_standard_details where standard_name = #{id} GROUP BY standard_name")
+	@ResultMap("salaryMapper")
+	public Salary_standard_details selSalaryone(String id);
 }

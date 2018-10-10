@@ -77,4 +77,12 @@
 			</if>
 	</select>
 	
+	<resultMap type="com.zd.entity.Salary_standard_details" id="salaryMapper">
+			<result column="sdt_id" property="sdt_id"/>
+			<result column="standard_id" property="standard_id"/>
+			<result column="standard_name" property="standard_name"/>
+			<result column="item_id" property="item_id"/>
+			<result column="item_name" property="item_name"/>
+			<result column="salary" property="salary"/>
+	</resultMap>
 </mapper>

@@ -96,8 +96,6 @@
 			}
 			function pd(){
 				if($("#firstKind").val() != 0){
-					if($("#secondKind").val() != 0){
-						if($("#thirdKind").val() != 0){
 							//职位
 							if($("#majorKind").val() != 0){
 								if($("#majorName").val() != 0){
@@ -121,10 +119,6 @@
 									$.messager.show("消息提示", "请选择你的职位区域", 2000);
 							}else
 								$.messager.show("消息提示", "请选择你的职位分类", 2000);
-						}else
-							$.messager.show("消息提示", "请选择你的所在三级机构", 2000);
-					}else
-						$.messager.show("消息提示", "请选择你的所在二级机构", 2000);
 				}else
 					$.messager.show("消息提示", "请选择你的所在一级机构", 2000);
 			}
@@ -132,7 +126,8 @@
 	</head>
 
 	<body>
-		<form method="post" action="register_choose_picture.html" id="tijiao">
+		<form method="post" action="register_choose_picture" id="tijiao">
+		<input type="hidden" name="human_id" value="${currentTimeMillis }">
 			<table width="100%">
 				<tr>
 					<td>
@@ -160,25 +155,22 @@
 							<option value="${s.firstkindid }">${s.firstkindname }</option>
 							</c:forEach>
 						</select>
-						<input type="hidden" name="humanFile.firstKindName"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						II级机构
 					</td>
 					<td width="14%" class="TD_STYLE2">
-						<select name="humanFile.secondKindId" class="SELECT_STYLE1" id="secondKind" onchange="third_Kind()">
+						<select name="second_kind_id" class="SELECT_STYLE1" id="secondKind" onchange="third_Kind()">
 							<option value="0">---请选择---</option>
 						</select>
-						<input type="hidden" name="humanFile.secondKindName"/>
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						III级机构
 					</td>
 					<td class="TD_STYLE2" colspan="2">
-						<select name="humanFile.thirdKindId" class="SELECT_STYLE1" id="thirdKind">
+						<select name="third_kind_id" class="SELECT_STYLE1" id="thirdKind">
 							<option value="0">---请选择---</option>
 						</select>
-						<input type="hidden" name="humanFile.thirdKindName"/>
 					</td>
 					<td rowspan="5" style="text-align: center;">
 					</td>
@@ -188,32 +180,30 @@
 						职位分类
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanId" class="SELECT_STYLE1" id="majorKind" onchange="major_kind()">
+						<select name="human_major_kind_id" class="SELECT_STYLE1" id="majorKind" onchange="major_kind()">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr2 }">
 								<option value="${s.major_kind_id }">${s.major_kind_name }</option>
 							</c:forEach>
 						</select>
-						<input type="hidden" name="humanFile.humanMajorKindName"/>
 					</td>
 					<td class="TD_STYLE1">
 						职位名称
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanMajorId" class="SELECT_STYLE1" id="majorName">
+						<select name="human_major_id" class="SELECT_STYLE1" id="majorName">
 							<option value="0">---请选择---</option>
 						</select>
-						<input type="hidden" name="humanFile.hunmaMajorName"/>
 					</td>
 					<td class="TD_STYLE1">
 						职称
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<select name="humanFile.humanProDesignation" class="SELECT_STYLE1" id="majorinName">
+						<select name="human_pro_designation" class="SELECT_STYLE1" id="majorinName">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '职称' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -224,14 +214,14 @@
 						姓名
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" id="humanName" name="humanFile.humanName"
+						<input type="text" id="humanName" name="human_name"
 							class="INPUT_STYLE2"/>
 					</td>
 					<td class="TD_STYLE1">
 						性别
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanSex" class="SELECT_STYLE1">
+						<select name="human_sex" class="SELECT_STYLE1">
 							<option value="男" selected="selected">
 								男
 							</option>
@@ -244,7 +234,7 @@
 						EMAIL
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanEmail" id="humanEmail"
+						<input type="text" name="human_email" id="humanEmail"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -253,21 +243,21 @@
 						电话
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanTelephone" id="humanTelephone"
+						<input type="text" name="human_telephone" id="humanTelephone"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						QQ
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanQq" id="humanQq"
+						<input type="text" name="human_qq" id="humanQq"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						手机
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanMobilephone" id="humanMobilephone"
+						<input type="text" name="human_mobilephone" id="humanMobilephone"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -276,14 +266,14 @@
 						住址
 					</td>
 					<td colspan="3" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAddress"
+						<input type="text" name="human_address"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						邮编
 					</td>
 					<td colspan="2" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanPostcode"
+						<input type="text" name="human_postcode"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -292,11 +282,11 @@
 						国籍
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanNationality" class="SELECT_STYLE1">
+						<select name="human_nationality" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '国籍' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -305,25 +295,25 @@
 						出生地
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBirthplace"
+						<input type="text" name="human_birthplace"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						生日
 					</td>
 					<td width="13%" class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBirthday" readonly="readonly"
+						<input type="text" name="human_birthday" 
 							class="INPUT_STYLE2" id="birthday">
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						民族
 					</td>
 					<td class="TD_STYLE2" width="14%">
-						<select name="humanFile.humanRace" class="SELECT_STYLE1">
+						<select name="human_race" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '民族' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -334,11 +324,11 @@
 						宗教信仰
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanReligion" class="SELECT_STYLE1">
+						<select name="human_religion" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '宗教信仰' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -347,11 +337,11 @@
 						政治面貌
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanParty" class="SELECT_STYLE1">
+						<select name="human_party" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '政治面貌' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -360,14 +350,14 @@
 						身份证号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanIdCard" id="humanIdCard"
+						<input type="text" name="human_id_card" id="humanIdCard"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						社会保障号码
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanSocietySecurityId"
+						<input type="text" name="human_society_security_id"
 							class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -376,18 +366,18 @@
 						年龄
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAge" id="humanAge"
+						<input type="text" name="human_age" id="humanAge"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						学历
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedDegree" class="SELECT_STYLE1">
+						<select name="human_educated_degree" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '学历' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -396,11 +386,11 @@
 						教育年限
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedYears" class="SELECT_STYLE1">
+						<select name="human_educated_years" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '教育年限' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }年</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -409,11 +399,11 @@
 						学历专业
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanEducatedMajor" class="SELECT_STYLE1">
+						<select name="human_educated_major" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '学历专业' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -424,12 +414,10 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.salaryStandardId" class="SELECT_STYLE1">
+						<select name="salary_standard_name" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
-							<c:forEach var="s" items="${arr1 }">
-							<c:if test="${s.attribute_kind == '薪酬设置' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
-							</c:if>
+							<c:forEach var="s" items="${arr3 }">
+								<option value="${s.standard_name }">${s.standard_name }</option>
 							</c:forEach>
 						</select>
 					</td>
@@ -437,21 +425,21 @@
 						开户行
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanBank"
+						<input type="text" name="human_bank"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						帐号
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.humanAccount"
+						<input type="text" name="human_account"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						登记人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.register" value="谢鹏"
+						<input type="text" name="register" value="谢鹏"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -460,18 +448,18 @@
 						建档时间
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.registTime" id="create_time" readonly="readonly"
+						<input type="text" name="regist_time" id="create_time" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>
 					<td class="TD_STYLE1">
 						特长
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanSpeciality" class="SELECT_STYLE1">
+						<select name="human_speciality" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '特长' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -480,11 +468,11 @@
 						爱好
 					</td>
 					<td class="TD_STYLE2">
-						<select name="humanFile.humanHobby" class="SELECT_STYLE1">
+						<select name="human_hobby" class="SELECT_STYLE1">
 							<option value="0">---请选择---</option>
 							<c:forEach var="s" items="${arr1 }">
 							<c:if test="${s.attribute_kind == '爱好' }">
-								<option value="${s.pbc_id }">${s.attribute_name }</option>
+								<option value="${s.attribute_name }">${s.attribute_name }</option>
 							</c:if>
 							</c:forEach>
 						</select>
@@ -501,7 +489,7 @@
 						个人履历
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.humanHistroyRecords" rows="4"
+						<textarea name="human_histroy_records" rows="4"
 							class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
@@ -510,7 +498,7 @@
 						家庭关系信息
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.humanFamilyMembership" rows="4"
+						<textarea name="human_family_membership" rows="4"
 							class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
@@ -519,7 +507,7 @@
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2">
-						<textarea name="humanFile.remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="remark" rows="4" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 				</tr>
 			</table>
