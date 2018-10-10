@@ -3,7 +3,7 @@
 <!-- SQL语句映射文件，mapper-映射 -->
 <mapper namespace="com.zd.dao.IUserDao">
 	<resultMap type="user" id="usermapper">
-		<result column="userid" property="userid"/>
+		<result column="user_id" property="userid"/>
 		<result column="user_name" property="user_name"/>
 		<result column="user_true_name" property="user_true_name"/>
 		<result column="user_password" property="user_password"/>
