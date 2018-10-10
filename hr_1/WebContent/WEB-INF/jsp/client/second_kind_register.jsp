@@ -11,34 +11,53 @@
 			src="javascript/comm/comm.js">
 		</script>
 	</head>
-<script type="text/javascript" src="/javascript/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript">
-		function check(){
-			if (document.getElementById("firstKind.ffkId").value==0){
-				alert("请选择I级机构名称!!!");
-				return false;
-			}
-			if (document.getElementById("secondKind.secondKindName").value==""){
-				alert("II级机构名称不能为空!!!");
-				return false;
-			}
-			if (document.getElementById("secondKind.secondSalaryId").value==""){
-				alert("薪酬发放责任人编号不能为空!!!");
-				return false;
-			}
-			if (document.getElementById("secondKind.secondSaleId").value==""){
-				alert("销售责任人编号不能为空!!!");
-				return false;
-			}
-			
-			var addsecond = document.getElementById("addsecond");
-			addsecond.submit()
-			
-		}	
-		function change(){
-		var se=document.getElementById("firstKindId");
-		document.getElementById("firstKindName").value=se.options[se.selectedIndex].innerHTML;
+function check(){
+		var firstkindid = $("#firstkindid").val();	
+		var secondkindname = $("#secondkindname").val();	
+		var secondsalaryid = $("#secondsalaryid").val();	
+		var secondsaleid = $("#secondsaleid").val();	
+		//判断一级机构名称是否为空
+		if(document.getElementById("firstkindid").value==0){
+			$("#errorSpan").html("<font color='red'>请选择一级机构名称</font>");
+			return;
 		}
+		//判断二级机构名称是否为空
+		if(document.getElementById("secondkindname").value==''){
+			$("#errorSpan2").html("<font color='red'>请输入二级机构名称</font>");
+			return;
+		}
+		
+		//判断薪酬发放责任人编号是否为空且只能输入数字
+		if(document.getElementById("secondsalaryid").value==''){
+			$("#errorSpan3").html("<font color='red'>请输入薪酬发放责任人编号</font>");
+			return;
+		}else{
+			var reg = /^\d{1,6}$/;
+			var b = reg.test(secondsalaryid);
+			if(!b){
+				$("#errorSpan3").html("<font color='red'>请填写数字编号并且少于六位</font>");
+				return;
+				}
+		}
+		
+		//判断销售责任人编号是否为空且只能输入数字
+		if(document.getElementById("secondsaleid").value==''){
+			$("#errorSpan4").html("<font color='red'>请输入销售责任人编号</font>");
+			return;
+			}else{
+				var reg = /^\d{1,6}$/;
+				var b = reg.test(secondsaleid);
+				if(!b){
+				$("#errorSpan4").html("<font color='red'>请填写数字编号并且少于六位</font>");
+				return;
+			}	
+		}	
+		
+		$("#addsecond").submit();
+		
+}
 </script>
 	<body>
 		<form id="addsecond" action="addsecond" method="post">
@@ -69,12 +88,13 @@
 					</td>
 					<td width="81%" class="TD_STYLE2">
 					
-					<select name="firstkindid" id="firstKindId" onchange="change()">
-						<option>请选择I级机构名称...</option>
+					<select name="firstkindid" id="firstkindid" onchange="change()">
+						<option value="0">请选择I级机构名称...</option>
 					<c:forEach var="item" items="${namelist }">
 						<option value="${item.firstkindid }">${item.firstkindname }</option>
 					</c:forEach>
 					</select>
+					<span id="errorSpan"></span>
 					</td>
 				</tr>
 				<tr>
@@ -82,7 +102,7 @@
 						II级机构编号
 					</td>
 					<td width="81%" class="TD_STYLE2">
-					<input type="hidden" class="INPUT_STYLE1" name="secondkindname" value="${systime }"/>${systime }
+					<input type="hidden" class="INPUT_STYLE1" name="secondkindid" value="${systime }"/>${systime }
 					</td>
 				</tr>
 				<tr>
@@ -90,7 +110,7 @@
 						II级机构名称
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" class="INPUT_STYLE1" name="secondkindname" value=""/>
+						<input type="text" id="secondkindname" class="INPUT_STYLE1" name="secondkindname" value=""/><span id="errorSpan2"></span>
 					</td>
 				</tr>
 				<tr>
@@ -98,7 +118,7 @@
 						薪酬发放责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="secondsalaryid"></textarea>
+						<textarea rows="4" id="secondsalaryid" cols="" class="TEXTAREA_STYLE1" name="secondsalaryid"></textarea><span id="errorSpan3"></span>
 					</td>
 				</tr>
 				<tr>
@@ -106,7 +126,7 @@
 						销售责任人编号（多个编号之间请用"半角逗号"加"一个空格"隔开，如", "）
 					</td>
 					<td class="TD_STYLE2">
-						<textarea rows="4" cols="" class="TEXTAREA_STYLE1" name="secondsaleid" ></textarea>
+						<textarea rows="4" id="secondsaleid" cols="" class="TEXTAREA_STYLE1" name="secondsaleid" ></textarea><span id="errorSpan4"></span>
 					</td>
 				</tr>
 			</table>

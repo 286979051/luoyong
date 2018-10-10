@@ -39,10 +39,23 @@ public class Engage_major_releaseService implements IEngage_major_releaseService
 	}
 
 	//职位发表登记添加
-	public void releaseInsert(Engage_major_release Engage_major_release) {
-		engage_major_releaseDao.releaseInsert(Engage_major_release);
+	public void releaseInsert1(Engage_major_release Engage_major_release) {
+		engage_major_releaseDao.releaseInsert1(Engage_major_release);
+	}
+	
+	//职位发表登记添加
+	public void releaseInsert2(Engage_major_release Engage_major_release) {
+		engage_major_releaseDao.releaseInsert2(Engage_major_release);
+	}
+		
+	//职位发表登记添加
+	public void releaseInsert3(Engage_major_release Engage_major_release) {
+		engage_major_releaseDao.releaseInsert3(Engage_major_release);
 	}
 
-	
+	//职位发表登记表申请修改
+	public void releaseUpdShenQ(Engage_major_release Engage_major_release) {
+		engage_major_releaseDao.releaseUpdShenQ(Engage_major_release);
+	}
 
 }

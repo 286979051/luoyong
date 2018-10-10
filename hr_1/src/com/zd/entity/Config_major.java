@@ -11,7 +11,8 @@ public class Config_major {
 		super();
 	}
 	
-	public Config_major(int makid, int majorkindid, String majorkindname, int majorid, String majorname,
+
+	public Config_major(int makid, String majorkindid, String majorkindname, String majorid, String majorname,
 			int testamount) {
 		super();
 		this.makid = makid;
@@ -19,25 +20,24 @@ public class Config_major {
 		this.majorkindname = majorkindname;
 		this.majorid = majorid;
 		this.majorname = majorname;
-		this.testamount = testamount;
 	}
 
 	private int makid;
-	private int majorkindid;
+	private String majorkindid;
 	private String majorkindname;
-	private int majorid;
+	private String majorid;
 	private String majorname;
-	private int testamount;
+	
 	public int getMakid() {
 		return makid;
 	}
 	public void setMakid(int makid) {
 		this.makid = makid;
 	}
-	public int getMajorkindid() {
+	public String getMajorkindid() {
 		return majorkindid;
 	}
-	public void setMajorkindid(int majorkindid) {
+	public void setMajorkindid(String majorkindid) {
 		this.majorkindid = majorkindid;
 	}
 	public String getMajorkindname() {
@@ -46,10 +46,10 @@ public class Config_major {
 	public void setMajorkindname(String majorkindname) {
 		this.majorkindname = majorkindname;
 	}
-	public int getMajorid() {
+	public String getMajorid() {
 		return majorid;
 	}
-	public void setMajorid(int majorid) {
+	public void setMajorid(String majorid) {
 		this.majorid = majorid;
 	}
 	public String getMajorname() {
@@ -58,18 +58,11 @@ public class Config_major {
 	public void setMajorname(String majorname) {
 		this.majorname = majorname;
 	}
-	public int getTestamount() {
-		return testamount;
-	}
-	public void setTestamount(int testamount) {
-		this.testamount = testamount;
-	}
 
 	@Override
 	public String toString() {
 		return "Config_major [makid=" + makid + ", majorkindid=" + majorkindid + ", majorkindname=" + majorkindname
-				+ ", majorid=" + majorid + ", majorname=" + majorname + ", testamount=" + testamount + "]";
+				+ ", majorid=" + majorid + ", majorname=" + majorname + "]";
 	}
-
 	
 }

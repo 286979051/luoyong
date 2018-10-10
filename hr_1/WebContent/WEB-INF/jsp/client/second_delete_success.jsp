@@ -5,9 +5,9 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
 		<script type="text/javascript"
-			src="../../javascript/comm/comm.js">
+			src="javascript/comm/comm.js">
 		</script>
 	<body>
 		<form action="customiz/customizAction!findSecondKind" method="post">
@@ -23,7 +23,7 @@
 					删除成功，请返回。
 				</td>
 				<td width="51%" align="right">
-					<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='second_kind.html" />
+					<input type="button" value="返回" class="BUTTON_STYLE1" onclick="window.location.href='selallsecondkind'" />
 				</td>
 			</tr>
 		</table>

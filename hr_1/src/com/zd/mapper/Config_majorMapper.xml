@@ -8,6 +8,11 @@
 		<result column="major_kind_name" property="majorkindname"/>
 		<result column="major_id" property="majorid"/>
 		<result column="major_name" property="majorname"/>
-		<result column="test_amount" property="testamount"/>
+	</resultMap>
+	
+	<resultMap type="Config_major_kind" id="Config_major_kindmapper">
+		<result column="mfk_id" property="mfk_id"/>
+		<result column="major_kind_id" property="major_kind_id"/>
+		<result column="major_kind_name" property="major_kind_name"/>
 	</resultMap>
 </mapper>

@@ -36,14 +36,35 @@ public class Config_file_first_kindService implements IConfig_file_first_kindSer
 	}
 
 	//删除
-	public void delete(int ffkid) {
-		config_file_first_kindDao.delete(ffkid);
+	public void delete(String firstkindid) {
+		config_file_first_kindDao.delete(firstkindid);
 	}
 
 	
 	//一级机构联动单条查询
 	public Config_file_first_kind queryDan(String first_kind_id) {
 		return config_file_first_kindDao.queryDan(first_kind_id);
+	}
+
+	//添加时查询一级机构名字
+	public Config_file_first_kind selbybhid(String firstkindid) {
+		return config_file_first_kindDao.selbybhid(firstkindid);
+	}
+
+	//删除一级机构的同时删除二级机构
+	public void delete2(String firstkindid) {
+		config_file_first_kindDao.delete2(firstkindid);
+	}
+
+	//删除一级机构的同时删除二级机构和三级机构
+	public void delete3(String firstkindid) {
+		config_file_first_kindDao.delete3(firstkindid);
+	}
+
+	@Override
+	public Config_file_first_kind queryDan(int first_kind_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

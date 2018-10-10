@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- SQL语句映射文件，mapper-映射 -->
+<mapper namespace="com.zd.dao.e_mailDao">
+	<resultMap type="com.zd.entity.e_mail" id="e_mailmapper">
+		<result column="e_id" property="e_id"/>
+		<result column="e_title" property="e_title"/>
+		<result column="e_content" property="e_content"/>
+		<result column="e_type" property="e_type"/>
+	</resultMap>
+	
+</mapper>

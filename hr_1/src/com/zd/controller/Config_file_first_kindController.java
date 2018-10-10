@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_major_kind;
@@ -73,7 +74,6 @@ public class Config_file_first_kindController {
 	public String add(Config_file_first_kind firstkind){
 		try {
 			config_file_first_kindmapperService.add(firstkind);
-			System.out.println(firstkind);
 		} catch (Exception e){
 			logger.error("失败", e);
 		}
@@ -105,12 +105,23 @@ public class Config_file_first_kindController {
 	
 	//删除
 	@RequestMapping("/delete")
-	public String delete(int ffkid){
+	@ResponseBody
+	public String delete(String firstkindid){
 		try {
-			config_file_first_kindmapperService.delete(ffkid);
+			//删除一级机构
+			config_file_first_kindmapperService.delete(firstkindid);
+			//删除一级机构同时删除二级机构
+			config_file_first_kindmapperService.delete2(firstkindid);
+			//删除一级机构的同时删除二级机构和三级机构
+			config_file_first_kindmapperService.delete3(firstkindid);
 		} catch (Exception e) {
 			logger.error("失败",e);
 		}
+		return"1";
+	}
+	//跳转删除成功的页面
+	@RequestMapping("/successdelete")
+	public String successdelete() {
 		return "/client/first_delete_success";
 	}
 	

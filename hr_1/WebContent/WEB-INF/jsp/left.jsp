@@ -46,17 +46,17 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/resume/register.html" target="mainFrame" style="color:black;">简历登记</a>
+														<a href="majorQuery" target="mainFrame" style="color:black;">简历登记</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/resume/resume-choose.html" target="mainFrame" style="color:black;">简历筛选</a>
+														<a href="Engage_resume_Er" target="mainFrame" style="color:black;">简历筛选</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/resume/valid-resume.html" target="mainFrame" style="color:black;">有效简历查询</a>
+														<a href="Engage_resume_ErYXJL" target="mainFrame" style="color:black;">有效简历查询</a>
 													</span>
 												</li>
 									</ul>
@@ -68,12 +68,12 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/interview/interview-list.html" target="mainFrame" style="color:black;">面试结果登记</a>
+														<a href="Engage_resume_MSDJ" target="mainFrame" style="color:black;">面试结果登记</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/interview/sift-list.html" target="mainFrame" style="color:black;">面试筛选</a>
+														<a href="Engage_interview_Er" target="mainFrame" style="color:black;">面试筛选</a>
 													</span>
 												</li>
 									</ul>
@@ -85,17 +85,17 @@
 									<ul>
 												<li>
 													<span>
-														<a href="recruit/employ/register_list.html" target="mainFrame" style="color:black;">录用申请</a>
+														<a href="Engage_interview_query" target="mainFrame" style="color:black;">录用申请</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/employ/check_list.html" target="mainFrame" style="color:black;">录用审批</a>
+														<a href="check_list_query" target="mainFrame" style="color:black;">录用审批</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="recruit/employ/list.html" target="mainFrame" style="color:black;">录用查询</a>
+														<a href="list_query" target="mainFrame" style="color:black;">录用查询</a>
 													</span>
 												</li>
 									</ul>
@@ -234,27 +234,27 @@
 												</li>
 												<li>
 													<span>
-														<a href="client/third_kind.html" target="mainFrame" style="color:black;">Ⅲ级机构设置</a>
+														<a href="selallthirdkind" target="mainFrame" style="color:black;">Ⅲ级机构设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/profession_design.html" target="mainFrame" style="color:black;">职称设置</a>
+														<a href="selprofessiondesign" target="mainFrame" style="color:black;">职称设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/major_kind.html" target="mainFrame" style="color:black;">职位分类设置</a>
+														<a href="majorkindlist" target="mainFrame" style="color:black;">职位分类设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/major.html" target="mainFrame" style="color:black;">职位设置</a>
+														<a href="selallConfig_major" target="mainFrame" style="color:black;">职位设置</a>
 													</span>
 												</li>
 												<li>
 													<span>
-														<a href="client/public_char.html" target="mainFrame" style="color:black;">公共属性设置</a>
+														<a href="selallpublicchar" target="mainFrame" style="color:black;">公共属性设置</a>
 													</span>
 												</li>
 									</ul>
@@ -266,24 +266,19 @@
 									<ul>
 												<li>
 													<span>
-														<a href="client/salary_item.html" target="mainFrame" style="color:black;">薪酬项目设置</a>
-													</span>
-												</li>
-												<li>
-													<span>
-														<a href="client/salary_grant_mode.html" target="mainFrame" style="color:black;">薪酬发放方式设置</a>
+														<a href="salaryitemlist" target="mainFrame" style="color:black;">薪酬项目设置</a>
 													</span>
 												</li>
 									</ul>
 								</li>
 								<li state="closed">
 									<span>
-										其他设置
+										电子邮件模板设置
 									</span>
 									<ul>
 												<li>
 													<span>
-														<a href="client/primary_key.html" target="mainFrame" style="color:black;">关键字查询设置</a>
+														<a href="selalle_mail" target="mainFrame" style="color:black;">电子邮件模板内容设置</a>
 													</span>
 												</li>
 									</ul>

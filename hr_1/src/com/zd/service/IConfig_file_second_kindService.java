@@ -18,6 +18,24 @@ public interface IConfig_file_second_kindService {
 	
 	//添加二级机构
 	public void addsecond(Config_file_second_kind secondkind);
+	
 	//二级联动单查
 	public Config_file_second_kind queryDan(String id);
+	
+	//修改二级机构前做查询
+	public Config_file_second_kind selbyfskid(int fskid);
+	
+	//修改二级机构
+	public void updatesecondkind(Config_file_second_kind secondkind);
+	
+	//删除二级机构
+	public void deletesecond(String secondkindid);
+	
+	//删除二级机构的同时删除三级机构
+	public void delete2(String secondkindid);
+	
+	//单条查询二级机构
+	public  Config_file_second_kind selbysecondkindid(String secondkindid);
+	
+
 }

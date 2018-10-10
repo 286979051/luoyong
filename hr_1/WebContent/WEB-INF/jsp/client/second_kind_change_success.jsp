@@ -31,7 +31,7 @@
 					</td>
 					<td width="51%" align="right">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
-							onclick="window.location.href='second_kind.html'">
+							onclick="window.location.href='selallsecondkind'">
 					</td>
 				</tr>
 			</table>

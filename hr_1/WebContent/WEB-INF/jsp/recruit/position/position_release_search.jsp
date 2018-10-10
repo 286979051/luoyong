@@ -73,7 +73,17 @@
 							${releaseList.major_name }
 						</td>
 						<td class="TD_STYLE2">
-							${releaseList.second_kind_name }
+							<c:if test="${not empty releaseList.third_kind_name}">
+								${releaseList.third_kind_name}
+							</c:if>
+							
+							<c:if test="${empty releaseList.third_kind_name and not empty releaseList.second_kind_name}">
+								${releaseList.second_kind_name }
+							</c:if>
+							
+							<c:if test="${empty releaseList.third_kind_name and empty releaseList.second_kind_name}">
+								${releaseList.first_kind_name}
+							</c:if>
 						</td>
 						<td class="TD_STYLE2">
 							${releaseList.human_amount }
@@ -85,7 +95,12 @@
 						${releaseList.deadline }   
 						</td>
 						<td class="TD_STYLE2">
-							<a href="/HR_Fist/recruit/recruitAction!searchPositionById?emajorRelease.mreId=530">申请该职位</a>
+						<c:if test="${releaseList.state==1 }">
+							<a href="releaseQueryByIdSQ?id=${releaseList.mre_id }">申请该职位</a>
+						</c:if>
+						<c:if test="${releaseList.state==2 }">
+							<a href="#">已成功申请</a>
+						</c:if>
 						</td>
 						 
 					</tr>

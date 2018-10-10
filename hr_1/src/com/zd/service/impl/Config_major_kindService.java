@@ -21,8 +21,29 @@ public class Config_major_kindService implements IConfig_major_kindService{
 	}
 
 	//职业分类一级联动单查
-	public Config_major_kind majorQueryDan(int id) {
+	public Config_major_kind majorQueryDan(String id) {
 		return config_major_kindDao.majorQueryDan(id);
+	}
+
+	//张紫行，查询所有职业分类
+	public List<Config_major_kind> majorkindlist() {
+		return config_major_kindDao.majorkindlist();
+	}
+
+	//张紫行，删除职业分类
+	public void deletemajorkind(String major_kind_id) {
+		config_major_kindDao.deletemajorkind(major_kind_id);
+	}
+
+	//张紫行，添加职业分类
+	public void addmajorkind(Config_major_kind majorkind) {
+		config_major_kindDao.addmajorkind(majorkind);
+	}
+
+	@Override
+	public Config_major_kind majorQueryDan(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
