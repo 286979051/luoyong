@@ -3,11 +3,11 @@ package com.zd.service;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Service;
 
-import com.zd.dao.Salary_standard_details;
 import com.zd.entity.Salary_standard;
 import com.zd.entity.zm_some;
 /**
@@ -42,4 +42,19 @@ public interface IStandardService {
 	
 	//对复核信息进行添加
 	public void addfuhe(Map map);
+	
+	//薪酬标准查询——模糊查询
+	public List<Salary_standard> selstatus1(Map map);
+	
+	//薪酬标准查询——模糊查询总条数
+	public int selcount(Map map);
+	
+	//根据编号查询——查询薪酬标准
+	public Salary_standard selbyid(String standard_id);
+	
+	//薪酬标准查询变更——模糊查询 
+	public List<Salary_standard> selstatus2(Map map);
+	
+	//对变更信息进行修改_1
+	public void updbiangeng(Salary_standard salary_standard);
 }

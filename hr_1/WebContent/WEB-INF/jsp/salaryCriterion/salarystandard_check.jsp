@@ -135,7 +135,6 @@
 		</form>
 		<script type="text/javascript">
 		function check(){
-				
 				var designer=document.getElementById("designer");
 				var standardName=document.getElementById("standardName");
 				if(designer.value.length<=0){

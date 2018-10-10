@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,5 +71,31 @@ public class StandardService implements IStandardService{
 		
 	}
 
+	//薪酬标准查询——模糊查询
+	public List<Salary_standard> selstatus1(Map map) {
+		return dao.selstatus1(map);
+	}
+
+	//薪酬标准查询——模糊查询总条数
+	public int selcount(Map map) {
+		return dao.selcount(map);
+	}
+
+	//根据编号查询——查询薪酬标准
+	public Salary_standard selbyid(String standard_id) {
+		return dao.selbyid(standard_id);
+	}
+
+	//薪酬标准查询变更——模糊查询 
+	public List<Salary_standard> selstatus2(Map map) {
+		return dao.selstatus2(map);
+	}
+
+	//对变更信息进行修改_1
+	public void updbiangeng(Salary_standard salary_standard) {
+		dao.updbiangeng(salary_standard);
+	}
+
+	
 }
 

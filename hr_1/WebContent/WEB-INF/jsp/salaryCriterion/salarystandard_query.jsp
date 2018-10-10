@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css" />
+			href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 			#d{
@@ -57,7 +58,7 @@
 		</style>
 	</head>
 	<script type="text/javascript"
-		src="../../javascript/jquery-1.7.2.js">
+		src="../javascript/jquery-1.7.2.js">
 		
 	 
 </script>
@@ -93,9 +94,8 @@ $(function() {
 </SCRIPT>
 	 
 	<body>
-		<form action="/HR_Fist/salaryCriterion/salaryCriterionAction!printsalarystandard.action" method="post">
+		<form action="#" method="post">
 		<input type="hidden" name="standard.standardId" value="1353320112255">
-		  
 		<div id="d"></div>
 		<div id="parent">
 			<div id="child"><br><br>
@@ -115,36 +115,35 @@ $(function() {
 				<tr>
 					<td>
 						<div align="right">
-							<input type="button" value="打印"   id="button1"
-								class="BUTTON_STYLE1">
-							<input type="button" value="返回"
-								onclick="javascript:windows.location='/HR_Fist/salaryCriterion/salaryCriterionAction!querysalarystandardByPage?page.startPage=1'"
-								class="BUTTON_STYLE1">
+							<input type="button" value="打印"   id="button1" 
+								class="BUTTON_STYLE1"/>
+							<input type="button" value="返回" onclick="history.back();"
+								class="BUTTON_STYLE1"/>
 						</div>
 					</td>
 				</tr>
 			</table>
-			<table width="100%" border="1" cellpadding=0 cellspacing=1
-				bordercolorlight=#848284 bordercolordark=#eeeeee id="table2"
+			<table width="100%" border="1" cellpadding="0" cellspacing="1"
+				bordercolorlight="#848284" bordercolordark="#eeeeee" id="table2"
 				class="TABLE_STYLE1">
 				<tr>
 					<td width="12%" class="TD_STYLE1">
 						薪酬编号
 					</td>
 					<td width="15%" class="TD_STYLE2">
-						1353320112255
+						${salary_standard.standard_id }
 					</td>
 					<td width="12%" class="TD_STYLE1">
 						薪酬标准名称
 					</td>
 					<td width="11%" class="TD_STYLE2">
-						董事长
+						${salary_standard.standard_name }
 					</td>
 					<td width="11%" class="TD_STYLE1">
 						薪酬总额
 					</td>
 					<td width="17%" class="TD_STYLE2">
-						135827.0
+						${salary_standard.salary_sum }
 					</td>
 					<td class="TD_STYLE1" width="12%">
 						&nbsp;
@@ -158,19 +157,19 @@ $(function() {
 						制定人
 					</td>
 					<td class="TD_STYLE2">
-						杨阳
+						${salary_standard.designer }
 					</td>
 					<td class="TD_STYLE1">
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						manager
+						${salary_standard.checker }
 					</td>
 					<td class="TD_STYLE1">
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						2012年11月19日
+						${salary_standard.check_time }
 					</td>
 					<td class="TD_STYLE1">
 						&nbsp;
@@ -184,7 +183,7 @@ $(function() {
 						备注
 					</td>
 					<td colspan="7" class="TD_STYLE2" height="68">
-						
+						${salary_standard.remark }
 					</td>
 				</tr>
 				<tr>
@@ -198,99 +197,22 @@ $(function() {
 						金额
 					</td>
 				</tr>
-				
+				<c:forEach var="zm" items="${zm_somelist}" varStatus="q">
 					<tr class="TD_STYLE2">
 						<td align="center">
-							63
+							 ${q.count}
 						</td>
 						<td colspan="3">
-							出差补助
+							${zm.pchar.attribute_name }
 						</td>
 						<td>
-							123.0
+							${zm.money }
 						</td>
 						<td colspan="3">
 							&nbsp;
 						</td>
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td align="center">
-							64
-						</td>
-						<td colspan="3">
-							交通补贴
-						</td>
-						<td>
-							12312.0
-						</td>
-						<td colspan="3">
-							&nbsp;
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td align="center">
-							65
-						</td>
-						<td colspan="3">
-							住房补贴
-						</td>
-						<td>
-							123123.0
-						</td>
-						<td colspan="3">
-							&nbsp;
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td align="center">
-							66
-						</td>
-						<td colspan="3">
-							基本工资
-						</td>
-						<td>
-							123.0
-						</td>
-						<td colspan="3">
-							&nbsp;
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td align="center">
-							67
-						</td>
-						<td colspan="3">
-							年终奖
-						</td>
-						<td>
-							123.0
-						</td>
-						<td colspan="3">
-							&nbsp;
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td align="center">
-							68
-						</td>
-						<td colspan="3">
-							误餐补助
-						</td>
-						<td>
-							23.0
-						</td>
-						<td colspan="3">
-							&nbsp;
-						</td>
-					</tr>
-				
-
-
+				</c:forEach>
 			</table>
 		</form>
 	</body>

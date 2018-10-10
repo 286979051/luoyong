@@ -236,40 +236,126 @@ public class Salary_standardController {
 		return "salaryCriterion/salarystandard_check";
 	}
 	
+	//审核
 	@RequestMapping("/updfuhe")
 	public String updfuhe(Salary_standard salary_standard,@RequestParam Map map) {
-		//修改基本信息
-		StandardService.updfuhe(salary_standard);
-		//获取修改和添加的map
-		Map<String, Object> updmap = new HashMap<>();
-		Map<String, Object> addmap = new HashMap<>();
-		//获取编号
-		String standard_id = salary_standard.getStandard_id();
-		String standard_name = salary_standard.getStandard_name();
-		//获取id 和 钱数
-		Set<String> keyset = map.keySet();
-		for (String key : keyset) {
-			if(key.startsWith("x_")) {
-				int pbc_id = Integer.parseInt(key.split("_")[1]);
-				double money = Double.parseDouble((String)map.get(key));
-				updmap.put("pbc_id", pbc_id);
-				updmap.put("money", money);
-				updmap.put("standard_id", standard_id);
-				//实现修改项目钱数
-				StandardService.updfuhe2(updmap);
-				//获取添加项目需要的信息
-				Config_public_char attribute = Config_public_charService.selfuhe(pbc_id);
-				String attribute_name = attribute.getAttribute_name();
-				addmap.put("item_id", pbc_id);
-				addmap.put("item_name", attribute_name);
-				addmap.put("salary", money);
-				addmap.put("standard_id", standard_id);
-				addmap.put("standard_name", standard_name);
-				//实现添加功能
-				StandardService.addfuhe(addmap);
+		Logger log = LoggerFactory.getLogger(Salary_standardController.class);
+		try {
+			//修改基本信息
+			StandardService.updfuhe(salary_standard);
+			//获取修改和添加的map
+			Map<String, Object> updmap = new HashMap<>();
+			Map<String, Object> addmap = new HashMap<>();
+			//获取编号
+			String standard_id = salary_standard.getStandard_id();
+			String standard_name = salary_standard.getStandard_name();
+			//获取id 和 钱数
+			Set<String> keyset = map.keySet();
+			for (String key : keyset) {
+				if(key.startsWith("x_")) {
+					int pbc_id = Integer.parseInt(key.split("_")[1]);
+					double money = Double.parseDouble((String)map.get(key));
+					updmap.put("pbc_id", pbc_id);
+					updmap.put("money", money);
+					updmap.put("standard_id", standard_id);
+					//实现修改项目钱数
+					StandardService.updfuhe2(updmap);
+					//获取添加项目需要的信息
+					Config_public_char attribute = Config_public_charService.selfuhe(pbc_id);
+					String attribute_name = attribute.getAttribute_name();
+					addmap.put("item_id", pbc_id);
+					addmap.put("item_name", attribute_name);
+					addmap.put("salary", money);
+					addmap.put("standard_id", standard_id);
+					addmap.put("standard_name", standard_name);
+					//实现添加功能
+					StandardService.addfuhe(addmap);
+				}
 			}
+		} catch (Exception e) {
+			log.error("审核失败",e);
 		}
 		return "salaryCriterion/salarystandard_check_success";
 	}
 	
+	//分页查询
+	@RequestMapping("salaryCriterion/selstatus")
+	public String selstatus(@RequestParam Map<String,Object> map,Map<String, Object> selmap,Map<String,Object> sjmap) {
+		int total = 0;
+		selmap.put("standard_id", map.get("standard_id"));
+		selmap.put("gjz", map.get("gjz"));
+		selmap.put("minday", map.get("minday"));
+		selmap.put("maxday", map.get("maxday"));
+		selmap.put("start", map.get("start"));
+		
+		String startstr = (String)map.get("start");
+		int startint = Integer.parseInt(startstr);
+		map.put("start", startint*10);
+		List<Salary_standard> salary_standardslist = StandardService.selstatus1(map);
+		selmap.put("salary_standardslist", salary_standardslist);
+		int li = StandardService.selcount(selmap);
+		if(li % 10 == 0) {
+			total = li/10;
+			selmap.put("total", total);
+		} else {
+			total = li/10+1;
+			selmap.put("total", total);
+		}
+		selmap.put("li", li);
+		sjmap.put("starttrue", startint+1);
+		return "salaryCriterion/salarystandard_query_list";
+	}
+	
+	//根据编号查询详情信息
+	@RequestMapping("salaryCriterion/selbystandard_id")
+	public String selbystandard_id(String standard_id,Map<String, Object> map) {
+		Salary_standard salary_standard = StandardService.selbyid(standard_id);
+		map.put("salary_standard", salary_standard);
+		List<zm_some> zm_somelist =  StandardService.selone_zmsome(standard_id);
+		map.put("zm_somelist", zm_somelist);
+		return "salaryCriterion/salarystandard_query";
+	}
+	
+	//薪酬标准查询变更——模糊查询
+	@RequestMapping("salaryCriterion/selzt2")
+	public String selzt2(@RequestParam Map map,Map<String, Object> infomap) {
+		List<Salary_standard> salary_standardslist = StandardService.selstatus2(map);
+		infomap.put("salary_standardslist", salary_standardslist);
+		infomap.put("size", salary_standardslist.size());
+		return "salaryCriterion/salarystandard_change_list";
+	}
+	
+	//根据编号查询详情信息
+		@RequestMapping("salaryCriterion/selbysid")
+		public String selbysid(String standard_id,Map<String, Object> map) {
+			Salary_standard salary_standard = StandardService.selbyid(standard_id);
+			map.put("salary_standard", salary_standard);
+			List<zm_some> zm_somelist =  StandardService.selone_zmsome(standard_id);
+			map.put("zm_somelist", zm_somelist);
+			map.put("zm_somelist_size", zm_somelist.size());
+			return "salaryCriterion/salarystandard_change";
+		}
+		
+		//变更
+		@RequestMapping("salaryCriterion/updbiangeng")
+		public String updbiangeng(Salary_standard salary_standard,@RequestParam Map map) {
+				//修改基本信息
+				StandardService.updbiangeng(salary_standard);
+				Map<String, Object> updmap = new HashMap<>();
+				//获取编号
+				String standard_id = salary_standard.getStandard_id();
+				//获取id 和 钱数
+				Set<String> keyset = map.keySet();
+				for (String key : keyset) {
+					if(key.startsWith("x_")) {
+						int pbc_id = Integer.parseInt(key.split("_")[1]);
+						double money = Double.parseDouble((String)map.get(key));
+						updmap.put("pbc_id", pbc_id);
+						updmap.put("money", money);
+						updmap.put("standard_id", standard_id);
+						StandardService.updfuhe2(updmap);
+					}
+				}
+			return "salaryCriterion/salarystandard_change_success";
+		}
 }

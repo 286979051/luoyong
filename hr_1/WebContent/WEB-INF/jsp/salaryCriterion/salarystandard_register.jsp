@@ -8,6 +8,12 @@
 		<link rel="stylesheet" href="css/table.css" type="text/css" />
 		<script type="text/javascript" src="../../javascript/comm/comm.js"></script>
 		<script type="text/javascript" src="../../javascript/jquery-1.7.2.js"></script>
+		<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
 		<title>无标题文档</title>
 </head>
 	<body>
@@ -22,7 +28,7 @@
 				<tr>
 					<td align="right">
 						<input type="button" value="提 交" onclick="check()" class="BUTTON_STYLE1"/>
-						<input type="reset" value="返 回" class="BUTTON_STYLE1"/>
+						<input type="reset" value="重置" class="BUTTON_STYLE1"/>
 					</td>
 				</tr>
 			</table>
@@ -135,11 +141,15 @@
 				var designer=document.getElementById("designer");
 				var standardName=document.getElementById("standardName");
 				if(designer.value.length<=0){
-				alert("制定人不可为空!!!");
-						return ;
+					$(function() {
+						$.messager.show("<font style='font-family:宋体;'>消息提示","制定人不可为空!!!</font>",2000);
+					});
+						return;
 				}
 				if(standardName.value.length<=0){
-				alert("薪酬标准名称不可为空!!!");
+					$(function() {
+						$.messager.show("<font style='font-family:宋体;'>消息提示","薪酬标准名称不可为空!!!</font>",2000);
+					});
 					return ;
 				}
 			document.getElementById("myform").submit();
@@ -148,7 +158,9 @@
 		function countMoney(obj,o) {
 		
 		if (isNaN(document.getElementById(o).value) || document.getElementById(o).value < 0) {
-		alert("金额填写错误!");
+			$(function() {
+				$.messager.show("<font style='font-family:宋体;'>消息提示","金额填写错误!</font>",2000);
+			});	
 		document.getElementById(o).value="0.00";
 		return;
 	}

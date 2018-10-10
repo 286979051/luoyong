@@ -16,11 +16,11 @@
 		<link rel="stylesheet" href="../css/cwcalendar.css" type="text/css"></link> 
 	 
 		<title>无标题文档</title>
-		 
+		 <script src="../My97DatePicker/WdatePicker.js" type="text/javascript"></script>
 	</head>
 
 	<body>
-		<form method="post" action="salarystandard_query_list.html">
+		<form method="post" action="selstatus">
 			<input type="hidden" name="page.startPage" value="0">
 			<table width="100%">
 				<tr>
@@ -32,6 +32,7 @@
 					<td>
 						<div align="right">
 							<input type="submit" value="查询" class="BUTTON_STYLE1"/>
+							<input type="hidden" name="start" value="0"/>
 						</div>
 					</td>
 				</tr>
@@ -44,8 +45,8 @@
 						请输入薪酬标准编号
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="standard.standardId" value=""
-							class="INPUT_STYLE1">
+						<input type="text" name="standard_id" value=""
+							class="INPUT_STYLE1" placeholder="薪酬标准编号"/>
 					</td>
 				</tr>
 				<tr>
@@ -53,16 +54,16 @@
 						请输入关键字
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="utilbean.primarKey" class="INPUT_STYLE1">
-					</td>
+						<input type="text" name="gjz" class="INPUT_STYLE1" placeholder="薪酬标准名称	  制定人	  变更人	 复核人"/>
+					</td> 
 				</tr>
 				<tr>
 					<td class="TD_STYLE1">
 						请输入建档时间
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<input name="utilbean.startDate" onclick="aa('utilbean.startDate')" type="text" class="INPUT_STYLE2" id="date_start" style="width:24% " value="" size="30">
-						至 <input type="text" name="utilbean.endDate" onclick="aa('utilbean.endDate')" value="" style="width:24% " class="INPUT_STYLE2" id="date_end">
+						<input name="minday" onclick="aa('utilbean.startDate')" type="text" class="INPUT_STYLE2" asp:TextBox onfocus="WdatePicker({readOnly:true});" runnat="server" id="date_start" style="width:24%"  placeholder="开始日期"  value="" size="30"/>
+						至 <input type="text" placeholder="结束日期" name="maxday" onclick="aa('utilbean.endDate')" asp:TextBox onfocus="WdatePicker({readOnly:true});" runnat="server" value="" style="width:24% " class="INPUT_STYLE2" id="date_end"/>
 						（YYYY-MM-DD）
 					</td>
 				</tr>
