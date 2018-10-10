@@ -2,6 +2,8 @@ package com.zd.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Service;
 /**
  * 公共表service
@@ -37,6 +39,8 @@ public interface IConfig_public_charservice {
 	//查询招聘类型单查
 	public Config_public_char QueryEngageTypeDan(int id);
 	
+	//对复核信息进行查询添加_zm
+	public Config_public_char selfuhe(int pbc_id);
 	//张紫行，查询所有职称
 	public List<Config_public_char> selprofessiondesign();
 	//张紫行，删除职称

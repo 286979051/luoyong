@@ -5,6 +5,12 @@
 		<link rel="stylesheet"
 			href="../../css/table.css" type="text/css" />
 		<title>无标题文档</title>
+		<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
 		<style type="text/css">
 			#d{
 				background-color:#FFFFBB;
@@ -77,13 +83,10 @@ $(function() {
 					
 				});
 				$("#sure").click(function() {
+					function fun() {
+						$.messager.show("<font style='font-family:宋体;'>消息提示","功能ojbk！</font>",2000);
+					}
 					
-					$("#d").hide(800);
-					$("#parent").fadeOut(600);
-					
-					$("#table1").show(1000);
-					$("#table2").show(1000);
-					$("form:first").submit();
 				});
 			});
 			
@@ -98,7 +101,7 @@ $(function() {
 		<div id="parent">
 			<div id="child"><br><br>
 				zhangsan,您确认打印此页面的信息吗？<br><br><br>
-				<input type="button" class="button" value="确 定" id="sure" />　
+				<input type="button" class="button" value="确 定" id="sure"/>　
 				<input type="button" class="button"   value="取 消" id="close"/>
 			</div>
 		</div>

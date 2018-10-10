@@ -25,11 +25,70 @@
 			src="javascript/locate.js">
 		</script>
 		<script type="text/javascript">
+		function second_kind(){
+			var firstKinid = $("#firstKind").val();
+			$.ajax({
+				url:'querySecondByFirstId?id='+firstKinid,
+				type:'get',
+				success:function(data){
+					var secondSel = $("#secondKind");
+					var thirdSel = $("#thirdKind");
+					thirdSel.empty();
+					secondSel.empty();
+					thirdSel.append("<option value=0>全部</option>");
+					secondSel.append("<option value=0>全部</option>");
+					for(var i=0;i<data.length;i++){
+						var secondName = data[i];
+						var secondId = secondName.secondkindid;
+						var sName=secondName.secondkindname;
+						secondSel.append("<option value='"+secondId+"'>"+sName+"</option>");
+					}
+				}
+			});
+		}
+		function third_Kind(){
+			var secondKindId = $("#secondKind").val();
+			$.ajax({
+				url:'querythirdBySecondId?id='+secondKindId,
+				type:'get',
+				success:function(data){
+					var thirdSel = $("#thirdKind");
+					thirdSel.empty();
+					thirdSel.append("<option value=0>全部</option>");
+					for(var i=0;i<data.length;i++){
+						var thirdName=data[i];
+						var thirdId=thirdName.thirdkindid;
+						var tName = thirdName.thirdkindname;
+						thirdSel.append("<option value='"+thirdId+"'>"+tName+"</option>");
+						}
+					}
+				
+				});
+		}
+
+		function major_kind(){
+			var majorKind = $("#majorKind").val();
+			$.ajax({
+				url:'querymajorKindById?id='+majorKind,
+				type:'get',
+				success:function(data){
+					var thirdSel = $("#majorName");
+					thirdSel.empty();
+					thirdSel.append("<option value=0>全部</option>");
+					for(var i=0;i<data.length;i++){
+						var thirdName=data[i];
+						var thirdId=thirdName.majorid;
+						var tName = thirdName.majorname;
+						thirdSel.append("<option value='"+thirdId+"'>"+tName+"</option>");
+						}
+				}
+			});
+		}
 		</script>
 	</head>
 
 	<body>
-		<form method="post" action="query_list.html">
+		<form method="post" action="query_list">
 			<table width="100%">
 				<tr>
 					<td>
@@ -53,9 +112,9 @@
 						请选择员工所在I级机构
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.firstKindId" size="5" id="firstKind"
-							class="SELECT_STYLE2">
-							<option value="" selected="selected">
+						<select name="first_kind_id" size="5" id="firstKind"
+							class="SELECT_STYLE2" onchange="second_kind()">
+							<option value="0" selected="selected">
 								全部
 							</option>
 							<c:forEach items="${arr }" var="s">
@@ -68,10 +127,10 @@
 					<td class="TD_STYLE1">
 						请选择员工所在II级机构
 					</td>
-					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.secondKindId" size="5" id="secondKind"
+					<td width="84%" class="TD_STYLE2" onchange="third_Kind()">
+						<select name="second_kind_id" size="5" id="secondKind"
 							class="SELECT_STYLE2">
-							<option value="" selected="selected">
+							<option value="0" selected="selected">
 								全部
 							</option>
 						</select>
@@ -82,8 +141,8 @@
 						请选择员工所在III级机构
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.thirdKindId" class="SELECT_STYLE2" size="5" id="thirdKind">
-							<option value="" selected="selected">
+						<select name="third_kind_id" class="SELECT_STYLE2" size="5" id="thirdKind">
+							<option value="0" selected="selected">
 								全部
 							</option>
 						</select>
@@ -94,9 +153,9 @@
 						请选择职位分类
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.humanMajorKindId" size="5" id="majorKind"
-							class="SELECT_STYLE2">
-							<option value="" selected="selected">
+						<select name="human_major_kind_id" size="5" id="majorKind"
+							class="SELECT_STYLE2" onchange="major_kind()">
+							<option value="0" selected="selected">
 								全部
 							</option>
 							<c:forEach var="s" items="${arr1 }">
@@ -110,11 +169,10 @@
 						请选择职位名称
 					</td>
 					<td width="84%" class="TD_STYLE2">
-						<select name="humanFile.humanMajorId" size="5" class="SELECT_STYLE2" id="majorName">
-							<option value="" selected="selected">
+						<select name="human_major_id" size="5" class="SELECT_STYLE2" id="majorName">
+							<option value="0" selected="selected">
 								全部
 							</option>
-							
 						</select>
 					</td>
 				</tr>

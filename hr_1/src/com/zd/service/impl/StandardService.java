@@ -3,14 +3,11 @@ package com.zd.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.IStandardDao;
 import com.zd.entity.Salary_standard;
-import com.zd.entity.Salary_standard_details;
 import com.zd.entity.zm_some;
 import com.zd.service.IStandardService;
 /**
@@ -54,11 +51,53 @@ public class StandardService implements IStandardService{
 		return dao.selone_zmsome(standard_id);
 	}
 
-	public List<Salary_standard_details> selSalaryall(){
+	//对复核信息进行修改
+	public void updfuhe(Salary_standard salary_standard) {
+		dao.updfuhe(salary_standard);
+	}
+	
+	//对复核信息进行修改_2
+	public void updfuhe2(Map map) {
+		dao.updfuhe2(map);
+	}
+
+	//对复核信息进行添加
+	public void addfuhe(Map map) {
+		dao.addfuhe(map);
+		
+	}
+
+	//薪酬标准查询——模糊查询
+	public List<Salary_standard> selstatus1(Map map) {
+		return dao.selstatus1(map);
+	}
+
+	//薪酬标准查询——模糊查询总条数
+	public int selcount(Map map) {
+		return dao.selcount(map);
+	}
+
+	//根据编号查询——查询薪酬标准
+	public Salary_standard selbyid(String standard_id) {
+		return dao.selbyid(standard_id);
+	}
+
+	//薪酬标准查询变更——模糊查询 
+	public List<Salary_standard> selstatus2(Map map) {
+		return dao.selstatus2(map);
+	}
+
+	//对变更信息进行修改_1
+	public void updbiangeng(Salary_standard salary_standard) {
+		dao.updbiangeng(salary_standard);
+	}
+
+	
+	public List<com.zd.entity.Salary_standard_details> selSalaryall(){
 		return dao.selSalaryall();
 	}
 
-	public Salary_standard_details selSalaryone(String id) {
+	public com.zd.entity.Salary_standard_details selSalaryone(String id) {
 		return dao.selSalaryone(id);
 	}
 }

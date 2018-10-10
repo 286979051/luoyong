@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Service;
 
 import com.zd.entity.Salary_standard;
@@ -34,9 +35,31 @@ public interface IStandardService {
 	//进复核查询单条信息--项目信息
 	public List<zm_some> selone_zmsome(String standard_id);
 	
+	//对复核信息进行修改
+	public void updfuhe(Salary_standard salary_standard);
+	
+	//对复核信息进行修改_2
+	public void updfuhe2(Map map);
+	
+	//对复核信息进行添加
+	public void addfuhe(Map map);
+	
+	//薪酬标准查询——模糊查询
+	public List<Salary_standard> selstatus1(Map map);
+	
+	//薪酬标准查询——模糊查询总条数
+	public int selcount(Map map);
+	
+	//根据编号查询——查询薪酬标准
+	public Salary_standard selbyid(String standard_id);
+	
+	//薪酬标准查询变更——模糊查询 
+	public List<Salary_standard> selstatus2(Map map);
+	
+	//对变更信息进行修改_1
+	public void updbiangeng(Salary_standard salary_standard);
 	//查询所有
 	public List<Salary_standard_details> selSalaryall();
-	
 	//查询单挑
 	public Salary_standard_details selSalaryone(String id);
 }

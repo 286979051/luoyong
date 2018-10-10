@@ -25,6 +25,58 @@
 		 SELECT * FROM salary_standard WHERE check_status=2 ORDER BY DATE_FORMAT(regist_time,'%y-%m-%d') DESC LIMIT #{start},10 	 	
 	</select>
 	
+	<!-- 薪酬标准查询——模糊查询 -->
+	<select id="selstatus1" parameterType="java.util.Map" resultMap="salary_standardMapper">
+		SELECT * FROM salary_standard where check_status = 1 
+			<if test="standard_id!=null and standard_id!=''">
+				and standard_id like '%${standard_id}%'
+			</if>
+			<if test="gjz!=null and gjz!=''">
+				and standard_name like '%${gjz}%' or designer like '%${gjz}%' or checker like '%${gjz}%' or changer like '%${gjz}%'   
+			</if>
+			<if test="maxday!=null and maxday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') <= DATE_FORMAT(#{maxday},'%y-%m-%d')]]>
+			</if>
+			<if test="minday!=null and minday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') >= DATE_FORMAT(#{minday},'%y-%m-%d')]]>
+			</if>
+			LIMIT #{start},10
+	</select>
+	
+	<!-- 薪酬标准查询——模糊查询总条数 -->
+	<select id="selcount" parameterType="java.util.Map" resultType="int">
+		SELECT count(*) FROM salary_standard where check_status = 1 
+			<if test="standard_id!=null and standard_id!=''">
+				and standard_id like '%${standard_id}%'
+			</if>
+			<if test="gjz!=null and gjz!=''">
+				and standard_name like '%${gjz}%' or designer like '%${gjz}%' or checker like '%${gjz}%' or changer like '%${gjz}%'   
+			</if>
+			<if test="maxday!=null and maxday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') <= DATE_FORMAT(#{maxday},'%y-%m-%d')]]>
+			</if>
+			<if test="minday!=null and minday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') >= DATE_FORMAT(#{minday},'%y-%m-%d')]]>
+			</if>
+	</select>
+	
+	<!-- 薪酬标准查询变更——模糊查询 -->
+	<select id="selstatus2" parameterType="java.util.Map" resultMap="salary_standardMapper">
+		SELECT * FROM salary_standard where check_status = 2
+			<if test="standard_id!=null and standard_id!=''">
+				and standard_id like '%${standard_id}%'
+			</if>
+			<if test="gjz!=null and gjz!=''">
+				and standard_name like '%${gjz}%' or designer like '%${gjz}%' or checker like '%${gjz}%' or changer like '%${gjz}%'   
+			</if>
+			<if test="maxday!=null and maxday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') <= DATE_FORMAT(#{maxday},'%y-%m-%d')]]>
+			</if>
+			<if test="minday!=null and minday!=''">
+				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') >= DATE_FORMAT(#{minday},'%y-%m-%d')]]>
+			</if>
+	</select>
+	
 	<resultMap type="com.zd.entity.Salary_standard_details" id="salaryMapper">
 			<result column="sdt_id" property="sdt_id"/>
 			<result column="standard_id" property="standard_id"/>

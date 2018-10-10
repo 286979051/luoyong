@@ -46,6 +46,8 @@ public class Human_file {
 
 
 
+
+
 	public Human_file(int hfd_id, String human_id, String first_kind_id, String first_kind_name, String second_kind_id,
 			String second_kind_name, String third_kind_id, String third_kind_name, String human_name,
 			String human_address, int human_postcode, String human_pro_designation, int human_major_kind_id,
@@ -54,12 +56,13 @@ public class Human_file {
 			String human_hobby, String human_speciality, String human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, Date human_birthday, String human_birthplace, int human_age,
 			String human_educated_degree, int human_educated_years, String human_educated_major,
-			String human_society_security_id, String human_id_card, String remark, int salary_standard_id,
+			String human_society_security_id, String human_id_card, String remark, String salary_standard_id,
 			String salary_standard_name, double salary_sum, double demand_salaray_sum, double paid_salary_sum,
 			int major_change_amount, int bonus_amount, int training_amount, int file_chang_amount,
 			String human_histroy_records, String human_family_membership, String human_picture, String attachment_name,
-			int check_status, String register, String checker, String changer, Date regist_time, Date check_time,
-			Date change_time, Date lastly_change_time, Date delete_time, Date recovery_time, int human_file_status) {
+			int check_status, String register, String checker, String changer, String regist_time, String check_time,
+			String change_time, String lastly_change_time, String delete_time, String recovery_time,
+			int human_file_status) {
 		super();
 		this.hfd_id = hfd_id;
 		this.human_id = human_id;
@@ -126,6 +129,9 @@ public class Human_file {
 	}
 
 
+
+
+
 	private int  hfd_id;//	integer	主键，自动增长列
 	private String human_id;//	integer	档案编号
 	private String first_kind_id;//integer	一级机构编号（外健：Config_file_first_kind 表中的：first_kind_id）
@@ -164,7 +170,7 @@ public class Human_file {
 	private String human_society_security_id;//	integer	社会保障号
 	private String human_id_card;//	string	身份证号
 	private String remark;//	string	备注
-	private int salary_standard_id;//	integer	薪酬标准编号(外健：salary_standard_details表中standard_id)
+	private String salary_standard_id;//	integer	薪酬标准编号(外健：salary_standard_details表中standard_id)
 	private String salary_standard_name;//	string	薪酬标准名称
 	private double salary_sum;//	double	基本薪酬总额
 	private double  demand_salaray_sum	;//double	应发薪酬总额
@@ -181,12 +187,12 @@ public class Human_file {
 	private String register	;//string	档案登记人
 	private String checker	;//string	档案复核人
 	private String changer	;//string	档案变更人
-	private Date regist_time;//	date	档案登记时间
-	private Date check_time;//	date	档案复核时间 
-	private Date change_time	;//date	档案变更时间
-	private Date lastly_change_time;//	date	档案最近更改时间 
-	private Date delete_time;//	date	档案删除时间
-	private Date recovery_time;//	date	档案恢复时间
+	private String regist_time;//	date	档案登记时间
+	private String check_time;//	date	档案复核时间 
+	private String change_time	;//date	档案变更时间
+	private String lastly_change_time;//	date	档案最近更改时间 
+	private String delete_time;//	date	档案删除时间
+	private String recovery_time;//	date	档案恢复时间
 	private int human_file_status;//	integer	档案状态(1：待复核 2：正常 3：已删除)
 	
 	public int getHfd_id() {
@@ -499,13 +505,18 @@ public class Human_file {
 		this.remark = remark;
 	}
 
-	public int getSalary_standard_id() {
+
+	public String getSalary_standard_id() {
 		return salary_standard_id;
 	}
 
-	public void setSalary_standard_id(int salary_standard_id) {
+
+
+	public void setSalary_standard_id(String salary_standard_id) {
 		this.salary_standard_id = salary_standard_id;
 	}
+
+
 
 	public String getSalary_standard_name() {
 		return salary_standard_name;
@@ -635,53 +646,77 @@ public class Human_file {
 		this.changer = changer;
 	}
 
-	public Date getRegist_time() {
+	public String getRegist_time() {
 		return regist_time;
 	}
 
-	public void setRegist_time(Date regist_time) {
+
+
+	public void setRegist_time(String regist_time) {
 		this.regist_time = regist_time;
 	}
 
-	public Date getCheck_time() {
+
+
+	public String getCheck_time() {
 		return check_time;
 	}
 
-	public void setCheck_time(Date check_time) {
+
+
+	public void setCheck_time(String check_time) {
 		this.check_time = check_time;
 	}
 
-	public Date getChange_time() {
+
+
+	public String getChange_time() {
 		return change_time;
 	}
 
-	public void setChange_time(Date change_time) {
+
+
+	public void setChange_time(String change_time) {
 		this.change_time = change_time;
 	}
 
-	public Date getLastly_change_time() {
+
+
+	public String getLastly_change_time() {
 		return lastly_change_time;
 	}
 
-	public void setLastly_change_time(Date lastly_change_time) {
+
+
+	public void setLastly_change_time(String lastly_change_time) {
 		this.lastly_change_time = lastly_change_time;
 	}
 
-	public Date getDelete_time() {
+
+
+	public String getDelete_time() {
 		return delete_time;
 	}
 
-	public void setDelete_time(Date delete_time) {
+
+
+	public void setDelete_time(String delete_time) {
 		this.delete_time = delete_time;
 	}
 
-	public Date getRecovery_time() {
+
+
+	public String getRecovery_time() {
 		return recovery_time;
 	}
 
-	public void setRecovery_time(Date recovery_time) {
+
+
+	public void setRecovery_time(String recovery_time) {
 		this.recovery_time = recovery_time;
 	}
+
+
 
 	public int getHuman_file_status() {
 		return human_file_status;

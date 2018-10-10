@@ -59,6 +59,10 @@ public class Config_public_charservice implements IConfig_public_charservice {
 		return config_public_char.selzm_some(pbc_id);
 	}
 
+	//对复核信息进行查询添加_zm
+	public com.zd.entity.Config_public_char selfuhe(int pbc_id) {
+		return config_public_char.selfuhe(pbc_id);
+	}
 	//张紫行,查询所有职称
 	public List<Config_public_char> selprofessiondesign(){
 		return config_public_char.selprofessiondesign();

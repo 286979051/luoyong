@@ -44,7 +44,6 @@
 				<tr>
 					<td align="right">
 						<input type="submit" value="复核通过" class="BUTTON_STYLE1"/>
-						<input type="reset" value="清除" class="BUTTON_STYLE1">
 						<input type="button" value="返回" class="BUTTON_STYLE1"
 							onclick="history.back()">
 					</td>
@@ -321,8 +320,8 @@
 						薪酬标准
 					</td>
 					<td class="TD_STYLE2">
-						<select name="salary_standard_id" class="SELECT_STYLE1">
-							<option value="${s.salary_standard_id}">${s.salary_standard_name }</option>
+						<select name="salary_standard_name" class="SELECT_STYLE1">
+							<option value="${s.salary_standard_name}">${s.salary_standard_name }</option>
 							<c:forEach var="sss" items="${arr2 }">
 								<c:if test="${sss.standard_name !=s.salary_standard_name }">
 									<option value="${sss.standard_name }">${sss.standard_name }</option>
@@ -348,7 +347,7 @@
 						复核人
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checker" value="谢鹏"
+						<input type="text" name="checker" value="谢鹏"
 							readonly="readonly" class="INPUT_STYLE2">
 					</td>
 				</tr>
@@ -357,7 +356,7 @@
 						复核时间
 					</td>
 					<td class="TD_STYLE2">
-						<input type="text" name="humanFile.checkTime"
+						<input type="text" name="check_time"
 							id="create_time" readonly="readonly"
 							class="INPUT_STYLE2">
 					</td>

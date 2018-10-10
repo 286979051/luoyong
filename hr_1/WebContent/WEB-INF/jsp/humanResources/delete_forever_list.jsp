@@ -1,13 +1,35 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css">
+			href="css/table.css" type="text/css">
+		<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
+		<script type="text/javascript"
+			src="js/jquery-1.8.0.min.js">
+		</script>
 		<script type="text/javascript">
 			function doDelete(id) {
+				var ajaxdel = $("#ajaxdel");
 				if (confirm("确定删除此档案吗？")) {
-					location.href = "success.html?humanFile.hufId=" + id;
+					$.ajax({
+						url:'deletehumanid?id='+id,
+						type:'get',
+						success:function(data){
+							if(data == 1){
+								ajaxdel.remove();
+								$.messager.show("删除提示", "删除成功", 2000);
+							}
+						}
+					});
 				}
 			}
 		</script>
@@ -60,36 +82,37 @@
 					</td>
 				</tr>
 				
-					<tr class="TR_STYLE2">
-						<td width="14%" height="13" class="TD_STYLE2">
-							bt201211190618510076
+					<c:forEach items="${arr }" var="s">
+					<tr class="TR_STYLE2" id="ajaxdel">
+						<td width="14%" class="TD_STYLE2">
+							${s.human_id }
 						</td>
 						<td width="11%" class="TD_STYLE2">
-							杨阳
+							${s.human_name }
 						</td>
 						<td width="6%" class="TD_STYLE2">
-							男
+							${s.human_sex }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							Ⅰ级结构
+							${s.first_kind_name }
 						</td>
 						<td width="12%" class="TD_STYLE2">
-							
+							${s.second_kind_name }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							
+							${s.third_kind_name }
 						</td>
 						<td width="11%" class="TD_STYLE2">
-							销售
+							${s.human_major_kind_name }
 						</td>
 						<td width="13%" class="TD_STYLE2">
-							区域经理
+							${s.hunma_major_name }
 						</td>
 						<td width="7%" class="TD_STYLE2">
-							<img src="../../images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(1329)"/>
+								<img src="images/bt_del.gif" title="删除" style="cursor:pointer;" onclick="doDelete(${s.human_id })"/>
 						</td>
 					</tr>
-				
+					</c:forEach>
 			</table>
 			<p style="text-align: center;">
 				

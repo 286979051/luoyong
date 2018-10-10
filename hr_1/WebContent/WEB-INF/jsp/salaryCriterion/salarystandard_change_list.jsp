@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet"
-			href="../../css/table.css" type="text/css" />
+			href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 <!--
@@ -31,7 +32,7 @@
 				</tr>
 				<tr>
 					<td>
-						符合条件的薪酬标准总数: 3 例
+						符合条件的薪酬标准总数: ${size} 例
 					</td>
 				</tr>
 			</table>
@@ -59,81 +60,29 @@
 						变更
 					</td>
 				</tr>
-				
-					
+				<c:forEach var="salary" items="${salary_standardslist}">
 					<tr class="TD_STYLE2">
 						<td> 
-						1353320112255 
+							${salary.standard_id }
 						</td>
 						<td>
-						董事长
-							 
+							${salary.standard_name }
 						</td>
 						<td>
-							杨阳
-						 
+							${salary.designer }
 						</td>
 						<td>
-						2012年11月19日
+							${salary.regist_time }
 						</td>
 						<td>&nbsp;
-							135827.0			 
+							${salary.salary_sum }
 						</td>
 					<td>
-						<a href="salarystandard_change.html">变 更</a>
+						<a href="selbysid?standard_id=${salary.standard_id }">变 更</a>
 					</td>
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td> 
-						1353320082662 
-						</td>
-						<td>
-						经理级别
-							 
-						</td>
-						<td>
-							杨阳
-						 
-						</td>
-						<td>
-						2012年11月19日
-						</td>
-						<td>&nbsp;
-							1332.0			 
-						</td>
-					<td>
-						<a href="salarystandard_change.html">变 更</a>
-					</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td> 
-						1353320063473 
-						</td>
-						<td>
-						普通员工
-							 
-						</td>
-						<td>
-							杨阳
-						 
-						</td>
-						<td>
-						2012年11月19日
-						</td>
-						<td>&nbsp;
-							666.0			 
-						</td>
-					<td>
-						<a href="salarystandard_change.html">变 更</a>
-					</td>
-					</tr>
-				
-				 
+				</c:forEach>
 			</table>
-			
-			 
 <html>
   <head>  
   </head>  
@@ -165,7 +114,7 @@
 				&nbsp;&nbsp;&nbsp;跳到第
 				<input id=page type=text  value="1" class=input1 size=1>
 				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../../images/go.bmp" width=18 height=18 border=0>
+				<input type="image" onclick="dopagebybutton()" src="../images/go.bmp" width=18 height=18 border=0>
 				<input type="hidden" name="page.startPage" id="startpage" value="1">
 			</div>
 			<script type="text/javascript">
