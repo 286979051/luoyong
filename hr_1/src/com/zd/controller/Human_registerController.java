@@ -113,7 +113,7 @@ public class Human_registerController {
 	public String register_choose(Human_file human_file,Map map) {
 		try {
 			Salary_standard_details selSalaryone = standardService.selSalaryone(human_file.getSalary_standard_name());
-			int standard_id = selSalaryone.getStandard_id();
+			String standard_id = selSalaryone.getStandard_id();
 			String standard_name = selSalaryone.getStandard_name();
 			human_file.setSalary_standard_name(standard_name);
 			human_file.setSalary_standard_id(standard_id);
@@ -187,7 +187,7 @@ public class Human_registerController {
 	public String registerchoose(Human_file human_file,Map map) {
 		try {
 			Salary_standard_details selSalaryone = standardService.selSalaryone(human_file.getSalary_standard_name());
-			int standard_id = selSalaryone.getStandard_id();
+			String standard_id = selSalaryone.getStandard_id();
 			String standard_name = selSalaryone.getStandard_name();
 			human_file.setSalary_standard_name(standard_name);
 			human_file.setSalary_standard_id(standard_id);

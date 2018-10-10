@@ -3,6 +3,7 @@ package com.zd.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
@@ -77,4 +78,20 @@ public interface IHuman_fileDao {
 	//修改
 	@Update("UPDATE human_file SET human_file_status=3 WHERE human_id = #{human_id}")
 	public void delete_update(String human_id);
+	
+	//删除恢复查询
+	public List<Human_file> recovery_list(Map map);
+	
+	//修改
+	@Update("UPDATE human_file SET human_file_status=2 WHERE human_id = #{human_id}")
+	public void recovery_update(String human_id);
+	
+	//查询要删除的人员
+	@Select("select * from Human_file where human_file_status=3")
+	@ResultMap("Humanfil")
+	public List<Human_file> deletequery();
+	
+	//永久删除
+	@Delete("delete FROM Human_file where human_id = #{id}")
+	public void deletey(String id);
 }

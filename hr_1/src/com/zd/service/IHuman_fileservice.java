@@ -3,8 +3,10 @@ package com.zd.service;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Config_shang;
 import com.zd.entity.Human_file;
@@ -30,4 +32,12 @@ public interface IHuman_fileservice {
 	public List<Human_file> delete_list(Map map);
 	//±£´æÉ¾³ı
 	public void delete_update(String human_id);
+	//É¾³ı»Ö¸´²éÑ¯
+	public List<Human_file> recovery_list(Map map);
+	//ĞŞ¸Ä
+	public void recovery_update(String human_id);
+	//²éÑ¯ÒªÉ¾³ıµÄÈËÔ±
+	public List<Human_file> deletequery();
+	//ÓÀ¾ÃÉ¾³ı
+	public void deletey(String id);
 }

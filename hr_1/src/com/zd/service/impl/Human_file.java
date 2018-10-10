@@ -56,4 +56,20 @@ public class Human_file implements IHuman_fileservice {
 	public void delete_update(String human_id) {
 		human_file.delete_update(human_id);
 	}
+	//É¾³ı»Ö¸´²éÑ¯
+	public List<com.zd.entity.Human_file> recovery_list(Map map){
+		return human_file.recovery_list(map);
+	}
+	//ĞŞ¸Ä
+	public void recovery_update(String human_id) {
+		human_file.recovery_update(human_id);
+	}
+	//²éÑ¯ÒªÉ¾³ıµÄÈËÔ±
+	public List<com.zd.entity.Human_file> deletequery() {
+		return human_file.deletequery();
+	}
+	//ÓÀ¾ÃÉ¾³ı
+	public void deletey(String id) {
+		human_file.deletey(id);
+	}
 }

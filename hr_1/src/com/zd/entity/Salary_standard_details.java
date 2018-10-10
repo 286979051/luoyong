@@ -7,7 +7,7 @@ package com.zd.entity;
 public class Salary_standard_details {
 
 	private int sdt_id;
-	private int standard_id;
+	private String standard_id;
 	private String standard_name;
 	private int item_id;
 	private String item_name;
@@ -18,10 +18,11 @@ public class Salary_standard_details {
 	public void setSdt_id(int sdt_id) {
 		this.sdt_id = sdt_id;
 	}
-	public int getStandard_id() {
+	
+	public String getStandard_id() {
 		return standard_id;
 	}
-	public void setStandard_id(int standard_id) {
+	public void setStandard_id(String standard_id) {
 		this.standard_id = standard_id;
 	}
 	public String getStandard_name() {
@@ -51,7 +52,7 @@ public class Salary_standard_details {
 	public Salary_standard_details() {
 		
 	}
-	public Salary_standard_details(int sdt_id, int standard_id, String standard_name, int item_id, String item_name,
+	public Salary_standard_details(int sdt_id, String standard_id, String standard_name, int item_id, String item_name,
 			double salary) {
 		super();
 		this.sdt_id = sdt_id;

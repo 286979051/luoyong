@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
  */
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.zd.entity.Config_file_first_kind;
@@ -101,7 +102,7 @@ public class Human_filecontroller {
 			
 			
 			Salary_standard_details selSalaryone = standardService.selSalaryone(Engage_major_release.getSalary_standard_name());
-			int standard_id = selSalaryone.getStandard_id();
+			String standard_id = selSalaryone.getStandard_id();
 			String standard_name = selSalaryone.getStandard_name();
 			Engage_major_release.setSalary_standard_name(standard_name);
 			Engage_major_release.setSalary_standard_id(standard_id);
@@ -222,7 +223,7 @@ public class Human_filecontroller {
 			List<Human_file> query_list = Human_fileservice.delete_list(map);
 			reqestmap.put("arr", query_list);
 		} catch (Exception e) {
-			logger.error("Ìõ¼þ²éÑ¯", e);
+			logger.error("É¾³ýÌõ¼þ²éÑ¯", e);
 		}
 			return "humanResources/delete_list";
 		}
@@ -232,8 +233,72 @@ public class Human_filecontroller {
 		try {
 			IHuman_fileservice.delete_update(human_id);
 		} catch (Exception e) {
-			logger.error("Ìõ¼þ²éÑ¯", e);
+			logger.error("±£´æÉ¾³ý", e);
 		}
 			return "redirect:delete_locate";
-		}	
+		}
+	
+	//É¾³ý»Ö¸´
+	@RequestMapping("/recovery_locate")
+	public String recovery_locate(Map map) {
+		try {
+			List<com.zd.entity.Config_file_first_kind> query = config_file_first_kindService.query();
+			List<Config_major_kind> majorQuery = Config_major_kindService.majorQuery();
+			map.put("arr", query);
+			map.put("arr1", majorQuery);
+		} catch (Exception e) {
+			logger.error("É¾³ý»Ö¸´", e);
+		}
+			return "humanResources/recovery_locate";
+		}
+	//É¾³ý»Ö¸´²éÑ¯
+	@RequestMapping("/recovery_list")
+	public String recovery_list(@RequestParam Map map,Map reqestmap) {
+		try {
+			String startDate = (String) map.get("utilBean.startDate");
+			String endDate = (String) map.get("utilBean.endDate");
+			
+			SimpleDateFormat aDate=new SimpleDateFormat("yyyy-mm-dd");
+			Date startDate1 = aDate.parse(startDate);
+			Date endDate1 = aDate.parse(endDate);
+			map.put("startDate", startDate1);
+			map.put("endDate", endDate1);
+			List<Human_file> query_list = Human_fileservice.recovery_list(map);
+			reqestmap.put("arr", query_list);
+		} catch (Exception e) {
+			logger.error("É¾³ý»Ö¸´²éÑ¯", e);
+		}
+			return "humanResources/recovery_list";
+		}
+	//»Ö¸´É¾³ý
+	@RequestMapping("/recovery_list_information")
+	public String recovery_list_information(Map map,String human_id) {
+		Human_file humanfileidselall = Human_fileservice.Humanfileidselall(human_id);
+		map.put("arr", humanfileidselall);
+		return "humanResources/recovery_list_information";
+	}
+	//»Ö¸´´ýÉ¾³ýµÄ
+	@RequestMapping("/hrhumanfiledo")
+	public String hrhumanfiledo(String human_id) {
+		try {
+			IHuman_fileservice.recovery_update(human_id);
+		} catch (Exception e) {
+			logger.error("»Ö¸´´ýÉ¾³ýµÄ", e);
+		}
+		return "redirect:recovery_locate";
+	}
+	//ÓÀ¾ÃÉ¾³ýÖ®Ç°²éÑ¯
+	@RequestMapping("/delete_forever_list")
+	public String delete_forever_list(Map map) {
+		List<Human_file> deletequery = IHuman_fileservice.deletequery();
+		map.put("arr", deletequery);
+		return "humanResources/delete_forever_list";
+	}
+	//ajaxÓÀ¾ÃÉ¾³ý
+	@RequestMapping("/deletehumanid")
+	@ResponseBody
+	public int deletehumanid(String id) {//
+		IHuman_fileservice.deletey(id);
+		return 1;
+	}
 }

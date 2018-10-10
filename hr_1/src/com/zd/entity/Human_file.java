@@ -56,7 +56,7 @@ public class Human_file {
 			String human_hobby, String human_speciality, String human_sex, String human_religion, String human_party,
 			String human_nationality, String human_race, Date human_birthday, String human_birthplace, int human_age,
 			String human_educated_degree, int human_educated_years, String human_educated_major,
-			String human_society_security_id, String human_id_card, String remark, int salary_standard_id,
+			String human_society_security_id, String human_id_card, String remark, String salary_standard_id,
 			String salary_standard_name, double salary_sum, double demand_salaray_sum, double paid_salary_sum,
 			int major_change_amount, int bonus_amount, int training_amount, int file_chang_amount,
 			String human_histroy_records, String human_family_membership, String human_picture, String attachment_name,
@@ -170,7 +170,7 @@ public class Human_file {
 	private String human_society_security_id;//	integer	社会保障号
 	private String human_id_card;//	string	身份证号
 	private String remark;//	string	备注
-	private int salary_standard_id;//	integer	薪酬标准编号(外健：salary_standard_details表中standard_id)
+	private String salary_standard_id;//	integer	薪酬标准编号(外健：salary_standard_details表中standard_id)
 	private String salary_standard_name;//	string	薪酬标准名称
 	private double salary_sum;//	double	基本薪酬总额
 	private double  demand_salaray_sum	;//double	应发薪酬总额
@@ -505,13 +505,18 @@ public class Human_file {
 		this.remark = remark;
 	}
 
-	public int getSalary_standard_id() {
+
+	public String getSalary_standard_id() {
 		return salary_standard_id;
 	}
 
-	public void setSalary_standard_id(int salary_standard_id) {
+
+
+	public void setSalary_standard_id(String salary_standard_id) {
 		this.salary_standard_id = salary_standard_id;
 	}
+
+
 
 	public String getSalary_standard_name() {
 		return salary_standard_name;

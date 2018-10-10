@@ -137,12 +137,12 @@
 												</li>
 												<li>
 													<span>
-															<a href="humanResources/recovery_locate.html" target="mainFrame" style="color:black;">档案删除恢复</a>
+															<a href="recovery_locate" target="mainFrame" style="color:black;">档案删除恢复</a>
 													</span>
 												</li>
 												<li>
 													<span>
-															<a href="humanResources/delete_forever_list.html" target="mainFrame" style="color:black;">人力资源档案永久删除</a>
+															<a href="delete_forever_list" target="mainFrame" style="color:black;">人力资源档案永久删除</a>
 													</span>
 												</li>
 									</ul>
