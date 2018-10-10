@@ -162,29 +162,40 @@ public class Engage_major_releaseController {
 	}
 	//职位发表登记添加
 	@RequestMapping("releaseInsetr")
-	public String releaseInsetr(Engage_major_release Engage_major_release,String first_kind_id,String second_kind_id,String third_kind_id,String major_kind_id,String major_id,int pbc_id) {
+	public String releaseInsetr(Engage_major_release Engage_major_release, int pbc_id) {
 		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
 		try {
 			//一级机构联动单条查询赋值
-			Config_file_first_kind cffk = config_file_first_kindService.queryDan(first_kind_id);
+			Config_file_first_kind cffk = config_file_first_kindService.queryDan(Engage_major_release.getFirst_kind_id());
 			Engage_major_release.setFirst_kind_name(cffk.getFirstkindname());
-			//二级机构联动单条查询赋值
-			Config_file_second_kind cfsk =  config_file_second_kindService.queryDan(second_kind_id);
-			Engage_major_release.setSecond_kind_name(cfsk.getSecondkindname());
-			//三级机构联动单条查询赋值
-			Config_file_third_kind cftk = config_file_third_kindService.queryDan(third_kind_id);
-			Engage_major_release.setThird_kind_name(cftk.getThirdkindname());
 			//职业分类一级联动单查赋值
-			Config_major_kind cmk =  config_major_kindService.majorQueryDan(major_kind_id);
+			Config_major_kind cmk =  config_major_kindService.majorQueryDan(Engage_major_release.getMajor_kind_id());
 			Engage_major_release.setMajor_kind_name(cmk.getMajor_kind_name());
 			//职业分联动类二级单查赋值
-			Config_major cmajor = config_majorService.ErMajorQueryDan(major_id);
+			Config_major cmajor = config_majorService.ErMajorQueryDan(Engage_major_release.getMajor_id());
 			Engage_major_release.setMajor_name(cmajor.getMajorname());
 			//查询招聘类型单查赋值
 			Config_public_char cpc = config_public_charservice.QueryEngageTypeDan(pbc_id);
 			Engage_major_release.setEngage_type(cpc.getAttribute_name());
-			
-			engage_major_releaseService.releaseInsert(Engage_major_release);
+			if(Engage_major_release.getSecond_kind_id()==null || Engage_major_release.getSecond_kind_id()=="" ) {
+				engage_major_releaseService.releaseInsert3(Engage_major_release);
+				return "redirect:releaseQuery";
+			}
+			if(Engage_major_release.getThird_kind_id()==null || Engage_major_release.getThird_kind_id()=="") {
+				//二级机构联动单条查询赋值
+				Config_file_second_kind cfsk =  config_file_second_kindService.queryDan(Engage_major_release.getThird_kind_id());
+				Engage_major_release.setSecond_kind_name(cfsk.getSecondkindname());
+				engage_major_releaseService.releaseInsert2(Engage_major_release);
+			}
+			if(Engage_major_release.getFirst_kind_id()!=null || Engage_major_release.getFirst_kind_id()!="") {
+				//二级机构联动单条查询赋值
+				Config_file_second_kind cfsk =  config_file_second_kindService.queryDan(Engage_major_release.getSecond_kind_id());
+				Engage_major_release.setSecond_kind_name(cfsk.getSecondkindname());
+				//三级机构联动单条查询赋值
+				Config_file_third_kind cftk = config_file_third_kindService.queryDan(Engage_major_release.getThird_kind_id());
+				Engage_major_release.setThird_kind_name(cftk.getThirdkindname());
+				engage_major_releaseService.releaseInsert1(Engage_major_release);
+			}
 		} catch (Exception e) {
 			logger.error("职位发表登记添加", e);
 		}

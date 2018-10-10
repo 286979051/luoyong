@@ -105,9 +105,14 @@
 							<a href="register_sift_queryDan?id=${eil.ein_id }">申请</a>
 						</td>
 						</c:if>
-						<c:if test="${eil.engage_resume.pass_checkComment != null }">
+						<c:if test="${eil.engage_resume.pass_checkComment == '申请录用,通过' }">
 						<td class="TD_STYLE2">
 							<a href="#">已申请</a>
+						</td>
+						</c:if>
+						<c:if test="${eil.engage_resume.pass_checkComment == '释放简历,不通过' }">
+						<td class="TD_STYLE2">
+							<a href="#">申请不通过</a>
 						</td>
 						</c:if>
 					</tr>

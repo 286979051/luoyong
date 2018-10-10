@@ -37,5 +37,13 @@ public interface IEngage_major_releaseDao {
 	
 	//职位发表登记添加
 	@Insert("insert into Engage_major_release value(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{major_kind_id},#{major_kind_name},#{major_id},#{major_name},#{human_amount},#{engage_type},#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required},1)")                                                          
-	public void releaseInsert(Engage_major_release Engage_major_release);
+	public void releaseInsert1(Engage_major_release Engage_major_release);
+	
+	//职位发表登记添加
+	@Insert("insert into Engage_major_release value(null,#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},null,null,#{major_kind_id},#{major_kind_name},#{major_id},#{major_name},#{human_amount},#{engage_type},#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required},1)")                                                          
+	public void releaseInsert2(Engage_major_release Engage_major_release);
+		
+	//职位发表登记添加
+	@Insert("insert into Engage_major_release value(null,#{first_kind_id},#{first_kind_name},null,null,null,null,#{major_kind_id},#{major_kind_name},#{major_id},#{major_name},#{human_amount},#{engage_type},#{deadline},#{register},null,#{regist_time},null,#{major_describe},#{engage_required},1)")                                                          
+	public void releaseInsert3(Engage_major_release Engage_major_release);
 }

@@ -114,7 +114,7 @@
 			success:function(data){
 				var secondSel = $("#secondKindId");
 				secondSel.empty();
-				secondSel.append("<option>---请选择---</option>");
+				secondSel.append("<option value=''>---请选择---</option>");
 				for(var i=0;i<data.length;i++){
 					var secondName = data[i];
 					var secondId = secondName.secondkindid;
@@ -134,7 +134,7 @@
 			success:function(data){
 				var thirdSel = $("#thirdKindId");
 				thirdSel.empty();
-				thirdSel.append("<option>---请选择---</option>");
+				thirdSel.append("<option value=''>---请选择---</option>");
 				for(var i=0;i<data.length;i++){
 					var thirdName=data[i];
 					var thirdId=thirdName.thirdkindid;

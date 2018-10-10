@@ -82,6 +82,7 @@
 				</tr>
 				
 				 <c:forEach items="${eil }" var="eil">
+				 <c:if test="${eil.engage_resume.pass_passComment =='通过,通过' }">
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
 							${eil.human_name }
@@ -111,6 +112,7 @@
 							<a href="E_mailQuery?id=${eil.engage_resume.res_id }">${eil.engage_resume.human_email }</a>
 						</td>
 					</tr>
+					</c:if>
 					</c:forEach>
 					 
 			</table>

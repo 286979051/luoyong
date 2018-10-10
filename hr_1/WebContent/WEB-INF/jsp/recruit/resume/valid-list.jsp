@@ -120,9 +120,16 @@
 							 已面试 
 						</td>
 						</c:if>
+						<c:if test="${EnList.interview_status==1 }">
 						<td class="TD_STYLE2">
 							<a href="E_mailQueryMa?id=${EnList.res_id }">${EnList.human_email }</a>
 						</td>
+						</c:if>
+						<c:if test="${EnList.interview_status!=1 }">
+						<td class="TD_STYLE2">
+							<a href="#">${EnList.human_email }</a>
+						</td>
+						</c:if>
 				</c:forEach>
 			</table>
 			<p>&nbsp;&nbsp;总数：3 例 &nbsp;&nbsp;&nbsp;当前第1 页 /每页显示 10 条 &nbsp;&nbsp;&nbsp;共 1 页 &nbsp;&nbsp;&nbsp;  

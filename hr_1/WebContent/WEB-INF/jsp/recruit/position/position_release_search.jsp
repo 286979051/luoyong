@@ -73,7 +73,17 @@
 							${releaseList.major_name }
 						</td>
 						<td class="TD_STYLE2">
-							${releaseList.second_kind_name }
+							<c:if test="${not empty releaseList.third_kind_name}">
+								${releaseList.third_kind_name}
+							</c:if>
+							
+							<c:if test="${empty releaseList.third_kind_name and not empty releaseList.second_kind_name}">
+								${releaseList.second_kind_name }
+							</c:if>
+							
+							<c:if test="${empty releaseList.third_kind_name and empty releaseList.second_kind_name}">
+								${releaseList.first_kind_name}
+							</c:if>
 						</td>
 						<td class="TD_STYLE2">
 							${releaseList.human_amount }

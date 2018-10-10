@@ -33,6 +33,7 @@
 <script type="text/javascript">
  function email(){
 	 var eid = $("#eid").val();
+	 var human_name=$("#human_name").val();
 	 $.ajax({
 		url:'e_mailQueryDan?id='+eid,
 		type:'get',
@@ -42,7 +43,8 @@
 				var emailName=data[i];
 				var emailId=emailName.e_id;
 				var name =emailName.e_content;
-				emailSel.val(name);
+				var name1 = name.replace('name',human_name);
+				emailSel.val(name1);
 			}
 		}	
 	 });
@@ -51,6 +53,7 @@
  	</head>
 	<body>
 		<form name="humanfileForm" method="post" action="sendEmailMa" >
+		<input type="hidden" name="human_name" id="human_name" value="${er.human_name }">
 			<table width="100%">
 				<tr>
 					<td>
@@ -71,7 +74,7 @@
 						发送者电子邮件
 					</td>
 				<td>
-					<input  type="text" name="SenderEmail" class="INPUT_STYLE2" >
+					<input  type="text" name="SenderEmail" value="1583246397@qq.com" class="INPUT_STYLE2" >
 				</td>
 		</tr>
 			<tr>
@@ -99,7 +102,7 @@
 						电子邮箱内容
 					</td>
 					<td class="TD_STYLE2" colspan="8">
-						<textarea name="eidaa" id="eidaa" rows="4"  cols="80" class="TEXTAREA_STYLE1"></textarea>
+						<textarea name="eidaa" id="eidaa" rows="4"  cols="100" class="TEXTAREA_STYLE1"></textarea>
 					</td>
 					 
 				</tr>

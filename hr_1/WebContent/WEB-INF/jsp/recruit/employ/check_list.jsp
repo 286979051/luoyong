@@ -87,6 +87,7 @@
 				
 				
 					 <c:forEach items="${eil }" var="eil">
+					 <c:if test="${eil.engage_resume.pass_checkComment != '释放简历,不通过' }">
 					<tr class="TR_STYLE1">
 						<td class="TD_STYLE2">
 							${eil.human_name }
@@ -114,12 +115,18 @@
 							<a href="check_list_queryDan?id=${eil.ein_id }">审批</a>
 						</td>
 						</c:if>
-						<c:if test="${eil.engage_resume.pass_passComment != null }">
+						<c:if test="${eil.engage_resume.pass_passComment =='通过,通过' }">
 						<td class="TD_STYLE2">
 							<a href="#">已审批</a>
 						</td>
 						</c:if>
+						<c:if test="${eil.engage_resume.pass_passComment =='不通过,不通过' }">
+						<td class="TD_STYLE2">
+							<a href="#">审批不通过</a>
+						</td>
+						</c:if>
 					</tr>
+					</c:if>
 					</c:forEach>
 					
 			</table>
