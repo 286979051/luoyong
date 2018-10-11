@@ -73,7 +73,6 @@ public class Config_file_first_kindController {
 	public String add(Config_file_first_kind firstkind){
 		try {
 			config_file_first_kindmapperService.add(firstkind);
-			System.out.println(firstkind);
 		} catch (Exception e){
 			logger.error("Ê§°Ü", e);
 		}

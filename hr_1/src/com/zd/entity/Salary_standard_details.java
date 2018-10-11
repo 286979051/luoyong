@@ -1,4 +1,7 @@
 package com.zd.entity;
+
+import java.util.List;
+
 /**
  * 
  * @author уецТ

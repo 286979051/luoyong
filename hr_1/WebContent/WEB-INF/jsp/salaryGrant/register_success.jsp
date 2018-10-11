@@ -22,7 +22,7 @@
     <td width="51%" align="right">
 			<input type="button" 
 			class="BUTTON_STYLE1" 
-			onclick="javascript:window.location='register_list.html';" 
+			onclick="javascript:window.location='register_list.jsp';" 
 			value="返回" />
 		</td>
 		

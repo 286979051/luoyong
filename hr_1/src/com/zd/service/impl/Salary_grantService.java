@@ -7,9 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zd.dao.ISalary_grantDao;
+import com.zd.entity.Config_file_first_kind;
+import com.zd.entity.Config_file_second_kind;
+import com.zd.entity.Config_file_third_kind;
 import com.zd.entity.Config_public_char;
 import com.zd.entity.Human_file;
 import com.zd.entity.Salary_grant;
+import com.zd.entity.Salary_grant_details;
 import com.zd.entity.Salary_standard_details;
 import com.zd.entity.zm_some;
 import com.zd.service.ISalary_grantService;
@@ -119,6 +123,10 @@ public class Salary_grantService implements ISalary_grantService {
 		return salary_grantDao.queryTBCount(third_kind_name);
 	}
 	
+	//查基本薪酬总数
+	public String selsum(String first_kind_name) {
+		return salary_grantDao.selsum(first_kind_name);
+	}
 
 	//查项目名称
 	public List<Config_public_char> selItem(){
@@ -130,5 +138,37 @@ public class Salary_grantService implements ISalary_grantService {
 	public List<Salary_standard_details> queryssd(String ssd){
 		return salary_grantDao.queryssd(ssd);
 	}
+	
+	
+	//查一级机构名
+	public Config_file_first_kind selF(String first_kind_name){
+		return salary_grantDao.selF(first_kind_name);
+	}
+	//查二级机构名
+	public Config_file_second_kind selS(String second_kind_name){
+		return salary_grantDao.selS(second_kind_name);
+	}
+	//查三级机构名
+	public Config_file_third_kind selT(String third_kind_name){
+		return salary_grantDao.selT(third_kind_name);
+	}
+	
+	
+	//添加薪酬发放详细信息
+	public void addDetails(Salary_grant_details sgd) {
+		salary_grantDao.addDetails(sgd);
+	}
+	//添加薪酬发放登记表
+	public void addgrant(Salary_grant sgt) {
+		salary_grantDao.addgrant(sgt);
+	}
+	
+	
+	//查薪酬发放登记表
+	public List<Salary_grant> selAll(){
+		return salary_grantDao.selAll();
+	}
+	
+	
 	
 }

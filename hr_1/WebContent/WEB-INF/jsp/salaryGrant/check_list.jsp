@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<link rel="stylesheet" href="../../css/table.css" type="text/css" />
+		<link rel="stylesheet" href="css/table.css" type="text/css" />
 		<title>无标题文档</title>
 		<style type="text/css">
 		<!--
@@ -49,80 +52,32 @@
 						复核
 					</td>
 				</tr>
-				
-					<tr class="TD_STYLE2">
+				<c:forEach var="sgl" items="${sgList }">
+					<tr class="TD_STYLE2" id=${sgl.salary_grant_id }>
 						<td>
-							HS1353753198460
+							${sgl.salary_grant_id }
 						</td>
 						<td>
-							Ⅰ级结构 
+							${sgl.first_kind_name }
 						</td>
 						<td>
-							
+							${sgl.second_kind_name }
 						</td>
 						<td>
-							
+							${sgl.third_kind_name }
 						</td>
 						<td>
-							5
+							${sgl.human_amount }
 						</td>
 						<td>
-							139823.0
+							${sgl.salary_paid_sum }
 						</td>
 						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322455169
-						</td>
-						<td>
-							Ⅰ级结构  
-						</td>
-						<td>
-							Ⅱ级结构3  
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							1
-						</td>
-						<td>
-							1332.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
+							<a href="toCheck?salary_grant_id=${sgl.salary_grant_id }">复核</a>
 						</td>
 					</tr>
-				
-					<tr class="TD_STYLE2">
-						<td>
-							HS1353322419274
-						</td>
-						<td>
-							Ⅰ级结构 
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							
-						</td>
-						<td>
-							5
-						</td>
-						<td>
-							139157.0
-						</td>
-						<td>
-							<a href="check.html">复核</a>
-						</td>
-					</tr>
-						 
-
+				</c:forEach>
+					
 			</table>
 			 
 <html>
