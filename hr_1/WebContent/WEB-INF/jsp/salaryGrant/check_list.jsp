@@ -57,18 +57,23 @@
 						<td>
 							${sgl.salary_grant_id }
 						</td>
+						
 						<td>
 							${sgl.first_kind_name }
 						</td>
+						
 						<td>
 							${sgl.second_kind_name }
 						</td>
+						
 						<td>
 							${sgl.third_kind_name }
 						</td>
+						
 						<td>
 							${sgl.human_amount }
 						</td>
+						
 						<td>
 							${sgl.salary_paid_sum }
 						</td>

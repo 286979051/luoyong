@@ -17,7 +17,6 @@
     <font color="black">您正在做的业务是：人力资源--薪酬发放管理--薪酬发放登记 </font></td>
   </tr>
   <tr>
-   
     <td width="49%"> 提交成功，需要复核！</td>
     <td width="51%" align="right">
 			<input type="button" 

@@ -122,7 +122,6 @@ public class Salary_grantController {
 		//查一级机构名
 		Config_file_first_kind cffk = salary_grantService.selF(fname);
 		map.put("cffk",cffk );
-		
 		//查项目名称
 		List<Config_public_char> arr = salary_grantService.selItem();
 		map.put("arr", arr);

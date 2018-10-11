@@ -143,6 +143,7 @@ public interface ISalary_grantDao {
 	@Insert("insert into salary_grant_details values(null,#{salary_grant_id},#{human_id},#{human_name},#{bouns_sum},#{sale_sum},#{deduct_sum},#{salary_standard_sum},#{salary_paid_sum})")
 	public void addDetails(Salary_grant_details sgd);
 	
+	
 	//添加薪酬发放登记表
 	@Insert("insert into salary_grant values(null,#{salary_grant_id},#{salary_standard_id},#{first_kind_id},#{first_kind_name},#{second_kind_id},#{second_kind_name},#{third_kind_id},#{third_kind_name},#{human_amount},#{salary_standard_sum},#{salary_paid_sum},#{register},#{regist_time},null,null,1)")
 	public void addgrant(Salary_grant sgt);

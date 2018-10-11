@@ -82,6 +82,7 @@ public interface ISalary_grantService {
 	//查项目名称
 	public List<Config_public_char> selItem();
 	
+	
 	//查薪酬标准单详细信息
 	public List<Salary_standard_details> queryssd(String ssd);
 	

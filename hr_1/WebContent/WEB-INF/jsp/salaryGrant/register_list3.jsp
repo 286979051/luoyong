@@ -58,7 +58,6 @@
 						<td>
 							${varStatus.count }
 						</td>
-						
 						<td>
 						<c:forEach items="${item }" var="m">
 							<c:if test="${m.key == 'tname' }">
@@ -66,7 +65,6 @@
 							</c:if>
 						</c:forEach>
 						</td>
-						
 						<td>
 						<c:forEach items="${item }" var="m">
 						 <c:if test="${m.key == 'tcount' }">
@@ -74,7 +72,6 @@
 						 </c:if>
 						</c:forEach>
 						</td>
-						
 						<td>
 						<c:forEach items="${item }" var="m">
 						 <c:if test="${m.key == 'tsum' }">
@@ -87,7 +84,6 @@
 						 </c:if>
 						</c:forEach>
 						</td>
-						
 						<td>
 							<a href="javascript:huoquname('<c:forEach items="${item }" var="m">
 																<c:if test="${m.key == 'tname' }">

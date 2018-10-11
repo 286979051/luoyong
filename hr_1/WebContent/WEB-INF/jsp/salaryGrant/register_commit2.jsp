@@ -105,7 +105,6 @@
 					<input type="hidden" name="grantDetails[${varStatus.index }].salaryGrantId" value="HS1353753198460">
 				 	<input type="hidden" id="salaryStandardSum${varStatus.count }" name="grantDetails[${varStatus.index }].salaryStandardSum" value="${human.salary_sum }"/>
 					<tr class="TD_STYLE2">
-						
 						<td>
 							${varStatus.count }
 						</td>

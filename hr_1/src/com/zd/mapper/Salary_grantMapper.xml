@@ -24,7 +24,7 @@
 	
 	<!-- 薪资发放查机构映射 -->
 	<resultMap type="map" id="mapMapper"></resultMap>
-	
+	<!-- 人力 -->
 	<resultMap type="com.zd.entity.Human_file" id="humanMapper">
 	</resultMap>
 	

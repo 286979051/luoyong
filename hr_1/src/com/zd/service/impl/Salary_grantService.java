@@ -123,6 +123,7 @@ public class Salary_grantService implements ISalary_grantService {
 		return salary_grantDao.queryTBCount(third_kind_name);
 	}
 	
+	
 	//查基本薪酬总数
 	public String selsum(String first_kind_name) {
 		return salary_grantDao.selsum(first_kind_name);
