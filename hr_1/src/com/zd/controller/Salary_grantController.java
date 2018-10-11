@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -261,6 +262,13 @@ public class Salary_grantController {
 	}
 	
 	
+	//登记返回
+	@RequestMapping("regist_return")
+	public String regist_return() {
+		return "salaryGrant/register_locate";
+	}
+	
+	
 	@RequestMapping("selAll")
 	public String selAll(Map map) {
 		List<Salary_grant> sgList = salary_grantService.selAll();
@@ -270,7 +278,71 @@ public class Salary_grantController {
 	
 	
 	
+		
 	
+	
+	//去复核
+	@RequestMapping("toCheck")
+	public String toCheck(Map map, String salary_grant_id,HttpSession session) {
+		//复核人
+		user user = (user) session.getAttribute("user");
+		map.put("user", user);
+		//查项目名称
+		List<Config_public_char> arr = salary_grantService.selItem();
+		map.put("arr", arr);
+		List<Salary_grant_details> sgdsList = salary_grantService.selSgds(salary_grant_id);
+		for (Salary_grant_details salary_grant_details : sgdsList) {
+			String ssid1 = salary_grant_details.getSalary_standard_id();
+			List<Salary_standard_details> ssdsList = salary_grantService.queryssd(ssid1);
+			salary_grant_details.setSlist(ssdsList);
+			
+		}
+		map.put("sgdsList", sgdsList);
+		
+		Salary_grant sgat = salary_grantService.selsds(salary_grant_id);
+		map.put("sgat", sgat);
+				
+		return "salaryGrant/check";
+	}
+	
+	
+	//复核
+	@RequestMapping("Check")
+	public String Check(Salary_grant salary_grant_id) {
+		salary_grantService.update(salary_grant_id);
+		return "salaryGrant/check_success";
+	}
+	
+	
+	
+	
+	
+	//去薪酬发放查询
+	@RequestMapping("toSalary_grant")
+	public String toSalary_grant() {
+		return "salaryGrant/query_locate";
+	}
+	
+	
+	//薪酬查询
+	@RequestMapping("selLikeSalary_grant")
+	public String selLikeSalary_grant(@RequestParam Map map,Map map1) {
+		///将薪酬编号传入map
+		String salary_grant_id = (String)map.get("salary_grant_id");
+		map.put("salary_grant_id", salary_grant_id);
+		//将关键字的name传入map
+		String primarKey = (String)map.get("primarKey");
+		map.put("primarKey", primarKey);
+		//将页面的起始时间和结束时间传入map
+		String startDate = (String)map.get("utilbean.startDate");
+		String endDate = (String)map.get("utilbean.endDate");
+		map.put("startDate", startDate);
+		map.put("endDate", endDate);
+		//条件查询全部
+		List<Salary_grant> salary_grantList = salary_grantService.selLikeSalary_grant(map);
+		map1.put("salary_grantList", salary_grantList);
+		return "salaryGrant/query_list";
+	}
 	
 	
 	

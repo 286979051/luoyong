@@ -28,24 +28,7 @@ public class Salary_grant {
 	private String check_time;
 	private int check_status;
 	
-	private List<Salary_standard_details> ssdsList; //薪酬标准单详细信息
 	
-	private List<Salary_grant_details> sgdsList;  //薪酬发放详细信息
-	
-	
-	
-	public List<Salary_standard_details> getSsdsList() {
-		return ssdsList;
-	}
-	public void setSsdsList(List<Salary_standard_details> ssdsList) {
-		this.ssdsList = ssdsList;
-	}
-	public List<Salary_grant_details> getSgdsList() {
-		return sgdsList;
-	}
-	public void setSgdsList(List<Salary_grant_details> sgdsList) {
-		this.sgdsList = sgdsList;
-	}
 	public int getSgr_id() {
 		return sgr_id;
 	}

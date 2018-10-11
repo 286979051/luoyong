@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.zd.entity.Config_file_first_kind;
 import com.zd.entity.Config_file_second_kind;
@@ -155,5 +156,28 @@ public interface ISalary_grantDao {
 	public List<Salary_grant> selAll();
 	
 	
+	
+	//查发放登记表
+	@Select("SELECT * FROM salary_grant WHERE salary_grant_id=#{salary_grant_id}")
+	@ResultMap("Salary_grantMapper")
+	public Salary_grant selsds(String salary_grant_id);
+	
+	
+	//发放详单
+	@Select("SELECT a.salary_standard_id,b.* FROM salary_grant a,salary_grant_details b WHERE a.salary_grant_id = b.salary_grant_id AND a.salary_grant_id=#{salary_grant_id}")
+	@ResultMap("detailsMapper1")
+	public List<Salary_grant_details> selSgds(String salary_grant_id);
+	
+	
+	//复核
+	@Update("UPDATE salary_grant SET salary_standard_sum=#{salary_standard_sum},salary_paid_sum=#{salary_paid_sum},register=#{register},regist_time=#{regist_time},checker=#{checker},check_time=#{check_time},check_status=2 where salary_grant_id=#{salary_grant_id}")
+	public void update(Salary_grant salary_grant_id);
+	
+	
+	//薪酬查询
+	public List<Salary_grant> selLikeSalary_grant(Map map);
+	
+	
+	//
 	
 }

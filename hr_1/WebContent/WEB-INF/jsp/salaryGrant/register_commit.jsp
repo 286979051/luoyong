@@ -58,7 +58,7 @@
 					
 					</td>
 					<td   style="text-align: right;">
-						登记人:<input type="text" name="register" value="${user.user_name }" size="8" readonly="readonly">
+						登记人:<input type="text" name="register" value="${user.user_true_name }" size="8" readonly="readonly">
 						登记时间：<span id="Tdate"></span>
 						<input type="hidden" name="regist_time" id="Tdate2" >
 					</td>

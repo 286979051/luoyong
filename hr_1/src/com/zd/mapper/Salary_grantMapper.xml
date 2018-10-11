@@ -29,7 +29,14 @@
 	</resultMap>
 	
 	<!-- 薪酬标准单详细信息 -->
-	<resultMap type="com.zd.entity.Salary_standard_details" id="salary_standard_detailsMapper"></resultMap>
+	<resultMap type="com.zd.entity.Salary_standard_details" id="salary_standard_detailsMapper">
+		<result column="sdt_id" property="sdt_id" />
+		<result column="standard_id" property="standard_id" />
+		<result column="standard_name" property="standard_name" />
+		<result column="item_id" property="item_id" />
+		<result column="item_name" property="item_name" />
+		<result column="salary" property="salary" />
+	</resultMap>
 	
 	<!-- 三级机构 -->
 	<resultMap type="com.zd.entity.Config_file_first_kind" id="firstMapper">
@@ -60,6 +67,7 @@
 		<result column="third_kind_is_retail" property="thirdkindisretail"/>
 	</resultMap>
 	
+	<!-- 薪酬发放详细信息 -->
 	<resultMap type="com.zd.entity.Salary_grant_details" id="detailsMapper">
 		<result column="grd_id" property="grd_id"/>
 		<result column="salary_grant_id" property="salary_grant_id"/>
@@ -71,5 +79,41 @@
 		<result column="salary_standard_sum" property="salary_standard_sum"/>
 		<result column="salary_paid_sum" property="salary_paid_sum"/>
 	</resultMap>
+	
+	
+	<resultMap type="com.zd.entity.Salary_grant_details" id="detailsMapper1">
+		<result column="grd_id" property="grd_id"/>
+		<result column="salary_grant_id" property="salary_grant_id"/>
+		<result column="human_id" property="human_id"/>
+		<result column="human_name" property="human_name"/>
+		<result column="bouns_sum" property="bouns_sum"/>
+		<result column="sale_sum" property="sale_sum"/>
+		<result column="deduct_sum" property="deduct_sum"/>
+		<result column="salary_standard_sum" property="salary_standard_sum"/>
+		<result column="salary_paid_sum" property="salary_paid_sum"/>
+		<result column="salary_standard_id" property="salary_standard_id"/>
+	</resultMap>
+	
+	
+	<!-- 薪酬查询 -->
+	<select id="selLikeSalary_grant" parameterType="java.util.Map" resultMap="Salary_grantMapper">
+		select * from salary_grant 
+		<where>
+			<if test="salary_grant_id!=null and salary_grant_id!=''">
+				and salary_grant_id like '${salary_grant_id}%'
+			</if>
+			<if test="primarKey!=null and primarKey!=''">
+				and (first_kind_name like '${primarKey}%' or second_kind_name like '%${primarKey}%' or third_kind_name like '%${primarKey}%') 
+			</if>
+			<if test="startDate!=null and startDate!=''">
+				<![CDATA[and regist_time >= #{startDate}]]>
+			</if>
+			<if test="endDate!=null and endDate!=''">
+				<![CDATA[and regist_time <= #{endDate}]]>
+			</if>
+			and check_status = 2
+		</where>
+	</select>
+	
 	
 </mapper>

@@ -19,8 +19,23 @@ public class Salary_grant_details {
 	private double salary_standard_sum;
 	private double salary_paid_sum;
 	
+	private String salary_standard_id;
+	private List<Salary_standard_details> slist;
 	
 	
+	
+	public String getSalary_standard_id() {
+		return salary_standard_id;
+	}
+	public void setSalary_standard_id(String salary_standard_id) {
+		this.salary_standard_id = salary_standard_id;
+	}
+	public List<Salary_standard_details> getSlist() {
+		return slist;
+	}
+	public void setSlist(List<Salary_standard_details> slist) {
+		this.slist = slist;
+	}
 	public int getGrd_id() {
 		return grd_id;
 	}
@@ -88,15 +103,16 @@ public class Salary_grant_details {
 		this.salary_standard_sum = salary_standard_sum;
 		this.salary_paid_sum = salary_paid_sum;
 	}
+	
+	public Salary_grant_details() {
+		super();
+	}
 	@Override
 	public String toString() {
 		return "Salary_grant_details [grd_id=" + grd_id + ", salary_grant_id=" + salary_grant_id + ", human_id="
 				+ human_id + ", human_name=" + human_name + ", bouns_sum=" + bouns_sum + ", sale_sum=" + sale_sum
 				+ ", deduct_sum=" + deduct_sum + ", salary_standard_sum=" + salary_standard_sum + ", salary_paid_sum="
-				+ salary_paid_sum + "]";
-	}
-	public Salary_grant_details() {
-		super();
+				+ salary_paid_sum + ", slist=" + slist + "]";
 	}
 	
 	

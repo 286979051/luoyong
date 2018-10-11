@@ -15,6 +15,9 @@ public class Salary_standard_details {
 	private int item_id;
 	private String item_name;
 	private double salary;
+	
+	
+	
 	public int getSdt_id() {
 		return sdt_id;
 	}
@@ -63,6 +66,11 @@ public class Salary_standard_details {
 		this.item_id = item_id;
 		this.item_name = item_name;
 		this.salary = salary;
+	}
+	@Override
+	public String toString() {
+		return "Salary_standard_details [sdt_id=" + sdt_id + ", standard_id=" + standard_id + ", standard_name="
+				+ standard_name + ", item_id=" + item_id + ", item_name=" + item_name + ", salary=" + salary + "]";
 	}
 	
 	

@@ -16,75 +16,80 @@
 	</head>
 
 	<body>
-		<form method="post" action="/HR_Fist/salaryGrant/salaryGrantAction!toCheckList">
+	<form action="/HR_Fist/salaryGrant/salaryGrantAction!toQueryListByPage">
 			<table width="100%">
 				<tr>
 					<td style="text-align:left;">
-						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放登记审核</font>					
-						<br/><br/><br/>
+						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放查询</font>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						
 					</td>
 				</tr>
 			</table>
-									
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
 				<tr>
-					<td width="10%" class="TD_STYLE1">
-						<span>薪酬发放编号</span>
-					</td>
 					<td width="20%" class="TD_STYLE1">
+						<span>薪酬编号</span>
+					</td>
+					<td width="15%" class="TD_STYLE1">
 						<span>I级机构名称</span>
 					</td>
-					<td width="20%" class="TD_STYLE1">
+					<td width="15%" class="TD_STYLE1">
 						<span>II级机构名称</span>
 					</td>
-					<td width="20%" class="TD_STYLE1">
+					<td width="15%" class="TD_STYLE1">
 						<span>III级机构名称</span>
 					</td>
 					<td width="10%" class="TD_STYLE1">
 						<span>人数</span>
 					</td>
-					<td width="10%" class="TD_STYLE1">
+					<td width="20%" class="TD_STYLE1">
 						基本薪酬总额(元)
 					</td>
-					<td width="10%" class="TD_STYLE1">
-						复核
-					</td>
+				
 				</tr>
-				<c:forEach var="sgl" items="${sgList }">
-					<tr class="TD_STYLE2" id=${sgl.salary_grant_id }>
+				
+				<c:forEach var="sgrant" items="${salary_grantList }">
+					<tr class="TD_STYLE2" >
 						<td>
-							${sgl.salary_grant_id }
-						</td>
-						
-						<td>
-							${sgl.first_kind_name }
-						</td>
-						
-						<td>
-							${sgl.second_kind_name }
-						</td>
-						
-						<td>
-							${sgl.third_kind_name }
-						</td>
-						
-						<td>
-							${sgl.human_amount }
-						</td>
-						
-						<td>
-							${sgl.salary_paid_sum }
+							${sgrant.salary_grant_id }
 						</td>
 						<td>
-							<a href="toCheck?salary_grant_id=${sgl.salary_grant_id }">复核</a>
+							
+							${sgrant.first_kind_name }
+							
+						</td>
+						<td>
+							<c:if test="${not empty sgrant.second_kind_name  }">
+								${sgrant.second_kind_name }
+							</c:if>
+						</td>
+						<td>
+							<c:if test="${not empty sgrant.third_kind_name  }">
+								${sgrant.third_kind_name }
+							</c:if>
+						</td>
+						<td>
+							${sgrant.human_amount }
+						</td>
+						<td>
+							${sgrant.salary_paid_sum }
 						</td>
 					</tr>
 				</c:forEach>
-					
 			</table>
-			 
+			
+			
 <html>
   <head>  
   </head>  
@@ -114,7 +119,12 @@ function doPage(startsize) {
   </body>
 </html>
  
-				
-		</form>
+			
+			
+			
+			</form>
+				 
+
 	</body>
 </html>
+

@@ -172,4 +172,25 @@ public class Salary_grantService implements ISalary_grantService {
 	
 	
 	
+	//查发放登记表
+	public Salary_grant selsds(String salary_grant_id){
+		return salary_grantDao.selsds(salary_grant_id);
+	}
+	
+	//发放详单
+	public List<Salary_grant_details> selSgds(String salary_grant_id){
+		return salary_grantDao.selSgds(salary_grant_id);
+	}
+	
+	
+	//复核
+	public void update(Salary_grant salary_grant_id) {
+		salary_grantDao.update(salary_grant_id);
+	}
+	
+	
+	//薪酬查询
+	public List<Salary_grant> selLikeSalary_grant(Map map){
+		return salary_grantDao.selLikeSalary_grant(map);
+	}
 }
