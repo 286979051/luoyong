@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
 		<link rel="stylesheet"
 			href="../css/table.css" type="text/css" />
 		<title>无标题文档</title>
@@ -12,7 +12,6 @@
 
 	<body>
 		<form action="updbiangeng" method="post">
-			
 			<table width="100%">
 				<tr>
 					<td>
@@ -30,8 +29,10 @@
 					</td>
 				</tr>
 			</table>
-			 
-			<input type="hidden" name="standard.ssdId" value="1238">
+					<input type="hidden" name="maxday" value="${maxday }"/>
+					<input type="hidden" name="minday" value="${minday }"/>
+					<input type="hidden" name="gjz" value="${gjz }"/>
+					<input type="hidden" name="id" value="${id }"/>
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -137,17 +138,22 @@
 			 	</c:forEach>
 			</table>
 		</form>
+		<script type="text/javascript"
+			src="../javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="../javascript/jquery.messager.js">
+		</script>
 		<script type="text/javascript">
 		function check(){
-				
 				var designer=document.getElementById("designer");
 				var standardName=document.getElementById("standardName");
-				if(designer.value.length<=0){
-				alert("制定人不可为空!!!");
+				if(designer.  value.length<=0){
+						$.messager.show("<font style='font-family:宋体;'>消息提示","制定人不可为空!!!</font>",2000);
 						return ;
 				}
 				if(standardName.value.length<=0){
-				alert("薪酬标准名称不可为空!!!");
+						$.messager.show("<font style='font-family:宋体;'>消息提示","薪酬标准名称不可为空!!!</font>",2000);
 					return ;
 				}
 			document.forms[0].submit();
@@ -155,7 +161,7 @@
 		function countMoney(obj,o) {
 		
 		if (isNaN(document.getElementById(o).value) || document.getElementById(o).value < 0) {
-		alert("金额填写错误!");
+				$.messager.show("<font style='font-family:宋体;'>消息提示","金额填写错误!!!</font>",2000);
 		document.getElementById(o).value="0.00";
 		return;
 	}

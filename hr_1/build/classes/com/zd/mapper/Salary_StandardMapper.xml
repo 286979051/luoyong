@@ -40,7 +40,7 @@
 			<if test="minday!=null and minday!=''">
 				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') >= DATE_FORMAT(#{minday},'%y-%m-%d')]]>
 			</if>
-			LIMIT #{start},10
+			ORDER BY DATE_FORMAT(regist_time,'%y-%m-%d') DESC 
 	</select>
 	
 	<!-- 薪酬标准查询——模糊查询总条数 -->
@@ -62,7 +62,8 @@
 	
 	<!-- 薪酬标准查询变更——模糊查询 -->
 	<select id="selstatus2" parameterType="java.util.Map" resultMap="salary_standardMapper">
-		SELECT * FROM salary_standard where check_status = 2
+		SELECT * FROM salary_standard 
+		<where>
 			<if test="standard_id!=null and standard_id!=''">
 				and standard_id like '%${standard_id}%'
 			</if>
@@ -75,6 +76,8 @@
 			<if test="minday!=null and minday!=''">
 				<![CDATA[and DATE_FORMAT(regist_time,'%y-%m-%d') >= DATE_FORMAT(#{minday},'%y-%m-%d')]]>
 			</if>
+			</where>
+			ORDER BY DATE_FORMAT(regist_time,'%y-%m-%d') DESC
 	</select>
 	
 	<resultMap type="com.zd.entity.Salary_standard_details" id="salaryMapper">

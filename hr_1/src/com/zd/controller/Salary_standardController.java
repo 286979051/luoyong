@@ -318,32 +318,63 @@ public class Salary_standardController {
 	
 	//薪酬标准查询变更——模糊查询
 	@RequestMapping("salaryCriterion/selzt2")
-	public String selzt2(@RequestParam Map map,Map<String, Object> infomap) {
-		List<Salary_standard> salary_standardslist = StandardService.selstatus2(map);
+	public String selzt2(@RequestParam Map map,Map<String, Object> infomap,Map<String, Object> umap) {
+		String maxday = (String)map.get("maxday");
+		String minday = (String)map.get("minday");
+		String gjz = (String)map.get("gjz");
+		String id = (String)map.get("standard_id");
+		int startPage = 0;
+		umap.put("maxday", maxday);
+		umap.put("minday", minday);
+		umap.put("gjz", gjz);
+		umap.put("standard_id", id);
+		umap.put("page.startPage", startPage);
+		List<Salary_standard> salary_standardslist = StandardService.selstatus2(umap);
 		infomap.put("salary_standardslist", salary_standardslist);
 		infomap.put("size", salary_standardslist.size());
+		umap.put("maxday", maxday);
+		umap.put("minday", minday);
+		umap.put("gjz", gjz);
+		umap.put("standard_id", id);
 		return "salaryCriterion/salarystandard_change_list";
 	}
 	
 	//根据编号查询详情信息
 		@RequestMapping("salaryCriterion/selbysid")
-		public String selbysid(String standard_id,Map<String, Object> map) {
+		public String selbysid(Map<String, Object> map,@RequestParam Map map1) {
+			String maxday = (String)map1.get("maxday");
+			String minday = (String)map1.get("minday");
+			String gjz = (String)map1.get("gjz");
+			String id = (String)map1.get("id");
+			map.put("maxday", maxday);
+			map.put("minday", minday);
+			map.put("gjz", gjz);
+			map.put("id", id);
+			String standard_id = (String)map1.get("standard_id");
 			Salary_standard salary_standard = StandardService.selbyid(standard_id);
 			map.put("salary_standard", salary_standard);
 			List<zm_some> zm_somelist =  StandardService.selone_zmsome(standard_id);
-			map.put("zm_somelist", zm_somelist);
+			map.put("zm_somelist", zm_somelist);	
 			map.put("zm_somelist_size", zm_somelist.size());
 			return "salaryCriterion/salarystandard_change";
 		}
 		
 		//变更
 		@RequestMapping("salaryCriterion/updbiangeng")
-		public String updbiangeng(Salary_standard salary_standard,@RequestParam Map map) {
+		public String updbiangeng(Salary_standard salary_standard,@RequestParam Map map,Map<String, Object> map1) {
+			//获取编号
+			String maxday = (String)map.get("maxday");
+			String minday = (String)map.get("minday");
+			String gjz = (String)map.get("gjz");
+			String id = (String)map.get("id");
+			map1.put("maxday", maxday);
+			map1.put("minday", minday);
+			map1.put("gjz", gjz);
+			map1.put("standard_id", id);
+			String standard_id = salary_standard.getStandard_id();
+			StandardService.updbiangeng(salary_standard);
+			Map<String, Object> updmap = new HashMap<>();
 				//修改基本信息
-				StandardService.updbiangeng(salary_standard);
-				Map<String, Object> updmap = new HashMap<>();
-				//获取编号
-				String standard_id = salary_standard.getStandard_id();
 				//获取id 和 钱数
 				Set<String> keyset = map.keySet();
 				for (String key : keyset) {
@@ -356,6 +387,7 @@ public class Salary_standardController {
 						StandardService.updfuhe2(updmap);
 					}
 				}
+				
 			return "salaryCriterion/salarystandard_change_success";
 		}
 }

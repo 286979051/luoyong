@@ -68,7 +68,7 @@ public interface IStandardDao {
 	public List<Salary_standard> selstatus2(Map map);
 	
 	//对变更信息进行修改_1
-	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},changer=#{changer},change_time=#{change_time},salary_sum=#{salary_sum},remark=#{remark} WHERE standard_id=#{standard_id};")
+	@Update("UPDATE salary_standard SET standard_name=#{standard_name},designer=#{designer},changer=#{changer},change_time=#{change_time},salary_sum=#{salary_sum},remark=#{remark},check_status=2 WHERE standard_id=#{standard_id};")
 	public void updbiangeng(Salary_standard salary_standard);
 	
 	@Select("SELECT * from Salary_standard_details GROUP BY standard_name")
@@ -78,4 +78,6 @@ public interface IStandardDao {
 	@Select("SELECT * from Salary_standard_details where standard_name = #{id} GROUP BY standard_name")
 	@ResultMap("salaryMapper")
 	public Salary_standard_details selSalaryone(String id);
+	
+	
 }

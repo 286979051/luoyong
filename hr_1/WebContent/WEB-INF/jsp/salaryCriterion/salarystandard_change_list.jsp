@@ -15,6 +15,12 @@
 }
 -->
 </style>
+		<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
 	</head>
 
 	<body>
@@ -36,7 +42,10 @@
 					</td>
 				</tr>
 			</table>
-			
+			<input type="hidden" name="maxday" value="${maxday }"/>
+			<input type="hidden" name="minday" value="${minday }"/>
+			<input type="hidden" name="gjz" value="${gjz }"/>
+			<input type="hidden" name="id" value="${standard_id }"/>
 				<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -78,8 +87,9 @@
 							${salary.salary_sum }
 						</td>
 					<td>
-						<a href="selbysid?standard_id=${salary.standard_id }">变 更</a>
+						<a href="selbysid?standard_id=${salary.standard_id }&&maxday=${maxday }&&minday=${minday }&&gjz=${gjz }&&id=${standard_id }">变 更</a>
 					</td>
+			
 					</tr>
 				</c:forEach>
 			</table>
@@ -87,47 +97,19 @@
   <head>  
   </head>  
   <body>
-   <p>
-   <div align="center" style="font-size: 18px;color: gray">
-				&nbsp;&nbsp;总数：
-				<font style="color: maroon;font-weight: bold;">3</font>
-				例 
-				&nbsp;&nbsp;&nbsp;
-				每页显示 <font style="color: maroon;font-weight: bold;">10</font> 
-				条
-				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">1</font>
-				 页 
-				&nbsp;&nbsp;&nbsp;共 
-				<font style="color: maroon;font-weight: bold;">1</font>
-				 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPage(1)">首页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(0)">上一页</a>
-				 
-				<a style="color: navy;font-weight: bold" 
-				href="javascript:doPage(2)">下一页</a>
-				
-				<a style="color: navy;font-weight: bold"
-				 href="javascript:doPage(1)">末页</a>
-				&nbsp;&nbsp;&nbsp;跳到第
-				<input id=page type=text  value="1" class=input1 size=1>
-				页&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton()" src="../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="1">
-			</div>
+   
 			<script type="text/javascript">
 function dopagebybutton() {
 	var reg = /^[0-9]*[1-9][0-9]*$/;
 	if (reg.test(document.getElementById("page").value)) {
 		document.getElementById("startpage").value= document.getElementById("page").value;
 	} else {
-		alert("您的输入有误");
+		$(function() {
+			$.messager.show("<font style='font-family:宋体;'>消息提示","您的输入有误!!!</font>",2000);
+		});
 		document.getElementById("page").value = document.getElementById("startpage").value;
 	}
 	document.forms[0].submit();
-	
 }
 function doPage(startsize) {
 	document.getElementById("startpage").value =startsize;

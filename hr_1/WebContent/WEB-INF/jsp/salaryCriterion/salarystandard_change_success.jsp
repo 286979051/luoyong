@@ -14,11 +14,12 @@
     <font color="black">您正在做的业务是:人力资源管理--薪酬标准管理--薪酬标准登记变更 </font></td>
   </tr>
     <td width="49%"> 提交成功，需要复核！</td>
+    <a href=""></a>
     <td width="51%" align="right">
 			<input type="button" 
 			class="BUTTON_STYLE1" 
-			onclick="javascript:window.location='#';" 
-			value="返回" />
+			onclick="javascript:window.location='selzt2?id=${id }&&maxday=${maxday }&&minday=${minday }&&gjz=${gjz }'" 
+			value="返回"/>
 		</td>
   </table>
 </form>

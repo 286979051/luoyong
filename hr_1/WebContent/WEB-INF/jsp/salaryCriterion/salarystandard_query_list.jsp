@@ -82,32 +82,7 @@
 			 
 <html>
   <body>
-   <div align="center" style="font-size: 18px;color: gray">
-   			<form id="queryForm" action="selstatus" method="post">
-				<input name="gjz" value="${gjz}" type="hidden"/>
-				<input name="minday" value="${minday}" type="hidden"/>
-				<input name="maxday" value="${maxday}" type="hidden"/>
-				<input name="standard_id" value="${standard_id}" type="hidden"/>
-				<input name="start" value="${start}" type="hidden" id="starty"/>
-			</form>
-				&nbsp;&nbsp;
-				总数：<font style="color: maroon;font-weight: bold;">${li }</font>例 
-				&nbsp;&nbsp;&nbsp;
-				每页显示 <font style="color: maroon;font-weight: bold;">10</font>条
-				&nbsp;&nbsp;&nbsp; 
-				当前第 <font style="color: maroon;font-weight: bold;">${starttrue}</font>页 
-				&nbsp;&nbsp;&nbsp;
-				共 <font style="color: maroon;font-weight: bold;">${total}</font> 页
-				<a style="color: navy;font-weight: bold" href="javascript:doPages(0)">首页</a>
-				<a style="color: navy;font-weight: bold" href="javascript:doPages(${start-1})">上一页</a>
-				<a style="color: navy;font-weight: bold" href="javascript:doPages(${start+1})">下一页</a>
-				<a style="color: navy;font-weight: bold" href="javascript:doPages(${total-1})">末页</a>
-				&nbsp;&nbsp;&nbsp;
-				跳到第<input id="page" type="text"  value="${starttrue}" class=input1 size=1/>页
-				&nbsp;&nbsp;
-				<input type="image" onclick="dopagebybutton(${total})" src="../images/go.bmp" width=18 height=18 border=0>
-				<input type="hidden" name="page.startPage" id="startpage" value="${starttrue}"/>
-	</div>
+   	
 	<script type="text/javascript"
 			src="../javascript/jquery-1.7.2.js">
 		</script>

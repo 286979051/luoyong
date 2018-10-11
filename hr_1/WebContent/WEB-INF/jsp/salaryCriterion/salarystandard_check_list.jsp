@@ -115,6 +115,12 @@
 				<input type="image" onclick="dopagebybutton(${total})" src="images/go.bmp" width=18 height=18 border=0/>
 				<input type="hidden" name="page.startPage" id="startpage" value="1"/>
 			</div>
+			<script type="text/javascript"
+			src="javascript/jquery-1.7.2.js">
+		</script>
+		<script type="text/javascript"
+			src="javascript/jquery.messager.js">
+		</script>
 			<script type="text/javascript">
 function dopagebybutton(totalPage) {
 	var inputPage = document.getElementById("page").value;
@@ -122,7 +128,9 @@ function dopagebybutton(totalPage) {
 	if (reg.test(document.getElementById("page").value)&&(inputPage<(totalPage+1))&&(inputPage!=0)) {
 		document.getElementById("startpage").value= document.getElementById("page").value;
 	} else {
-		alert("您的输入有误");
+		$(function() {
+			$.messager.show("<font style='font-family:宋体;'>消息提示","您的输入有误!!!</font>",2000);
+		});
 		document.getElementById("page").value = document.getElementById("startpage").value;
 	}
 	document.forms[0].submit();
@@ -134,7 +142,9 @@ function doPageup(startsize) {
 	if(${start!=1}){
 		location.href="toup?start="+${start};
 	}else{
-		alert("已到首页")
+		$(function() {
+			$.messager.show("<font style='font-family:宋体;'>消息提示","已到首页!!!</font>",2000);
+		});
 		location.href="selallSalary";
 	}
 }
@@ -144,7 +154,9 @@ function doPagedown(startsize) {
 	if(${start}!=${total}){
 		location.href="todown?start="+${start};
 	}else{
-		alert("已到尾页")
+		$(function() {
+			$.messager.show("<font style='font-family:宋体;'>消息提示","已到尾页!!!</font>",2000);
+		});
 		location.href="tolast";
 	}
 }
