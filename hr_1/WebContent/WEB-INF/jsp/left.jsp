@@ -184,12 +184,12 @@
 								</li>
 								<li>
 									<span>
-										<a href="salaryGrant/check_list.html" target="mainFrame" style="color:black;">薪酬发放登记复核</a>
+										<a href="selAll" target="mainFrame" style="color:black;">薪酬发放登记复核</a>
 									</span>
 								</li>
 								<li>
 									<span>
-										<a href="salaryGrant/query_locate.html" target="mainFrame" style="color:black;">薪酬发放查询</a>
+										<a href="toSalary_grant" target="mainFrame" style="color:black;">薪酬发放查询</a>
 									</span>
 								</li>
 					</ul>

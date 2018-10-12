@@ -1,6 +1,7 @@
 package com.zd.entity;
 
 import java.sql.Date;
+import java.util.List;
 /**
  * 12.人力资源档案 
  * @author Administrator
@@ -195,6 +196,19 @@ public class Human_file {
 	private String recovery_time;//	date	档案恢复时间
 	private int human_file_status;//	integer	档案状态(1：待复核 2：正常 3：已删除)
 	
+	//
+	private List<Salary_standard_details> ssdlist;
+	
+	
+	
+	public List<Salary_standard_details> getSsdlist() {
+		return ssdlist;
+	}
+
+	public void setSsdlist(List<Salary_standard_details> ssdlist) {
+		this.ssdlist = ssdlist;
+	}
+
 	public int getHfd_id() {
 		return hfd_id;
 	}
@@ -202,16 +216,6 @@ public class Human_file {
 	public void setHfd_id(int hfd_id) {
 		this.hfd_id = hfd_id;
 	}
-
-
-	public String getFirst_kind_name() {
-		return first_kind_name;
-	}
-
-	public void setFirst_kind_name(String first_kind_name) {
-		this.first_kind_name = first_kind_name;
-	}
-
 
 	public String getHuman_id() {
 		return human_id;
@@ -229,6 +233,16 @@ public class Human_file {
 		this.first_kind_id = first_kind_id;
 	}
 
+	public String getFirst_kind_name() {
+		return first_kind_name;
+	}
+
+	public void setFirst_kind_name(String first_kind_name) {
+		this.first_kind_name = first_kind_name;
+	}
+
+
+
 	public String getSecond_kind_id() {
 		return second_kind_id;
 	}
@@ -237,13 +251,6 @@ public class Human_file {
 		this.second_kind_id = second_kind_id;
 	}
 
-	public String getThird_kind_id() {
-		return third_kind_id;
-	}
-
-	public void setThird_kind_id(String third_kind_id) {
-		this.third_kind_id = third_kind_id;
-	}
 
 	public String getSecond_kind_name() {
 		return second_kind_name;
@@ -253,6 +260,13 @@ public class Human_file {
 		this.second_kind_name = second_kind_name;
 	}
 
+	public String getThird_kind_id() {
+		return third_kind_id;
+	}
+
+	public void setThird_kind_id(String third_kind_id) {
+		this.third_kind_id = third_kind_id;
+	}
 
 	public String getThird_kind_name() {
 		return third_kind_name;
@@ -505,12 +519,9 @@ public class Human_file {
 		this.remark = remark;
 	}
 
-
 	public String getSalary_standard_id() {
 		return salary_standard_id;
 	}
-
-
 
 	public void setSalary_standard_id(String salary_standard_id) {
 		this.salary_standard_id = salary_standard_id;

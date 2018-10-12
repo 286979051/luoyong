@@ -65,7 +65,7 @@ public class Human_registerController {
 	@Autowired
 	private com.zd.service.IHuman_fileservice IHuman_fileservice;
 	
-	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+	Logger logger = LoggerFactory.getLogger(Human_registerController.class);
 	// 跳转人员档案登记
 	@RequestMapping("/human_register")
 	public String toPagehr(Map map){
@@ -90,7 +90,7 @@ public class Human_registerController {
 	@RequestMapping("/querySecondByFirstId")
 	@ResponseBody
 	public List<Config_file_second_kind> querySecondByFirstId(String id){
-		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+		Logger logger = LoggerFactory.getLogger(Human_registerController.class);
 		List<Config_file_second_kind> secondList = config_file_second_kindService.queryById(id);
 		return secondList;
 	}

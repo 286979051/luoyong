@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-trasitional.dtd">
 <html>
 	<head>
@@ -10,62 +10,68 @@
 		<style type="text/css">
 		<!--
 		.style3 {color: #0000CC}
-		td{text-align: center}
+		td{text-align: center;}
 		-->
-		</style>	
- 
+		</style>
 
 	</head>
 
 	<body>
-		<form method="post" action="regist">
-			
+		<form method="post" action="Check">
 			<table width="100%">
 				<tr>
-					<td colspan="2" style="text-align: left">
-						<font color="black">您正在做的业务是：人力资源--薪酬标准管理--薪酬发放登记
-						</font>						
+					<td style="text-align:left;">
+						<font color="black">您正在做的业务是:人力资源管理--薪酬发放管理--薪酬发放复核</font>
 					</td>
-				</tr>			
-				<tr>
-					<td colspan="2" style="text-align: right;">
-						<input type="submit" value="提交"   class="BUTTON_STYLE1">　
-						<input type="button" value="返回" onclick="javascript:window.history.back();" class="BUTTON_STYLE1">
-					　　</td>
 				</tr>
 				<tr>
-					<td colspan="2"  style="text-align: left">
-					薪酬单编号：${times }
-					<input type="hidden" name="salary_grant_id" value="${times }">
+					<td colspan="2" style="text-align: right"  >
+						<input type="submit" value="复核通过"   class="BUTTON_STYLE1">	　					
+						<input type="button" value="返 回" onclick="location.href='selAll'" class="BUTTON_STYLE1">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="text-align: left" >
+					薪酬单编号：${sgat.salary_grant_id }
+					<input type="hidden" name="salary_grant_id" value="${sgat.salary_grant_id }">
 					</td>					
 				</tr>
 				<tr>
-					<td colspan="2"  style="text-align: left">
+					<td colspan="2" style="text-align: left">
 					机构：
-								
-							 	${cffk.firstkindname }  
-						<input type="hidden" name="first_kind_id" value="${cffk.firstkindid }" />
-						<input type="hidden" name="first_kind_name" value="${cffk.firstkindname }" />
+				
+					
+							${sgat.first_kind_name }
+							
+							<c:if test="${not empty sgat.second_kind_name  }">
+								${sgat.second_kind_name }
+							</c:if>
+							<c:if test="${not empty sgat.third_kind_name  }">
+								${sgat.third_kind_name }
+							</c:if>
+					
+					
+				
 					</td>					
 				</tr>
 				<tr>
 					<td style="text-align: left">
-					本机构总人数:${FBCount }
-					<input type="hidden" name="human_amount" value="${FBCount }" id="sizeInp">
-					，基本薪酬总数:${su }<input type="hidden" name="salaryStandardSum" value="${su }"/>
-					，实发总额:<span id="salarySum_sum">${su }</span>
-					<input type="hidden" id="salaryPaidSum" name="salaryPaidSum" value="${su }"/>
-					
+					本机构总人数:${sgat.human_amount }
+					<input type="hidden" name="human_amount" value="${sgat.human_amount }" id="sizeInp"  >
+					，基本薪酬总数:${sgat.salary_standard_sum }<input type="hidden" name="salary_standard_sum" value="${sgat.salary_standard_sum }" />
+					，实发总额:<span id="salarySum_sum">${sgat.salary_paid_sum }</span>
+					<input type="hidden" id="salaryPaidSum" name="salaryPaidSum" value="${sgat.salary_paid_sum }"/>
+					<input type="hidden"  name="register" value="${sgat.register }"/>
+					<input type="hidden"  name="regist_time" value="${sgat.regist_time }"/>
 					</td>
-					<td   style="text-align: right;">
-						登记人:<input type="text" name="register" value="${user.user_true_name }" size="8" readonly="readonly">
-						登记时间：<span id="Tdate"></span>
-						<input type="hidden" name="regist_time" id="Tdate2" >
+					<td   style="text-align: right">
+					 
+						复核人:<input type="text" name="checker" value="${user.user_true_name }" size="8" readonly="readonly">
+						复核时间：<span id="Tdate"></span>
+						<input type="hidden" name="check_time" id="Tdate2" >
 					</td>
 				</tr>
 			</table>
-
-
 			<table width="100%" border="1" cellpadding=0 cellspacing=1
 				bordercolorlight=#848284 bordercolordark=#eeeeee
 				class="TABLE_STYLE1">
@@ -79,11 +85,13 @@
 					<td class="TD_STYLE1">
 						<span>姓名</span>
 					</td>
-						<c:forEach var="item" items="${arr }">
+					<c:forEach var="item" items="${arr }">
 						<td class="TD_STYLE1">
 							${item.attribute_name }
 						</td>		
-						</c:forEach>				
+					</c:forEach>	
+						
+							
 					<td class="TD_STYLE1" width="7%">
 						奖励金额
 					</td>
@@ -96,54 +104,51 @@
 					<td class="TD_STYLE1" width="7%">
 						实发金额
 					</td>
-				</tr>
-								
-					<c:forEach var="human" items="${list1 }" varStatus="varStatus">
-					<input type="hidden" name="grantDetails[${varStatus.index }].salaryGrantId" value="HS1353753198460">
-				 	<input type="hidden" id="salaryStandardSum${varStatus.count }" name="grantDetails[${varStatus.index }].salaryStandardSum" value="${human.salary_sum }"/>
+					
+				</tr>	
+					
+					<c:forEach var="grant" items="${sgdsList }" varStatus="varStatus">
+					<input type="hidden" name="grantDetails[${varStatus.index } ].salaryGrantId" value="HS1353753198460">
+				 	<input type="hidden" id="salaryStandardSum${varStatus.count }" name="grantDetails[${varStatus.index }].salaryStandardSum" value="${grant.salary_paid_sum }"/>
 					<tr class="TD_STYLE2">
+					
 						<td>
 							${varStatus.count }
 						</td>
-						<td>
-							${human.human_id }
-								<input type="hidden" name="human_id"  value="${human.human_id }"/>							
-						</td>
-						<td>
-							${human.human_name }	
-							<input type="hidden" name="human_name"  value="${human.human_name }"/>
-						</td>
-						<c:forEach items="${human.ssdlist }" var="xinchou">
-							<c:if test="${xinchou.standard_id == human.salary_standard_id }">
-								<td> 
-								${xinchou.salary }
+							<td>
+								${grant.human_id }
+								<input type="hidden" name="human_id"  value="${grant.human_name }"/>							
+							</td>
+							<td>
+								${grant.human_name }	
+								<input type="hidden" name="human_name"  value="${grant.human_name }"/>
+							</td>
+							
+							<c:forEach var="salary" items="${grant.slist }">
+								<c:if test="${salary.standard_id == grant.salary_standard_id }">
+								<td> 							
+									${salary.salary }
 								</td>
-							</c:if>
-						</c:forEach>							
+								</c:if>
+							</c:forEach>
+									
 						<td>
-							<input type="text" name="bouns_sum" id="bounsSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')"  class="INPUT_STYLE2" value="0"  />
+							<input type="text" name="bouns_sum" id="bounsSum${varStatus.count }" value="${grant.bouns_sum }"  onkeyup="onKeyPress('${varStatus.count }')"  class="INPUT_STYLE2" />
 						</td>
 						<td>
-							<input type="text" name="sale_sum" id="saleSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2" value="0" />
+							<input type="text" name="sale_sum" id="saleSum${varStatus.count }"  value="${grant.sale_sum }"  onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2"/>
 						</td>
 						<td>
-							<input type="text" name="deduct_sum" id="deductSum${varStatus.count }" onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2" value="0" />
+							<input type="text" name="deduct_sum" id="deductSum${varStatus.count }" value="${grant.deduct_sum }"  onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2"/>
+						</td>
+						<td>
+							<input type="text" name="salary_paid_sum" readonly="readonly" value="${grant.salary_paid_sum }"   id="salaryPaidSum${varStatus.count }"   class="INPUT_STYLE2"/>
 						</td>
 						
-						<td>
-							<input type="text" name="salary_paid_sum" readonly="readonly"  id="salaryPaidSum${varStatus.count }" value="${human.salary_sum }"  class="INPUT_STYLE2"/>
-						</td>
-						<td>
-						
-						<input type="hidden" name="salary_standard_sum" value="${human.salary_sum}" />
-						<input type="hidden" name="salary_grant_id" value="${human.salary_standard_id}" />
-						<input type="hidden" name="salary_standard_id" value="${human.salary_standard_id}" />
-						</td>
-					</tr>
-					</c:forEach>	
-					
-			</table>			
+					</tr>	
+					</c:forEach>
 				
+			</table>							
 		</form>
 		<SCRIPT type="text/javascript">
 		 
@@ -179,8 +184,6 @@
 	 		  document.getElementById("salaryPaidSum").value=sum;	 
 		
 		}
-		
-		
 
 
 

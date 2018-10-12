@@ -75,8 +75,7 @@ public class Human_filecontroller {
 	@Autowired
 	private IHuman_fileservice Human_fileservice;	
 	
-	Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
-	
+	Logger logger = LoggerFactory.getLogger(Human_filecontroller.class);
 	@RequestMapping("/register_choose_picture")
 	public String register_choose_picture(Human_file Engage_major_release,Map map) {
 		try {

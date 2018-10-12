@@ -34,7 +34,7 @@ public class Config_file_first_kindController {
 	
 	@RequestMapping("/queryCffk")
 	public String query(Map map) {
-		Logger logger = LoggerFactory.getLogger(Engage_major_releaseController.class);
+		Logger logger = LoggerFactory.getLogger(Config_file_first_kindController.class);
 			List<Config_file_first_kind> firstList = config_file_first_kindService.query();
 			List<Config_major_kind> major = config_major_kindService.majorQuery();
 			List<Config_public_char> publicList = config_public_charservice.QueryEngageType();

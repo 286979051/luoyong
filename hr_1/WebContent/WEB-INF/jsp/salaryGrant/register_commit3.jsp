@@ -43,9 +43,13 @@
 					<td colspan="2"  style="text-align: left">
 					机构：
 								
-							 	${cffk.firstkindname }  
+							 	${cffk.thirdkindname }
 						<input type="hidden" name="first_kind_id" value="${cffk.firstkindid }" />
 						<input type="hidden" name="first_kind_name" value="${cffk.firstkindname }" />
+						<input type="hidden" name="second_kind_id" value="${cffk.secondkindid }" />
+						<input type="hidden" name="second_kind_name" value="${cffk.secondkindname }" />  
+						<input type="hidden" name="third_kind_id" value="${cffk.thirdkindid }" />
+						<input type="hidden" name="third_kind_name" value="${cffk.thirdkindname }" />
 					</td>					
 				</tr>
 				<tr>
@@ -121,7 +125,7 @@
 							</c:if>
 						</c:forEach>							
 						<td>
-							<input type="text" name="bouns_sum" id="bounsSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')"  class="INPUT_STYLE2" value="0"  />
+							<input type="text" name="bouns_sum" id="bounsSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')"  class="INPUT_STYLE2" value="0" />
 						</td>
 						<td>
 							<input type="text" name="sale_sum" id="saleSum${varStatus.count }"  onkeyup="onKeyPress('${varStatus.count }')" class="INPUT_STYLE2" value="0" />
@@ -179,8 +183,6 @@
 	 		  document.getElementById("salaryPaidSum").value=sum;	 
 		
 		}
-		
-		
 
 
 
